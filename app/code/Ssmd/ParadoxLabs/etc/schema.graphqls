@@ -1,0 +1,33 @@
+interface CartItemInterface {
+    custom_options: [CustomOptions]  @resolver(class:
+    "Ssmd\\ParadoxLabs\\Model\\Resolver\\CartCustomOptions") @doc(description: "Lists Carts Custom Options - Here in our SSMD they are Subscription option id and value.")
+}
+
+type CustomOptions @doc(description: "Cart Item custom options") {
+    id: Int @doc(description: "Custom Option ID ")
+    value: Int @doc(description: "Custom Option Value")
+}
+
+interface ProductInterface {
+    subscription_active: Int @doc(description: "Subscription Enabled Status attribute")
+    subscription_allow_onetime: Int @doc(description: "Allow one-time purchase")
+    subscription_options: [SubscriptionOptions] @resolver(class:
+    "Ssmd\\ParadoxLabs\\Model\\Resolver\\Subscriptions") @doc(description: "Lists all Subscription options of the product in Question, also provides subscription status."
+    )
+}
+
+type Subscriptions @doc(description: "Subscription options of a Product along with subscription status.") {
+    subscription_active: Int @doc(description: "Subscription Enabled Status attribute")
+    subscription_allow_onetime: Int @doc(description: "Allow one-time purchase")
+    subscription_options: [SubscriptionOptions] @doc(description: "Subscription Options of a product")
+}
+
+type SubscriptionOptions @doc(description: "Subscription options of a product") {
+    option_id: Int @doc(description: "Product Subscription option ID")
+    value_id: Int @doc(description: "Product Subscription option value")
+    frequency_count: Int @doc(description: "Frequency count (how often it runs)")
+    frequency_unit: String @doc(description: "Frequency unit (how often it runs)")
+    length: Int @doc(description: "Length (total number of installments)")
+    installment_price: Float @doc(description: "Regular price (for subscriptions only). Any lower price (regular, group, 'tier, etc.) will override this.")
+    adjustment_price: Float @doc(description: "Price to adjust the initial order by (for subscriptions only). A positive adjustment will make the first billing cost more. A negative adjustment will make it cost less (down to $0.00).")
+}

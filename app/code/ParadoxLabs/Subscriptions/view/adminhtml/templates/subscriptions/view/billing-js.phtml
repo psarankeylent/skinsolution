@@ -1,0 +1,13 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+// @codingStandardsIgnoreFile
+?>
+<script type="text/x-magento-init">
+    {
+        "#payment_fieldset_payment": {
+            "subscriptionsPaymentFields": {
+                "offlineMethods": <?= json_encode($block->getData('offline_methods')) ?>
+            }
+        }
+    }
+</script>
