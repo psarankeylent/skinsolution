@@ -246,6 +246,7 @@ return [
         'ParadoxLabs_TokenBase' => 1,
         'ParadoxLabs_Subscriptions' => 1,
         'ParadoxLabs_Authnetcim' => 1,
+        'Ssmd_Attributes' => 1,
         'Ssmd_Catalog' => 1,
         'Ssmd_ParadoxLabs' => 1,
         'Temando_ShippingRemover' => 1,
