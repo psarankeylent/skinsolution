@@ -1,0 +1,10 @@
+interface ProductInterface {
+    product_faqs : [ProductFaqs] @resolver(class:
+    "Ssmd\\ProductFaqs\\Model\\Resolver\\ProductFaqs") @doc(description: "Lists all Product FAQs.")
+}
+
+type ProductFaqs @doc(description: "Product FAQs") {
+    question: String @doc(description: "Product FAQ question")
+    answer: String @doc(description: "Product FAQ answer")
+}
+

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Magento_Backend::amaze" title="Amaze" module="Ssmd_Faqs" sortOrder="70" resource="Magento_Backend::amaze"/>
+        <add id="Ssmd_Faqs::parent" title="Manage Faqs" module="Ssmd_Faqs" sortOrder="40" resource="Ssmd_Faqs::parent" parent="Magento_Backend::amaze"/>
+        <add id="Ssmd_Faqs::index" title="Faqs" module="Ssmd_Faqs" sortOrder="30" action="faqs/index" resource="Ssmd_Faqs::index" parent="Ssmd_Faqs::parent"/>
+    </menu>
+</config>

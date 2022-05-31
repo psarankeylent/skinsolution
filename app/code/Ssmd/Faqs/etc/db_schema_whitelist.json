@@ -1,0 +1,15 @@
+{
+    "faqs": {
+        "column": {
+            "id": true,
+            "questions": true,
+            "answers": true,
+            "status": true,
+            "faq_id": true,
+            "sort_order": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

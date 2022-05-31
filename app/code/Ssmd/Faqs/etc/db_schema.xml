@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+            
+       <!-- FAQs table -->
+	<table name="faqs">
+		<column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Customer Note Id"/>
+		<column xsi:type="varchar" name="questions" nullable="true" comment="Questions"/>
+		<column xsi:type="varchar" name="answers" length="255" nullable="true" comment="Answers"/>
+		<column xsi:type="smallint" name="status" padding="1" nullable="true" default="1" comment="0 - inactive ( no need to show on the frontend)\n1- active"/>
+		<column xsi:type="int" name="faq_id" padding="10" nullable="true" comment="FAQ Id"/>
+		<column xsi:type="int" name="sort_order" padding="10" nullable="true" comment="Sort Order"/>
+		
+		<!-- Primary Id -->
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>	 
+	</table>
+	   
+</schema>
