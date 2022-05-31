@@ -1,0 +1,22 @@
+{
+    "name": "ssmd/module-freegift",
+    "description": "Free Gift",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Madhuri ",
+            "email": "madhuri@skinsolutions.md"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ssmd\\Catalog\\": ""
+        }
+    }
+}

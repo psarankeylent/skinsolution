@@ -1,0 +1,3 @@
+interface ProductInterface {
+    low_qty_stock : Boolean @doc(description: "Product stock is low") @resolver(class: "Ssmd\\GraphqlChanges\\Model\\Resolver\\LowQtyStock")
+}
