@@ -1,0 +1,22 @@
+{
+    "name": "ssmd/module-sales",
+    "description": "Sales Order Changes",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Madhuri ",
+            "email": "madhuri@skinsolutions.md"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ssmd\\Sales\\": ""
+        }
+    }
+}

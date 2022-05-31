@@ -10,9 +10,8 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
-class AddCategoryNameProductAttribute implements DataPatchInterface, PatchRevertableInterface
+class AddBackgroundColorProductAttribute implements DataPatchInterface, PatchRevertableInterface
 {
-
     /**
      * @var ModuleDataSetupInterface
      */
@@ -46,10 +45,10 @@ class AddCategoryNameProductAttribute implements DataPatchInterface, PatchRevert
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
         $eavSetup->addAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
-            'category_name',
+            'bg_color',
             [
                 'type' => 'varchar',
-                'label' => 'Category Name',
+                'label' => 'Page Background Color',
                 'input' => 'text',
                 'source' => '',
                 'frontend' => '',
@@ -60,7 +59,7 @@ class AddCategoryNameProductAttribute implements DataPatchInterface, PatchRevert
                 'default' => null,
                 'visible' => true,
                 'user_defined' => true,
-                'searchable' => true,
+                'searchable' => false,
                 'filterable' => true,
                 'comparable' => false,
                 'visible_on_front' => false,
@@ -68,7 +67,7 @@ class AddCategoryNameProductAttribute implements DataPatchInterface, PatchRevert
                 'apply_to' => '',
                 'group' => 'General',
                 'used_in_product_listing' => false,
-                'is_used_in_grid' => true,
+                'is_used_in_grid' => false,
                 'is_visible_in_grid' => false,
                 'is_filterable_in_grid' => false,
                 'option' => array('values' => array(""))
@@ -83,7 +82,7 @@ class AddCategoryNameProductAttribute implements DataPatchInterface, PatchRevert
         $this->moduleDataSetup->getConnection()->startSetup();
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
-        $eavSetup->removeAttribute(\Magento\Catalog\Model\Product::ENTITY, 'category_name');
+        $eavSetup->removeAttribute(\Magento\Catalog\Model\Product::ENTITY, 'bg_color');
 
         $this->moduleDataSetup->getConnection()->endSetup();
     }

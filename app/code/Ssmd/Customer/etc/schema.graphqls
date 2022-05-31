@@ -1,0 +1,6 @@
+type Mutation {
+    createCustomer (input: CustomerInput!): CustomerOutput @resolver(class: "\\Ssmd\\Customer\\Model\\Resolver\\CreateCustomer") @doc(description:"Create customer account")
+}
+input CustomerInput {
+    order_id: Int @doc(description: "Customer delegated Order Id")
+}

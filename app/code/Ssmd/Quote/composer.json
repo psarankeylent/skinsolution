@@ -1,0 +1,21 @@
+{
+    "name": "ssmd/module-quote",
+    "description": "Quote Management Changes",
+    "type": "magento2-module",
+    "authors": [
+        {
+            "name": "Madhuri",
+            "email": "madhuri@skinsolutions.md"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ssmd\\Quote\\": ""
+        }
+    }
+}

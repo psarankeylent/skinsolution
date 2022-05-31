@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+    <scope id="global">
+        <fieldset id="sales_convert_order">
+            <field name="coupon_code">
+                <aspect name="to_subscription_quote" />
+            </field>
+        </fieldset>
+        <fieldset id="sales_convert_quote">
+            <field name="coupon_code">
+                <aspect name="to_subscription_quote" />
+            </field>
+        </fieldset>
+    </scope>
+</config>
