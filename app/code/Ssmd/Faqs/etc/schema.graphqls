@@ -1,0 +1,9 @@
+type Query {
+    ssmdFaqs: [SsmdFaq] @resolver(class: "Ssmd\\Faqs\\Model\\Resolver\\Faqs") @doc(description: "SSMD FAQs")
+}
+
+type SsmdFaq {
+    question: String @doc(description: "SSMD FAQ question")
+    answer: String @doc(description: "SSMD FAQ answer")
+}
+

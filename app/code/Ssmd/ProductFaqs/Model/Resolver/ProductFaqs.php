@@ -51,7 +51,12 @@ class ProductFaqs implements ResolverInterface
             throw new LocalizedException(__('Exception'));
         }
 
-        $productFaqs = json_decode($value['model']->getData($field->getName()));
+        $attrValue = $value['model']->getData($field->getName());
+
+        if (is_null($attrValue))
+            return null;
+
+        $productFaqs = json_decode($attrValue);
 
         $faqs = [];
         foreach ($productFaqs as $faq) {

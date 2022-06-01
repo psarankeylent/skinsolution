@@ -2,8 +2,8 @@
     "faqs": {
         "column": {
             "id": true,
-            "questions": true,
-            "answers": true,
+            "question": true,
+            "answer": true,
             "status": true,
             "faq_id": true,
             "sort_order": true

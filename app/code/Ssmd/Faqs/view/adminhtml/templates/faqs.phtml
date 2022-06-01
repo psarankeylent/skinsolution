@@ -28,8 +28,8 @@
 
 		<ul class="faqs">
 		<?php foreach($collection as $faq): ?>
-			<li><div class="listq"><label>Question :</label> <input type="text" name="ques[]" value="<?php echo $faq->getQuestions(); ?>"/> </div><div class="listq"><label>Answers : </label>
-                    <textarea name="ans[]"><?php echo $faq->getAnswers(); ?></textarea></div>
+			<li><div class="listq"><label>Question :</label> <input type="text" name="ques[]" value="<?php echo $faq->getQuestion(); ?>"/> </div><div class="listq"><label>Answer : </label>
+                    <textarea name="ans[]"><?php echo $faq->getAnswer(); ?></textarea></div>
                 <a href="#" onClick="delFunction(<?php echo $faq->getId(); ?>)" id="<?php echo $faq->getId(); ?>" class="delete <?php echo $faq->getId(); ?>">Delete FAQ</a><input type="hidden" name="id[]" value="<?php echo $faq->getId(); ?>"/></li>
 
 		<?php endforeach; ?>
@@ -102,7 +102,7 @@
 			var i = $('.faqs li:last').attr('class');
 			i = parseInt(i) + 1;
 
-			$('.faqs').append('<li><div class="listq"><label>Question :</label> <input type="text" name="ques[]" value=""/> </div><div class="listq"><label>Answers :</label> <textarea name="ans[]"></textarea></div> <a href="#" class="delete">Delete FAQ</a> </li>');
+			$('.faqs').append('<li><div class="listq"><label>Question :</label> <input type="text" name="ques[]" value=""/> </div><div class="listq"><label>Answer :</label> <textarea name="ans[]"></textarea></div> <a href="#" class="delete">Delete FAQ</a> </li>');
 			i++;
 		});
 

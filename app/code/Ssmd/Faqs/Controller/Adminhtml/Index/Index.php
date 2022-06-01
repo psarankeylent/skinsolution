@@ -34,10 +34,10 @@ class Index extends \Magento\Backend\App\Action
 
 				if(isset($data['id']) && array_key_exists($t,$data['id']))
 				{
-					$faqArray[] = array('questions' => $data['ques'][$t], 'answers'=> $data['ans'][$t], 'id'=> $data['id'][$t]);
+					$faqArray[] = array('question' => $data['ques'][$t], 'answer'=> $data['ans'][$t], 'id'=> $data['id'][$t]);
 				}
 				else{
-					$faqArray[] = array('questions' => $data['ques'][$t], 'answers'=> $data['ans'][$t], 'id'=> '');
+					$faqArray[] = array('question' => $data['ques'][$t], 'answer'=> $data['ans'][$t], 'id'=> '');
 				}
 
 				$t++;

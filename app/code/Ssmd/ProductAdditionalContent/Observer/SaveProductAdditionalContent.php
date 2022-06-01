@@ -2,14 +2,14 @@
 /**
  * Copyright © 2017 BORN . All rights reserved.
  */
-namespace Ssmd\ProductFaqs\Observer;
+namespace Ssmd\ProductAdditionalContent\Observer;
 
 use \Magento\Framework\Event\Observer;
 use \Magento\Framework\Event\ObserverInterface;
 
-class SaveProductFaqs implements ObserverInterface
+class SaveProductAdditionalContent implements ObserverInterface
 {
-    const PRODUCT_FAQS_ATTRIBUTE_CODE = 'product_faqs';
+    const PRODUCT_ADDITIONALCONTENT_ATTRIBUTE_CODE = 'product_additionalcontent';
 
     /**
      * @var  \Magento\Framework\App\RequestInterface
@@ -36,8 +36,8 @@ class SaveProductFaqs implements ObserverInterface
 
         //echo "<pre>"; print_r($post); exit;
 
-        $data = isset($post[self::PRODUCT_FAQS_ATTRIBUTE_CODE]) ? $post[self::PRODUCT_FAQS_ATTRIBUTE_CODE] : '';
-        // $product -> setProductFaqs(json_encode($data));
+        $data = isset($post[self::PRODUCT_ADDITIONALCONTENT_ATTRIBUTE_CODE]) ? $post[self::PRODUCT_ADDITIONALCONTENT_ATTRIBUTE_CODE] : '';
+        // $product -> setProductAdditionalContent(json_encode($data));
 
         // Serialize data code start here
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
@@ -45,17 +45,17 @@ class SaveProductFaqs implements ObserverInterface
         $postedDataObj = $objectManager->get('Magento\Framework\Serialize\SerializerInterface');
 
 
-        // Faqs
-        $additionalDataOfFaqs = $postedDataObj->serialize($data);
-        $product->setData('product_faqs', $additionalDataOfFaqs);
+        // Additional Content
+        $additionalDataOfContent = $postedDataObj->serialize($data);
+        $product->setData('product_additionalcontent', $additionalDataOfContent);
 
 
         // echo "<pre>";
         //        //print_r($post);
         //exit;
 
-        // For Questions & Answers
-        $requiredParams_qa = ['prod_questions','prod_answers'];
+        // For Products Additional Content
+        $requiredParams_qa = ['content_section','content_html'];
         if (is_array($data)) {
             $data = $this->removeEmptyArray($data, $requiredParams_qa);
         }

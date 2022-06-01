@@ -1,0 +1,10 @@
+interface ProductInterface {
+    product_additionalcontent : [ProductAdditionalContent] @resolver(class:
+    "Ssmd\\ProductAdditionalContent\\Model\\Resolver\\ProductAdditionalContent") @doc(description: "SSMD - Product Additional Content")
+}
+
+type ProductAdditionalContent @doc(description: "Product Additional Content") {
+    content_section: String @doc(description: "Content Section")
+    content_html:  ComplexTextValue @doc(description: "Content HTML")
+}
+
