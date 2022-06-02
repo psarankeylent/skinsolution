@@ -4,7 +4,7 @@ interface ProductInterface {
 }
 
 type ProductFaqs @doc(description: "Product FAQs") {
-    question: String @doc(description: "Product FAQ question")
-    answer: String @doc(description: "Product FAQ answer")
+    question: String @doc(description: "Product FAQ Question")
+    answer: String @doc(description: "Product FAQ Answer")
 }
 

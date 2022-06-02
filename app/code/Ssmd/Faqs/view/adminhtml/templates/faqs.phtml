@@ -43,20 +43,10 @@
 <script>
 
 	function delFunction(id){
-		//alert(id);
 
-		//var form = jQuery('#faqs')[0];
-		//var formData = new FormData(form);
+        url = '<?php echo $this->getAdminUrl('faqs/delete/index')?>';
 
-		//formData.append('id', id);
-		//formData.append('form_key', window.FORM_KEY);
-
-		/*url = '<?php //echo $this->helper('Ssmd\WPPages\Helper\Data')->getAdminUrl()?>'+'faqs/delete';
-        */
-        url = '<?php echo $this->getAdminUrl()?>'+'faqs/delete';
-
-        //alert(url);
-		jQuery.ajax({
+        jQuery.ajax({
 		    url: url,
 		    type: "POST",
 		    dataType: "json",
@@ -69,20 +59,19 @@
 		    success: function(response){
 			if(response.status)
 			{
-                location.href = '<?php echo $this->getAdminUrl() ."faqs/index/index/key/".$this->getRequest()->getParam('key')?>' ;
-			}
+                location.href = '<?php echo $this->getAdminUrl('faqs/index/index', ['key' => $this->getRequest()->getParam('key')]) ?>' ;
+            }
 			else
 			{
 				alert('Something went wrong!');
-				return false;
+            	return false;
 			}
-			//return false;
 
 		    },
 		    error: function(response)
 		    {
 		    	alert('Something went wrong!');
-		    }
+            }
 		});
 			return;
 		}

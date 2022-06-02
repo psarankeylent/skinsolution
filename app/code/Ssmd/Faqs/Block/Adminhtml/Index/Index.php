@@ -33,8 +33,8 @@ class Index extends \Magento\Backend\Block\Widget\Container
 		return $faqCollection;
 	}
 
-    public function getAdminUrl()
+    public function getAdminUrl($path, $params = [])
     {
-        return $this->backendUrlManager->getBaseUrl() . $this->backendUrlManager->getAreaFrontName() . '/';
+        return $this->backendUrlManager->getRouteUrl($path, $params);
     }
 }

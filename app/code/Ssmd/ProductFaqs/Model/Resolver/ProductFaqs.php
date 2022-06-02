@@ -60,7 +60,7 @@ class ProductFaqs implements ResolverInterface
 
         $faqs = [];
         foreach ($productFaqs as $faq) {
-            $faqs[] = ['question' => $faq->questions, 'answer' => $faq->answers];
+            $faqs[] = ['question' => $faq->question, 'answer' => $faq->answer];
         }
 
         return $faqs;

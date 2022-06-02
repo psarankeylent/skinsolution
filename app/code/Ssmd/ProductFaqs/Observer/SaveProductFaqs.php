@@ -4,12 +4,16 @@
  */
 namespace Ssmd\ProductFaqs\Observer;
 
+use Magento\Framework\App\RequestInterface;
 use \Magento\Framework\Event\Observer;
 use \Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 
 class SaveProductFaqs implements ObserverInterface
 {
-    const PRODUCT_FAQS_ATTRIBUTE_CODE = 'product_faqs';
+    const PRODUCT_ATTRIBUTECODE = 'product_faqs';
+
+    const ATTRIBUTE_FIELDS = ['question','answer'];
 
     /**
      * @var  \Magento\Framework\App\RequestInterface
@@ -17,70 +21,63 @@ class SaveProductFaqs implements ObserverInterface
     protected $request;
 
     /**
+     * @var SerializerInterface
+     */
+    protected $serializer;
+
+    /**
      * Constructor
      */
     public function __construct(
-        \Magento\Framework\App\RequestInterface $request
+        RequestInterface $request,
+        SerializerInterface $serializer
     )
     {
         $this->request = $request;
-    }
-
-    public function execute(Observer $observer)
-    {
-        /** @var $product \Magento\Catalog\Model\Product */
-        //$product = $observer->getEvent()->getDataObject();
-        $product = $observer->getEvent()->getData('product');
-        $post = $this->request->getPost();
-        $post = $post['product'];
-
-        //echo "<pre>"; print_r($post); exit;
-
-        $data = isset($post[self::PRODUCT_FAQS_ATTRIBUTE_CODE]) ? $post[self::PRODUCT_FAQS_ATTRIBUTE_CODE] : '';
-        // $product -> setProductFaqs(json_encode($data));
-
-        // Serialize data code start here
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-
-        $postedDataObj = $objectManager->get('Magento\Framework\Serialize\SerializerInterface');
-
-
-        // Faqs
-        $additionalDataOfFaqs = $postedDataObj->serialize($data);
-        $product->setData('product_faqs', $additionalDataOfFaqs);
-
-
-        // echo "<pre>";
-        //        //print_r($post);
-        //exit;
-
-        // For Questions & Answers
-        $requiredParams_qa = ['prod_questions','prod_answers'];
-        if (is_array($data)) {
-            $data = $this->removeEmptyArray($data, $requiredParams_qa);
-        }
-
-
+        $this->serializer = $serializer;
     }
 
     /**
-    * Function to remove empty array from the multi dimensional array
-    *
-    * @return Array
-    */
-    private function removeEmptyArray($attractionData, $requiredParams){
+     * @param Observer $observer
+     * @return void
+     */
+    public function execute(Observer $observer)
+    {
+        $product = $observer->getEvent()->getData('product');
+        $post = $this->request->getPost('product');
 
-        $requiredParams = array_combine($requiredParams, $requiredParams);
-        $reqCount = count($requiredParams);
+        $data = $post[self::PRODUCT_ATTRIBUTECODE] ?? [];
 
-        foreach ($attractionData as $key => $values) {
+        if (is_array($data) && !empty($data)) {
+            $data = $this->removeEmptyArray($data, self::ATTRIBUTE_FIELDS);
+            $data = $this->serializer->serialize($data);
+        }
+
+        $product->setData(self::PRODUCT_ATTRIBUTECODE, $data);
+    }
+
+    /**
+     * Filters empty Rows
+     *
+     * @param $data
+     * @param $fields
+     * @return array
+     */
+    private function removeEmptyArray($data, $fields)
+    {
+        $fields = array_flip($fields);
+        $filterData = [];
+        $recordId = 0;
+
+        foreach ($data as $key => $values) {
             $values = array_filter($values);
-            $inersectCount = count(array_intersect_key($values, $requiredParams));
-            if ($reqCount != $inersectCount) {
-                unset($attractionData[$key]);
+            $fieldsSetCount = count(array_intersect_key($values, $fields));
+            if ($fieldsSetCount > 0) {
+                $data[$key]['record_id'] = $recordId++;
+                $filterData[] = $data[$key];
             }
         }
-        return $attractionData;
+        return $filterData;
     }
 }
 

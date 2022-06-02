@@ -173,7 +173,7 @@ class ProductFaqs extends AbstractModifier
                         ],
                     ],
                     'children' => [
-                        'prod_questions' => [
+                        'question' => [
                             'arguments' => [
                                 'data' => [
                                     'config' => [
@@ -181,14 +181,14 @@ class ProductFaqs extends AbstractModifier
                                         'componentType' => Field::NAME,
                                         //'component' => 'Ssmd_Productfaqs/js/qa',
                                         'dataType' => Text::NAME,
-                                        'label' => __('Questions'),
-                                        'dataScope' => 'questions',
+                                        'label' => __('Question'),
+                                        'dataScope' => 'question',
                                         'require' => 0,
                                     ],
                                 ],
                             ],
                         ],
-                        'prod_answers' => [
+                        'answer' => [
                             'arguments' => [
                                 'data' => [
                                     'config' => [
@@ -197,8 +197,8 @@ class ProductFaqs extends AbstractModifier
                                         'cols' => 15,
                                         'componentType' => Field::NAME,
                                         'dataType' => Text::NAME,
-                                        'label' => __('Answers'),
-                                        'dataScope' => 'answers',
+                                        'label' => __('Answer'),
+                                        'dataScope' => 'answer',
                                         'require' => 0,
                                     ],
                                 ],
