@@ -13,15 +13,4 @@
             </argument>
         </arguments>
     </virtualType>
-
-<!--
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
-        <arguments>
-            <argument name="configProviders" xsi:type="array">
-                <item name="size_config_provider" xsi:type="object">Ssmd\ProductFaqs\Model\Size</item>
-            </argument>
-        </arguments>
-    </type>
--->
-
 </config>

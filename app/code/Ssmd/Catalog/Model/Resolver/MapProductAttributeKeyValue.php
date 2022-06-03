@@ -11,6 +11,7 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Api\AttributeRepositoryInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 
 class MapProductAttributeKeyValue implements ResolverInterface
 {
@@ -19,9 +20,14 @@ class MapProductAttributeKeyValue implements ResolverInterface
      */
     protected $eavAttributeRepositoryInterface;
 
+    protected $productRepositoryInterface;
+
     public function __construct(
-        AttributeRepositoryInterface $eavAttributeRepositoryInterface    ) {
+        AttributeRepositoryInterface $eavAttributeRepositoryInterface,
+        ProductRepositoryInterface $productRepositoryInterface
+    ) {
         $this->eavAttributeRepositoryInterface = $eavAttributeRepositoryInterface;
+        $this->productRepositoryInterface = $productRepositoryInterface;
     }
 
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
@@ -32,12 +38,19 @@ class MapProductAttributeKeyValue implements ResolverInterface
         // TODO
 
         $productAttr = $this->mapAttributeName($field->getName());
-        $productValue = $value['model']->getData($productAttr);
+
+        if ($field->getName() != $productAttr) {
+            $productValue = $this->productRepositoryInterface
+                ->getById($value['model']->getId())
+                ->getData($productAttr);
+        } else {
+            $productValue = $value['model']->getData($productAttr);
+        }
 
         if (is_null($productValue))
             return null;
 
-        return $this->getAttributeOptionValue($productAttr, $productValue );
+        return $this->getAttributeOptionValue($productAttr, $productValue);
     }
 
     protected function mapAttributeName($attr)

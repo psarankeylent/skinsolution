@@ -3,23 +3,11 @@
 namespace Ssmd\ProductFaqs\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Catalog\Controller\Adminhtml\Product\Initialization\StockDataFilter;
 use Magento\Catalog\Model\Locator\LocatorInterface;
-
-use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\Framework\Stdlib\ArrayManager;
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
-
 use Magento\Ui\Component\Container;
-use Magento\Ui\Component\Form\Element\DataType\Number;
 use Magento\Ui\Component\Form\Element\DataType\Text;
-use Magento\Ui\Component\Form\Element\Textarea;
-use Magento\Ui\Component\Form\Element\Input;
-use Magento\Ui\Component\Form\Element\MultiSelect;
-use Magento\Ui\Component\Form\Element\Select;
 use Magento\Ui\Component\Form\Field;
-use Magento\Ui\Component\Modal;
 
 /**
  * Data provider for attraction highlights field

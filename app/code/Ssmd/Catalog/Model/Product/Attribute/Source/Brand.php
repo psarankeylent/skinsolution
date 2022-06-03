@@ -14,6 +14,7 @@ class Brand extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
     public function getAllOptions()
     {
         $this->_options = [
+            ['label' => __('-- Please Select a Brand --'), 'value' => ''],
             ['label' => __('Brand 1'), 'value' => 0],
             ['label' => __('Brand 2'), 'value' => 1],
             ['label' => __('Brand 3'), 'value' => 2],
