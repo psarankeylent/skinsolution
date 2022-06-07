@@ -9,6 +9,7 @@ use Magento\Ui\Component\Container;
 use Magento\Ui\Component\Form\Element\DataType\Text;
 use Magento\Ui\Component\Form\Element\Textarea;
 use Magento\Ui\Component\Form\Field;
+use Ssmd\ProductAdditionalContent\Helper\Data;
 
 /**
  * Data provider for attraction highlights field
@@ -38,17 +39,24 @@ class ProductAdditionalContent extends AbstractModifier
     protected $scopeName;
 
     /**
+     * @var Data
+     */
+    protected $helper;
+
+    /**
      * @param LocatorInterface $locator
      * @param ArrayManager $arrayManager
      */
     public function __construct(
         LocatorInterface $locator,
         ArrayManager $arrayManager,
-        $scopeName = ''
+                         $scopeName = '',
+        Data $helper
     ) {
         $this->locator = $locator;
         $this->arrayManager = $arrayManager;
         $this->scopeName = $scopeName;
+        $this->helper = $helper;
     }
 
     /**
@@ -108,7 +116,7 @@ class ProductAdditionalContent extends AbstractModifier
                 . '/' . 'product_additionalcontent',                         // This field(name) will post
                 $this->meta,
                 $this->arrayManager->get($highlightsPath, $this->meta)
-                //$productQAButton
+            //$productQAButton
             );
             $this->meta = $this->arrayManager->remove(
                 $this->arrayManager->slicePath($highlightsPath, 0, -2),
@@ -165,9 +173,18 @@ class ProductAdditionalContent extends AbstractModifier
                             'arguments' => [
                                 'data' => [
                                     'config' => [
-                                        'formElement' => \Magento\Ui\Component\Form\Element\Input::NAME,
+                                        'formElement' => \Magento\Ui\Component\Form\Element\Select::NAME,
                                         'componentType' => Field::NAME,
-                                        'dataType' => Text::NAME,
+                                        //'dataType' => Text::NAME,
+                                        /*'options' => [
+                                            ['value' => '', 'label' => '-- Select --'],
+                                            ['value' => 'test_value_1', 'label' => 'Test Value 1'],
+                                            ['value' => 'test_value_2', 'label' => 'Test Value 2'],
+                                            ['value' => 'test_value_3', 'label' => 'Test Value 3'],
+                                            ['value' => 'add-new', 'label' => '-- Add New Section --'],
+                                        ],
+                                        */
+                                        'options' => $this->helper->getProductContentSectionOptions(),
                                         'label' => __('Content Section'),
                                         'dataScope' => 'content_section',
                                         'require' => 0,
@@ -183,8 +200,8 @@ class ProductAdditionalContent extends AbstractModifier
                                         'wysiwyg' => true,
                                         'dynamic_id' => true,
                                         'wysiwygConfigData' => [
-                                          'height' => '200px',
-                                          'dynamic_id' => true,
+                                            'height' => '200px',
+                                            'dynamic_id' => true,
                                         ],
                                         'rows' => 5,
                                         'componentType' => Field::NAME,
@@ -196,6 +213,16 @@ class ProductAdditionalContent extends AbstractModifier
                                 ],
                             ],
                         ],
+                       /* 'hidden_content' => [
+                            'arguments' => [
+                                'data' => [
+                                    'config' => [
+                                        'formElement' => \Magento\Ui\Component\Form\Element\Hidden::NAME,
+                                        'componentType' => Field::NAME,
+                                    ],
+                                ],
+                            ],
+                        ],*/
                         'actionDelete' => [
                             'arguments' => [
                                 'data' => [
