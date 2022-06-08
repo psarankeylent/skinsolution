@@ -8,6 +8,7 @@ use \Magento\Framework\Event\Observer;
 use \Magento\Framework\Event\ObserverInterface;
 use \Magento\Framework\Serialize\SerializerInterface;
 use \Magento\Framework\App\RequestInterface;
+use \Ssmd\ProductAdditionalContent\Model\ContentSectionFactory;
 
 class SaveProductAdditionalContent implements ObserverInterface
 {
@@ -25,16 +26,19 @@ class SaveProductAdditionalContent implements ObserverInterface
      */
     protected $serializer;
 
+    protected $productContentSectionFactory;
     /**
      * Constructor
      */
     public function __construct(
         RequestInterface $request,
-        SerializerInterface $serializer
+        SerializerInterface $serializer,
+        ContentSectionFactory $productContentSectionFactory
     )
     {
         $this->request = $request;
         $this->serializer = $serializer;
+        $this->productContentSectionFactory = $productContentSectionFactory;
     }
 
     /**
@@ -49,10 +53,11 @@ class SaveProductAdditionalContent implements ObserverInterface
         $data = $post[self::PRODUCT_ATTRIBUTECODE] ?? [];
 
         if (is_array($data) && !empty($data)) {
+            $data = $this->addProductContentSection($data);
             $data = $this->removeEmptyArray($data, self::ATTRIBUTE_FIELDS);
-            $data = $this->serializer->serialize($data);
         }
 
+        $data = $this->serializer->serialize($data);
         $product->setData(self::PRODUCT_ATTRIBUTECODE, $data);
     }
 
@@ -78,6 +83,26 @@ class SaveProductAdditionalContent implements ObserverInterface
             }
         }
         return $filterData;
+    }
+
+    protected function addProductContentSection($data)
+    {
+        foreach ($data as $key => $values) {
+            $hs = $values['hidden_section'];
+            $cs = $values['content_section'];
+            if ($cs == "add-new" || !empty($hs)) {
+                $data[$key]['content_section'] =  $hs;
+
+                if(!empty($hs)) {
+                    $model = $this->productContentSectionFactory->create();
+                    $model->setContentSection($hs)
+                        ->save();
+                }
+            }
+            unset($data[$key]['hidden_section']);
+        }
+
+        return $data;
     }
 }
 

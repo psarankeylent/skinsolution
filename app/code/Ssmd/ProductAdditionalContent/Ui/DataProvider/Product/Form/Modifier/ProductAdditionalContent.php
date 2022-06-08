@@ -213,16 +213,17 @@ class ProductAdditionalContent extends AbstractModifier
                                 ],
                             ],
                         ],
-                       /* 'hidden_content' => [
+                        'hidden_section' => [
                             'arguments' => [
                                 'data' => [
                                     'config' => [
                                         'formElement' => \Magento\Ui\Component\Form\Element\Hidden::NAME,
                                         'componentType' => Field::NAME,
+                                        'dataScope' => 'hidden_section',
                                     ],
                                 ],
                             ],
-                        ],*/
+                        ],
                         'actionDelete' => [
                             'arguments' => [
                                 'data' => [
