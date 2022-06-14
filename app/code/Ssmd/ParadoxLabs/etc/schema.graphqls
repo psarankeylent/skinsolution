@@ -30,4 +30,5 @@ type SubscriptionOptions @doc(description: "Subscription options of a product") 
     length: Int @doc(description: "Length (total number of installments)")
     installment_price: Float @doc(description: "Regular price (for subscriptions only). Any lower price (regular, group, 'tier, etc.) will override this.")
     adjustment_price: Float @doc(description: "Price to adjust the initial order by (for subscriptions only). A positive adjustment will make the first billing cost more. A negative adjustment will make it cost less (down to $0.00).")
+    title: String @doc(description: "Subscription option custom title")
 }

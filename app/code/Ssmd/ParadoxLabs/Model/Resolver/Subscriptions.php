@@ -33,6 +33,11 @@ class Subscriptions implements ResolverInterface
     protected $productRepository;
 
     /**
+     * @var Product\Option
+     */
+    protected $productCustomOption;
+
+    /**
      * Constructor
      *
      * @param ProductIntervalRepositoryInterface $intervalRepository
@@ -40,10 +45,12 @@ class Subscriptions implements ResolverInterface
      */
     public function __construct(
         \ParadoxLabs\Subscriptions\Api\ProductIntervalRepositoryInterface $intervalRepository,
-        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
+        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
+        \Magento\Catalog\Model\Product\Option $productCustomOption
     ) {
         $this->intervalRepository = $intervalRepository;
         $this->productRepository = $productRepository;
+        $this->productCustomOption = $productCustomOption;
     }
 
     /**
@@ -55,6 +62,29 @@ class Subscriptions implements ResolverInterface
 
         $subscriptionOptions = $this->intervalRepository->getIntervalsByProductId($product->getEntityId());
 
-        return $subscriptionOptions->getItems();
+        $customOptions = $this->productCustomOption
+            ->getProductOptionCollection($product);
+
+        $customOptionsData = [];
+        foreach($customOptions as $option) {
+            $values = $option->getValues();
+            if (empty($values)) {
+                continue;
+            }
+
+            foreach($values as $value) {
+                $valueData = $value->getData();
+                $customOptionsData[$valueData['option_type_id']] = $valueData;
+            }
+        }
+
+        $items = [];
+        foreach ($subscriptionOptions->getItems() as $subscriptionOption) {
+            $item = $subscriptionOption->getData();
+            $item['title'] = $customOptionsData[$item['value_id']]['title'];
+            $items[] = $item;
+        }
+
+        return $items;
     }
 }
