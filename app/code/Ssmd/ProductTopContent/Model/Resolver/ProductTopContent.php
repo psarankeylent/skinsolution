@@ -49,8 +49,13 @@ class ProductTopContent implements ResolverInterface
         $topContents = [];
         foreach ($productTopContent as $topContent) {
 
+            if (isset($topContent->content_section))
+                $url = $topContent->content_section[0]->url;
+            else
+                $url = null;
+
             $topContents[] = [
-                'content_section' => $topContent->content_section['url'],
+                'content_section' => $url,
                 'content_html' => [
                     'html' => $this->output->productContentHtml($topContent->content_html)
                 ]
