@@ -1,0 +1,10 @@
+interface ProductInterface {
+    product_topcontent : [ProductTopContent] @resolver(class:
+    "Ssmd\\ProductTopContent\\Model\\Resolver\\ProductTopContent") @doc(description: "SSMD - Product Top Content")
+}
+
+type ProductTopContent @doc(description: "Product Top Content") {
+    content_section: String @doc(description: "Content Section")
+    content_html:  ComplexTextValue @doc(description: "Content HTML")
+}
+

@@ -1,0 +1,13 @@
+{
+    "product_content_sections": {
+        "column": {
+            "id": true,
+            "content_section": true,
+            "status": true,
+            "sort_order": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+       <!-- Product Top Content table -->
+	<table name="product_content_sections">
+		<column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Product Content Section Id"/>
+		<column xsi:type="varchar" name="content_section" nullable="true" comment="Product Content Section"/>
+		<column xsi:type="smallint" name="status" padding="1" nullable="true" default="1" comment="Status"/>
+		<column xsi:type="int" name="sort_order" padding="10" nullable="true" comment="Sort Order"/>
+
+		<!-- Primary Id -->
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>
+	</table>
+</schema>
