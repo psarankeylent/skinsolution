@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Ssmd\Catalog\Observer\Catalog;
 
 use Ssmd\Catalog\Helper\Product;
+
 class ProductSaveBefore implements \Magento\Framework\Event\ObserverInterface
 {
     /**
@@ -28,10 +29,18 @@ class ProductSaveBefore implements \Magento\Framework\Event\ObserverInterface
         \Magento\Framework\Event\Observer $observer
     ) {
         $product = $observer->getProduct();
+
+        $product->setProductType($this->helper->getProductType($product->getTypeId()));
+
+        //$this->updateProductMiscAttributes($product);
         $this->updateCategoryNameAttributeValue($product);
         $this->udpateSpecialPriceDiscountPercentAttributeValue($product);
-
     }
+
+    /*protected function updateProductMiscAttributes($product)
+    {
+        $product->setProductType($this->helper->getProductType($product->getTypeId()));
+    }*/
 
     protected function updateCategoryNameAttributeValue($product)
     {

@@ -2,6 +2,7 @@ input ProductAttributeFilterInput {
     brand: FilterEqualTypeInput @doc(description: "Filter product by brand")
     ingredients: FilterMatchTypeInput @doc(description: "Filter product by Ingredients")
     spf_content: FilterMatchTypeInput @doc(description: "Filter product by SPF Content")
+    product_type: FilterEqualTypeInput @doc(description: "Filter product by type")
 }
 
 interface ProductInterface {
@@ -12,4 +13,5 @@ interface ProductInterface {
     skin_type: String @doc(description: "Skin Type") @resolver(class: "Ssmd\\Catalog\\Model\\Resolver\\MapProductAttributeKeyValue")
     msrp: Float @doc(description: "Manufacturer’s Suggested Retail Price (MSRP). ")
     msrp_display_actual_price_type: Int @doc(description: "MSRP display type")
+    product_type: String @doc(description: "Product Type. Example : simple, bundle") @resolver(class: "Ssmd\\Catalog\\Model\\Resolver\\MapProductAttributeKeyValue")
 }

@@ -8,6 +8,14 @@
 		</arguments>
 	</type>
 
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="autofill_product_type" xsi:type="object">Ssmd\Catalog\Console\Command\ProductType</item>
+            </argument>
+        </arguments>
+    </type>
+
     <type name="Magento\Catalog\Ui\DataProvider\CatalogEavValidationRules">
         <plugin name="ssmd_product_attribute_validation" type="Ssmd\Catalog\Model\Plugin\Product\ValidationRules"/>
     </type>
