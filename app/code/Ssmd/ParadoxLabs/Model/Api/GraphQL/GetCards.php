@@ -21,6 +21,8 @@ class GetCards extends \ParadoxLabs\TokenBase\Model\Api\GraphQL\GetCards
      */
     private $graphQL;
 
+    private $customerRepository;
+
     /**
      * Card constructor.
      *
@@ -31,11 +33,13 @@ class GetCards extends \ParadoxLabs\TokenBase\Model\Api\GraphQL\GetCards
     public function __construct(
         \ParadoxLabs\TokenBase\Api\CustomerCardRepositoryInterface $customerCardRepository,
         \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
-        \Ssmd\ParadoxLabs\Model\Api\GraphQL $graphQL
+        \Ssmd\ParadoxLabs\Model\Api\GraphQL $graphQL,
+        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository
     ) {
         $this->customerCardRepository = $customerCardRepository;
         $this->searchCriteriaBuilder  = $searchCriteriaBuilder;
         $this->graphQL                = $graphQL;
+        $this->customerRepository     = $customerRepository;
     }
 
     /**
@@ -92,5 +96,12 @@ class GetCards extends \ParadoxLabs\TokenBase\Model\Api\GraphQL\GetCards
         $searchCriteria = $searchCriteria->create();
 
         return $this->customerCardRepository->getList($customerId, $searchCriteria)->getItems();
+    }
+
+    public function getCustomerDefaultPaymentId($customerId)
+    {
+        $customer = $this->customerRepository->getById($customerId);
+
+        return $customer->getCustomAttribute('default_payment')->getValue();
     }
 }
