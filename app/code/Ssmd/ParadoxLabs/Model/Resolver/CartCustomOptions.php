@@ -46,10 +46,10 @@ class CartCustomOptions implements ResolverInterface
         $customOptions = json_decode($customOptions);
 
 
-        //return $customOptions->options;
-        foreach ($customOptions->options as $key => $value) {
-            $options[] = [ 'id' => $key, 'value' => $value];
-        }
+        if (isset($customOptions->options))
+            foreach ($customOptions->options as $key => $value) {
+                $options[] = [ 'id' => $key, 'value' => $value];
+            }
 
         return $options;
     }

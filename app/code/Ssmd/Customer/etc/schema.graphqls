@@ -4,3 +4,7 @@ type Mutation {
 input CustomerInput {
     order_id: Int @doc(description: "Customer delegated Order Id")
 }
+
+type Customer {
+    default_payment: String @doc(description: "The ID assigned to the payment info")
+}

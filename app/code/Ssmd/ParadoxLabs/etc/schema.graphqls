@@ -32,3 +32,15 @@ type SubscriptionOptions @doc(description: "Subscription options of a product") 
     adjustment_price: Float @doc(description: "Price to adjust the initial order by (for subscriptions only). A positive adjustment will make the first billing cost more. A negative adjustment will make it cost less (down to $0.00).")
     title: String @doc(description: "Subscription option custom title")
 }
+
+type TokenBaseCard {
+    default_payment: Boolean @doc(description: "Indicates whether Token Base Card is the default Payment")
+}
+
+input TokenBaseCardCreateInput {
+    default_payment: Boolean @doc(description: "Indicates whether Token Base Card is the default Payment")
+}
+
+input TokenBaseCardUpdateInput {
+    default_payment: Boolean @doc(description: "Indicates whether Token Base Card is the default Payment")
+}
