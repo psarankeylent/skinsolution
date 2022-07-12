@@ -6,6 +6,7 @@ interface CartItemInterface {
 type CustomOptions @doc(description: "Cart Item custom options") {
     id: Int @doc(description: "Custom Option ID ")
     value: Int @doc(description: "Custom Option Value")
+    title: String @doc(description: "Custom Option Title")
 }
 
 interface ProductInterface {

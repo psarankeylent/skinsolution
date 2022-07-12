@@ -13,12 +13,25 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\QuoteGraphQl\Model\Resolver\CartItems;
+use ParadoxLabs\Subscriptions\Api\ProductIntervalRepositoryInterface;
 
 /**
  * Adds custom_options to the cart items interface
  */
 class CartCustomOptions implements ResolverInterface
 {
+    /**
+     * Constructor
+     *
+     * @param ProductIntervalRepositoryInterface $intervalRepository
+     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
+     */
+    public function __construct(
+        \Magento\Catalog\Model\Product\Option $productCustomOption
+    ) {
+        $this->productCustomOption = $productCustomOption;
+    }
+
     /**
      * @param Field $field
      * @param $context
@@ -46,11 +59,29 @@ class CartCustomOptions implements ResolverInterface
         $customOptions = json_decode($customOptions);
 
 
+        $product = $cartItem->getProduct();
+        $productCustomOptions = $this->productCustomOption
+            ->getProductOptionCollection($product);
+
+        $customOptionsData = [];
+        foreach($productCustomOptions as $option) {
+            $values = $option->getValues();
+            if (empty($values)) {
+                continue;
+            }
+
+            foreach($values as $value) {
+                $valueData = $value->getData();
+                $customOptionsData[$valueData['option_type_id']] = $valueData;
+            }
+        }
+
         if (isset($customOptions->options))
             foreach ($customOptions->options as $key => $value) {
-                $options[] = [ 'id' => $key, 'value' => $value];
+                $options[] = [ 'id' => $key, 'value' => $value, 'title' => $customOptionsData[$value]['title']];
             }
 
         return $options;
+
     }
 }
