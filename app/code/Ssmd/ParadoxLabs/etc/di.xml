@@ -5,6 +5,6 @@
 
    <preference for="ParadoxLabs\TokenBase\Model\Api\GraphQL\UpdateCard" type="Ssmd\ParadoxLabs\Model\Api\GraphQL\UpdateCard" />
 
-    <preference for="ParadoxLabs\TokenBase\Model\Api\GraphQL" type="Ssmd\ParadoxLabs\Model\Api\GraphQL" />
+<!--    <preference for="ParadoxLabs\TokenBase\Model\Api\GraphQL" type="Ssmd\ParadoxLabs\Model\Api\GraphQL" />-->
 
 </config>
