@@ -14,10 +14,15 @@ class SkinConcerns extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSo
     public function getAllOptions()
     {
         $this->_options = [
-            ['label' => __('Skin Concerns 1'), 'value' => 0],
-            ['label' => __('Skin Concerns 2'), 'value' => 1],
-            ['label' => __('Skin Concerns 3'), 'value' => 2],
-            ['label' => __('Skin Concerns 4'), 'value' => 3],
+            ['label' => __('Prescription Only'), 'value' => 0],
+            ['label' => __('Dry and Sensitive Skin'), 'value' => 1],
+            ['label' => __('Post/Pre Procedure'), 'value' => 2],
+            ['label' => __('Discoloration'), 'value' => 3],
+            ['label' => __('Sun Protection'), 'value' => 4],
+            ['label' => __('Oily Skin Care'), 'value' => 5],
+            ['label' => __('Acne Treatment'), 'value' => 6],
+            ['label' => __('Anti-Aging'), 'value' => 7],
+            ['label' => __('Cleansers'), 'value' => 8],
         ];
         return $this->_options;
     }

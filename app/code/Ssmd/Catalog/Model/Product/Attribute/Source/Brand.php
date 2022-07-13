@@ -15,10 +15,17 @@ class Brand extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
     {
         $this->_options = [
             ['label' => __('-- Please Select a Brand --'), 'value' => ''],
-            ['label' => __('Brand 1'), 'value' => 0],
-            ['label' => __('Brand 2'), 'value' => 1],
-            ['label' => __('Brand 3'), 'value' => 2],
-            ['label' => __('Brand 4'), 'value' => 3],
+            ['label' => __('Latisse'), 'value' => 0],
+            ['label' => __('Upneeq'), 'value' => 1],
+            ['label' => __('Obagi'), 'value' => 2],
+            ['label' => __('Skinceuticals'), 'value' => 3],
+            ['label' => __('Kerastase'), 'value' => 4],
+            ['label' => __('L’Oreal Professionnel'), 'value' => 5],
+            ['label' => __('Alastin'), 'value' => 6],
+            ['label' => __('Skinmedica'), 'value' => 7],
+            ['label' => __('Vaniqa'), 'value' => 8],
+            ['label' => __('SkinSolutions.MD'), 'value' => 9],
+
         ];
         return $this->_options;
     }
