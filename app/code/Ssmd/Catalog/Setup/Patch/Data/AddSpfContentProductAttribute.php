@@ -56,7 +56,7 @@ class AddSpfContentProductAttribute implements DataPatchInterface, PatchRevertab
                 'required' => false,
                 'backend' => '',
                 'sort_order' => '30',
-                'global' => ScopedAttributeInterface::SCOPE_STORE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => null,
                 'visible' => true,
                 'user_defined' => true,

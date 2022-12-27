@@ -3,6 +3,7 @@ type Query {
 }
 
 type CustomerOrder {
+    payment_details: String @doc(description: "SSMD - Customer Order Payment Details")
     shipping_description: String @doc(description: "SSMD - Customer Order Shipping Description")
     shipping_address: String @doc(description: "SSMD - Customer Order Shipping Address details")
     billing_address: String @doc(description: "SSMD - Customer Order Billing Address")

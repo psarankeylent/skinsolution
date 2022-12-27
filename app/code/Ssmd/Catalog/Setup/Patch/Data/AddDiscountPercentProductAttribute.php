@@ -56,7 +56,7 @@ class AddDiscountPercentProductAttribute implements DataPatchInterface, PatchRev
                 'required' => false,
                 'backend' => '',
                 'sort_order' => '30',
-                'global' => ScopedAttributeInterface::SCOPE_WEBSITE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => null,
                 'visible' => true,
                 'user_defined' => true,

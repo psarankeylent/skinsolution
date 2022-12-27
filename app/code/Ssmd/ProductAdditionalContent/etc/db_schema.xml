@@ -7,7 +7,7 @@
 	<table name="product_content_sections">
 		<column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Product Content Section Id"/>
 		<column xsi:type="varchar" name="content_section" nullable="true" comment="Product Content Section"/>
-		<column xsi:type="smallint" name="status" padding="1" nullable="true" default="1" comment="Status"/>
+		<column xsi:type="smallint" name="status" nullable="true" default="1" comment="Status"/>
 		<column xsi:type="int" name="sort_order" padding="10" nullable="true" comment="Sort Order"/>
 
 		<!-- Primary Id -->

@@ -102,6 +102,12 @@ class GetCards extends \ParadoxLabs\TokenBase\Model\Api\GraphQL\GetCards
     {
         $customer = $this->customerRepository->getById($customerId);
 
-        return $customer->getCustomAttribute('default_payment')->getValue();
+        $defaultpayment = $customer->getCustomAttribute('default_payment');
+
+        if ($defaultpayment instanceof \Magento\Framework\Api\AttributeInterface) {
+            return $defaultpayment->getValue();
+        } else {
+            return null;
+        }
     }
 }

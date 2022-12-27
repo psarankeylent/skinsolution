@@ -53,11 +53,16 @@ class CartCustomOptions implements ResolverInterface
 
     protected function getCustomOptions($cartItem)
     {
-        $customOptions = $cartItem->getProduct()->getCustomOptions()['info_buyRequest']->getData('value');
+        $customOptions = $cartItem->getProduct()->getCustomOptions();
+
+        if (array_key_exists('info_buyRequest',$customOptions)) {
+            $customOptions = $customOptions['info_buyRequest']->getData('value');
+        } else {
+            return [];
+        }
 
         $options = [];
         $customOptions = json_decode($customOptions);
-
 
         $product = $cartItem->getProduct();
         $productCustomOptions = $this->productCustomOption
@@ -76,10 +81,14 @@ class CartCustomOptions implements ResolverInterface
             }
         }
 
-        if (isset($customOptions->options))
-            foreach ($customOptions->options as $key => $value) {
-                $options[] = [ 'id' => $key, 'value' => $value, 'title' => $customOptionsData[$value]['title']];
-            }
+if (isset($customOptions->options)){
+	if(!empty($customOptions->options)) {
+	    foreach ($customOptions->options as $key => $value) {
+
+	        $options[] = [ 'id' => $key, 'value' => $value, 'title' => $customOptionsData[$value]['title']];
+	    }
+    }
+}
 
         return $options;
 

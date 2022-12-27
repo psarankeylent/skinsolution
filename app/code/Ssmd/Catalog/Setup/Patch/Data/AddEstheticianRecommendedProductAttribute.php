@@ -56,7 +56,7 @@ class AddEstheticianRecommendedProductAttribute implements DataPatchInterface, P
                 'required' => false,
                 'backend' => '',
                 'sort_order' => '130',
-                'global' => ScopedAttributeInterface::SCOPE_STORE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => 0,
                 'visible' => true,
                 'user_defined' => true,

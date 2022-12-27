@@ -56,7 +56,7 @@ class AddTsaFriendlyProductAttribute implements DataPatchInterface, PatchReverta
                 'required' => false,
                 'backend' => '',
                 'sort_order' => '40',
-                'global' => ScopedAttributeInterface::SCOPE_STORE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => 0,
                 'visible' => true,
                 'user_defined' => true,

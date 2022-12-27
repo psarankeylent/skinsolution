@@ -8,7 +8,7 @@
 		<column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Customer Note Id"/>
 		<column xsi:type="varchar" name="question" nullable="true" comment="Question"/>
 		<column xsi:type="varchar" name="answer" length="255" nullable="true" comment="Answer"/>
-		<column xsi:type="smallint" name="status" padding="1" nullable="true" default="1" comment="0 - inactive ( no need to show on the frontend)\n1- active"/>
+		<column xsi:type="smallint" name="status" nullable="true" default="1" comment="0 - inactive ( no need to show on the frontend)\n1- active"/>
 		<column xsi:type="int" name="faq_id" padding="10" nullable="true" comment="FAQ Id"/>
 		<column xsi:type="int" name="sort_order" padding="10" nullable="true" comment="Sort Order"/>
 

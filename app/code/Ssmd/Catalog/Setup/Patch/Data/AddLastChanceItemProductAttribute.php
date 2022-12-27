@@ -56,7 +56,7 @@ class AddLastChanceItemProductAttribute implements DataPatchInterface, PatchReve
                 'required' => false,
                 'backend' => '',
                 'sort_order' => '30',
-                'global' => ScopedAttributeInterface::SCOPE_STORE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => 0,
                 'visible' => true,
                 'user_defined' => true,

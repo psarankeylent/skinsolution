@@ -198,24 +198,32 @@ class UpdateCard extends \ParadoxLabs\TokenBase\Model\Api\GraphQL\UpdateCard
     {
 
         $customer = $this->customerRepository->getById($card->getCustomerId());
+
+        $defaultPaymentAttr = $customer->getCustomAttribute('default_payment');
+
+        if ($defaultPaymentAttr instanceof \Magento\Framework\Api\AttributeInterface) {
+            $defaultPaymentVal = $defaultPaymentAttr->getValue();
+        } else {
+            $defaultPaymentVal = null;
+        }
+
         if (isset($cardData['default_payment'])) {
             $defaultPayment = $cardData['default_payment'];
 
             if($defaultPayment) {
-                if ($card->getPaymentId() != $customer->getCustomAttribute('default_payment')->getValue()) {
+                if ($card->getPaymentId() != $defaultPaymentVal) {
                     $customer->setCustomAttribute('default_payment', $card->getPaymentId());
                     $this->customerRepository->save($customer);
                 }
             } else {
-                if ($card->getPaymentId() == $customer->getCustomAttribute('default_payment'
-                    )->getValue()) {
+                if ($card->getPaymentId() == $defaultPaymentVal) {
                     $customer->setCustomAttribute('default_payment', null);
                     $this->customerRepository->save($customer);
                 }
             }
         }
 
-        return $customer->getCustomAttribute('default_payment')->getValue();
+        return $defaultPaymentVal;
 
     }
     /**

@@ -7,12 +7,14 @@ declare(strict_types=1);
 
 namespace Ssmd\Sales\Model\Resolver;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactoryInterface;
+use Prescriptions\PrescriptionsCollection\Model\PrescriptionsFactory;
 
 /**
  * Ssmd Sales Orders data resolver
@@ -24,13 +26,17 @@ class Orders implements ResolverInterface
      */
     private $collectionFactory;
 
+    protected $prescriptionsFactory;
+
     /**
      * @param CollectionFactoryInterface $collectionFactory
      */
     public function __construct(
-        CollectionFactoryInterface $collectionFactory
+        CollectionFactoryInterface $collectionFactory,
+        PrescriptionsFactory  $prescriptionsFactory
     ) {
         $this->collectionFactory = $collectionFactory;
+        $this->prescriptionsFactory = $prescriptionsFactory;
     }
 
     /**
@@ -66,18 +72,35 @@ class Orders implements ResolverInterface
                 'shipping_address' => serialize(json_encode($order->getShippingAddress()->getData())),
                 'order_items' => $this->getOrderItems($order),
                 'tax' => $order->getFullTaxInfo(),
-                'order_info' => serialize(json_encode($order->getData()))
-
+                'order_info' => serialize(json_encode($order->getData())),
+                'payment_details' => serialize(json_encode($order->getPayment()->getData())),
             ];
         }        return ['items' => $items];
+    }
+
+    protected function getPrescriptionId($prescriptionId)
+    {
+        $prescription = $this->prescriptionsFactory->create()
+            ->load($prescriptionId, 'id');
+
+        if ($prescription->getId()) {
+            return $prescription->getData();
+        }
+
+        return null;
     }
 
     protected function getOrderItems($order)
     {
         $items = [];
         foreach ($order->getItems() as $item) {
-            $items[] = json_encode($item->getData());
+            $orderItem = $item->getData();
+            $orderItem['product'] = $item->getProduct()->getData();
+            $orderItem['product']['prescription_info'] = "test-test-test";
+            if (isset($orderItem['product']['prescription']))
+                $orderItem['product']['prescription_info'] = $this->getPrescriptionId($orderItem['product']['prescription']);
+                $items[] = $orderItem;
         }
-        return serialize($items);
+        return serialize(json_encode($items));
     }
 }

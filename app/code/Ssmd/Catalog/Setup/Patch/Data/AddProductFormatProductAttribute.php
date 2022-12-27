@@ -56,7 +56,7 @@ class AddProductFormatProductAttribute implements DataPatchInterface, PatchRever
                 'required' => false,
                 'backend' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
                 'sort_order' => '30',
-                'global' => ScopedAttributeInterface::SCOPE_STORE,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'default' => null,
                 'visible' => true,
                 'user_defined' => true,
@@ -102,7 +102,7 @@ class AddProductFormatProductAttribute implements DataPatchInterface, PatchRever
     public static function getDependencies()
     {
         return [
-        
+
         ];
     }
 }
