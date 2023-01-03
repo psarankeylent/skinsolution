@@ -1,0 +1,202 @@
+<?php
+/**
+* @var $block \Ssmd\Faqs\Block\Adminhtml\Index\Index
+*/
+?>
+
+<?php //echo $block->test(); ?>
+<div class="fieldset-wrapper order-information">
+   <div>
+       <h2>MANAGE FAQs</h2>
+   </div>
+
+
+<br/><br/>
+
+<?php
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$formKey = $objectManager->get('Magento\Framework\Data\Form\FormKey');
+?>
+
+<?php $collection = $block->getFaqs(); ?>
+
+<div id="faq">
+
+	<form name="faqs" id="faqs" method="post" action="<?php echo $this->getUrl('faqs/index/index'); ?>">
+
+		<input name="form_key" type="hidden" value="<?php echo $formKey->getFormKey(); ?>" />
+
+		<ul class="faqs">
+		<?php foreach($collection as $faq): ?>
+			<li><div class="listq"><label>Question :</label> <input type="text" name="ques[]" value="<?php echo $faq->getQuestion(); ?>"/> </div><div class="listq"><label>Answer : </label>
+                    <textarea name="ans[]"><?php echo $faq->getAnswer(); ?></textarea></div>
+                <a href="#" onClick="delFunction(<?php echo $faq->getId(); ?>)" id="<?php echo $faq->getId(); ?>" class="delete <?php echo $faq->getId(); ?>">Delete FAQ</a><input type="hidden" name="id[]" value="<?php echo $faq->getId(); ?>"/></li>
+
+		<?php endforeach; ?>
+
+		</ul>
+		<input type="submit" name="submit" id="submit" value="Save FAQs" class="savefaqbtn"/>
+	</form>
+	<button type="button" name="addFaqs" id="addFaqs">Add faq</button>
+</div>
+
+<script>
+
+	function delFunction(id){
+
+        url = '<?php echo $this->getAdminUrl('faqs/delete/index')?>';
+
+        jQuery.ajax({
+		    url: url,
+		    type: "POST",
+		    dataType: "json",
+		   // contentType: false,
+		    //enctype: 'multipart/form-data',
+		    //processData: false, /* Important */
+		    data: {'id': id, 'form_key': window.FORM_KEY},
+		    showLoader: true,
+		    cache: false,
+		    success: function(response){
+			if(response.status)
+			{
+                location.href = '<?php echo $this->getAdminUrl('faqs/index/index', ['key' => $this->getRequest()->getParam('key')]) ?>' ;
+            }
+			else
+			{
+				alert('Something went wrong!');
+            	return false;
+			}
+
+		    },
+		    error: function(response)
+		    {
+		    	alert('Something went wrong!');
+            }
+		});
+			return;
+		}
+
+ require([
+        'jquery'
+ ],function ($) {
+
+	$(document).ready(function(){
+
+
+
+		// Adding fields
+		var i=1;
+		$('#addFaqs').click(function(){
+
+			var i = $('.faqs li:last').attr('class');
+			i = parseInt(i) + 1;
+
+			$('.faqs').append('<li><div class="listq"><label>Question :</label> <input type="text" name="ques[]" value=""/> </div><div class="listq"><label>Answer :</label> <textarea name="ans[]"></textarea></div> <a href="#" class="delete">Delete FAQ</a> </li>');
+			i++;
+		});
+
+		// Removing fields
+		$('.faqs').on('click', '.delete', function(e) {
+		    e.preventDefault();
+
+		    $(this).parent().remove();
+		});
+
+		// Removing fields
+		$('.faqs').on('click', '.delete', function(e) {
+		    e.preventDefault();
+
+		    $(this).parent().remove();
+		});
+
+	});
+
+
+
+ });
+
+</script>
+
+<style>
+ul.faqs {
+    list-style: none;
+}
+.savefaqbtn{
+    float:right;
+    background-color: #eb5202;
+    border-color: #eb5202;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgb(0 0 0 / 25%);
+    border: 1px solid;
+    border-radius: 0;
+    display: inline-block;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.36;
+    padding: .6rem 1em .6rem;
+    text-align: center;
+}
+ul.faqs li{
+	position: relative;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+}
+.listq label {
+    display: block;
+    line-height: 1.2;
+    vertical-align: middle;
+    white-space: normal;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.listq input,.listq textarea{
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 1px solid #adadad;
+    border-radius: 1px;
+    box-shadow: none;
+    color: #303030;
+    font-size: 1.4rem;
+    font-weight: 400;
+    height: auto;
+    line-height: 1.36;
+    padding: .6rem 1rem .6rem;
+    transition: border-color .1s linear;
+    vertical-align: baseline;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.listq textarea{min-height: 100px;}
+.delete {
+    background-color: #eb5202;
+    border-color: #eb5202;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgb(0 0 0 / 25%);
+    border: 1px solid;
+    border-radius: 0;
+    display: inline-block;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.36;
+    padding: .6rem 1em .6rem;
+    text-align: center;
+    vertical-align: baseline;
+	position: absolute;
+    right: -105px;
+    top: 24px;
+}
+.delete:hover, .savefaqbtn:hover{
+	background-color: #ba4000;
+    border-color: #b84002;
+    box-shadow: 0 0 0 1px #007bdb;
+    color: #fff;
+    text-decoration: none;
+}
+</style>
