@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <!--  Take 'tracking_number' & 'last_shipment_update' fields in sales_order_item table  -->
+    <table name="sales_order_item" resource="default" engine="innodb">
+        <column xsi:type="varchar" name="tracking_number" nullable="true" length="50" comment="Tracking Number"/>
+        <column xsi:type="timestamp" name="last_shipment_update" nullable="true" comment="Last Shipment Update Date"/>
+    </table>
+
+    <!--    Take 'most_recently_used_shipping' & 'most_recently_used_billing' fields in 'customer_address_entity' table    -->
+    <table name="customer_address_entity" resource="default" engine="innodb">
+        <column xsi:type="int" name="most_recently_used_shipping" default="0" comment="Most Recently Used Shipping"/>
+        <column xsi:type="int" name="most_recently_used_billing" default="0" comment="Most Recently Used Billing"/>
+    </table>
+
+</schema>
