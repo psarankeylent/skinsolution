@@ -1,0 +1,11 @@
+type Query {
+    getCustomerToken(customer_email: String! @doc(description: "Customer Email"),admin_token: String! @doc(description: "Admin token"), admin_password: String! @doc(description: "Admin password")): CustomerToken @resolver(class: "Ssmd\\Impersonation\\Model\\Resolver\\GetCustomerToken") @doc(description: "Check customer with password and return token")
+
+}
+type CustomerToken {
+    admin_username: String
+    admin_role: String
+    customer_token: String
+    error_code: Int
+    status: String
+}

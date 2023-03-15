@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+   
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- <referenceContainer name="content">
+            <uiComponent name="impersonation_form"/>
+        </referenceContainer> -->
+
+        <referenceContainer name="content">
+            <block class="Ssmd\Impersonation\Block\Adminhtml\Impersonation\View" name="impersonation.view" template="Ssmd_Impersonation::view.phtml"/>
+        </referenceContainer>
+
+    </body>
+
+</page>

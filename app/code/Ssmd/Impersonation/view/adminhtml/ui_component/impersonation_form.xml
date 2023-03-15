@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">impersonation_form.impersonation_form_data_source</item>
+            <item name="deps" xsi:type="string">impersonation_form.impersonation_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">impersonation_form</item>
+            <!-- <item name="submit_url" xsi:type="url" path="uiform/employee/save" /> -->
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="string">Ssmd\Impersonation\Block\Adminhtml\Impersonation\Edit\SaveButton</item>
+        </item>
+
+    </argument>
+    <dataSource name="impersonation_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Ssmd\Impersonation\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">impersonation_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="impersonation/index/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="impersonation_details">
+        <!-- <settings>
+            <label translate="true">Impersonation</label>
+        </settings> -->
+        <field name="rand_number" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Random Number</item>
+                    <item name="dataScope" xsi:type="string">id</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="dataScope" xsi:type="string">ID</item>
+                </item>
+            </argument>
+        </field>
+
+
+    </fieldset>
+</form>-

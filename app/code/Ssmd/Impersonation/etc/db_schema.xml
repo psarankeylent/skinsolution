@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+            
+    <!-- Impersonation table -->
+	<table name="impersonation">
+		<column xsi:type="int" name="id" padding="11" identity="true" unsigned="true" nullable="false" comment="Impersonation Primary Id"/>
+		<column xsi:type="varchar" name="customer_token" length="200" nullable="true" comment="Customer token"/>
+		<column xsi:type="varchar" name="username" length="100" nullable="true" comment="Admin username"/>
+		<column xsi:type="varchar" name="firstname" length="100" nullable="true" comment="Admin firstname"/>
+		<column xsi:type="varchar" name="admin_token" length="100" nullable="true" comment="Admin username Encrypted Value"/>
+		<column xsi:type="varchar" name="admin_password" length="100" nullable="true" comment="Admin Password Encrypted Value"/>
+		<column xsi:type="timestamp" name="created_date" comment="Created Date"/>
+		<column xsi:type="varchar" name="status" length="20" default="new" comment="Status"/>
+		<column xsi:type="timestamp" name="access_time" nullable="true" comment="Access Time"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>	 
+	</table>
+	   
+</schema>

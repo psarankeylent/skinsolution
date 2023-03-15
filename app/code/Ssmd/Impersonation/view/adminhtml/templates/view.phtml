@@ -1,0 +1,91 @@
+<?php
+/*
+*  $block = \Ssmd\Impersonation\Block\Adminhtml\Impersonation\View.php
+*
+*/
+
+?>
+<?php
+$customer = $block->getCustomerData();
+?>
+
+<div id="random number">
+    <!-- <strong><?php echo __('Random Number') ?></strong> -->
+    <span class="">
+      <?php
+      $randomNumber = random_int(0, 999999);
+      $randomNumber = str_pad($randomNumber, 7, STR_PAD_LEFT);
+      ?>
+
+      <form class="form" data-mage-init='{"validation": {}}' action="<?php echo $block->getPostUrl() ?>" method="post">
+
+              <div class="admin__field" style="font-size:18px; font-weight:bold;">
+                  <div class="control random_number_label">
+                      <label class="admin__field-label" for="random_number">
+                          <span><?php echo __('Impersonation Key : ') ?></span>
+                      </label>
+                      <label><?php echo $randomNumber ?></label>
+                  </div>
+                  <div class="control">
+                      <input type="hidden"
+                             id="random_number"
+                             name="random_number"
+                             class="admin__control-text"
+                             value="<?php echo $randomNumber ?>"
+                      />
+
+
+                  </div>
+                  <div class="control">
+                     <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
+                  </div>
+              </div>
+              <div class="admin__field" style="font-size:18px; font-weight:bold;">
+                <div>
+                    <span>First Name : <?php echo $customer->getFirstname() ?></span>
+                </div>
+                <div>
+                    <span>Last Name : <?php echo $customer->getLastname() ?></span>
+                </div>
+                <div>
+                    <span>Email : <?php echo $customer->getEmail() ?></span>
+                </div>
+                <div>
+                    <span>Phone No :
+                      <?php
+                      $address = $customer->getPrimaryBillingAddress();
+                      if ($address)
+                          echo $address->getTelephone();
+                      ?>
+
+                    </span>
+                </div>
+            </div>
+          <div class="actions-toolbar" style="margin:20px 0;">
+              <div class="primary">
+                  <button type="submit" class="action submit primary" title="<?php echo __('Start Impersonation') ?>">
+                      <span><?php echo __('Start Impersonation') ?></span>
+                  </button>
+              </div>
+          </div>
+
+      </form>
+
+
+
+ </span>
+</div>
+
+<script>
+    require([
+            'jquery'
+        ],
+        function($) {
+            $('.action').click(function(event){
+                //alert('sdfsdf');
+            });
+
+            $('.page-main-actions').hide();
+        }
+    );
+</script>
