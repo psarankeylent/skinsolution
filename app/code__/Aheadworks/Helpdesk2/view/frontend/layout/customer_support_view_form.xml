@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    
+    <body>
+         <!-- added by hitesh for title display at top 
+        <referenceBlock name="page.main.title">
+            <block template="Aheadworks_Helpdesk2::customer/ticket/form/agent-info.phtml"
+                   name="aw.helpdesk2.ticket.agent-info">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\Ticket\AgentInfo</argument>
+                </arguments>
+            </block>
+        </referenceBlock> -->
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">My Support Tickets</argument>
+            </action>
+        </referenceBlock>
+        
+        <referenceBlock name="page.main.title" remove="true" />
+
+        <referenceContainer name="main">
+            <container name="aw.helpdesk2.ticket.top.container" htmlTag="div" htmlClass="aw-heldesk2__agent-container" before="content">
+                <block template="Aheadworks_Helpdesk2::customer/ticket/form/agent-info.phtml"
+                       name="aw.helpdesk2.ticket.agent-info">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\Ticket\AgentInfo</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <!--<move element="page.main.title" destination="aw.helpdesk2.ticket.top.container" before="-"/>
+        <move element="aw.helpdesk2.ticket.agent-info" destination="aw.helpdesk2.ticket.top.container" before="-" />-->
+        <referenceContainer name="content">
+            <block class="Aheadworks\Helpdesk2\Block\Customer\Ticket\Form\View"
+                   name="aw.helpdesk2.ticket.form.view"
+                   cacheable="false">
+                <arguments>
+                    <argument name="ticket_view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\Ticket\View</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="aw_helpdesk2_form" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/form</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                    <item name="1" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="aw_helpdesk2_escalate_ticket_modal" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                                        <item name="componentType" xsi:type="string">modal</item>
+                                        <item name="dataScope" xsi:type="string"/>
+                                        <item name="options" xsi:type="array">
+                                            <item name="title" xsi:type="string" translate="true">Ticket Escalation</item>
+                                            <item name="buttons" xsi:type="array">
+                                                <item name="0" xsi:type="array">
+                                                    <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                                    <item name="actions" xsi:type="array">
+                                                        <item name="0" xsi:type="string">closeModal</item>
+                                                    </item>
+                                                </item>
+                                                <item name="1" xsi:type="array">
+                                                    <item name="text" xsi:type="string" translate="true">Escalate</item>
+                                                    <item name="class" xsi:type="string">action primary action-basic</item>
+                                                    <item name="actions" xsi:type="array">
+                                                        <item name="0" xsi:type="array">
+                                                            <item name="targetName" xsi:type="string">aw_helpdesk2_form.aw_helpdesk2_escalate_ticket_modal.escalate_form</item>
+                                                            <item name="actionName" xsi:type="string">save</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                             <item name="escalate_form" xsi:type="array">
+                                                 <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/form</item>
+                                                 <item name="deps" xsi:type="array">
+                                                     <item name="0" xsi:type="string">aw_helpdesk2_escalate_form_data_provider</item>
+                                                 </item>
+                                                 <item name="dataScope" xsi:type="string">data</item>
+                                                 <item name="children" xsi:type="array">
+                                                     <item name="fieldset" xsi:type="array">
+                                                         <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                                         <item name="label" xsi:type="string" translate="true"></item>
+                                                         <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/fieldset</item>
+                                                         <item name="children" xsi:type="array">
+                                                             <item name="note" xsi:type="array">
+                                                                 <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                 <item name="template" xsi:type="string">ui/form/field</item>
+                                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/text</item>
+                                                                 <item name="value" xsi:type="string" translate="true">Are you dissatisfied with the quality of support?</item>
+                                                                 <item name="additionalClasses" xsi:type="string">escalation-note</item>
+                                                                 <item name="sortOrder" xsi:type="number">10</item>
+                                                             </item>
+                                                             <item name="message" xsi:type="array">
+                                                                 <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                                 <item name="dataScope" xsi:type="string">escalation-message</item>
+                                                                 <item name="provider" xsi:type="string">aw_helpdesk2_escalate_form_data_provider</item>
+                                                                 <item name="template" xsi:type="string">ui/form/field</item>
+                                                                 <item name="label" xsi:type="string" translate="true">Please, provide us information why are you not satisfied with quality of support</item>
+                                                                 <item name="validation" xsi:type="array">
+                                                                     <item name="required-entry" xsi:type="boolean">true</item>
+                                                                 </item>
+                                                                 <item name="rows" xsi:type="number">5</item>
+                                                                 <item name="sortOrder" xsi:type="number">20</item>
+                                                             </item>
+                                                         </item>
+                                                     </item>
+                                                 </item>
+                                             </item>
+                                         </item>
+                                    </item>
+                                    <item name="top_action_toolbar" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiCollection</item>
+                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/ticket/actions-toolbar</item>
+                                        <item name="sortOrder" xsi:type="number">10</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="back" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/button/redirect-button</item>
+                                                <item name="title" xsi:type="string" translate="true">Back</item>
+                                                <item name="sortOrder" xsi:type="number">10</item>
+                                                <item name="wrapperClass" xsi:type="string">secondary</item>
+                                                <item name="buttonClasses" xsi:type="string">action top-action action-back</item>
+                                                <item name="urlToRedirect" xsi:type="url" path="customer/support"/>
+                                            </item>
+                                            <item name="reopen_ticket" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/button/redirect-button</item>
+                                                <item name="title" xsi:type="string" translate="true">Reopen Ticket</item>
+                                                <item name="sortOrder" xsi:type="number">20</item>
+                                                <item name="wrapperClass" xsi:type="string">secondary</item>
+                                                <item name="buttonClasses" xsi:type="string">action top-action action-reopen</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="urlToRedirect" xsi:type="string">${ $.configProvider }:data.reopen_ticket_url</item>
+                                                    <item name="visible" xsi:type="string">${ $.configProvider }:data.is_ticket_closed</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="top_panel" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiCollection</item>
+                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/ticket/top-panel</item>
+                                        <item name="sortOrder" xsi:type="number">20</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="department_name" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/top-panel/text-element</item>
+                                                <item name="label" xsi:type="string" translate="true">Request type</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="sortOrder" xsi:type="number">10</item>
+                                            </item>
+                                            <item name="status_label" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/top-panel/text-element</item>
+                                                <item name="label" xsi:type="string" translate="true">Status</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="sortOrder" xsi:type="number">20</item>
+                                            </item>
+                                            <item name="customer_rating" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/top-panel/rating-vote</item>
+                                                <item name="label" xsi:type="string" translate="true">Rating</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                <item name="dataScope" xsi:type="string">customer_rating</item>
+                                                <item name="sortOrder" xsi:type="number">25</item>
+                                                <item name="additionalClasses" xsi:type="string">customer-rating</item>
+                                                <!--<item name="requestUrl" xsi:type="url" path="customer/support/rate"/>-->
+                                                <item name="requestUrl" xsi:type="url" path="customer/ticket/rate"/>
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="options" xsi:type="string">${ $.configProvider }:data.customer_rating_options</item>
+                                                    <item name="disabled" xsi:type="string">${ $.configProvider }:data.is_disabled_customer_rating</item>
+                                                </item>
+                                            </item> 
+                                            <!-- <item name="agent_name" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/top-panel/text-element</item>
+                                                <item name="label" xsi:type="string" translate="true">Agent</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="sortOrder" xsi:type="number">30</item>
+                                            </item> -->
+                                            <item name="order_id" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/link</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="label" xsi:type="string" translate="true">Order</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                <item name="sortOrder" xsi:type="number">35</item>
+                                                <item name="additionalClasses" xsi:type="string">customer-order</item>
+                                                <item name="target" xsi:type="string">_blank</item>
+                                                <item name="warn" xsi:type="boolean">false</item>
+                                                <item name="error" xsi:type="boolean">false</item>
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="visible" xsi:type="string">${ $.configProvider }:data.is_order_assigned</item>
+                                                    <item name="text" xsi:type="string">${ $.configProvider }:data.order.text</item>
+                                                    <item name="url" xsi:type="string">${ $.configProvider }:data.order.url</item>
+                                                </item>
+                                            </item>
+                                            <!-- <item name="escalate_button" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                                                <item name="template" xsi:type="string">ui/form/components/button/simple</item>
+                                                <item name="additionalClasses" xsi:type="string">admin__field-small</item>
+                                                <item name="title" xsi:type="string" translate="true">Escalate to Supervisor</item>
+                                                <item name="dataType" xsi:type="string">text</item>
+                                                <item name="formElement" xsi:type="string">input</item>
+                                                <item name="sortOrder" xsi:type="number">40</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                <item name="imports" xsi:type="array">
+                                                    <item name="visible" xsi:type="string">${ $.configProvider }:data.is_escalation_enabled</item>
+                                                </item>
+                                                <item name="actions" xsi:type="array">
+                                                    <item name="0" xsi:type="array">
+                                                        <item name="targetName" xsi:type="string">aw_helpdesk2_form.aw_helpdesk2_escalate_ticket_modal</item>
+                                                        <item name="actionName" xsi:type="string">toggleModal</item>
+                                                    </item>
+                                                </item>
+                                            </item> -->
+                                        </item>
+                                    </item>
+                                    <item name="reply" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                        <item name="sortOrder" xsi:type="number">30</item>
+                                        <item name="label" xsi:type="string"></item>
+                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/fieldset</item>
+                                        <item name="dataScope" xsi:type="string">data</item>
+                                        <item name="additionalClasses" xsi:type="string">reply</item>
+                                        <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="visible" xsi:type="string">!${ $.configProvider }:data.is_ticket_closed</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="content" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                <item name="rows" xsi:type="number">10</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="dataScope" xsi:type="string">content</item>
+                                                <item name="label" xsi:type="string" translate="true">Post a Reply</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">10</item>
+                                            </item>
+                                            <item name="bottom_action_toolbar" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiCollection</item>
+                                                <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/ticket/bottom-actions-toolbar</item>
+                                                <item name="sortOrder" xsi:type="number">20</item>
+                                                <item name="children" xsi:type="array">
+                                                    <item name="upload_file" xsi:type="array">
+                                                        <item name="displayArea" xsi:type="string">uploader</item>
+                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/file-uploader</item>
+                                                        <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/ticket/uploader/uploader</item>
+                                                        <item name="dataScope" xsi:type="string">attachments</item>
+                                                        <item name="label" xsi:type="string" translate="true">Attach files</item>
+                                                        <item name="openDialogTitle" xsi:type="string">Attach files</item>
+                                                        <item name="visible" xsi:type="boolean">true</item>
+                                                        <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                                                        <item name="maxFileSize" xsi:type="number">4194304</item>
+                                                        <item name="uploaderConfig" xsi:type="array">
+                                                            <item name="url" xsi:type="url" path="customer/ticket_attachment/upload"/>
+                                                        </item>
+                                                        <item name="sortOrder" xsi:type="number">10</item>
+                                                    </item>
+                                                    <item name="close_ticket" xsi:type="array">
+                                                        <item name="displayArea" xsi:type="string">actions</item>
+                                                        <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/button/redirect-button</item>
+                                                        <item name="title" xsi:type="string" translate="true">Close Ticket</item>
+                                                        <item name="sortOrder" xsi:type="number">20</item>
+                                                        <item name="buttonClasses" xsi:type="string">action action-close</item>
+                                                        <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                                        <item name="imports" xsi:type="array">
+                                                            <item name="urlToRedirect" xsi:type="string">${ $.configProvider }:data.close_ticket_url</item>
+                                                        </item>
+                                                    </item>
+                                                    <item name="post_reply" xsi:type="array">
+                                                        <item name="displayArea" xsi:type="string">actions</item>
+                                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                                                        <item name="title" xsi:type="string" translate="true">Post Reply</item>
+                                                        <item name="sortOrder" xsi:type="number">30</item>
+                                                        <item name="buttonClasses" xsi:type="string">action primary</item>
+                                                        <item name="actions" xsi:type="array">
+                                                            <item name="0" xsi:type="array">
+                                                                <item name="targetName" xsi:type="string">aw_helpdesk2_form</item>
+                                                                <item name="actionName" xsi:type="string">save</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="closed_ticket_notice" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/ticket/notice</item>
+                                        <item name="sortOrder" xsi:type="number">40</item>
+                                        <item name="noticeClass" xsi:type="string">closed-ticket-notice</item>
+                                        <item name="notice" xsi:type="string">GGG</item>
+                                        <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="visible" xsi:type="string">${ $.configProvider }:data.is_ticket_closed</item>
+                                            <item name="notice" xsi:type="string">${ $.configProvider }:data.closed_ticket_notice</item>
+                                        </item>
+                                    </item>
+                                    <item name="thread" xsi:type="array">
+                                        <item name="componentType" xsi:type="string">insertListing</item>
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/insert-listing</item>
+                                        <item name="autoRender" xsi:type="boolean">true</item>
+                                        <item name="sortOrder" xsi:type="number">50</item>
+                                        <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="imports" xsi:type="array">
+                                                <item name="ticket_id" xsi:type="string">${ $.configProvider }:data.ticket_id</item>
+                                            </item>
+                                            <item name="exports" xsi:type="array">
+                                                <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                                <item name="params.ticket_id" xsi:type="string">${ $.externalProvider }:params.ticket_id</item>
+                                            </item>
+                                        </item>
+                                        <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                                        <item name="render_url" xsi:type="url" path="mui/index/render"/>
+                                        <item name="externalProvider" xsi:type="string">aw_helpdesk2_insert_ticket_discussion_message_listing.aw_helpdesk2_insert_ticket_discussion_message_listing_data_source</item>
+                                        <item name="dataScope" xsi:type="string">messages</item>
+                                        <item name="ns" xsi:type="string">aw_helpdesk2_insert_ticket_discussion_message_listing</item>
+                                        <item name="dataLinks" xsi:type="array">
+                                            <item name="exports" xsi:type="boolean">false</item>
+                                            <item name="imports" xsi:type="boolean">true</item>
+                                        </item>
+                                        <item name="behaviourType" xsi:type="string">simple</item>
+                                        <item name="externalFilterMode" xsi:type="boolean">false</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="aw_helpdesk2_form_data_provider" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                                <item name="clientConfig" xsi:type="array">
+                                    <item name="urls" xsi:type="array">
+                                        <!--<item name="save" xsi:type="url" path="customer/support/reply"/>-->
+                                        <item name="save" xsi:type="url" path="customer/ticket/reply"/>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="aw_helpdesk2_config_provider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiElement</item>
+                            </item>
+                            <item name="aw_helpdesk2_escalate_form_data_provider" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                                <item name="clientConfig" xsi:type="array">
+                                    <item name="urls" xsi:type="array">
+                                        <!--<item name="save" xsi:type="url" path="customer/support/escalate"/>-->
+                                        <item name="save" xsi:type="url" path="customer/ticket/escalate"/>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+
+            <!-- <block class="Enhance\Customer\Block\Account\Dashboard\Info" name="customer_custom_sidebar" as="customer_custom_sidebar" 
+template="Magento_Customer::account/dashboard/custom_sidebar.phtml" cacheable="false" /> -->
+
+        </referenceContainer>
+    </body>
+</page>

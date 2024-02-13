@@ -1,0 +1,83 @@
+type Mutation {
+    saveCustomerMedicalHistory(input: [CustomerMedicalHistoryInput]): SaveCustomerMedicalHistory @resolver(class: "Ssmd\\MedicalHistory\\Model\\Resolver\\SaveCustomerMedicalHistory") @doc(description: "SaveCustomerMedicalHistory Info")
+}
+
+type Query {
+    questionsMasterList: QuestionsMasterList @resolver(class: "Ssmd\\MedicalHistory\\Model\\Resolver\\QuestionsMasterList") @doc(description: "Questions Master List With Groups and Responses")
+
+    getCustomerMedicalHistoryByUniqueId(unique_id: String!): GetCustomerMedicalHistoryByUniqueId @resolver(class: "Ssmd\\MedicalHistory\\Model\\Resolver\\GetCustomerMedicalHistoryByUniqueId") @doc(description: "Get customer responses by Unique ID")
+}
+
+input CustomerMedicalHistoryInput {
+    question_id: Int!
+    customer_id: Int!
+    question_text: String!
+    response: String!
+    unique_id: String!
+    cart_id: String!
+    status: String!
+    order_number: String!
+    full_face: Int
+    govt_id: Int
+
+}
+type SaveCustomerMedicalHistory {
+    customerMedicalHistory: [CustomerMedicalHistoryOutput]
+}
+type CustomerMedicalHistoryOutput {
+    id: Int
+    question_id: Int
+    customer_id: Int
+    question_text: String
+    response: String
+    unique_id: String
+    cart_id: String
+    status: String
+    order_number: String
+    created_at: String
+    full_face: Int
+    govt_id: Int
+}
+
+
+type QuestionsMasterList {
+    questionsAll: [QuestionsMasterDataInput]
+}
+
+type QuestionsMasterDataInput {
+    question_id: Int
+    question_text: String
+    question_subtext: String
+    groups: GroupInputs
+    prescriptions: PrescriptionInputs
+}
+type PrescriptionInputs {
+    prescription_id: Int
+}
+type GroupInputs {
+    group_id: Int
+    group_name: String
+    responses: [ResponseInputs]
+}
+type ResponseInputs {
+    response_id: Int
+    response_name: String
+    response_type: String
+}
+
+type GetCustomerMedicalHistoryByUniqueId {
+    medicalHistoryData: [CustomerMHData]
+}
+type CustomerMHData {
+    id: Int
+    question_id: Int
+    customer_id: Int
+    question_text: String
+    response: String
+    unique_id: String
+    cart_id: String
+    status: String
+    order_number: String
+    created_at: String
+}
+

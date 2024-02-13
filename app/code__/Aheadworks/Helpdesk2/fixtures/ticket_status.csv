@@ -1,0 +1,5 @@
+id,is_system,label
+1,1,New
+2,1,Open
+3,1,Waiting for a customer
+4,1,Closed

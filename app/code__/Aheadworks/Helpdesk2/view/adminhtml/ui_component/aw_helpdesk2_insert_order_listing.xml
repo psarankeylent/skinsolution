@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_insert_order_listing.aw_helpdesk2_insert_order_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>columns</spinner>
+        <deps>
+            <dep>aw_helpdesk2_insert_order_listing.aw_helpdesk2_insert_order_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_insert_order_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\CustomerOrdersProvider"
+                      name="aw_helpdesk2_insert_order_listing_data_source">
+            <settings>
+                <requestFieldName>ticket_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="displayMode" xsi:type="string">list</item>
+                <item name="listTemplate" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing</item>
+                <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-row</item>
+            </item>
+        </argument>
+
+        <column name="increment_id" sortOrder="30" class="Aheadworks\Helpdesk2\Ui\Component\Listing\Columns\LinkColumn" component="Aheadworks_Helpdesk2/js/ui/grid/columns/link">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">sales/order/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">order_id</item>
+                    <item name="entityFieldName" xsi:type="string">entity_id</item>
+                    <item name="additionalClasses" xsi:type="string">order-id</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/link</item>
+                    <item name="cancelingLinkValues" xsi:type="array">
+                        <item name="0" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
+        <column name="status" component="Aheadworks_Helpdesk2/js/ui/grid/columns/colored-select" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">status</item>
+                    <item name="wrapperClass" xsi:type="string">aw-order-status</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/html</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="Magento\Sales\Ui\Component\Listing\Column\Status\Options"/>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">date-created</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>date</dataType>
+                <dateFormat>MMM d, YYYY</dateFormat>
+            </settings>
+        </column>
+        <column name="base_grand_total" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">grand-total</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+            </settings>
+        </column>
+    </columns>
+</listing>

@@ -1,0 +1,83 @@
+type Query {
+    getCustomerPhotosByCustomer(customer_id: Int!): OutputCustomerPhotos @resolver(class: "Ssmd\\CustomerPhotos\\Model\\Resolver\\GetCustomerPhotosByCustomer") @doc(description: "Customer Photos Data Infor By Customer Id")
+}
+type Mutation {
+    saveCustomerPhotos(input: SaveCustomerPhotosInput): CustomerPhotos @resolver(class: "Ssmd\\CustomerPhotos\\Model\\Resolver\\SaveCustomerPhotos") @doc(description: "SaveCustomerPhotos Info")
+
+    updateCustomerPhotosByCustomerId(input: [CustomerPhotosUpdateInput]): UpdateCustomerPhotos @resolver(class: "Ssmd\\CustomerPhotos\\Model\\Resolver\\UpdateCustomerPhotosByCustomer") @doc(description: "SaveCustomerMedicalHistory Info")
+
+    updateCustomerPhotosByPhotoId(input: CustomerPhotosUpdateByPhotoInput): UpdateCustomerPhotosByPhoto @resolver(class: "Ssmd\\CustomerPhotos\\Model\\Resolver\\UpdateCustomerPhotosByPhoto") @doc(description: "SaveCustomerMedicalHistory Info")
+}
+
+input SaveCustomerPhotosInput {
+    customer_id: Int!
+    photo_type: String!
+    path: String!
+    source_system: String!
+    status: Int!
+
+}
+type CustomerPhotos {
+    photo_id: Int
+    customer_id: Int
+    photo_type: String
+    path: String
+    source_system: String
+    status: Int
+    created_at: String
+}
+
+
+input CustomerPhotosUpdateInput {
+    photo_id: Int!
+    customer_id: Int
+    photo_type: String
+    path: String
+    source_system: String
+    status: Int
+
+}
+type UpdateCustomerPhotos {
+    updateCustomerPhotos: [UpdateCustomerPhotosOutput]
+}
+type UpdateCustomerPhotosOutput {
+    photo_id: Int
+    customer_id: Int
+    photo_type: String
+    path: String
+    source_system: String
+    status: Int
+}
+
+input CustomerPhotosUpdateByPhotoInput {
+    photo_id: Int!
+    customer_id: Int!
+    photo_type: String!
+    path: String
+    source_system: String
+    status: Int
+
+}
+
+type UpdateCustomerPhotosByPhoto {
+    photo_id: Int
+    customer_id: Int
+    photo_type: String
+    path: String
+    source_system: String
+    status: Int
+}
+
+
+type OutputCustomerPhotos {
+    photoDetails: [CustomerPhotosData]
+}
+type CustomerPhotosData {
+    photo_id: Int
+    customer_id: Int
+    photo_type: String
+    path: String
+    source_system: String
+    status: Int
+    created_at: String
+}

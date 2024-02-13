@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::customreports_reconciliationinvoicereport"
+             title="Reconciliation Invoice Report"
+             translate="title"
+             module="CustomReports_ReconciliationInvoiceReport"
+             sortOrder="200"
+             parent="Magento_Reports::AdminGrid_Top"
+             action="reports/reconciliationinvoice/index"
+             resource="Magento_Reports::customreports_reconciliationinvoicereport"
+        />
+    </menu>
+</config>

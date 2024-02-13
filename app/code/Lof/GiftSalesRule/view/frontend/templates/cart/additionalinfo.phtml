@@ -1,0 +1,21 @@
+<?php
+$config = $this->helper('Lof\GiftSalesRule\Helper\Config');
+$_item = $block->getItem();
+if($msg = $_item->getFreegiftMsg()){
+$image = $_item->getFreegiftIcon();
+?>
+<div class="loffreegift"><?php echo $image.$msg; ?></div>
+<?php
+}else {
+    $helper = $this->helper('Lof\GiftSalesRule\Helper\GiftRule');
+    if($helper->isGiftItem($_item)) {
+        $product = $_item->getProduct(); // Get cart product details
+        $productId = $product->getId();
+        $msg = $config->getFreegiftInfoBlock($productId, $product);
+        $image = $config->getGiftIcon();
+        ?>
+        <div class="loffreegift"><?php echo $image.$msg; ?></div>
+        <?php
+    }
+}
+?>

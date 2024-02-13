@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Automation Repository -->
+    <route url="/V1/awHelpDesk2Automation/:automationId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\AutomationRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::automations"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Automation/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\AutomationRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::automations"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Automation/:automationId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\AutomationRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::automations"/>
+        </resources>
+    </route>
+
+    <!-- Department Management -->
+    <route url="/V1/awHelpDesk2DepartmentService/processGateways" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\DepartmentManagementInterface" method="processGateways"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::departments"/>
+        </resources>
+    </route>
+
+    <!-- Department Repository -->
+    <route url="/V1/awHelpDesk2Department/:departmentId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\DepartmentRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::departments"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Department/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\DepartmentRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::departments"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Department" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\DepartmentRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::departments"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Department/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\DepartmentRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::departments"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Department/:departmentId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\DepartmentRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::departments"/>
+        </resources>
+    </route>
+
+    <!-- Rejecting Pattern Repository -->
+    <route url="/V1/awHelpDesk2RejectPattern/:patternId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\RejectingPatternRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::rejecting_patterns"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2RejectPattern/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\RejectingPatternRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::rejecting_patterns"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2RejectPattern" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\RejectingPatternRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::rejecting_patterns"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2RejectPattern/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\RejectingPatternRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::rejecting_patterns"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2RejectPattern/:patternId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\RejectingPatternRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::rejecting_patterns"/>
+        </resources>
+    </route>
+
+    <!-- Gateway Management -->
+    <route url="/V1/awHelpDesk2GatewayService/processEmails" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\GatewayManagementInterface" method="processEmails"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::gateways"/>
+        </resources>
+    </route>
+
+    <!-- Gateway Repository -->
+    <route url="/V1/awHelpDesk2Gateway/:gatewayId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\GatewayRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::gateways"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Gateway/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\GatewayRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::gateways"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Gateway" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\GatewayRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::gateways"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Gateway/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\GatewayRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::gateways"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Gateway/:gatewayId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\GatewayRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::gateways"/>
+        </resources>
+    </route>
+
+    <!-- Message Repository -->
+    <route url="/V1/awHelpDesk2TicketMessage/:messageId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\MessageRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketMessage/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\MessageRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketMessage" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\MessageRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketMessage/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\MessageRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketMessage/:messageId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\MessageRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+
+    <!-- Quick Response Repository -->
+    <route url="/V1/awHelpDesk2QuickResponse/:quickResponseId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\QuickResponseRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::quick_responses"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2QuickResponse/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\QuickResponseRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::quick_responses"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2QuickResponse" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\QuickResponseRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::quick_responses"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2QuickResponse/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\QuickResponseRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::quick_responses"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2QuickResponse/:quickResponseId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\QuickResponseRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::quick_responses"/>
+        </resources>
+    </route>
+
+    <!-- Tag Repository -->
+    <route url="/V1/awHelpDesk2Tag/:tagId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\TagRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Tag/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\TagRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Tag" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\TagRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Tag/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\TagRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Tag/:tagId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\TagRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+
+    <!-- Ticket Management -->
+    <route url="/V1/awHelpDesk2TicketService/createNewTicket" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\TicketManagementInterface" method="createNewTicket"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketService/updateTicket" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\TicketManagementInterface" method="updateTicket"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketService/createNewMessage" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\TicketManagementInterface" method="createNewMessage"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2TicketService/escalateTicket" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\TicketManagementInterface" method="escalateTicket"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+
+    <!-- Ticket Repository -->
+    <route url="/V1/awHelpDesk2Ticket/getById/:ticketId" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Ticket/getByUid/:uid" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="getByUid"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Ticket/getByExternalLink/:externalLink" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="getByExternalLink"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Ticket/search" method="GET">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Ticket" method="POST">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Ticket/:id" method="PUT">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+    <route url="/V1/awHelpDesk2Ticket/:ticketId" method="DELETE">
+        <service class="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Helpdesk2::tickets"/>
+        </resources>
+    </route>
+</routes>

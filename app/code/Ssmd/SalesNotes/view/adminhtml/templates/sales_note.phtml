@@ -1,0 +1,183 @@
+<?php
+/**
+ * @var $block Ssmd\SalesNotes\Block\Adminhtml\OrderEdit\Tab\SalesNotes
+ */
+
+?>
+
+<div class="fieldset-wrapper customer-information">
+
+    <div>
+        <form method="post" name="add_note" id="add_note" data-mage-init='{"validation": {}}'>
+
+            <h3 style=""><span><?= $block->escapeHtmlAttr(__('Order Notes')) ?></span></h3>
+            <div style="margin: 0 0 2rem;"><hr/></div>
+            <div class="fields col-md-6">
+                <div class="field form_key">
+                    <div class="control">
+                        <input type="hidden" name="form_key" id="form_key" value="<?= $block->getFormKey() ?>" />
+                    </div>
+                </div>
+            </div>
+            <div class="fields col-md-6">
+                <div class="field admin_user_id">
+                    <div class="control">
+                        <input type="hidden" name="admin_user_id" id="admin_user_id" value="<?= $block->getAdminUserId() ?>" />
+                    </div>
+                </div>
+            </div>
+            <div class="fields col-md-6">
+                <div class="field order_id">
+                    <div class="control">
+                        <input type="hidden" name="order_id" id="order_id" value="<?= $block->getOrderId() ?>" />
+                    </div>
+                </div>
+            </div>
+            <div class="fields col-md-6">
+                <div class="field sales_note">
+                    <div class="control" style="margin: 0 0 2rem;">
+                        <textarea name="sales_note" id="sales_note" cols="50" rows="10" data-validate="{required:true}"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" id="add_sales_note" title="Submit"><span><?= $block->
+                            escapeHtmlAttr(__('Submit Note')) ?></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <?php $collection = $block->getNotesCollection(); ?>
+
+        <div class="row">
+            <div class="divider-div col-12">
+                <?php if( !empty($collection->getData()) ): ?>
+                    <?php foreach($collection as $note): ?>
+                        <?php
+                                $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                                $adminObj = $objectManager->get('\Magento\User\Model\UserFactory')->create()->load($note->getAdminUserId());
+
+                               $adminUserId = $adminObj->getUsername();
+                                
+                        ?>
+                        <div class="divider">
+                            <div class="note-list-by">
+                                <span ><strong>By : </strong></span>
+                                <span><?php echo $adminUserId ?></span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span>|</span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span><strong>On : </strong></span>
+                                <span><?php echo date('jS F, Y G:i A', strtotime($note->getCreatedAt())) ?></span>
+                            </div>
+
+                            <div class="note-list-content">
+                                <span><?php echo $note->getSalesNote() ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    require(['jquery'], function($) {
+
+        $(document).ready(function(){
+
+            $('#add_sales_note').click(function(e) {
+
+                e.preventDefault();
+
+                var admin_user_id = $('#admin_user_id').val();
+                var order_id = $('#order_id').val();
+
+                var sales_note = $('#sales_note').val();
+                if(sales_note == "" || sales_note == null)
+                {
+                    alert('This is required field');
+                    return false;
+                }
+
+                var formKey = $("[name='form_key']").val();
+                var url = '<?php echo $this->getUrl('salesnotes') ?>';
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        'form_key':formKey,
+                        'admin_user_id': admin_user_id,
+                        'order_id':order_id,
+                        'sales_note':sales_note
+                    },
+                    showLoader: true,
+                    cache: false,
+                    success: function (data, status, xhr) {
+
+                        $('#sales_note').val("");
+                        $('.divider-div.col-12').prepend(data);
+
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        console.log('Error' + errorMessage);
+                    }
+                });
+
+            });
+
+        });
+    });
+</script>
+<style>
+    .divider-div {
+        padding-top: 20px;
+    }
+
+    .divider-div .divider {
+        border-bottom: 1px solid #e2e2e2;
+        /*margin-bottom: 30px;*/
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-right: 15px;
+    }
+
+    .divider p:empty {
+        display: none;
+    }
+    .divider-div .divider:last {
+        border-bottom:none;
+    }
+
+    .divider-div h4 {
+        font-weight: bold;
+        margin-bottom: 0px;
+        font-size: 18px;
+    }
+
+    .divider-div p#subhead {
+        margin: 20px 0px;
+        font-size: 12px;
+    }
+
+    .divider p {
+        margin-bottom: 5px;
+    }
+
+    .note-list-by{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .note-list-content{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+</style>

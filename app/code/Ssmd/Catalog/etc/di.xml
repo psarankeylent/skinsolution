@@ -19,4 +19,5 @@
     <type name="Magento\Catalog\Ui\DataProvider\CatalogEavValidationRules">
         <plugin name="ssmd_product_attribute_validation" type="Ssmd\Catalog\Model\Plugin\Product\ValidationRules"/>
     </type>
+
 </config>

@@ -1,0 +1,244 @@
+<?php
+/**
+ * @package Ssmd_ZeroDollarOrders
+ * @version 1.0.0
+ * @category magento-module
+ */
+?>
+<?php /** @var  $block \Ssmd\ZeroDollarOrders\Block\Adminhtml\Order */ ?>
+
+<?php
+    $allowedAddressHtmlTags = ['b', 'br', 'em', 'i', 'li', 'ol', 'p', 'strong', 'sub', 'sup', 'ul'];
+?>
+<form id="create_form"
+      action="<?= /** @noEscape */ $block->getUrl('zerodollarorder/order/save',['_current' => true]);?>" method="post" enctype="multipart/form-data">
+    <?= $block->getBlockHtml('formkey') ?>
+
+    <input type="hidden" name="billing_address" value="<?= $block->getBillingAddressId()?>">
+    <input type="hidden" name="shipping_address" value="<?= $block->getShippingAddressId()?>">
+    <input type="hidden" name="customer_id" value="<?= $block->getCustomerId()?>">
+    <input type="hidden" id="product-ids" name="items" value="">
+
+    <div id="order-data">
+        <div class="page-create-order">
+            <div class="order-create-details">
+                <div class="admin__page-section-content">
+                    <div class="admin__page-section-item order-information">
+                        <div class="admin__page-section-item-title">
+                            <span class="title"><?= __('Customer Name');?></span>
+                         </div>
+                        <div class="admin__page-section-item-content">
+                            <p><?= /** @noEscape */ $block->getCustomerName();?></p>
+                        </div>
+                    </div>
+                </div>
+                <section id="order-form_account" class="admin__page-section order-addresses">
+                    <div class="admin__page-section-title">
+                        <span class="title"><?= __('Address Information');?></span>
+                    </div>
+                    <div class="admin__page-section-content">
+                        <div class="admin__page-section-item order-billing-address">
+                            <div class="admin__page-section-item-title">
+                                <span class="title"><?= __('Billing Address');?></span>
+                            </div>
+                            <address class="admin__page-section-item-content"><?= $block->escapeHtml($block->getFormattedAddress($block->getBillingAddress()), $allowedAddressHtmlTags); ?></address>
+                        </div>
+                        <div class="admin__page-section-item order-shipping-address">
+                            <div class="admin__page-section-item-title">
+                                <span class="title"><?= __('Shipping & Handling Information');?></span>
+                            </div>
+                            <address class="admin__page-section-item-content"><?= $block->escapeHtml($block->getFormattedAddress($block->getShippingAddress()), $allowedAddressHtmlTags); ?></address>
+                        </div>
+                    </div>
+                </section>
+                <section id="order-form_account" class="admin__page-section order-addresses">
+                    <div class="admin__page-section-title">
+                        <span class="title"><?= __('Build Customer Cart');?></span>
+                    </div>
+                    <div id="customer_cart_fields" class="admin__page-section-content">
+                        <fieldset class="fieldset admin__fieldset " id="fieldset-main">
+                            <div class="admin__field field field-sku  required _required">
+                                <label class="label admin__field-label" for="product-sku" ><span>SKU</span></label>
+                                <div class="admin__field-control control">
+                                    <input id="product-sku" name="sku"  class="validate-email admin__control-text input-text admin__control-text required-entry _required" type="text">
+                                </div>
+                                <div class="admin__field-control">
+                                    <button id="add-product" title="Add Product" type="button" class="action- scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-action="<?= /** @noEscape */ $block->getUrl('zerodollarorder/order/addProduct',['_current' => false]);?>">
+                                        <span class="ui-button-text">
+                                            <span>Add</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </section>
+                <section id="order-items" class="admin__page-section order-items">
+                    <div class="admin__page-section-title">
+                        <strong class="title">Items Ordered</strong>
+                    </div>
+                    <div class="admin__table-wrapper">
+                        <table id="sales_order_cart_item_grid_table" class="data-table admin__table-primary order-tables">
+                            <thead>
+                                <tr class="headings">
+                                    <th class="col-sku">
+                                        <span>Sku</span>
+                                    </th>
+                                    <th class="col-name">
+                                        <span>Name</span>
+                                    </th>
+                                    <th class="col-rx-non-rx">
+                                        <span>Rx/Non-Rx</span>
+                                    </th>
+                                    <th class="col-action">
+                                        <span>Action</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="admin__page-section">
+                    <div class="admin__page-section-title">
+                        <span class="title">Order Total</span>
+                    </div>
+                    <div class="admin__page-section-content">
+                        <table class="data-table admin__table-secondary order-subtotal-table">
+                            <tbody>
+                                <tr class="col-0">
+                                    <td class="label">Subtotal</td>
+                                    <td>
+                                        <span><span class="price" id="subtotal-order">$0</span></span>
+                                    </td>
+                                </tr>
+                                <tr class="col-0">
+                                    <td class="label">Discount</td>
+                                    <td>
+                                        <span><span class="price"  id="discount-order">$0</span></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="col-0">
+                                    <td class="label"><b>Grand Total</b></td>
+                                    <td>
+                                        <span><span class="price">$0</span></span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="actions">
+                            <button id="submit-order" title="Submit Order" type="button" class="action-default scalable save submit-button primary" data-action="<?= /** @noEscape */ $block->getUrl('zerodollarorder/order/createOrder',['_current' => false]);?>" data-orderview="<?= /** @noEscape */ $block->getUrl('sales/order/view',['_current' => false]);?>">
+                                <span>Place Order</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    require([
+        "jquery",
+        "mage/url"
+    ], function ($, url) {
+        var Products = [];
+        function createList(products) {
+            var listTr = "";
+            var product_ids =[];
+            products.forEach(function(item) {
+                product_ids.push(item.id);
+                listTr +=`<tr class="even">
+                        <td data-column="entity_sku" class="a-right col-sku ">
+                        ${item.sku}
+                        </td>
+                        <td class="col-name ">
+                        ${item.name}
+                        </td>
+                        <td class="col-rx ">
+                        ${item.prescription}
+                        </td>
+                        <td class="a-right col-action ">
+                            <button id="product_id_${item.id}" data-product="${item.id}" title="Delete" type="button" class="action-default delete-product-cart" >
+                                <span>Delete</span>
+                            </button>
+                        </td>
+                    </tr>`;
+                });
+            $("#sales_order_cart_item_grid_table tbody").html(listTr);
+            $("#product-ids").val(product_ids);
+            setOrderTotal(products);
+        }
+        function setOrderTotal(products) {
+            var orderSubtotal = 0;
+            products.forEach(function(item) {
+                orderSubtotal += item.final_price;
+            })
+            $("#subtotal-order").html("$"+orderSubtotal);
+            $("#discount-order").html("-$"+orderSubtotal);
+        }
+        $("#create_form").submit(function(e){
+            e.preventDefault();
+            $("#add-product").trigger("click");
+        });
+        $(document).on("click", "#add-product", function(){
+            var requestUri = $(this).data('action')+'?isAjax=true';
+            $.ajax({
+                showLoader: true,
+                url: requestUri, 
+                data: {sku: $("#product-sku").val()},
+                type: "POST", 
+                dataType: 'json'
+            }).done(function (data) {
+                if(data.status) {
+                    var isExist = Products.filter(function (i,n){
+                        return i.id == data.id;
+                    });
+                    if(isExist.length > 0) {
+                        alert("Product Already Exist");
+                    } else {
+                        Products.push(data);
+                        createList(Products);
+                    }
+                    $("#product-sku").val("");
+                } else {
+                    alert(data.msg);
+                }
+            });
+        });
+        $("#sales_order_cart_item_grid_table").on("click", ".delete-product-cart", function(){
+            var productId = $(this).data('product');
+            var remainingProducts = Products.filter(function (i,n){
+                return i.id != productId;
+            });
+            Products = remainingProducts;
+            createList(Products);
+        });
+        $(document).on("click", "#submit-order", function(){
+            var createOrderUri = $(this).data('action')+'?isAjax=true';
+            var redirectUrl = $(this).data('orderview');
+            if(Products.length == 0){
+                alert("Please add item to cart!");
+                return true;
+            }
+            $.ajax({
+                showLoader: true,
+                url: createOrderUri, 
+                data: $("#create_form").serialize(),
+                type: "POST", 
+                dataType: 'json'
+            }).done(function (data) {
+                if(data.status) {
+                    window.location.href = redirectUrl+'order_id/'+data.order_id;
+                } else {
+                    alert(data);
+                }
+            });
+        });
+    });
+
+</script>

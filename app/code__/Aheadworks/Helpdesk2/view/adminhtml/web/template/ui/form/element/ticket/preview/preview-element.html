@@ -1,0 +1,6 @@
+<div class="admin__field-complex-element-preview">
+    <span class="preview" text="$data.getPreview()" data-bind="attr: $data.getBindAttributeMap()"/>
+    <span class="control" if="$data.isEditModeAllowed">
+        <button class="action-edit" data-bind="click: $data.enableEditMode.bind($data)"><span>edit</span></button>
+    </span>
+</div>

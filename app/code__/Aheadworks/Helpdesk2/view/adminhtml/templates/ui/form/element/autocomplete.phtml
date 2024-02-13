@@ -1,0 +1,41 @@
+<?php
+/* @var $block \Magento\Framework\View\Element\Template */
+
+/** @var \Aheadworks\Helpdesk2\ViewModel\JsonSerializer $jsonSerializer */
+$jsonSerializer = $block->getSerializerViewModel();
+
+$inputSelector = $block->getInputSelector();
+$serviceUrl = $block->getUrl($block->getServiceUrl());
+$suggestionsMap = $jsonSerializer->serialize($block->getSuggestionsMap());
+
+// @codingStandardsIgnoreFile
+?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'Aw_Helpdesk2_Autocomplete'
+    ], function() {
+        var initialInput = jQuery('<?= /* @noEscape */ $inputSelector; ?>'),
+            inputMap = <?= /* @noEscape */ $suggestionsMap; ?>,
+            loader = jQuery('<div class="autocomplete-loader"></div>');
+
+        initialInput.parent().parent().append(loader);
+        initialInput.autocomplete({
+            serviceUrl: '<?= /* @noEscape */ $serviceUrl; ?>',
+            minChars: 3,
+            onSearchStart : function() { loader.show() },
+            onSearchComplete: function() { loader.hide() },
+            onSelect: function(suggestion) {
+                jQuery.each(inputMap, function (key, pair) {
+                    jQuery(pair['input_selector']).val(suggestion[pair['suggestion_field']]);
+                    jQuery(pair['input_selector']).change();
+                });
+            },
+            onSearchError: function (query, jqXHR, textStatus, errorThrown) {
+                if (errorThrown == 'abort') {
+                    jQuery('body').notification('clear');
+                }
+            }
+        });
+    });
+</script>

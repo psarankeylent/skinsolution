@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="subscription_next_order_reminder" instance="Ssmd\Subscriptions\Cron\SubscriptionNextOrderReminder" method="execute">
+            <config_path>crontab/default/jobs/subscription_next_order_reminder/schedule/cron_expr</config_path>
+            <!--<config_path>crontab/default[group_name(id)]/jobs/subscription_next_order_reminder[job_name]/schedule/cron_expr</config_path> where schedule/cron_expr should be static -->
+        </job>
+    </group>
+</config>
+

@@ -1,0 +1,46 @@
+.aw-heldesk2__agent-container {
+    display: flex;
+    padding: 0;
+}
+.aw-heldesk2__agent-container .page-title-wrapper {
+    padding-right: 20px;
+}
+.aw_helpdesk2__agent-info {
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+.aw-heldesk2__agent-container {
+    padding: 20px 0;
+}
+.aw-heldesk2__agent-container .page-title-wrapper {
+    width: 60%;
+}
+.aw_helpdesk2__agent-info {
+    display: flex;
+    background-color: #fdfdfd;
+}
+.aw_helpdesk2__agent-info .info-content {
+    padding: 10px 0;
+    width: 65%;
+}
+.aw_helpdesk2__agent-info .info-content .manager-name {
+    margin-top: 1px;
+    margin-bottom: 10px;
+}
+.aw_helpdesk2__agent-info .info-content .contact-data {
+    padding-bottom: 10px;
+}
+.aw_helpdesk2__agent-info .info-content .contact-data .manager-number {
+    color: #000000;
+}
+.aw_helpdesk2__agent-info .info-image {
+    float: right;
+    width: 35%;
+}
+.aw_helpdesk2__agent-info .info-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.aw_helpdesk2__agent-info .additional-info {
+    display: block;
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Additional filtered attributes pool for search criteria builder -->
+    <type name="Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesPool">
+        <arguments>
+            <argument name="attributesInstances" xsi:type="array">
+                <!-- list query names -->
+                <item name="awHelpdesk2TicketList" xsi:type="object">Aheadworks\Helpdesk2GraphQl\Model\Resolver\Argument\Filter\TicketEntityAttributesForAst</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Argument\Filter\TicketEntityAttributesForAst" type="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Argument\Filter\EntityAttributesForAst">
+        <arguments>
+            <argument name="entityElementName" xsi:type="string">awHelpdesk2Ticket</argument>
+            <argument name="additionalAttributes" xsi:type="array">
+                <item name="0" xsi:type="string">customer_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Data Processor -->
+    <virtualType name="Aheadworks\Helpdesk2GraphQl\Model\DataProcessor\Ticket" type="Aheadworks\Helpdesk2GraphQl\Model\DataProcessor\CompositeProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="customer" xsi:type="object">Aheadworks\Helpdesk2GraphQl\Model\DataProcessor\Ticket\Customer</item>
+                <item name="externalUrl" xsi:type="object">Aheadworks\Helpdesk2GraphQl\Model\DataProcessor\Ticket\ExternalLink</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Processors Pool -->
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\DataProcessor\Pool">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketInterface" xsi:type="object">Aheadworks\Helpdesk2GraphQl\Model\DataProcessor\Ticket</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Resolvers -->
+    <virtualType name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\TicketListResolver" type="Aheadworks\Helpdesk2GraphQl\Model\Resolver\AbstractEntityListResolver">
+        <arguments>
+            <argument name="dataProvider" xsi:type="object">Aheadworks\Helpdesk2GraphQl\Model\DataProvider\TicketList</argument>
+            <argument name="argsModifier" xsi:type="object">Aheadworks\Helpdesk2GraphQl\Model\Resolver\Argument\Modifier\Ticket\CustomerId</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Mutations -->
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Mutation\Ticket\Close">
+        <arguments>
+            <argument name="closeCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Close</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Mutation\Ticket\Reopen">
+        <arguments>
+            <argument name="reopenCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Reopen</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Mutation\Ticket\Escalate">
+        <arguments>
+            <argument name="escalateCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Escalate</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Mutation\Ticket\Rate">
+        <arguments>
+            <argument name="rateCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Rate</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Mutation\Ticket\Reply">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\ReplyProcessor</argument>
+            <argument name="replyCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Reply</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\ReplyProcessor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="customerMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\CustomerTypeMessage</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2GraphQl\Model\Resolver\Mutation\Ticket\Create">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\FrontendProcessor</argument>
+            <argument name="createCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Create</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\FrontendProcessor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\General</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Store</item>
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Department</item>
+                <item name="customerMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\CustomerTypeMessage</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+                <item name="storefrontOption" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\StorefrontOption</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+</config>

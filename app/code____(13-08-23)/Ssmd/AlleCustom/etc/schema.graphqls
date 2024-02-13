@@ -1,0 +1,29 @@
+type Mutation {
+   saveAlleMember(input: AlleMemberSaveInput!): CustomOutput @resolver(class: "Ssmd\\AlleCustom\\Model\\Resolver\\SaveAlle") @doc(description:"Save Alle") 
+}
+
+input AlleMemberSaveInput @doc(description: "Alle Member Save Info") {
+    alle_email: String! @doc(description: "Alle Member Email")
+    alle_number: String! @doc(description: "Alle Member Number")
+    customer_id: Int! @doc(description: "Customer ID")
+    cart_id: Int! @doc(description: "Cart ID")
+    quote_id: Int! @doc(description: "Quote ID")
+    increment_id: String! @doc(description: "Order Increment ID")
+    alle_points: Int! @doc(description: "Alle points")
+}
+
+type CustomOutput @doc(description: "Output Alle") {
+    CustomAlleObject: AllDisplayOutput
+}
+
+type AllDisplayOutput @doc(description: "Alle info") {
+    id: Int
+    increment_id: String
+    customer_id: Int
+    cart_id: Int
+    is_bdn: Int
+    quote_id: Int
+    bdn: String
+    brilliantcoupon1: String
+}
+

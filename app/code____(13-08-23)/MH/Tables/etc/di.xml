@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="MH\Tables\Api\MhByOrdersRepositoryInterface" type="MH\Tables\Model\MhByOrdersRepository"/>
+	<preference for="MH\Tables\Api\Data\MhByOrdersInterface" type="MH\Tables\Model\Data\MhByOrders"/>
+	<preference for="MH\Tables\Api\Data\MhByOrdersSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

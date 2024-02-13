@@ -1,0 +1,16 @@
+type Query {
+    getCustomerProductResponseStatusData: CustomerOutput @resolver(class: "\\Customer\\Attr\\Model\\Resolver\\GetCustomerProductData") @doc(description:"Customer Product Response")
+}
+
+type Mutation {
+    updateCustomerProductResponseStatusData (input: CustomerInput): CustomerOutput @resolver(class: "\\Customer\\Attr\\Model\\Resolver\\UpdateCustomerProductData") @doc(description:"Customer Product Response")
+}
+
+input CustomerInput {
+    customer_product_response: String @doc(description: "Customer Product Response")
+}
+
+type CustomerOutput {
+    customer_id: Int @doc(description: "Customer Id")
+    customer_product_response: String @doc(description: "Customer product status")
+}

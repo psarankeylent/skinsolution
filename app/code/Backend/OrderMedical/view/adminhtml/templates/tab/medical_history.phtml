@@ -1,0 +1,31 @@
+<?php $medicalHistoryArr = $block->getOrderMedicalHistory(); ?>
+
+<div class="fieldset-wrapper-title">
+    <strong class="title">
+        <span>Medical History</span>
+    </strong>
+</div>
+
+<?php
+$medicalHistoryArr=[];
+if($medicalHistoryArr):
+
+    foreach ($medicalHistoryArr as $medicalHistory) { ?>
+        <div class="admin__field" style="padding: 14px 0;margin-top: 0">
+            <div style="line-heigth:100px !important;">
+                <label>
+                    <span></span>
+                </label>
+            </div>
+            <div class="admin__field-control">
+                <span id="current_score_credit"><b><?php echo $medicalHistory['question_text']?></b> : <?php echo $medicalHistory['response']?></span>
+
+            </div>
+        </div>
+    <?php }?>
+<?php else: ?>
+    <div><h4 style="margin-top:40px;">Moved!</h4>
+        <p>Please see customer screen for medical history. </p>
+    </div>
+
+<?php endif; ?>

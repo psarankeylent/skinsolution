@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+	<!-- <type name="CustomReports\DownloadReports\Model\Export\ConvertToCsv">
+	    <arguments>
+	        <argument name="metadataProvider" xsi:type="object">CustomReports\DownloadReports\Model\Export\MetadataProvider</argument>
+	    </arguments>
+	</type>
+	<type name="CustomReports\DownloadReports\Controller\Adminhtml\Index\Index">
+	    <arguments>
+	        <argument name="converter" xsi:type="object">\CustomReports\DownloadReports\Model\Export\ConvertToCsv</argument>
+	    </arguments>
+	</type> -->
+
+
+</config>

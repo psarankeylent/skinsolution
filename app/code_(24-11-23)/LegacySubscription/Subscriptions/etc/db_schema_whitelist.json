@@ -1,0 +1,51 @@
+{
+    "ssmd_web_customer_subscriptions": {
+        "column": {
+            "id": true,
+            "profile_id": true,
+            "customer_id": true,
+            "status": true,
+            "amount": true,
+            "discount_amount": true,
+            "title": true,
+            "period_length": true,
+            "period_unit": true,
+            "regular_price": true,
+            "trial_price": true,
+            "sku": true,
+            "create_date": true,
+            "last_update_date": true,
+            "bill_first_name": true,
+            "bill_last_name": true,
+            "bill_address": true,
+            "bill_city": true,
+            "bill_state": true,
+            "bill_country": true,
+            "bill_zip": true,
+            "bill_telephone": true,
+            "ship_first_name": true,
+            "ship_last_name": true,
+            "ship_address": true,
+            "ship_city": true,
+            "ship_state": true,
+            "ship_country": true,
+            "ship_zip": true,
+            "ship_telephone": true,
+            "address_updated": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "lagecy_subscription": {
+        "column": {
+            "id": true,
+            "legacy_subscription": true,
+            "order_id": true,
+            "order_increment_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

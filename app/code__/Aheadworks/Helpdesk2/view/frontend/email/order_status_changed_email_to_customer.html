@@ -1,0 +1,24 @@
+<!--@subject [#{{var ticket.uid}}] Order #{{var order.increment_id}} has been referred to review @-->
+<!--@styles .aw-helpdesk2-note {color: gray; font-size: 85%;} .aw-helpdesk2-reply-marker {background-color: lightgray; font-size: 85%; text-align: center;} @-->
+<!--@vars {
+"var ticket": "Ticket",
+"var order": "Order",
+"var store": "Store",
+"var external_url": "Ticket external URL"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<strong>Dear, {{var ticket.customer_name}}.</strong><br/><br/>
+
+You are kindly informed that the order #{{var order.increment_id}} has just been referred to review.<br/><br/>
+
+The order details will be reviewed no later than within 24 hours on business days. As soon as the order is approved and completed, you will be able to download purchased product(s).<br/><br/>
+
+<strong>Customer Support,</strong><br/>
+{{var store.frontend_name}}<br/><br/>
+
+<div class="aw-helpdesk2-note">
+    Do not reply here. You can update the ticket <a href="{{store url='customer/support/view'}}id/{{var ticket.entity_id}}/">via web interface</a>.
+</div>
+
+{{template config_path="design/email/footer_template"}}

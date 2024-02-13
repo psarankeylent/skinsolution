@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>    
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Ui\Block\Wrapper"
+                   name="aw_helpdesk2.ticket.listing"
+                   template="Aheadworks_Helpdesk2::customer/ticket/listing.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="uiComponent" xsi:type="string">aw_helpdesk2_ticket_frontend_listing</argument>
+                    <argument name="additionalClasses" xsi:type="string">aw_helpdesk2__ticket-listing</argument>
+                </arguments>
+            </block>
+            <block name="aw_helpdesk2.ticket.button.create" template="Aheadworks_Helpdesk2::customer/ticket/button/create.phtml"/>
+
+            <!-- <block class="Enhance\Customer\Block\Account\Dashboard\Info" name="customer_custom_sidebar" as="customer_custom_sidebar" 
+template="Magento_Customer::account/dashboard/custom_sidebar.phtml" cacheable="false" /> -->
+
+        </referenceContainer>
+    </body>
+</page>

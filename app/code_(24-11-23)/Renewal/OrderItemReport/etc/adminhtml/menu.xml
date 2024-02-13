@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Renewal_OrderItemReport::renewal_orderitemreport" title="Order Item Report" translate="title" module="Renewal_OrderItemReport" sortOrder="60" parent="Magento_Reports::AdminGrid_Top" action="reports/orderitemreport/index" resource="Renewal_OrderItemReport::renewal_orderitemreport"/>
+    </menu>
+</config>

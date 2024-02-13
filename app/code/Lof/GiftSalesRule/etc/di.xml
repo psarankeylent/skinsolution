@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category  Lof
+ * @package   Lof\GiftSalesRule
+ * @author    Landofcoder <landofcoder@gmail.com>
+ * @copyright 2020 Landofcoder
+ * @license   http://www.landofcoder.com/LICENSE-1.0.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- plugins -->
+    <type name="Magento\SalesRule\Model\Rule\Metadata\ValueProvider">
+        <plugin name="gift_sales_rules_value_provider" type="Lof\GiftSalesRule\Plugin\Model\Rule\Metadata\ValueProviderPlugin" />
+    </type>
+    <type name="Magento\SalesRule\Api\RuleRepositoryInterface">
+        <plugin name="gift_sales_rules_repository" type="Lof\GiftSalesRule\Plugin\Model\RuleRepositoryPlugin"/>
+    </type>
+    <type name="Magento\SalesRule\Model\Rule\Condition\Product">
+        <plugin name="gift_sales_rules_condition_product" type="Lof\GiftSalesRule\Plugin\Model\Rule\Condition\ProductPlugin" />
+    </type>
+    <type name="Magento\SalesRule\Model\Utility">
+        <plugin name="gift_sales_rules_utility" type="Lof\GiftSalesRule\Plugin\Model\UtilityPlugin" />
+    </type>
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="gift_sales_rules_avoid_reorder" type="Lof\GiftSalesRule\Plugin\Checkout\Model\Cart" />
+    </type>
+
+    <!-- Proxy -->
+    <type name="Lof\GiftSalesRule\Model\GiftRuleService">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Lof\GiftSalesRule\Model\Rule\Action\Discount\OfferProduct">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Lof\GiftSalesRule\Model\Rule\Action\Discount\OfferProductPerPriceRange">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Lof\GiftSalesRule\Observer\CollectGiftRule">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Lof\GiftSalesRule\Observer\SetNumberOfferedProduct">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Lof\GiftSalesRule\Helper\GiftRule">
+        <arguments>
+            <argument name="giftRule" xsi:type="array">
+                <item name="1" xsi:type="const">Lof\GiftSalesRule\Api\Data\GiftRuleInterface::OFFER_PRODUCT</item>
+                <item name="2" xsi:type="const">Lof\GiftSalesRule\Api\Data\GiftRuleInterface::OFFER_PRODUCT_PER_PRICE_RANGE</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\SalesRule\Model\Rule\Action\Discount\CalculatorFactory">
+        <arguments>
+            <argument name="discountRules" xsi:type="array">
+                <item name="offer_product" xsi:type="string">Lof\GiftSalesRule\Model\Rule\Action\Discount\OfferProduct</item>
+                <item name="offer_product_per_price_range" xsi:type="string">Lof\GiftSalesRule\Model\Rule\Action\Discount\OfferProductPerPriceRange</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Handlers -->
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="create_gift_rule" xsi:type="string">Lof\GiftSalesRule\Model\SalesRule\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="update_gift_rule" xsi:type="string">Lof\GiftSalesRule\Model\SalesRule\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="read_gift_rule" xsi:type="string">Lof\GiftSalesRule\Model\SalesRule\ReadHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Lof\GiftSalesRule\Api\Data\GiftRuleSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Lof\GiftSalesRule\Api\Data\GiftRuleInterface" type="Lof\GiftSalesRule\Model\GiftRule" />
+    <preference for="Lof\GiftSalesRule\Api\GiftRuleRepositoryInterface" type="Lof\GiftSalesRule\Model\GiftRuleRepository" />
+    <preference for="Lof\GiftSalesRule\Api\ProductGiftInterface" type="Lof\GiftSalesRule\Model\ProductGift" />
+    <preference for="Lof\GiftSalesRule\Api\GiftRuleServiceInterface" type="Lof\GiftSalesRule\Model\GiftRuleService" />
+    <preference for="Lof\GiftSalesRule\Api\Data\GiftRuleDataInterface" type="Lof\GiftSalesRule\Model\GiftRuleData" />
+    <preference for="Lof\GiftSalesRule\Api\Data\AddGiftItemInterface" type="Lof\GiftSalesRule\Model\Data\AddGiftItem" />
+    <preference for="Lof\GiftSalesRule\Api\Data\AddGiftRuleDataInterface" type="Lof\GiftSalesRule\Model\Data\AddGiftRuleData" />
+    <preference for="Lof\GiftSalesRule\Api\Data\AddGiftProductItemInterface" type="Lof\GiftSalesRule\Model\Data\AddGiftProductItem" />
+    <preference for="Lof\GiftSalesRule\Api\Data\GiftItemInterface" type="Lof\GiftSalesRule\Model\Data\GiftItem" />
+     <preference for="Lof\GiftSalesRule\Api\Data\CartItemInterface" type="Lof\GiftSalesRule\Model\Data\CartItem" />
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Lof\GiftSalesRule\Api\Data\GiftRuleRepository" xsi:type="string">Lof\GiftSalesRule\Api\GiftRuleRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Lof\GiftSalesRule\Api\Data\GiftRuleInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">lof_gift_salesrule</item>
+                    <item name="identifierField" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Lof\GiftSalesRule\Api\Data\GiftRuleInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Use the Gift Sales Rules Applier -->
+    <type name="Magento\SalesRule\Model\Validator">
+        <arguments>
+            <argument name="rulesApplier" xsi:type="object">Lof\GiftSalesRule\Model\RulesApplier</argument>
+        </arguments>
+    </type>
+</config>

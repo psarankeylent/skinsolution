@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="aw_helpdesk_ticket_data" class="Aheadworks\Helpdesk2\Ui\Component\Form\Customer\TicketFieldset">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="string">aw_helpdesk2__ticket_section</item>
+            </item>
+        </argument>
+        <settings>
+            <label translate="true">Helpdesk Tickets</label>
+        </settings>
+        <button name="create_ticket_button" class="Aheadworks\Helpdesk2\Ui\Component\Form\Customer\RedirectButton" component="Aheadworks_Helpdesk2/js/ui/form/components/customer/redirect-button">
+            <settings>
+                <title translate="true">Create Ticket</title>
+            </settings>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="buttonClasses" xsi:type="string">create-ticket-button</item>
+                    <item name="pathToRedirect" xsi:type="string">aw_helpdesk2/ticket/create</item>
+                    <item name="paramName" xsi:type="string">customer_id</item>
+                    <item name="requestParamName" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </button>
+        <insertListing name="aw_helpdesk2_customer_ticket_listing">
+            <settings>
+                <autoRender>true</autoRender>
+                <externalProvider>${ $.ns }.aw_helpdesk2_insert_customer_ticket_listing_data_source</externalProvider>
+                <ns>aw_helpdesk2_insert_customer_ticket_listing</ns>
+                <externalFilterMode>true</externalFilterMode>
+                <imports>
+                    <link name="customer_id">${ $.provider }:data.customer_id</link>
+                </imports>
+                <exports>
+                    <link name="customer_id">${ $.externalProvider }:params.customer_id</link>
+                </exports>
+                <dataLinks>
+                    <exports>false</exports>
+                    <imports>true</imports>
+                </dataLinks>
+            </settings>
+        </insertListing>
+    </fieldset>
+</form>

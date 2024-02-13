@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>columns</spinner>
+        <deps>
+            <dep>aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_insert_thread_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="\Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\Thread\AllProvider"
+                      name="aw_helpdesk2_insert_thread_listing_data_source">
+            <settings>
+                <requestFieldName>ticket_id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/thread/listing</item>
+                <item name="displayMode" xsi:type="string">list</item>
+                <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-tabs-all</item>
+
+                <item name="tabs" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">All</item>
+                        <item name="showCountInLabel" xsi:type="boolean">false</item>
+                        <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-tabs-all</item>
+                        <item name="tabIndex" xsi:type="string">tab-all</item>
+                    </item>
+                    <item name="1" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Discussion</item>
+                        <item name="showCountInLabel" xsi:type="boolean">false</item>
+                        <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-tabs-discussion</item>
+                        <item name="tabIndex" xsi:type="string">tab-discussion</item>
+                        <item name="messageType" xsi:type="array">
+                            <item name="0" xsi:type="string">admin-message</item>
+                            <item name="1" xsi:type="string">customer-message</item>
+                            <item name="2" xsi:type="string">escalation-message</item>
+                        </item>
+                    </item>
+                    <item name="2" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Notes</item>
+                        <item name="showCountInLabel" xsi:type="boolean">true</item>
+                        <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-tabs-notes</item>
+                        <item name="tabIndex" xsi:type="string">tab-notes</item>
+                        <item name="messageType" xsi:type="string">admin-internal</item>
+                    </item>
+                    <item name="3" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">History</item>
+                        <item name="showCountInLabel" xsi:type="boolean">false</item>
+                        <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-tabs-history</item>
+                        <item name="tabIndex" xsi:type="string">tab-history</item>
+                        <item name="messageType" xsi:type="array">
+                            <item name="0" xsi:type="string">system-message</item>
+                            <item name="1" xsi:type="string">ticket-lock-message</item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+
+        <column name="author_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-ticket-message-author-name</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-ticket-message-date</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="quote_button" component="Aheadworks_Helpdesk2/js/ui/grid/ticket/columns/quote-button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-ticket-message-quote-button</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/grid/ticket/columns/cells/quote-button</item>
+                    <item name="title" xsi:type="string" translate="true">Quote</item>
+                    <item name="targetElementName" xsi:type="string">aw_helpdesk2_ticket_view_form.aw_helpdesk2_ticket_view_form.general.aw-helpdesk2_wrapper.main.message_area.content</item>
+                </item>
+            </argument>
+        </column>
+        <column name="content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-ticket-message-content</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/iframe</item>
+                </item>
+            </argument>
+        </column>
+        <column name="attachments" sortOrder="40" class="Aheadworks\Helpdesk2\Ui\Component\Listing\Ticket\Columns\AttachmentsColumn">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">attachments</item>
+                    <item name="isBackend" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <bodyTmpl>Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/attachments</bodyTmpl>
+            </settings>
+        </column>
+    </columns>
+</listing>

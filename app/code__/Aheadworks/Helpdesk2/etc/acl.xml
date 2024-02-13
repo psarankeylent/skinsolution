@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Customer::customer">
+                    <resource id="Aheadworks_Helpdesk2::home" title="Help Desk Ultimate 2 by Aheadworks" sortOrder="120">
+                        <resource id="Aheadworks_Helpdesk2::tickets" title="Tickets" sortOrder="10"/>
+                        <resource id="Aheadworks_Helpdesk2::departments" title="Departments" sortOrder="20"/>
+                        <resource id="Aheadworks_Helpdesk2::gateways" title="Gateways" sortOrder="30"/>
+                        <resource id="Aheadworks_Helpdesk2::automations" title="Automations" sortOrder="40"/>
+                        <resource id="Aheadworks_Helpdesk2::rejecting_patterns" title="Rejecting Patterns" sortOrder="50"/>
+                        <resource id="Aheadworks_Helpdesk2::rejected_messages" title="Rejected Messages" sortOrder="60"/>
+                        <resource id="Aheadworks_Helpdesk2::quick_responses" title="Quick Responses" sortOrder="70"/>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Aheadworks_Helpdesk2::config_aw_helpdesk2" title="Help Desk Ultimate 2 by Aheadworks"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

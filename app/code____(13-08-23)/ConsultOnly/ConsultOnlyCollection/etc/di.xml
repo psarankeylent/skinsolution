@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="ConsultOnly\ConsultOnlyCollection\Api\ConsultOnlyRepositoryInterface" type="ConsultOnly\ConsultOnlyCollection\Model\ConsultOnlyRepository"/>
+	<preference for="ConsultOnly\ConsultOnlyCollection\Api\Data\ConsultOnlyInterface" type="ConsultOnly\ConsultOnlyCollection\Model\Data\ConsultOnly"/>
+	<preference for="ConsultOnly\ConsultOnlyCollection\Api\Data\ConsultOnlySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

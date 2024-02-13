@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_form">
+            <action method="addTab">
+                <argument name="name" xsi:type="string">customTickets_grid</argument>
+                <argument name="block" xsi:type="string">customTickets_tab</argument>
+            </action>
+            <block class="Ssmd\CustomTickets\Block\Adminhtml\Customer\Edit\Tab\Tickets" name="customTickets_tab">
+                <arguments>
+                    <argument name="sort_order" xsi:type="number">30</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

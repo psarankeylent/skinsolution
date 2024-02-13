@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu" name="aw_helpdesk2_menu">
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.tickets">
+            <arguments>
+                <argument name="path" xsi:type="string">*/ticket/index</argument>
+                <argument name="label" xsi:type="string">Tickets</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::tickets</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">ticket</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.departments">
+            <arguments>
+                <argument name="path" xsi:type="string">*/department/index</argument>
+                <argument name="label" xsi:type="string">Departments</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::departments</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">department</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.gateways">
+            <arguments>
+                <argument name="path" xsi:type="string">*/gateway/index</argument>
+                <argument name="label" xsi:type="string">Gateways</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::gateways</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">gateway</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.automations">
+            <arguments>
+                <argument name="path" xsi:type="string">*/automation/index</argument>
+                <argument name="label" xsi:type="string">Automations</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::automations</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">automation</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.rejecting_patterns">
+            <arguments>
+                <argument name="path" xsi:type="string">*/rejecting_pattern/index</argument>
+                <argument name="label" xsi:type="string">Rejecting Patterns</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::rejecting_patterns</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">rejecting_pattern</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.rejected_messages">
+            <arguments>
+                <argument name="path" xsi:type="string">*/rejecting_message/index</argument>
+                <argument name="label" xsi:type="string">Rejected Messages</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::rejected_messages</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">rejecting_message</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.quick_response">
+            <arguments>
+                <argument name="path" xsi:type="string">*/quickresponse/index</argument>
+                <argument name="label" xsi:type="string">Quick Responses</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::quick_responses</argument>
+                <argument name="controllers" xsi:type="array">
+                    <item name="0" xsi:type="string">quickresponse</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.settings">
+            <arguments>
+                <argument name="path" xsi:type="string">adminhtml/system_config/edit/section/aw_helpdesk2</argument>
+                <argument name="label" xsi:type="string">Settings</argument>
+                <argument name="resource" xsi:type="string">Aheadworks_Helpdesk2::config_aw_helpdesk2</argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.readme">
+            <arguments>
+                <argument name="label" xsi:type="string">Readme</argument>
+                <argument name="link_attributes" xsi:type="array">
+                    <item name="href" xsi:type="string">https://aheadworks.atlassian.net/wiki/spaces/EUDOC/pages/2479718401/Help+Desk+Ultimate+2+-+Magento+2</item>
+                    <item name="target" xsi:type="string">_blank</item>
+                    <item name="class" xsi:type="string">separator</item>
+                </argument>
+            </arguments>
+        </block>
+        <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Page\Menu\Item" name="aw_helpdesk2_menu_item.support">
+            <arguments>
+                <argument name="label" xsi:type="string">Get Support</argument>
+                <argument name="link_attributes" xsi:type="array">
+                    <item name="href" xsi:type="string">http://ecommerce.aheadworks.com/contacts/</item>
+                    <item name="target" xsi:type="string">_blank</item>
+                </argument>
+            </arguments>
+        </block>
+    </block>
+</layout>

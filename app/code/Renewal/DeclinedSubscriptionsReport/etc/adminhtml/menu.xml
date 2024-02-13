@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::declinedsubscription_report" title="Legacy Declined Subscription Report M2" translate="title" module="Renewal_DeclinedSubscriptionsReport" sortOrder="90" parent="Magento_Reports::AdminGrid_Top" action="reports/declinedsubscriptionsreport/index" resource="Magento_Reports::declinedsubscription_report"/>
+    </menu>
+</config>
+

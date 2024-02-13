@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!--  Sales Note table  -->
+    <table name="sales_notes">
+        <column xsi:type="int" name="id" identity="true" unsigned="true" nullable="false" comment="Sales Note Primary ID"/>
+        <column xsi:type="text" name="sales_note" nullable="true" comment="Sales Note"/>
+        <column xsi:type="int" name="admin_user_id" nullable="true" comment="Admin User ID"/>
+        <!-- <column xsi:type="int" name="mage_customer_id" nullable="true" comment="Customer ID"/> -->
+        <column xsi:type="int" name="order_id" nullable="true" comment="Order ID"/>
+        <column xsi:type="timestamp" default="CURRENT_TIMESTAMP" name="created_at" comment="Time of note created"/>
+        <!--  Primary Id  -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

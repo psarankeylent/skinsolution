@@ -1,0 +1,15 @@
+type Query {
+    customerOrders: CustomerOrders @resolver(class: "Ssmd\\Sales\\Model\\Resolver\\Orders") @doc(description: "SSMD - List of customer orders") @cache(cacheable: false)
+
+    customerOrder(order_number: String!): CustomerOrder @resolver(class: "Ssmd\\Sales\\Model\\Resolver\\Order") @doc(description: "SSMD - Customer Order") @cache(cacheable: false)
+}
+
+type CustomerOrder {
+    payment_details: String @doc(description: "SSMD - Customer Order Payment Details")
+    shipping_description: String @doc(description: "SSMD - Customer Order Shipping Description")
+    shipping_address: String @doc(description: "SSMD - Customer Order Shipping Address details")
+    billing_address: String @doc(description: "SSMD - Customer Order Billing Address")
+    order_items: String @doc(description: "SSMD - Customer Order list of Items")
+    tax: String @doc(description: "SSMD - Customer Order Tax Info Description")
+    order_info: String  @doc(description: "SSMD - Customer Order Other info like totals, charges and other misc info")
+}

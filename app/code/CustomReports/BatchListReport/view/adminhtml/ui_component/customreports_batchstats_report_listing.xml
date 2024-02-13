@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customreports_batchstats_report_listing.customreports_batchstats_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>customreports_batchstats_report_listing_columns</spinner>
+        <deps>
+            <dep>customreports_batchstats_report_listing.customreports_batchstats_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customreports_batchstats_report_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <!-- <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument> -->
+            <argument name="class" xsi:type="string">CustomReports\BatchListReport\Ui\DataProvider\BatchStatsDataProvider</argument>
+            <argument name="name" xsi:type="string">customreports_batchstats_report_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">batch_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="batch_id" xsi:type="string">*</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <!-- <filters name="listing_filters"/> -->
+        <paging name="listing_paging"/>
+        <!-- <exportButton name="export_button" /> -->
+        <exportButton name="export_button" class="CustomReports\BatchListReport\Ui\Component\ExportButton">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">customreports_batchstats_report_listing.customreports_batchstats_report_listing.customreports_batchstats_report_listing_columns.ids</item>
+                </item>
+            </argument>
+        </exportButton>
+
+    </listingToolbar>
+    <columns name="customreports_batchstats_report_listing_columns">
+        <selectionsColumn name="ids">
+            <!-- <settings>
+                <indexField>id</indexField>
+            </settings> -->
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="batch_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Batch ID</label>
+            </settings>
+        </column>
+        <column name="account_type">
+            <settings>
+                <label translate="true">Account Type</label>
+            </settings>
+        </column>
+        <column name="total_amount_charged">
+            <settings>
+                <label translate="true">Total Amount Charged</label>
+            </settings>
+        </column>
+        <column name="total_order_count">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Total Order Count</label>
+            </settings>
+        </column>
+        <column name="refund_amount">
+            <settings>
+                <label translate="true">Refund Amount</label>
+            </settings>
+        </column>
+        <column name="refund_count">
+            <settings>
+                <label translate="true">Refund Count</label>
+            </settings>
+        </column>
+        <column name="void_count">
+            <settings>
+                <label translate="true">Void Count</label>
+            </settings>
+        </column>
+        <column name="decline_count">
+            <settings>
+                <label translate="true">Decline Count</label>
+            </settings>
+        </column>
+        <column name="error_count">
+            <settings>
+                <label translate="true">Error Count</label>
+            </settings>
+        </column>
+        <column name="batch_date">
+            <settings>
+                <label translate="true">Batch Date</label>
+            </settings>
+        </column>
+        <column name="create_date">
+            <settings>
+                <label translate="true">Create Date</label>
+            </settings>
+        </column>
+        <column name="update_date">
+            <settings>
+                <label translate="true">Update Date</label>
+            </settings>
+        </column>
+        <column name="returned_item_amount">
+            <settings>
+                <label translate="true">Returned Item Amount</label>
+            </settings>
+        </column>
+        <column name="returned_item_count">
+            <settings>
+                <label translate="true">Returned Item Count</label>
+            </settings>
+        </column>
+        <column name="chargeback_amount">
+            <settings>
+                <label translate="true">Chargeback Amount</label>
+            </settings>
+        </column>
+        <column name="chargeback_count">
+            <settings>
+                <label translate="true">Chargeback Count</label>
+            </settings>
+        </column>
+
+
+    </columns>
+</listing>

@@ -1,0 +1,67 @@
+<?php /** @var \ParadoxLabs\Subscriptions\Block\Customer\Index $block */ ?>
+<?php /* @codingStandardsIgnoreFile */ ?>
+<?php $subscriptions = $block->getCollection(); ?>
+
+<?= $block->getChildHtml('info');?>
+
+<?php if ($subscriptions instanceof \ParadoxLabs\Subscriptions\Model\ResourceModel\Subscription\Collection && $subscriptions->count() > 0): ?>
+    <?= $block->getToolbarHtml() ?>
+
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-subscriptions-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('My Subscriptions')) ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?= $block->escapeHtml(__('Ref #')) ?></th>
+                <th scope="col" class="col description"><?= $block->escapeHtml(__('Description')) ?></th>
+                <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                <th scope="col" class="col frequency"><?= $block->escapeHtml(__('Frequency')) ?></th>
+                <th scope="col" class="col total"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+                <th scope="col" class="col date"><?= $block->escapeHtml(__('Last Run')) ?></th>
+                <th scope="col" class="col date"><?= $block->escapeHtml(__('Next Run')) ?></th>
+                <th scope="col" class="col actions">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php /** @var \ParadoxLabs\Subscriptions\Model\Subscription $subscription */ ?>
+            <?php foreach ($subscriptions as $subscription): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Ref #')) ?>" class="col id"><?= $block->escapeHtml($subscription->getIncrementId()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Description')) ?>" class="col description"><?= $block->escapeHtml($subscription->getDescription()) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>" class="col status"><?= $block->escapeHtml($block->getStatus($subscription)) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Frequency')) ?>" class="col frequency"><?= $block->escapeHtml($block->getFrequencyLabel($subscription)) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Subtotal')) ?>" class="col total"><?= $block->escapeHtml($block->getSubtotal($subscription)) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Last Run')) ?>" class="col date"><?= $block->escapeHtml($block->formatDate($subscription->getLastRun())) ?></td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Next Run')) ?>" class="col date">
+                        <?php if ($subscription->getStatus() === \ParadoxLabs\Subscriptions\Model\Source\Status::STATUS_ACTIVE): ?>
+                            <?= $block->escapeHtml($block->formatDate($subscription->getNextRun())); ?>
+                        <?php else: ?>
+                            <?= $block->escapeHtml(__('-')); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Actions')) ?>" class="col actions">
+                        <a href="<?= $block->escapeUrl($block->getViewUrl($subscription)) ?>" class="action view">
+                            <span><?= $block->escapeHtml(__('View')) ?></span>
+                        </a>
+                        <?php if ($block->getStatusSource()->canSetStatus($subscription, \ParadoxLabs\Subscriptions\Model\Source\Status::STATUS_CANCELED)): ?>
+                            <a href="<?= $block->escapeUrl($block->getEditUrl($subscription)) ?>" class="action edit">
+                                <span><?= $block->escapeHtml(__('Edit')) ?></span>
+                            </a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?php if ($block->getConfig()->subtotalShouldIncludeTax()): ?>
+        <p class="subtotal-notice message warning"><?= $block->escapeHtml(__('Note: Subtotals do not include shipping or other possible surcharges. Actual order totals may vary over time.')); ?></p>
+    <?php else: ?>
+        <p class="subtotal-notice message warning"><?= $block->escapeHtml(__('Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.')); ?></p>
+    <?php endif; ?>
+
+    <?= $block->getToolbarBlock()->getPagerHtml() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= $block->escapeHtml(__('You have not purchased any subscriptions.')); ?></span></div>
+<?php endif ?>

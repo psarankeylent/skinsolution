@@ -1,0 +1,30 @@
+//
+//  Ticket grid
+//  _____________________________________________
+
+.aw_helpdesk2-ticket-index {
+    .data-grid {
+        tr {
+            &.highlight-same-customer-ticket {
+                td {
+                    background-color: #dbf0e0;
+                }
+            }
+
+            &.highlight-last-reply-admin-ticket {
+                td {
+                    background-color: #fffbe0;
+                }
+            }
+        }
+    }
+}
+
+.aw_helpdesk2-ticket-index,
+.aw_helpdesk2__ticket_section,
+.aw_helpdesk2-rejecting_message-index,
+#sales_order_view_tabs_aw_helpdesk2_order_tickets_content {
+    .admin__data-grid-wrap {
+        overflow-x: visible;
+    }
+}

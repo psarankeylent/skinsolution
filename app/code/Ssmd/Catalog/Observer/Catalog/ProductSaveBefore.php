@@ -13,10 +13,14 @@ class ProductSaveBefore implements \Magento\Framework\Event\ObserverInterface
     private $helper;
 
     public function __construct(
+        \Backend\CatalogTracking\Model\CatalogTrackingFactory  $catalogTrackingFactory,
+        \Magento\Backend\Model\Auth\Session $adminSession,
         Product $helper
     )
     {
-        $this->helper = $helper;
+        $this->helper       = $helper;
+        $this->adminSession = $adminSession;
+        $this->catalogTrackingFactory = $catalogTrackingFactory;
     }
 
     /**
@@ -35,6 +39,9 @@ class ProductSaveBefore implements \Magento\Framework\Event\ObserverInterface
         //$this->updateProductMiscAttributes($product);
         $this->updateCategoryNameAttributeValue($product);
         $this->udpateSpecialPriceDiscountPercentAttributeValue($product);
+
+        $this->catalogTracking($product);
+
     }
 
     /*protected function updateProductMiscAttributes($product)
@@ -78,5 +85,25 @@ class ProductSaveBefore implements \Magento\Framework\Event\ObserverInterface
 
 
     }
+
+    protected function catalogTracking($product)
+    {
+        $beforeSaveProduct  = $product->getOrigData();
+        $afterSaveProduct   = $product->getData();
+
+        $beforeSaveProduct  = json_encode($beforeSaveProduct);
+        $afterSaveProduct  = json_encode($afterSaveProduct);
+
+        $adminUser = $this->adminSession->getUser()->getUsername();
+
+        $savedata = array('identifier' => $product->getSku(), 'user_name' => $adminUser, 'data_before_save' => $beforeSaveProduct, 'data_after_save' => $afterSaveProduct);
+
+        $catalogTracking = $this->catalogTrackingFactory->create();
+        $catalogTracking->setData($savedata);
+        $catalogTracking->save();
+
+    }
+
+
 }
 

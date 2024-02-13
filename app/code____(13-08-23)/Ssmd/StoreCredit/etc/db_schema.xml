@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="storecredit" resource="default" engine="innodb" comment="Storecredit">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="int" name="customer_id" nullable="true" comment="Customer id"/>
+        <column xsi:type="varchar" name="credits" nullable="true" length="55" comment="Credits"/>
+        <column xsi:type="varchar" name="action_by" nullable="true" length="55" comment="Action by"/>
+        <column xsi:type="text" name="comments" nullable="true"  comment="Comments"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="storecredit_order" resource="default" engine="innodb" comment="Storecredit Order">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <!--<column xsi:type="int" name="customer_id" nullable="true" comment="Customer id"/>-->
+        <column xsi:type="varchar" name="increment_id" nullable="true" length="55" comment="Increment id"/>
+        <column xsi:type="varchar" name="credits" nullable="true" length="55" comment="Credits"/>
+        <column xsi:type="varchar" name="refunded" nullable="true" length="55" comment="Refunded"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="storecredit_customer_balance" resource="default" engine="innodb" comment="Storecredit Customer Balance">
+        <column xsi:type="int" name="balance_id" unsigned="true" nullable="false" identity="true" comment="Balance Id"/>
+        <column xsi:type="int" name="customer_id" nullable="false" comment="Customer Id"/>
+        <column xsi:type="smallint" name="website_id" nullable="true" comment="Website Id"/>
+        <column xsi:type="decimal" name="amount" nullable="true" scale="4" precision="12" comment="Balance Amount"/>
+        <column xsi:type="varchar" name="base_currency_code" nullable="true" length="11" comment="Base Currency Code"/>
+        <column xsi:type="smallint" name="subscribe_updates" nullable="true" comment="Is subscribe updates balance"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="balance_id"/>
+        </constraint>
+    </table>
+    <table name="storecredit_customer_balance_history" resource="default" engine="innodb" comment="Storecredit Customer Balance">
+        <column xsi:type="int" name="history_id" unsigned="true" nullable="false" identity="true" comment="History Id"/>
+        <column xsi:type="int" name="balance_id" nullable="false" comment="Balance"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" comment="Updated At"/>
+        <column xsi:type="smallint" name="action" nullable="true" comment="Action"/>
+        <column xsi:type="varchar" name="operation_name" nullable="true" length="255" comment="Operation Name"/>
+        <column xsi:type="text" name="operation_data" nullable="true"  comment="Operation Data"/>
+        <column xsi:type="text" name="comment" nullable="true" comment="Comment"/>        
+        <column xsi:type="decimal" name="balance_amount" nullable="true" scale="4" precision="12" comment="Balance Amount"/>
+        <column xsi:type="decimal" name="balance_delta" nullable="true" scale="4" precision="12" comment="Balance Amount"/>
+        <column xsi:type="smallint" name="is_notified" nullable="true" comment="Is notified"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="history_id"/>
+        </constraint>
+    </table>
+</schema>

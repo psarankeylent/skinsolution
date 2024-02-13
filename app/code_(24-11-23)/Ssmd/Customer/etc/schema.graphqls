@@ -1,0 +1,58 @@
+type Mutation {
+    createCustomer (input: CustomerInput!): CustomerOutput @resolver(class: "\\Ssmd\\Customer\\Model\\Resolver\\CreateCustomer") @doc(description:"Create customer account")
+    requestPasswordResetEmail(email: String!): PasswordResetEmailResult @resolver(class: "\\Ssmd\\Customer\\Model\\Resolver\\RequestPasswordResetEmail") @doc(description: "Sends a password reset email to the customer.")
+    resetPassword(input: ResetPasswordInput!): ResetPasswordOutput @resolver(class: "\\Ssmd\\Customer\\Model\\Resolver\\ResetPassword") @doc(description: "Resets the customer's password.")
+    validateResetPasswordToken(input: ValidateResetPasswordInput!): ValidateResetPasswordOutput @resolver(class: "\\Ssmd\\Customer\\Model\\Resolver\\ValidateResetPasswordToken") @doc(description: "Validates the customer's reset password link.")
+}
+
+input ResetPasswordInput {
+  customer_id: Int!
+  reset_token: String!
+  new_password: String!
+}
+
+input ValidateResetPasswordInput {
+  customer_id: Int!
+  rp_token: String!
+}
+
+type ResetPasswordOutput {
+  token: String
+  firstname : String
+  lastname : String
+  email : String
+  status: String
+  message: String
+}
+
+type ValidateResetPasswordOutput {
+  status: String!
+  message: String!
+}
+
+type PasswordResetEmailResult {
+  status: String!
+  message: String!
+}
+
+input CustomerInput {
+    order_id: Int @doc(description: "Customer delegated Order Id")
+    telephone: String @doc(description: "Customer Telephone Number")
+    sms_text_messaging: Boolean @doc(description: "Customer SMS Text Messaging Status")
+}
+
+type Customer {
+    tokenBaseCards: [TokenBaseCard] @resolver(class: "ParadoxLabs\\TokenBase\\Model\\Api\\GraphQL\\GetCards") @doc(description: "Get the current customer's stored card(s), if any. Takes optional hash for a specific card.")
+    default_payment: String @doc(description: "The ID assigned to the payment info")
+    telephone: String @doc(description: "Customers Telephone Number")
+    sms_text_messaging: Boolean @doc(description: "Customers SMS Text Messaging Request Status")
+}
+
+type CustomerAddress {
+    ssmd_additionalinfo : SsmdAdditionalInfo @resolver(class: "Ssmd\\Customer\\Model\\Resolver\\CustomerAddress")
+}
+
+type SsmdAdditionalInfo {
+    last_used: String @doc(description: "The timestamp of an address last used in an order")
+    active_subscriptions: Int @doc(description: "The active subscriptions against the address")
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::renewal_notificationreport" title="Notification Reports" translate="title" module="Renewal_NotificationReport" sortOrder="40" parent="Magento_Reports::AdminGrid_Top" action="reports/notificationreport/index" resource="Magento_Reports::renewal_notificationreport"/>
+    </menu>
+</config>

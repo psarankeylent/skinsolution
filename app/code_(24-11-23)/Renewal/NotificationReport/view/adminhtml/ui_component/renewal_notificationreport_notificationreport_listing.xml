@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">renewal_notificationreport_notificationreport_listing.renewal_notificationreport_notificationreport_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>renewal_notificationreport_notificationreport_columns</spinner>
+		<deps>
+			<dep>renewal_notificationreport_notificationreport_listing.renewal_notificationreport_notificationreport_listing_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="renewal_notificationreport_notificationreport_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">notificationreport_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Renewal_NotificationReport::NotificationReport</aclResource>
+		<dataProvider name="renewal_notificationreport_notificationreport_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="renewal_notificationreport_notificationreport_columns">
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="customer_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Customer Id</label>
+			</settings>
+		</column>
+		<column name="prescription_name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Prescription Name</label>
+			</settings>
+		</column>
+		<column name="start_date">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Start Date</label>
+			</settings>
+		</column>
+		<column name="expiration_date">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Expiration Date</label>
+			</settings>
+		</column>
+		<column name="consultation_type">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Consultation Type</label>
+			</settings>
+		</column>
+		<column name="email_sent_status">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Email Sent Status</label>
+			</settings>
+		</column>
+		<column name="updated_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Updated At</label>
+			</settings>
+		</column>
+	</columns>
+</listing>

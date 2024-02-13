@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="mh_by_orders" resource="default" engine="innodb" comment="mh_by_orders Table">
+		<column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" />
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+		<column name="increment_id" nullable="true" xsi:type="varchar" length="55" />
+		<column name="customer_id" nullable="true" xsi:type="int" identity="false"/>
+		<column name="question_id" nullable="true" xsi:type="int" identity="false"/>
+		<column name="question_text" nullable="true" xsi:type="text" />
+		<column name="response" nullable="true" xsi:type="text" />
+		<column name="updated_at" nullable="true" xsi:type="timestamp" />
+	</table>
+</schema>

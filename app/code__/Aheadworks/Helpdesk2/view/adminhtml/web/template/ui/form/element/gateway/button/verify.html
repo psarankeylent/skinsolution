@@ -1,0 +1,15 @@
+<span if="isVerified()"
+      class="verify-label"
+      data-bind="i18n: verifiedSuccessMessage"></span>
+<button type="button"
+        click="action"
+        disable="disabled"
+        attr="'data-index': index">
+    <span text="title"></span>
+</button>
+<label if="isErrorThrown()"
+       class="admin__field-error"
+       text=error></label>
+<div if="isDisabled()" class="admin__field-note">
+    <span data-bind="i18n: notice"></span>
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="sales_order_tabs">
+            <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Order\View\Tab\Tickets" name="aw_helpdesk2_ticket.grid.container"/>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">aw_helpdesk2_order_tickets</argument>
+                <argument name="block" xsi:type="string">aw_helpdesk2_ticket.grid.container</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="aw_helpdesk2_ticket.grid.container">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="aw_helpdesk2_ticket.grid.create-ticket-button"
+                   template="Aheadworks_Helpdesk2::order/view/create-ticket-button.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\Order\CreateTicketButton</argument>
+                </arguments>
+            </block>
+            <uiComponent name="aw_helpdesk2_insert_customer_ticket_listing"/>
+            <block class="Aheadworks\Helpdesk2\Block\Adminhtml\Customer\TabActivator"
+                   name="aw_helpdesk2.grid.tab-activator">
+                <arguments>
+                    <argument name="param_to_trigger" xsi:type="string">tab</argument>
+                    <argument name="param_value" xsi:type="string">aw_hdu2</argument>
+                    <argument name="tab_id" xsi:type="string">sales_order_view_tabs_aw_helpdesk2_order_tickets</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

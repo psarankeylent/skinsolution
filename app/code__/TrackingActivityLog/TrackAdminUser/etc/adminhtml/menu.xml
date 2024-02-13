@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+       <add id="TrackingActivityLog_TrackAdminUser::adminuser_activity_tracker" title="Activity Logs" module="TrackingActivityLog_TrackAdminUser" sortOrder="50" action="trackAdminUser/index/index" resource="TrackingActivityLog_TrackAdminUser::adminuser_activity_tracker" />
+
+       <add id="TrackingActivityLog_TrackAdminUser::second_adminuser_activity_tracker" title="Activity Logs" module="TrackingActivityLog_TrackAdminUser" sortOrder="50" action="trackAdminUser/index/index" parent="TrackingActivityLog_TrackAdminUser::adminuser_activity_tracker"
+ resource="TrackingActivityLog_TrackAdminUser::adminuser_activity_tracker" />
+
+    </menu>
+
+</config>

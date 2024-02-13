@@ -1,0 +1,10 @@
+<?php
+/* @var $block \Magento\Framework\View\Element\Template */
+
+// @codingStandardsIgnoreFile
+?>
+<script>
+    window.addEventListener('message',function(event) {
+        event.source.postMessage(<?= /* @noEscape */ $block->getViewModel()->getResult(); ?>, event.origin);
+    },false);
+</script>

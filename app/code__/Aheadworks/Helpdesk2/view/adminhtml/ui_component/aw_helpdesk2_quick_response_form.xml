@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_quick_response_form.aw_helpdesk2_quick_response_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Quick Response</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_quick_response_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+            <button name="delete" class="Aheadworks\Helpdesk2\Block\Adminhtml\QuickResponse\Form\Button\Delete"/>
+            <button name="save" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Save"/>
+            <button name="save_and_continue" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\SaveAndContinue"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_quick_response_form.aw_helpdesk2_quick_response_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_quick_response_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_helpdesk2/quickresponse/save"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::quick_responses</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\QuickResponse\FormDataProvider" name="aw_helpdesk2_quick_response_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label></label>
+        </settings>
+        <field name="is_active" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Is Active</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="sort_order" formElement="input" sortOrder="15">
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Sort Order</label>
+                <validation>
+                    <rule name="validate-integer" xsi:type="boolean">true</rule>
+                    <rule name="validate-not-negative-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="title" formElement="input" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Title</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <dynamicRows name="storefront_labels" class="Aheadworks\Helpdesk2\Ui\Component\Form\Element\DynamicRows" component="Magento_Ui/js/dynamic-rows/dynamic-rows" template="ui/dynamic-rows/templates/default">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">quick_response</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="aw-helpdesk2">true</class>
+                    <class name="dynamic-rows">true</class>
+                    <class name="storefront_labels">true</class>
+                </additionalClasses>
+                <addButton>true</addButton>
+                <addButtonLabel translate="true">Add</addButtonLabel>
+                <defaultRecord>true</defaultRecord>
+                <pageSize>100</pageSize>
+                <dndConfig>
+                    <param name="enabled" xsi:type="boolean">false</param>
+                </dndConfig>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record" component="Aheadworks_Helpdesk2/js/ui/form/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="store_id" sortOrder="10" class="Aheadworks\Helpdesk2\Ui\Component\Form\Element\Store" component="Magento_Ui/js/form/element/select" template="ui/form/field" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="disableForDefaultRecord" xsi:type="boolean">true</item>
+                            <item name="default" xsi:type="string">0</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                        </item>
+                    </argument>
+                    <argument name="options" xsi:type="object">Aheadworks\Helpdesk2\Ui\Component\Listing\Columns\Store\Options</argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Store View</label>
+                        <dataScope>store_id</dataScope>
+                        <additionalClasses>
+                            <class name="select_field">true</class>
+                        </additionalClasses>
+                    </settings>
+                </field>
+                <field name="content" sortOrder="20" formElement="textarea">
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Quick Response Content</label>
+                        <dataScope>content</dataScope>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                    </settings>
+                </field>
+                <actionDelete name="action_delete" sortOrder="30">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="disableForDefaultRecord" xsi:type="boolean">true</item>
+                            <item name="fit" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <componentType>actionDelete</componentType>
+                        <additionalClasses>
+                            <class name="action_delete_button">true</class>
+                        </additionalClasses>
+                    </settings>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+    </fieldset>
+</form>

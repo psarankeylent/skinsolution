@@ -1,0 +1,43 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var \ParadoxLabs\Subscriptions\Block\Customer\View\Logs $block */
+?>
+<?php if (!empty($this->getCollection())): ?>
+    <div class="block block-subscription-info">
+        <div class="block-title"><strong><?= $block->escapeHtml(__('History')); ?></strong></div>
+        <div class="block-content">
+            <div class="subscription logs table-wrapper" data-mage-init='{}'>
+                <table id="subscription-log-table" class="subscription cart logs data table">
+                    <caption role="heading" aria-level="2" class="table-caption"><?= $block->escapeHtml(__('Subscription History')) ?></caption>
+                    <thead>
+                        <tr>
+                            <th class="col date" scope="col"><span><?= $block->escapeHtml(__('Date')) ?></span></th>
+                            <th class="col order" scope="col"><span><?= $block->escapeHtml(__('Order #')) ?></span></th>
+                            <th class="col description" scope="col"><span><?= $block->escapeHtml(__('Description')) ?></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php /** @var \ParadoxLabs\Subscriptions\Api\Data\LogInterface $log */ ?>
+                        <?php foreach ($this->getCollection() as $log): ?>
+                            <tr>
+                                <td><?= $block->escapeHtml($block->formatDate($log->getCreatedAt(), \IntlDateFormatter::MEDIUM)); ?></td>
+                                <td>
+                                    <?php if (!empty($log->getOrderId())): ?>
+                                        <a href="<?= $block->escapeUrl($block->getUrl('sales/order/view', ['order_id' => $log->getOrderId()])); ?>">
+                                            <?= $block->escapeHtml($log->getOrderIncrementId()); ?>
+                                        </a>
+                                    <?php elseif (!empty($log->getOrderIncrementId())): ?>
+                                        <?= $block->escapeHtml($log->getOrderIncrementId()); ?>
+                                    <?php else: ?>
+                                        -
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= $block->escapeHtml($log->getDescription()); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

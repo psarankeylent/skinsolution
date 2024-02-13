@@ -1,0 +1,260 @@
+<?php
+/*
+*
+*   $block = \ConsultOnly\ConsultOnlyTab\Block\Adminhtml\Customer\Edit\Tab\Prescriptions
+*
+*/
+?>
+
+<?php
+$customerId = $this->getRequest()->getParam('id');
+$data = $block->getPrescriptionsListByCustomer($customerId);
+?>
+
+<div class="fieldset-wrapper-title admin__fieldset-wrapper-title">
+    <strong><span class="title" style="font: bold;">Prescriptions</span></strong>
+</div>
+
+<?php if (!empty($data)): ?>
+    <div class="container-fuild">
+        <div class="container custom-container">
+            <div class="row">
+                <div class="divider-div col-12">
+                    <?php foreach ($data as $prescription): ?>
+                        <div class="divider">
+                            <table>
+                                <tr>
+                                    <th class="th">Prescription Name</th>
+                                    <td><h4><?php echo $prescription['prescription_name']; ?></h4></td>
+                                </tr>
+                                <tr>
+                                    <th class="th">Approval(Start) Date</th>
+                                    <td><h4><?php echo date('jS F, Y G:i A', strtotime($prescription['start_date'])); ?></h4></td>
+                                </tr>
+                                <tr>
+                                    <th class="th">Expiration Date</th>
+                                    <td><h4><?php echo date('jS F, Y G:i A', strtotime($prescription['expiration_date'])); ?></h4></td>
+                                </tr>
+                                <tr>
+                                    <th class="th">Approved By</th>
+                                    <td><h4><?php echo $prescription['np_name']; ?></h4></td>
+                                </tr>
+                                <tr>
+                                    <th class="th">Consultation Type</th>
+                                    <td><h4><?php echo $prescription['consultation_type']; ?></h4></td>
+                                </tr>
+                            </table>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+    <divclass="container-fuild">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="divider-div col-12">
+                <strong><h2 style="">There is no any prescriptions found for this customer.</h2></strong>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<?php endif; ?>
+
+<style>
+    body {
+        /* font-family: "aktiv-grotesk", sans-serif !important; */
+    }
+    table .th{
+        padding: 6px;
+        text-align: left;
+    }
+
+    .custom-container {
+        max-width: 600px !important;
+    }
+
+    @media (min-width: 768px) {
+        .custom-container {
+            max-width: 65% !important;
+        }
+    }
+
+    label.form-check-label {
+        width: inherit;
+    }
+
+    div.form-check {
+        padding: 0px;
+        padding-left: 1.5em;
+        padding: 16px 20px;
+    }
+
+    .form-check .form-check-input {
+        margin-left: -0.5em;
+        margin-top: -4px;
+    }
+
+    .form-check-input:checked[type=radio] {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23644B4F'/%3e%3c/svg%3e");
+        background-size: 160% auto;
+    }
+
+    .form-check-input:checked {
+        background-color: #fff;
+        border-color: #644B4F;
+    }
+
+    label.form-check-label {
+        margin: 0 30px !important;
+        padding: 0px !important;
+        font-weight: 500;
+        font-size: 14px;
+        display: block;
+    }
+
+    /* The container */
+    .input-check-label {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 0px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    /* Hide the browser's default checkbox */
+    .input-check-label input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: -2px;
+        left: -8px;
+        height: 25px;
+        width: 25px;
+        background-color: transparent;
+        border: 1px solid #644B4F;
+        border-radius: 100%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .input-check-label:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    /* .input-check-label input:checked ~ .checkmark {
+      background-color: #644B4F;
+    } */
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .input-check-label input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    p#subhead {
+        margin: 20px 0px;
+    }
+
+    /* Style the checkmark/indicator */
+    .input-check-label .checkmark:after {
+        /* left: 6px;
+        top: 2px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg); */
+        left: 0;
+        top: 0px;
+        width: 23px;
+        height: 23px;
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23644B4F'/%3e%3c/svg%3e");
+        background-size: 160% auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .divider-div {
+        padding-top: 20px;
+    }
+
+    .divider-div .divider {
+        border-bottom: 1px solid #e2e2e2;
+        margin-bottom: 30px;
+        padding-left: 15px;
+        padding-bottom: 30px;
+        padding-right: 15px;
+    }
+    div.divider:last-child {
+        border-bottom: none;
+        margin-bottom: 30px;
+        padding-left: 15px;
+        padding-bottom: 30px;
+        padding-right: 15px;
+    }
+
+    .divider p:empty {
+        display: none;
+    }
+
+    .divider-div h4 {
+
+        margin-bottom: 0px;
+        font-size: 16px;
+    }
+
+    .divider-div p#subhead {
+        margin: 20px 0px;
+        font-size: 12px;
+    }
+
+    .divider p {
+        margin-bottom: 5px;
+    }
+
+    p.answer-label {
+        padding: 15px;
+        border: 1px solid #202930;
+        background: #fff;
+        font-size: 15px;
+        color: #202930;
+    }
+
+    .info-ele {
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    .info-ele span {
+        display: inline-block;
+    }
+
+    .info-ele span:first-child {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+</style>

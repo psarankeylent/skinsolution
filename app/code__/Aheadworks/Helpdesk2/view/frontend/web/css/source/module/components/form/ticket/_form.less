@@ -1,0 +1,278 @@
+//
+//  variables
+//  _____________________________________________
+@aw-hd2-form__border-color: #ececec;
+@aw-hd2-form__border: 1px solid @aw-hd2-form__border-color;
+@aw-hd2-form__background-color: #fafafa;
+@aw-hd2-thread-date__color: #524D49;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .aw-helpdesk2__form {
+    .actions-toolbar {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .top-panel {
+      .lib-vendor-prefix-display(flex);
+      .lib-css(background-color, @aw-hd2-form__background-color);
+      .lib-css(border, @aw-hd2-form__border);
+      padding: 20px 15px;
+      margin-bottom: 10px;
+    }
+
+    .panel-element {
+      margin-right: 5px;
+      min-width: 10rem;
+
+      .label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .value {
+
+        .customer-rating {
+          .lib-rating-vote();
+          padding-right: 65px;
+
+          label[disabled="true"] {
+            &:before {
+              color: #ffaa81;
+            }
+          }
+        }
+      }
+    }
+
+    .fieldset-wrapper {
+      &.reply {
+        padding: 20px 15px;
+        .lib-css(background-color, @aw-hd2-form__background-color);
+        .lib-css(border, @aw-hd2-form__border);
+        margin-bottom: 15px;
+
+        .bottom-actions-toolbar {
+          .lib-vendor-prefix-display(flex);
+          .lib-vendor-box-align(flex-start);
+          .lib-css(justify-content, space-between, 1);
+        }
+      }
+    }
+
+    .file-uploader {
+      .file-uploader-area {
+        .file-uploader-button {
+          .lib-button-reset();
+          padding-left: 30px;
+          color: #317BD4;
+          font-size: 13px;
+
+          &::before {
+            content: '';
+            display: block;
+            width: 19px;
+            height: 17px;
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MCA0MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDAgNDA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojNDc4OEM3O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTTMwLDExTDE2LjIxMSwyNy42NDIgIEMxNS41NzgsMjguNDY3LDE0LjU4MiwyOSwxMy40NjIsMjlDMTEuNTUsMjksMTAsMjcuNDUsMTAsMjUuNTM4YzAtMC44MTEsMC4yNzktMS41NTcsMC43NDYtMi4xNDdMMjcuMDQ0LDQuMTcgIEMyOC4xODYsMi44NDEsMjkuODgsMiwzMS43NjksMkMzNS4yMSwyLDM4LDQuNzksMzgsOC4yMzFjMCwxLjQwMy0wLjQ2MywyLjY5Ny0xLjI0NiwzLjczOGwtMTkuMjYsMjMuMjYyICBDMTUuODU2LDM2LjkzOCwxMy41NTIsMzgsMTEsMzhjLTQuOTcxLDAtOS00LjAyOS05LTljMC0xLjc4NCwwLjUxOS0zLjQ0OCwxLjQxNS00Ljg0N0wyMCw1Ii8+PC9zdmc+");
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            .lib-rotate(180deg);
+          }
+        }
+      }
+
+      .file-uploader-preview {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        width: inherit;
+        height: inherit;
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        .preview-link {
+          display: none;
+        }
+
+        .action-remove {
+          position: static;
+        }
+      }
+
+      .file-uploader-summary {
+        display: block;
+        padding: 0 30px 0 0;
+        position: relative;
+        margin-top: 10px;
+
+        .file-uploader-placeholder {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .aw_helpdesk2_form_thread {
+    .list-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .list-item {
+        margin-bottom: 10px;
+
+        .item-info {
+          padding: 15px;
+          .lib-css(border, @aw-hd2-form__border);
+
+          &.admin-message {
+            .lib-css(background-color, #DBF0D1);
+            .lib-css(border-left, 2px solid #96C378);
+          }
+
+          &.customer-message {
+            .lib-css(background-color, #D3F1FF);
+            .lib-css(border-left, 2px solid #80C8E8);
+          }
+
+          &.admin-internal {
+            .lib-css(background-color,#E6DDFF);
+            .lib-css(border-left, 2px solid #BCA3FF);
+          }
+
+          &.escalation-message {
+            .lib-css(background-color, #F7DCDC);
+            .lib-css(border-left, 2px solid #e3a4ab);
+          }
+
+          &.system-message {
+            .lib-css(background-color, #FFF3B2);
+            .lib-css(border-left, 2px solid #DEC957);
+
+            .lib-vendor-prefix-display(flex);
+            .lib-vendor-box-align(center);
+
+            .content {
+              margin: 0 5px auto 15px;
+              width: auto;
+              overflow: inherit;
+              display: block;
+              .lib-vendor-prefix-order(2);
+            }
+
+            .author {
+              font-size: 14px;
+              width: auto;
+              overflow: inherit;
+              display: block;
+              .lib-vendor-prefix-order(1);
+            }
+
+            .date {
+              margin-left: auto;
+              font-size: 14px;
+              width: auto;
+              overflow: inherit;
+              display: block;
+              .lib-vendor-prefix-order(3);
+            }
+          }
+        }
+      }
+    }
+
+    .aw-helpdesk2-thread {
+      .author {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .date {
+        .lib-css(color, @aw-hd2-thread-date__color);
+        font-weight: normal;
+        font-size: 12px;
+      }
+
+      .content {
+        margin-top: 20px;
+        font-size: 14px;
+        width: 100%;
+        border: none;
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .aw-helpdesk2__form {
+    .top-panel {
+      .lib-css(justify-content, space-between, 1);
+      .lib-vendor-prefix-flex-wrap(wrap);
+    }
+
+    .panel-element {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .fieldset-wrapper {
+      &.reply {
+        .bottom-actions-toolbar {
+          display: block;
+
+          .actions {
+            padding-top: 30px;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+  .aw-helpdesk2__form {
+    .top-panel {
+      display: block;
+    }
+
+    .panel-element {
+      margin-bottom: 15px;
+
+      .customer-rating {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .aw-helpdesk2__form {
+    .top-panel {
+      .lib-css(justify-content, space-between, 1);
+    }
+  }
+}

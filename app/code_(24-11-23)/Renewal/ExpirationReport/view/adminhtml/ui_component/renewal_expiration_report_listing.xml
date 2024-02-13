@@ -1,0 +1,196 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">renewal_expiration_report_listing.renewal_expiration_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="clear">
+                <url path="reports/expirationreport/index"/>
+                <class>primary</class>
+                <label translate="true">Clear All</label>
+            </button>
+        </buttons>
+        <spinner>reports_renewal_columns</spinner>
+        <deps>
+            <dep>renewal_expiration_report_listing.renewal_expiration_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="renewal_expiration_report_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <!-- <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument> -->
+            <argument name="class" xsi:type="string">Renewal\ExpirationReport\Ui\DataProvider\ExpirationDataProvider</argument>
+            <argument name="name" xsi:type="string">renewal_expiration_report_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="expiration_date" xsi:type="string">*</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">renewal_expiration_report_listing.renewal_expiration_report_listing.reports_renewal_columns.ids</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+            <action name="rx_expirationreport_30">
+                <settings>
+                    <type>rx_expirationreport_30</type>
+                    <label translate="true">30 Days</label>
+                    <url path="reports/expirationreport/index">
+                        <param name="expiration_date">30</param>
+                    </url>
+                </settings>
+            </action>
+            <action name="rx_expirationreport_60">
+                <settings>
+                    <type>rx_expirationreport_60</type>
+                    <label translate="true">60 Days</label>
+                    <url path="reports/expirationreport/index">
+                        <param name="expiration_date">60</param>
+                    </url>
+                </settings>
+            </action>
+            <action name="rx_expirationreport_90">
+                <settings>
+                    <type>rx_expirationreport_90</type>
+                    <label translate="true">90 Days</label>
+                    <url path="reports/expirationreport/index">
+                        <param name="expiration_date">90</param>
+                    </url>
+                </settings>
+            </action>
+            <action name="rx_expirationreport_0">
+                <settings>
+                    <type>rx_expirationreport_0</type>
+                    <label translate="true">All</label>
+                    <url path="reports/expirationreport/index" />
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="reports_renewal_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">5</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                    <!-- <item name="selected" xsi:type="string">1</item>  -->
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <sorting>desc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="prescription_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Prescription Name</label>
+            </settings>
+        </column>
+        <column name="start_date">
+            <settings>
+                <label translate="true">Start Date</label>
+            </settings>
+        </column>
+       <!-- <column name="expiration_date">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Expiration Date</label>
+            </settings>
+        </column> -->
+        <!-- <column name="expiration_date" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="label" xsi:type="string" translate="true">Expiration Date</item> 
+                </item>
+            </argument>
+        </column> -->
+        <column name="expiration_date" class="Renewal\ExpirationReport\Ui\Component\Listing\Columns\ExpirationDate">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array"> 
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Expiration Date</item>
+                </item>
+            </argument>
+        </column>
+        <column name="vh_status">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">VH Status</label>
+            </settings>
+        </column>
+        <column name="consultation_type">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Consultation Type</label>
+            </settings>
+        </column>
+        <!-- <column name="telephone">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Telephone</label>
+            </settings>
+        </column> -->
+        <column name="telephone" class="Renewal\ExpirationReport\Ui\Component\Listing\Columns\Telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Telephone</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

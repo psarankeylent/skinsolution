@@ -1,0 +1,33 @@
+type Query {
+    getMedicalHistory(question_id: Int): [Output] @resolver(class: "Backend\\MedicalGraphql\\Model\\Resolver\\GetMedicalHistory") @doc(description: "Get customer medical history")
+}
+
+type Output {
+    id: Int @doc(description: "Primary Id")
+    customer_id: Int @doc(description: "Customer  Id")
+    question_id: Int @doc(description: "question Id")
+    question_text: String @doc(description: "Question Text")
+    response: String @doc(description: "Response Text")
+    updated_at: String @doc(description: "Update Date")
+}
+
+type Mutation {
+   updateMedicalHistory(input: [MedicalHistoryInput]): UpdateMedicalHistoryOutput @resolver(class: "Backend\\MedicalGraphql\\Model\\Resolver\\UpdateMedicalHistory") @doc(description:"Update Medical History")
+}
+
+input MedicalHistoryInput {
+    question_id: Int!
+    customer_id: Int!
+    question_text: String!
+    response: String!
+}
+
+type UpdateMedicalHistoryOutput @doc(description: "Update Medical History") {
+    id: Int
+    customer_id: Int
+    question_id: Int
+    question_text: String
+    response: String
+    updated_at: String
+    success_message: String
+}

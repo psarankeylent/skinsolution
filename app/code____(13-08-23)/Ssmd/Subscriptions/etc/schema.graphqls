@@ -1,0 +1,148 @@
+type Query {
+    getSubscriptionByCustomer(customer_id: Int!): [GetSubscriptionByCustomer] @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\GetSubscriptionByCustomer") @doc(description: "Get customer's subscriptions.")
+    getSubscriptionById(entity_id: Int!): CustomOutput @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\GetSubscriptionById") @doc(description: "Get Subscription by id")
+}
+type Mutation {
+   changeFrequency(id: Int! @doc(description: "The subscription Id"), interval: Int! @doc(description: "Interval Value")): CustomOutput @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\ChangeFrequency") @doc(description:"Change frequency")
+   updateNextOrder(id: Int! @doc(description: "The subscription Id"), next_run: String! @doc(description: "Next Order Run Date")): CustomOutput @resolver(class: "\\Ssmd\\Subscriptions\\Model\\Resolver\\UpdateNextOrderRun") @doc(description:"Next Order Run Date")
+   updateSubscriptionAddress(input: SubscriptionAddressUpdateInput!): SubscriptionQuoteAddress @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\UpdateSubscriptionAddress") @doc(description: "Update a Shipping Address")
+   updatePayment(input: PaymentUpdateInput!): UpdatePaymentData @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\UpdatePayment") @doc(description: "Update a Payment Data")
+   cancelSubscription(entity_id: Int! @doc(description: "The subscription Id"), status: String! @doc(description: "Status")): CustomOutput @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\CancelSubscription") @doc(description:"Change frequency")
+   updateShippingMethod(entity_id: Int! @doc(description: "The subscription Id"),shipping_method: String! @doc(description: "The shipping method"), shipping_description: String! @doc(description: "The shipping description")): CustomOutput @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\UpdateShippingMethod") @doc(description: "Update a Shipping Method")
+   skipShipment(id: Int! @doc(description: "The subscription Id")): CustomOutput @resolver(class: "Ssmd\\Subscriptions\\Model\\Resolver\\SkipShipment") @doc(description:"Skin Shipment")
+}
+
+type GetSubscriptionByCustomer @doc(description: "Get list of subscriptions of a customer") {
+    entity_id: Int
+    customer_id: Int
+    frequency_count: Int
+    frequency_unit: String
+    next_run: String
+    last_run: String
+    subtotal: Float
+    shipping_address: ShippingAddressOutput @doc(description: "Shipping Address Data")
+    billing_address: BillingAddressOutput @doc(description: "Billing Address Data")
+    payment_data:    PaymentMethodDataOutput @doc(description: "Payment Method & Data")
+    shipping_method: String
+
+}
+type ShippingAddressOutput @doc(description: "Address Info") {
+    firstname: String
+    lastname: String
+    company: String
+    street: String
+    city: String
+    region: String
+    country_id: String
+    telephone: String
+    postcode: String
+}
+type BillingAddressOutput @doc(description: "Address Info") {
+    firstname: String
+    lastname: String
+    company: String
+    street: String
+    city: String
+    region: String
+    country_id: String
+    telephone: String
+    postcode: String
+}
+type PaymentMethodDataOutput @doc(description: "Payment Method Info") {
+    cc_type: String
+    cc_last_4: String
+    cc_exp_month: Int
+    cc_exp_year: Int
+    cc_cid: Int
+}
+
+type CustomOutput @doc(description: "Update Shipping Method") {
+    SubscriptionObj: SubscriptionInputs
+}
+
+type SubscriptionInputs @doc(description: "Subscription info") {
+    entity_id: Int
+    increment_id: String
+    last_run: String
+    next_run: String
+    last_notified: String
+    status: String
+    customer_id: Int
+    quote_id: Int
+    frequency_count: Int
+    frequency_unit: String
+    description: String
+    subtotal: Float
+    run_count: Int
+    keyword_fulltext: String
+}
+
+type SubscriptionQuoteAddress @doc(description: "Subscription address") {
+    entity_id: Int
+    address: CustomerAddressCustomOutput
+}
+type CustomerAddressCustomOutput {
+    firstname: String
+    lastname: String
+    company: String
+    street: String
+    city: String
+    region: String
+    country_id: String
+    telephone: String
+    postcode: String
+}
+input SubscriptionAddressUpdateInput @doc(description: "Subscription update info") {
+    entity_id: Int! @doc(description: "Subscription ID to update (required)")
+    address: CustomerAddressCustomInput @doc(description: "Customer address to change the subscription address to. Skip to leave unchanged.")
+    address_type: String @doc(description: "Which type of address is this? Shipping Or Billing")
+}
+input CustomerAddressCustomInput {
+    firstname: String
+    lastname: String
+    company: String
+    street: String
+    city: String
+    region: String
+    country_id: String
+    telephone: String
+    postcode: String
+}
+
+type UpdatePaymentData @doc(description: "Update Payment Data") {
+    PaymentData: DataArrayOutput
+}
+type DataArrayOutput {
+    cc_type: String
+    cc_last4: Int
+    cc_exp_year: Int
+    cc_exp_month: Int
+    payment_method: String
+}
+input PaymentUpdateInput @doc(description: "Payment update info") {
+    hash: String! @doc(description: "card hash ID to update (required)")
+    customer_id: Int @doc(description: "Customer ID")
+    method: String @doc(description: "Payment Method")
+    billing_address: CustomerAddressCustomInput @doc(description: "Payment Billing Address")
+    payment: PaymentDataInput @doc(description: "Payment Data Address")
+}
+
+input CustomerAddressCustomInput {
+    firstname: String
+    lastname: String
+    company: String
+    street: String
+    city: String
+    region: String
+    country_id: String
+    telephone: String
+    postcode: String
+}
+input PaymentDataInput {
+   cc_type: String
+   cc_number: String
+   cc_exp_month: Int
+   cc_exp_year: Int
+   cc_cid: Int
+}
+

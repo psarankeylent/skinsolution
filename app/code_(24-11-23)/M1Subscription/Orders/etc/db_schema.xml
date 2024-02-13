@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <!-- subscription_profile table -->
+    <table name="subscription_profile" resource="default" engine="innodb">
+
+        <column xsi:type="int" name="entity_id" identity="true" unsigned="true" nullable="false" comment="Primary Id"/>
+        <column xsi:type="varchar" name="subscription_engine_code" length="255" comment="Subscription Engine Code"/>
+        <column xsi:type="varchar" name="reference_id" length="255" comment="Reference Id"/>
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="true" comment="Customer ID"/>
+        <column xsi:type="varchar" name="status" length="255" comment="Status"/>
+        <column xsi:type="float" name="amount" unsigned="true" comment="amount(Subtotal)"/>
+        <column xsi:type="timestamp" name="created_at" comment="Create Date"/>
+        <column xsi:type="timestamp" name="updated_at" comment="Update  Date"/>
+        <column xsi:type="date" name="start_date" comment="Start  Date"/>
+        <column xsi:type="int" name="subscription_type_id" unsigned="true" comment="Subscription Type ID"/>
+        <column xsi:type="int" name="last_order_id" unsigned="true" nullable="true" default="0" comment="Last Order ID"/>
+        <column xsi:type="timestamp" name="last_order_date" nullable="true" comment="Last Order Date"/>
+        <column xsi:type="text" name="initial_details" comment="Initial Details"/>
+        <column xsi:type="text" name="details" comment="Details"/>
+        <column xsi:type="varchar" name="discount_code" length="255" comment="Discount Code"/>
+        <column xsi:type="varchar" name="discount_amount" length="255" comment="Discount Amount"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+</schema>

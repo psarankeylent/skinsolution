@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::customreports_catalogtracking"
+             title="Catalog Tracking Report"
+             translate="title"
+             module="CustomReports_CatalogTrackingReport"
+             sortOrder="210"
+             parent="Magento_Reports::AdminGrid_Top"
+             action="reports/catalogtracking/index"
+             resource="Magento_Reports::customreports_catalogtracking"
+        />
+    </menu>
+</config>

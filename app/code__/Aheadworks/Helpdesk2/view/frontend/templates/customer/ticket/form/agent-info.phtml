@@ -1,0 +1,28 @@
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+/** @var $viewModel \Aheadworks\Helpdesk2\ViewModel\Ticket\AgentInfo */
+
+$viewModel = $block->getViewModel();
+$ticket = $block->getTicket();
+$agentProfile = $ticket
+    ? $viewModel->getAgentProfileForTicket($ticket)
+    : $viewModel->getAgentProfileByRequest();
+?>
+<?php if ($agentProfile) :?>
+    <div class="aw_helpdesk2__agent-info">
+        <div class="info-content">
+            <p><?= $block->escapeHtml(__('Your manager:')) ?></p>
+            <h4 class="manager-name"><strong><?= $block->escapeHtml($agentProfile->getDisplayName()) ?></strong></h4>
+            <div class="contact-data">
+                <p><?= $block->escapeHtml($agentProfile->getEmail()) ?></p>
+                <p class="manager-number"><?= $block->escapeHtml($agentProfile->getPhoneNumber()) ?></p>
+            </div>
+            <p class="additional-info"><?= $block->escapeHtml($agentProfile->getAdditionalInformation()) ?></p>
+        </div>
+        <?php if ($agentProfile->getImage()) :?>
+            <div class="info-image">
+                <img src="<?= $block->escapeUrl($viewModel->getImageUrl($agentProfile->getImage())) ?>">
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,82 @@
+<?php
+/**
+ * @var $block \Backend\Medical\Block\Adminhtml\Medical\View
+ */
+?>
+<?php $data = $block->getMedicalHistory($this->getRequest()->getParam('id')); ?>
+
+<?php if(!empty($data)): ?>
+<div class="fieldset-wrapper">
+    <div>
+        <form method="post" name="medical_history" id="medical_history" data-mage-init='{"validation": {}}' action="<?php echo $this->getUrl('backend/medical/saveMH') ?>">
+            
+            <table width="300">
+                <tr>
+                    <th>Question </th>
+                    <td style="padding:20px"><textarea rows="4" cols="100" disabled name="question_text" id="question_text"><?= $data['question_text'] ?></textarea></td>
+                </tr>
+                <tr>
+                    <th>Response </th>
+                    <td style="padding:20px"><textarea rows="4" cols="100" name="response" id="response"><?= $data['response'] ?></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" name="id" id="id" value="<?= $data['id'] ?>" /></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" name="customer_id" id="customer_id" value="<?= $data['customer_id'] ?>" /></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" name="form_key" id="form_key" value="<?= $block->getFormKey() ?>" /></td>
+                </tr>
+                
+            </table>
+            <table width="300">
+                <tr>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <td style="padding:20px"><button width="200" type="submit" class="action submit primary" id="save_medical_history" title="Save Medical"><span><?= $block->
+                            escapeHtmlAttr(__('Save History')) ?></span></button></td>
+                </tr>
+            </table>
+        </form>
+    </div>    
+</div>
+<?php else: ?>
+    <p>There is no Medical History found</p>
+<?php endif; ?>
+
+<style>
+    .divider-div {
+        padding-top: 20px;
+    }
+
+    .divider-div .divider {
+        border-bottom: 1px solid #e2e2e2;
+        /*margin-bottom: 30px;*/
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-right: 15px;
+    }
+
+    .divider p:empty {
+        display: none;
+    }
+    .divider-div .divider:last {
+        border-bottom:none;
+    }
+
+    .divider-div h4 {
+        font-weight: bold;
+        margin-bottom: 0px;
+        font-size: 18px;
+    }
+
+    .divider-div p#subhead {
+        margin: 20px 0px;
+        font-size: 12px;
+    }
+
+    .divider p {
+        margin-bottom: 5px;
+    }
+
+</style>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="rxschedule_log" resource="default" engine="innodb" comment="schedule renewal email log Table">
+		<column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column name="customer_id" nullable="true" xsi:type="int" identity="false"/>
+		<column name="vh_prescription_id" nullable="true" xsi:type="int" identity="false"/>
+		<column name="prescription_name" nullable="true" xsi:type="varchar" length="55" />
+		<column name="start_date" nullable="true" xsi:type="varchar" length="55" />
+		<column name="expiration_date" nullable="true" xsi:type="varchar" length="55" />
+		<column name="vh_status" nullable="true" xsi:type="varchar" length="55" />
+		<column name="consultation_type" nullable="true" xsi:type="varchar" length="55" />
+		<column name="email_sent_status" nullable="true" xsi:type="varchar" length="55" />
+		<column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+	</table>
+</schema>

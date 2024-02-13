@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+         <referenceBlock name="customer_form">
+            <action method="addTab">
+                    <argument name="name" xsi:type="string">m1_subscriptions_grid</argument>
+                    <argument name="block" xsi:type="string">m1_subscriptions_tab</argument>                   
+             </action>             
+            <block class="LegacySubscription\Subscriptions\Block\Adminhtml\Customer\Subscriptions\Edit\Tab\SubscriptionGrid" name="m1_subscriptions_tab">
+            	<arguments>		            	            
+		            <argument name="sort_order" xsi:type="number">500</argument>		           
+		        </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,53 @@
+.data-grid-cell-content {
+    .aw-ticket-status {
+        padding: 5px 5px;
+        font-weight: normal;
+        display: inline-block;
+
+        &[data-color="1"] {
+            .lib-css(background-color, @aw-hd2-ticket-status-new__background-color);
+            .lib-css(color, @aw-hd2-ticket-status-new__color);
+        }
+        &[data-color="2"] {
+            .lib-css(background-color, @aw-hd2-ticket-status-open__background-color);
+            .lib-css(color, @aw-hd2-ticket-status-open__color);
+            .lib-css(border, @aw-hd2-ticket-status__border);
+        }
+        &[data-color="3"] {
+            .lib-css(background-color, @aw-hd2-ticket-status-wfc__background-color);
+            .lib-css(color, @aw-hd2-ticket-status-wfc__color);
+            .lib-css(border, @aw-hd2-ticket-status__border);
+        }
+        &[data-color="4"] {
+            .lib-css(background-color, @aw-hd2-ticket-status-closed__background-color);
+            .lib-css(color, @aw-hd2-ticket-status-closed__color);
+        }
+    }
+
+    .aw-ticket-priority {
+        padding: 5px 5px;
+        font-weight: normal;
+        display: inline-block;
+
+        &[data-color="1"] {
+            .lib-css(background-color, @aw-hd2-ticket-priority-if-time__background-color);
+            .lib-css(color, @aw-hd2-ticket-priority-if-time__color);
+            .lib-css(border, @aw-hd2-ticket-priority__border);
+        }
+        &[data-color="2"] {
+            .lib-css(background-color, @aw-hd2-ticket-priority-todo__background-color);
+            .lib-css(color, @aw-hd2-ticket-priority-todo__color);
+            .lib-css(border, @aw-hd2-ticket-priority__border);
+        }
+        &[data-color="3"] {
+            .lib-css(background-color, @aw-hd2-ticket-priority-asap__background-color);
+            .lib-css(color, @aw-hd2-ticket-priority-asap__color);
+        }
+        &[data-color="4"] {
+            .lib-css(background-color, @aw-hd2-ticket-priority-urgent__background-color);
+            .lib-css(color, @aw-hd2-ticket-priority-urgent__color);
+        }
+    }
+}
+
+

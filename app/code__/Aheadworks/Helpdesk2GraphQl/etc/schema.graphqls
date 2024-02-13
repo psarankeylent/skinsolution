@@ -1,0 +1,186 @@
+type Query {
+    awHelpdesk2TicketList (
+        filter: awHelpdesk2TicketFilterInput,
+        pageSize: Int = 100,
+        currentPage: Int = 1
+    ): awHelpdesk2TicketSearchResult @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\TicketListResolver")
+
+    awHelpdesk2TicketById (
+        entity_id: Int!
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\TicketByIdResolver")
+
+    awHelpdesk2TicketByExternalLink (
+        external_link: String!
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\TicketByExternalResolver")
+
+    awHelpdesk2AvailableDepartmentsForCreateTicket (
+        store_id: Int
+    ): [awHelpdesk2Department] @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\AvailableDepartmentsResolver")
+}
+
+type Mutation {
+    awHelpdesk2TicketClose (
+        key: String! @doc(description: "Use `external_link` value")
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Mutation\\Ticket\\Close")
+
+    awHelpdesk2TicketReopen (
+        key: String! @doc(description: "Use `external_link` value")
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Mutation\\Ticket\\Reopen")
+
+    awHelpdesk2TicketEscalate (
+        key: String! @doc(description: "Use `external_link` value")
+        message: String!
+    ): Boolean @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Mutation\\Ticket\\Escalate")
+
+    awHelpdesk2TicketRate (
+        key: String! @doc(description: "Use `external_link` value")
+        rating: Int!
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Mutation\\Ticket\\Rate")
+
+    awHelpdesk2TicketReply (
+        key: String! @doc(description: "Use `external_link` value")
+        content: String!
+        attachments: [awHelpdesk2TicketAttachmentInput]
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Mutation\\Ticket\\Reply")
+
+    awHelpdesk2TicketCreate (
+        subject: String!
+        content: String!
+        customer_name: String!
+        customer_email: String!
+        department_id: Int
+        order_id: Int
+        attachments: [awHelpdesk2TicketAttachmentInput]
+        options: [awHelpdesk2TicketOptionInput]
+    ): awHelpdesk2Ticket @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Mutation\\Ticket\\Create")
+}
+
+input awHelpdesk2TicketFilterInput {
+    entity_id: FilterTypeInput
+    external_link: FilterTypeInput
+    uid: FilterTypeInput
+    status_id: FilterTypeInput
+    department_id: FilterTypeInput
+    agent_id: FilterTypeInput
+    priority_id: FilterTypeInput
+    or: awHelpdesk2TicketFilterInput
+}
+
+input awHelpdesk2TicketAttachmentInput {
+    file_path: String! @doc(description: "Value from attachments[X][file]")
+    file_name: String! @doc(description: "Value from attachments[X][name]")
+}
+
+input awHelpdesk2TicketOptionInput {
+    department_option_id: Int!
+    value: String!
+}
+
+type awHelpdesk2TicketSearchResult {
+    total_count: Int
+    items: [awHelpdesk2Ticket]
+    page_info: awHelpdesk2PageInfo
+}
+
+type awHelpdesk2PageInfo {
+    page_size: Int
+    current_page: Int
+}
+
+type awHelpdesk2Ticket {
+    entity_id: Int
+    uid: String
+    customer_rating: Int
+    subject: String
+    messages: [awHelpdesk2Message] @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Ticket\\MessagesResolver")
+    department: awHelpdesk2Department @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Ticket\\DepartmentResolver")
+    agent: awHelpdesk2Agent @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Ticket\\AgentResolver")
+    store_id: Int
+    customer: awHelpdesk2Customer
+    status: awHelpdesk2Status @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Ticket\\StatusResolver")
+    priority: awHelpdesk2Priority @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Ticket\\PriorityResolver")
+    order: awHelpdesk2Order @resolver(class: "\\Aheadworks\\Helpdesk2GraphQl\\Model\\Resolver\\Ticket\\OrderResolver")
+    created_at: String
+    updated_at: String
+    external_link: String
+    external_url: String
+    tag_names: [String]
+}
+
+type awHelpdesk2Message {
+    id: Int
+    type: String
+    content: String
+    attachments: [awHelpdesk2Attachment]
+    author_name: String
+    created_at: String
+}
+
+type awHelpdesk2Attachment {
+    id: Int
+    file_path: String
+    file_name: String
+}
+
+type awHelpdesk2Department {
+    id: Int
+    name: String
+    options: [awHelpdesk2DepartmentOption]
+    current_storefront_label: awHelpdesk2StorefrontLabel
+    storefront_labels: [awHelpdesk2StorefrontLabel]
+}
+
+type awHelpdesk2Agent {
+    id: Int
+    name: String
+}
+
+type awHelpdesk2Status {
+    id: Int
+    label: String
+}
+
+type awHelpdesk2Priority {
+    id: Int
+    label: String
+}
+
+type awHelpdesk2Customer {
+    id: Int
+    name: String
+    email: String
+}
+
+type awHelpdesk2Order {
+    id: Int
+    increment_id: String
+}
+
+type awHelpdesk2TicketOption {
+    id: Int
+    label: String
+    value: String
+}
+
+type awHelpdesk2DepartmentOption {
+    id: Int
+    type: String
+    is_required: Boolean
+    current_storefront_label: awHelpdesk2StorefrontLabel
+    storefront_labels: [awHelpdesk2StorefrontLabel]
+    values: [awHelpdesk2DepartmentOptionValue]
+    sort_order: Int
+}
+
+type awHelpdesk2DepartmentOptionValue {
+    id: Int
+    option_id: Int
+    current_storefront_label: awHelpdesk2StorefrontLabel
+    storefront_labels: [awHelpdesk2StorefrontLabel]
+    sort_order: Int
+}
+
+type awHelpdesk2StorefrontLabel {
+    store_id: Int
+    content: String
+}

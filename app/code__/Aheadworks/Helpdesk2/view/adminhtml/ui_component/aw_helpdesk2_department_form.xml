@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_department_form.aw_helpdesk2_department_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Department</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_department_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+            <button name="save" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Save"/>
+            <button name="save_and_continue" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\SaveAndContinue"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_department_form.aw_helpdesk2_department_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_department_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_helpdesk2/department/save"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::departments</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Department\FormDataProvider" name="aw_helpdesk2_department_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>General</label>
+        </settings>
+        <field name="is_active" formElement="select" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="store_ids" formElement="multiselect" sortOrder="20">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Visible On</label>
+                <dataScope>store_ids</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Ui\Component\Listing\Columns\Store\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="name" formElement="input" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="is_allow_guest" formElement="select" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Allow Guests to Submit Request Type</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="sort_order" formElement="input" sortOrder="50">
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Sort Order</label>
+                <validation>
+                    <rule name="validate-integer" xsi:type="boolean">true</rule>
+                    <rule name="validate-not-negative-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="storefront_labels_fieldset" sortOrder="20">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>StoreFront Labels</label>
+        </settings>
+        <dynamicRows name="storefront_labels" class="Aheadworks\Helpdesk2\Ui\Component\Form\Element\DynamicRows" component="Magento_Ui/js/dynamic-rows/dynamic-rows" template="ui/dynamic-rows/templates/default">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">department</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="aw-helpdesk2">true</class>
+                    <class name="dynamic-rows">true</class>
+                    <class name="storefront_labels">true</class>
+                </additionalClasses>
+                <addButton>true</addButton>
+                <addButtonLabel translate="true">Add</addButtonLabel>
+                <defaultRecord>true</defaultRecord>
+                <pageSize>100</pageSize>
+                <dndConfig>
+                    <param name="enabled" xsi:type="boolean">false</param>
+                </dndConfig>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record" component="Aheadworks_Helpdesk2/js/ui/form/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="store_id" sortOrder="10" class="Aheadworks\Helpdesk2\Ui\Component\Form\Element\Store" component="Magento_Ui/js/form/element/select" template="ui/form/field" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="disableForDefaultRecord" xsi:type="boolean">true</item>
+                            <item name="default" xsi:type="string">0</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                        </item>
+                    </argument>
+                    <argument name="options" xsi:type="object">Aheadworks\Helpdesk2\Ui\Component\Listing\Columns\Store\Options</argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Store View</label>
+                        <dataScope>store_id</dataScope>
+                        <additionalClasses>
+                            <class name="select_field">true</class>
+                        </additionalClasses>
+                    </settings>
+                </field>
+                <field name="content" sortOrder="20" formElement="input">
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Department Name (displayed to visitors)</label>
+                        <dataScope>content</dataScope>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                    </settings>
+                </field>
+                <actionDelete name="action_delete" sortOrder="30">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="disableForDefaultRecord" xsi:type="boolean">true</item>
+                            <item name="fit" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <componentType>actionDelete</componentType>
+                        <additionalClasses>
+                            <class name="action_delete_button">true</class>
+                        </additionalClasses>
+                    </settings>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+    </fieldset>
+    <fieldset name="gateways" sortOrder="30">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>Gateway</label>
+        </settings>
+        <field name="gateway_id" formElement="select" sortOrder="10" class="Aheadworks\Helpdesk2\Ui\Component\Form\Department\Element\Gateway">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Gateway</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Gateway\NotAssignedList"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="agents" sortOrder="40">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>Help Desk Agent</label>
+        </settings>
+        <field name="primary_agent_id" formElement="select" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Primary Agent</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Department\AgentList"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="agent_ids" formElement="multiselect" sortOrder="20">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Agents</label>
+                <dataScope>agent_ids</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Department\AgentList"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="storefront_required_information" sortOrder="50">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>StoreFront Required Information</label>
+        </settings>
+        <dynamicRows name="options" template="Aheadworks_Helpdesk2/ui/form/dynamic-rows/collapsible">
+            <settings>
+                <componentType>dynamicRows</componentType>
+                <columnsHeader>false</columnsHeader>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <addButtonLabel translate="true">Add Option</addButtonLabel>
+                <pageSize>100</pageSize>
+            </settings>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="componentType" xsi:type="string">container</item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="headerLabel" xsi:type="string" translate="true">New Option</item>
+                        <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/dynamic-rows/record-collapsible</item>
+                        <item name="showDeleteButton" xsi:type="boolean">true</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="label" xsi:type="string">${ $.name }.option_fieldset.storefront_labels.0.content:value</item>
+                        </item>
+                        <item name="positionProvider" xsi:type="string">option_fieldset.option_container.sort_order</item>
+                    </item>
+                </argument>
+                <fieldset name="option_fieldset" sortOrder="10">
+                    <settings>
+                        <componentType>fieldset</componentType>
+                        <collapsible>true</collapsible>
+                        <opened>true</opened>
+                        <label></label>
+                    </settings>
+                    <container name="option_container">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentType" xsi:type="string">container</item>
+                                <item name="formElement" xsi:type="string">container</item>
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/components/group</item>
+                                <item name="breakLine" xsi:type="boolean">false</item>
+                                <item name="showLabel" xsi:type="boolean">false</item>
+                                <item name="additionalClasses" xsi:type="string">admin__field-group-columns admin__control-group-equal</item>
+                            </item>
+                        </argument>
+                        <field name="id" formElement="input" sortOrder="10">
+                            <settings>
+                                <componentType>field</componentType>
+                                <dataType>text</dataType>
+                                <elementTmpl>ui/dynamic-rows/cells/text</elementTmpl>
+                                <visible>false</visible>
+                                <additionalClasses>
+                                    <class name="_hidden">true</class>
+                                </additionalClasses>
+                            </settings>
+                        </field>
+                        <field name="sort_order" formElement="input" sortOrder="20">
+                            <settings>
+                                <dataType>number</dataType>
+                                <visible>false</visible>
+                                <dataScope>sort_order</dataScope>
+                                <additionalClasses>
+                                    <class name="_hidden">true</class>
+                                </additionalClasses>
+                            </settings>
+                        </field>
+                        <field name="type" formElement="select" component="Magento_Catalog/js/custom-options-type" sortOrder="20">
+                            <argument name="data" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="disableLabel" xsi:type="boolean">true</item>
+                                    <item name="multiple" xsi:type="boolean">false</item>
+                                    <item name="selectType" xsi:type="string">optgroup</item>
+                                    <item name="selectedPlaceholders" xsi:type="array">
+                                        <item name="defaultPlaceholder" xsi:type="string" translate="true">-- Please select --</item>
+                                    </item>
+                                    <item name="groupsConfig" xsi:type="array">
+                                        <item name="select" xsi:type="array">
+                                            <item name="values" xsi:type="array">
+                                                <item name="0" xsi:type="string">dropdown</item>
+                                            </item>
+                                            <item name="indexes" xsi:type="array">
+                                                <item name="0" xsi:type="string">values</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </argument>
+                            <settings>
+                                <dataType>text</dataType>
+                                <componentType>field</componentType>
+                                <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
+                                <label translate="true">Option Type</label>
+                                <validation>
+                                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                                </validation>
+                            </settings>
+                            <formElements>
+                                <select>
+                                    <settings>
+                                        <options class="Aheadworks\Helpdesk2\Model\Source\Department\StorefrontOptionList"/>
+                                    </settings>
+                                </select>
+                            </formElements>
+                        </field>
+                        <field name="is_required" sortOrder="30" formElement="checkbox">
+                            <argument name="data" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="default" xsi:type="number">1</item>
+                                </item>
+                            </argument>
+                            <settings>
+                                <componentType>field</componentType>
+                                <dataType>boolean</dataType>
+                                <label translate="true">Required</label>
+                                <dataScope>is_required</dataScope>
+                            </settings>
+                            <formElements>
+                                <checkbox>
+                                    <settings>
+                                        <valueMap>
+                                            <map name="false" xsi:type="number">0</map>
+                                            <map name="true" xsi:type="number">1</map>
+                                        </valueMap>
+                                    </settings>
+                                </checkbox>
+                            </formElements>
+                        </field>
+                    </container>
+                    <dynamicRows name="storefront_labels" class="Aheadworks\Helpdesk2\Ui\Component\Form\Element\DynamicRows">
+                        <settings>
+                            <additionalClasses>
+                                <class name="admin__field-wide">true</class>
+                                <class name="aw-helpdesk2">true</class>
+                                <class name="dynamic-rows">true</class>
+                                <class name="storefront_labels">true</class>
+                            </additionalClasses>
+                            <addButton>true</addButton>
+                            <addButtonLabel translate="true">Add</addButtonLabel>
+                            <defaultRecord>true</defaultRecord>
+                            <pageSize>100</pageSize>
+                            <dndConfig>
+                                <param name="enabled" xsi:type="boolean">false</param>
+                            </dndConfig>
+                            <componentType>dynamicRows</componentType>
+                        </settings>
+                        <container name="record" component="Aheadworks_Helpdesk2/js/ui/form/dynamic-rows/record">
+                            <argument name="data" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="isTemplate" xsi:type="boolean">true</item>
+                                    <item name="is_collection" xsi:type="boolean">true</item>
+                                    <item name="componentType" xsi:type="string">container</item>
+                                </item>
+                            </argument>
+                            <field name="store_id" sortOrder="10" class="Aheadworks\Helpdesk2\Ui\Component\Form\Element\Store" component="Magento_Ui/js/form/element/select" template="ui/form/field" formElement="select">
+                                <argument name="data" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="disableForDefaultRecord" xsi:type="boolean">true</item>
+                                        <item name="default" xsi:type="string">0</item>
+                                    </item>
+                                </argument>
+                                <argument name="options" xsi:type="object">Aheadworks\Helpdesk2\Ui\Component\Listing\Columns\Store\Options</argument>
+                                <settings>
+                                    <dataType>text</dataType>
+                                    <label translate="true">Store View</label>
+                                    <dataScope>store_id</dataScope>
+                                    <elementTmpl>ui/form/element/select</elementTmpl>
+                                    <additionalClasses>
+                                        <class name="select_field">true</class>
+                                    </additionalClasses>
+                                </settings>
+                            </field>
+                            <field name="content" sortOrder="20" formElement="input">
+                                <settings>
+                                    <dataType>text</dataType>
+                                    <label translate="true">Option Title</label>
+                                    <dataScope>content</dataScope>
+                                    <validation>
+                                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                                    </validation>
+                                </settings>
+                            </field>
+                            <actionDelete name="action_delete" sortOrder="30">
+                                <argument name="data" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="disableForDefaultRecord" xsi:type="boolean">true</item>
+                                        <item name="fit" xsi:type="boolean">true</item>
+                                    </item>
+                                </argument>
+                                <settings>
+                                    <dataType>text</dataType>
+                                    <componentType>actionDelete</componentType>
+                                    <additionalClasses>
+                                        <class name="action_delete_button">true</class>
+                                    </additionalClasses>
+                                </settings>
+                            </actionDelete>
+                        </container>
+                    </dynamicRows>
+                    <dynamicRows name="values">
+                        <settings>
+                            <additionalClasses>
+                                <class name="admin__field-wide">true</class>
+                            </additionalClasses>
+                            <componentType>dynamicRows</componentType>
+                        </settings>
+                        <container name="record" component="Aheadworks_Helpdesk2/js/ui/form/dynamic-rows/record">
+                            <argument name="data" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="isTemplate" xsi:type="boolean">true</item>
+                                    <item name="is_collection" xsi:type="boolean">true</item>
+                                    <item name="componentType" xsi:type="string">container</item>
+                                    <item name="positionProvider" xsi:type="string">sort_order</item>
+                                </item>
+                            </argument>
+                        </container>
+                    </dynamicRows>
+                </fieldset>
+            </container>
+        </dynamicRows>
+    </fieldset>
+    <fieldset name="permissions" sortOrder="60">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>Permissions</label>
+            <dataScope>permissions</dataScope>
+        </settings>
+        <field name="view_role_ids" formElement="multiselect" sortOrder="10">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Roles who can view tickets in that department</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Department\RoleList"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="update_role_ids" formElement="multiselect" sortOrder="20">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Roles who can update tickets in that department</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Department\RoleList"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

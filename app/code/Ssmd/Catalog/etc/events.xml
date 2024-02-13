@@ -3,4 +3,9 @@
 	<event name="catalog_product_save_before">
 		<observer name="ssmd_catalog_observer_catalog_productsavebefore_catalog_product_save_before" instance="Ssmd\Catalog\Observer\Catalog\ProductSaveBefore"/>
 	</event>
+
+	<!-- <event name="checkout_cart_product_add_after">
+        <observer name="add_free_gift_product" instance="Ssmd\Catalog\Observer\Catalog\GiftProductAdd" />
+    </event> -->
+
 </config>

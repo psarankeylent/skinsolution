@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::customreports_storecreditreport" title="Store Credit Report" translate="title" module="CustomReports_StoreCreditReport" sortOrder="100" parent="Magento_Reports::AdminGrid_Top" action="reports/storecreditreport/index" resource="Magento_Reports::customreports_storecreditreport"/>
+    </menu>
+</config>

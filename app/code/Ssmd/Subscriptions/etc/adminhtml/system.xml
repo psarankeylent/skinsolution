@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="schedule" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<group id="subs_next_reminder_cronschedule" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>Subscriptions Next Reminder Cron</label>
+				<field id="subscription_next_order_time" type="text" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Subscription Next Order Reminder</label>
+					<backend_model>Ssmd\Subscriptions\Model\Config\Backend\Cron\OrderReminderCronConfig</backend_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

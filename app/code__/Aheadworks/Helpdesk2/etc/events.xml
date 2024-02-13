@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="aheadworks_helpdesk2_api_data_ticketinterface_save_after">
+        <observer name="legacy_model_aw_helpdesk2_ticket_after_save" instance="Magento\Framework\EntityManager\Observer\AfterEntitySave"/>
+    </event>
+    <event name="aheadworks_helpdesk2_api_data_messageinterface_save_after">
+        <observer name="legacy_model_aw_helpdesk2_message_after_save" instance="Magento\Framework\EntityManager\Observer\AfterEntitySave"/>
+    </event>
+    <event name="aheadworks_helpdesk2_api_data_ticketinterface_delete_before">
+        <observer name="legacy_model_aw_helpdesk2_ticket_before_delete" instance="Magento\Framework\EntityManager\Observer\BeforeEntityDelete"/>
+    </event>
+    <event name="aw_helpdesk2_department_delete_before">
+        <observer name="aw_helpdesk2_check_before_delete" instance="Aheadworks\Helpdesk2\Observer\Model\DepartmentBeforeDeleteObserver"/>
+    </event>
+    <event name="aw_helpdesk2_ticket_delete_before">
+        <observer name="aw_helpdesk2_ticket_remove_attachments" instance="Aheadworks\Helpdesk2\Observer\Model\TicketBeforeDeleteObserver"/>
+    </event>
+
+    <!-- Automation observers -->
+    <event name="aw_helpdesk2_new_ticket_from_customer">
+        <observer name="aw_helpdesk2_new_customer_ticket_observer" instance="Aheadworks\Helpdesk2\Observer\Ticket\AutomationEventObserver"/>
+    </event>
+    <event name="aw_helpdesk2_new_ticket_from_agent">
+        <observer name="aw_helpdesk2_new_agent_ticket_observer" instance="Aheadworks\Helpdesk2\Observer\Ticket\AutomationEventObserver"/>
+    </event>
+    <event name="aw_helpdesk2_new_reply_from_customer">
+        <observer name="aw_helpdesk2_new_customer_reply_observer" instance="Aheadworks\Helpdesk2\Observer\Ticket\AutomationEventObserver"/>
+    </event>
+    <event name="aw_helpdesk2_new_reply_from_agent">
+        <observer name="aw_helpdesk2_new_agent_reply_observer" instance="Aheadworks\Helpdesk2\Observer\Ticket\AutomationEventObserver"/>
+    </event>
+    <event name="aw_helpdesk2_ticket_assigned_to_another_agent">
+        <observer name="aw_helpdesk2_ticket_reassigned_observer" instance="Aheadworks\Helpdesk2\Observer\Ticket\AutomationEventObserver"/>
+    </event>
+    <event name="aw_helpdesk2_order_status_changed">
+        <observer name="aw_helpdesk2_order_status_changed_observer" instance="Aheadworks\Helpdesk2\Observer\Order\StatusChangedEventObserver"/>
+    </event>
+    <event name="aw_helpdesk2_ticket_escalated">
+        <observer name="aw_helpdesk2_ticket_escalated_observer" instance="Aheadworks\Helpdesk2\Observer\Ticket\TicketEscalatedEventObserver"/>
+    </event>
+</config>

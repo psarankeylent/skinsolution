@@ -1,0 +1,138 @@
+<?php
+
+$medicalHistoryArr = $block->getCustomerMedicalHistory();
+
+?>
+
+<div class="fieldset-wrapper-title" data-bind="attr: {tabindex: !collapsible ? -1 : 0,
+               'data-state-collapsible': collapsible ? opened() ? 'open' : 'closed' : null}, click: toggleOpened, keyboard: {13: toggleOpened}" tabindex="-1">
+
+    <strong data-bind="css: {'admin__collapsible-title': collapsible,
+                      title: !collapsible,
+                      '_changed': changed,
+                      '_loading': loading,
+                      '_error': error}" class="title">
+        <span data-bind="i18n: label">Medical History</span>
+        <!-- ko if: collapsible --><!-- /ko -->
+    </strong>
+</div>
+
+<?php
+//if($medicalHistoryArr)
+foreach ($medicalHistoryArr as $medicalHistory) {
+
+    $questionText = str_replace(" ", "_", strtolower($medicalHistory['question_text']));
+
+    ?>
+    <div class="admin__field" data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="prefix">
+        <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+            <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="YF5RSNF">
+                <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label"></span>
+            </label><!-- /ko -->
+        </div>
+        <div class="admin__field-control" data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+            <form name="save_medical_history" id="form_<?php echo $medicalHistory['id'] ?>" method="post">
+            <span id=""><b><?php echo $medicalHistory['question_text']?></b> :
+
+                <?php $valueSelected = 'selected="selected"'; ?>
+                <?php
+                $questionTextArray = ['have_you_ever_used_latisse_in_the_past?', 'have_you_used_upneeq_in_the_past?', 'do_you_take_medication_for_high_blood_pressure?', 'do_you_take_medication_for_depression?','do_you_have_sjogren’s_syndrome?','do_your_low-lying_eyelids_interfere_with_any_day-to-day_functions?','do_you_have_unwanted_facial_hair?','have_you_used_vaniqa_in_the_past?'];
+                ?>
+
+                <?php if($questionText == 'gender'): ?>
+                    <select id="<?php echo $questionText ?>" name="response">
+                        <option <?php echo ($medicalHistory['response'] == 'Male')? $valueSelected:'' ?> value="Male">Male</option>
+                        <option <?php echo ($medicalHistory['response'] == 'Female')? $valueSelected:'' ?>value="Female">Female</option>
+                    </select>
+                <?php elseif($questionText == 'eye_problems'): ?>
+                    <select id="<?php echo $questionText ?>" name="response">
+                        <option <?php echo ($medicalHistory['response'] == 'true')? $valueSelected:'' ?> value="true">True</option>
+                        <option <?php echo ($medicalHistory['response'] == 'false')? $valueSelected:'' ?>value="false">False</option>
+                    </select>
+                <?php elseif(in_array($questionText, $questionTextArray)): ?>
+                    <select id="<?php echo $questionText ?>" name="response">
+                        <option <?php echo ($medicalHistory['response'] == 'Yes')? $valueSelected:'' ?> value="Yes">Yes</option>
+                        <option <?php echo ($medicalHistory['response'] == 'No')? $valueSelected:'' ?>value="No">No</option>
+                    </select>
+                <?php else: ?>
+                    <input type="text" id="<?php echo $questionText ?>" name="response" value="<?php echo $medicalHistory['response']?>"/>
+
+                <?php endif; ?>
+                <input type="hidden" name="id" value="<?php echo $medicalHistory['id']?>"/>
+                <input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>"/>
+            </span>
+                <script>
+                    require(['jquery'], function($) {
+
+                        $(document).ready(function(){
+
+                            $(".save_history_"+<?php echo $medicalHistory['id'] ?>).click(function(e){
+
+                                e.preventDefault();
+
+                                var dataForm = $('#form_<?php echo $medicalHistory['id'] ?>')[0];
+                                var formData = new FormData(dataForm);
+
+                                var url = '<?php echo $this->getUrl('backend/medical/savemh'); ?>';
+
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    contentType: false,
+                                    processData: false,
+                                    data:formData,
+                                    showLoader: true,
+                                    cache: false,
+                                    success: function(response) {
+                                        if(response.status)
+                                        {
+                                            //alert(response.message);
+                                        }
+                                    },
+                                    error: function()
+                                    {
+                                        //alert("Error :".response.message);
+                                    }
+
+                                });
+                            });
+                        });
+                    });
+
+                </script>
+
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>
+                <button type="submit" name="save_medical" class="save_history_<?php echo $medicalHistory['id'] ?> primary">
+                Save History</button>
+            </span>
+
+
+            </form>
+        </div>
+    </div>
+<?php }?>
+
+<script>
+    require([ "jquery", "mage/calendar" ],
+        function($){
+            //$('body').on('focus',"#date_of_birth", function(){
+
+            $("#date_of_birth").calendar({
+                changeYear:true,
+                changeMonth:true,
+                yearRange: "1970:2050",
+                buttonText:"Select Date",
+                dateFormat:"mm/dd/yyyy"
+            });
+            // });
+        });
+</script>
+
+
+
+
+
+
+
+

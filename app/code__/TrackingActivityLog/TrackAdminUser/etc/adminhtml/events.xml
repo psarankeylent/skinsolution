@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <!-- Product Save and Delete events -->
+    <event name="catalog_product_save_before">
+        <observer name="save_product_data_event" instance="TrackingActivityLog\TrackAdminUser\Observer\SaveProductDataObserver" />
+    </event>
+    <event name="catalog_product_delete_after_done">
+        <observer name="delete_product_event" instance="TrackingActivityLog\TrackAdminUser\Observer\DeleteProductObserver" />
+    </event>
+
+    <!-- Category Save and Delete Events -->
+    <event name="catalog_category_save_before">
+        <observer name="save_category_data_event" instance="TrackingActivityLog\TrackAdminUser\Observer\SaveCategoryDataObserver" />
+    </event>
+    <event name="catalog_category_delete_after_done">
+        <observer name="delete_category_event" instance="TrackingActivityLog\TrackAdminUser\Observer\DeleteCategoryObserver" />
+    </event>
+
+    <!-- Shopping Cart(Sales) Price rule Save and Delete Events -->
+    <event name="salesrule_rule_save_before">
+        <observer name="save_sales_rule_data_event" instance="TrackingActivityLog\TrackAdminUser\Observer\SaveCartPriceRuleDataObserver" />
+    </event>
+    <event name="salesrule_rule_delete_after">
+        <observer name="delete_sales_rule_event" instance="TrackingActivityLog\TrackAdminUser\Observer\DeleteCartPriceRuleDataObserver" />
+    </event>
+
+    <!-- Catalog Price rule Save and Delete Events -->
+    <event name="catalogrule_rule_save_before">
+        <observer name="save_catalog_rule_data_event" instance="TrackingActivityLog\TrackAdminUser\Observer\SaveCatalogPriceRuleDataObserver" />
+    </event>
+    <event name="catalogrule_rule_delete_after">
+        <observer name="delete_catalog_rule_event" instance="TrackingActivityLog\TrackAdminUser\Observer\DeleteCatalogPriceRuleDataObserver" />
+    </event>
+
+    <!-- Customer Save and Delete Events -->
+    <event name="customer_save_before">
+        <observer name="save_customer_data_event" instance="TrackingActivityLog\TrackAdminUser\Observer\SaveCustomerDataObserver" />
+    </event>
+    <event name="customer_delete_after">
+        <observer name="delete_customer_event" instance="TrackingActivityLog\TrackAdminUser\Observer\DeleteCustomerObserver" />
+    </event>
+
+    <!-- Customer Address Save and Delete Events-->
+    <event name="customer_address_save_before">
+        <observer name="save_customer_address_data_event" instance="TrackingActivityLog\TrackAdminUser\Observer\SaveCustomerAddressDataObserver" />
+    </event>
+     <event name="customer_address_delete_after">
+        <observer name="delete_customer_address_event" instance="TrackingActivityLog\TrackAdminUser\Observer\DeleteCustomerAddressObserver" />
+    </event>
+
+
+</config>

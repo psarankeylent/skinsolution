@@ -1,0 +1,126 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/* @var \Magento\Sales\Block\Adminhtml\Order\Totals $block */
+?>
+<table class="data-table admin__table-secondary order-subtotal-table">
+    <?php $_totals = $block->getTotals('footer') ?>
+
+    <?php if ($_totals) : ?>
+        <tfoot>
+        <?php foreach ($block->getTotals('footer') as $_code => $_total) : ?>
+            <?php if ($_total->getBlockName()) : ?>
+                <?= $block->getChildHtml($_total->getBlockName(), false) ?>
+            <?php else : ?>
+                <tr class="col-<?= $block->escapeHtmlAttr($_code) ?>">
+                    <td <?= /* @noEscape */ $block->getLabelProperties() ?> class="label">
+                        <strong><?= $block->escapeHtml($_total->getLabel()) ?></strong>
+                    </td>
+                    <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                        <strong><?= /* @noEscape */ $block->formatValue($_total) ?></strong>
+                    </td>
+                </tr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </tfoot>
+    <?php endif; ?>
+
+    <?php $_totals = $block->getTotals('')?>
+    <?php if ($_totals) : ?>
+        <tbody>
+        <?php foreach ($_totals as $_code => $_total) : ?>
+            <?php if ($_total->getBlockName()) : ?>
+                <?= $block->getChildHtml($_total->getBlockName(), false) ?>
+            <?php else : ?>
+                <?php if ($_total->getCode() == 'discount') : ?>
+                    <?php
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $quoteId = $block->getOrder()->getQuoteId();
+                    $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+                    $connection = $resource->getConnection();
+
+                    $tableName = $connection->getTableName('quote_discounts');
+
+                    $sql = "SELECT * FROM $tableName WHERE quote_id = $quoteId LIMIT 1";
+
+                    $quoteDiscounts = $connection->fetchRow($sql);
+                    $quoteDiscountsData = [];
+                    if ($quoteDiscounts) {
+                        $quoteDiscountsData = json_decode($quoteDiscounts['quote_discounts'],true)['quote'];
+                        //print_r($quoteDiscountsData);
+                    }
+
+                    $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+                    ?>
+                    <?php if($quoteDiscounts && count($quoteDiscountsData) > 0): ?>
+                        <?php foreach ($quoteDiscountsData as $discount): ?>
+                            <tr class="col-<?= $block->escapeHtmlAttr($_code) ?>">
+                                <td <?= /* @noEscape */ $block->getLabelProperties() ?> class="label">
+                                    <?php if ($_total->getStrong()) : ?>
+                                        <strong><?= $block->escapeHtml('Discount (' . $discount['label'] . ')') ?></strong>
+                                    <?php else : ?>
+                                        <?= $block->escapeHtml('Discount (' . $discount['label'] . ')') ?>
+                                    <?php endif?>
+                                </td>
+
+                                <?php if ($_total->getStrong()) : ?>
+                                    <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                                        <strong><?= /* @noEscape */ $priceHelper->currency($discount['amount']['value'], true, false); ?></strong>
+                                    </td>
+                                <?php else : ?>
+                                    <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                                        <span><?= /* @noEscape */ $priceHelper->currency($discount['amount']['value'], true, false); ?></span>
+                                    </td>
+                                <?php endif; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr class="col-<?= $block->escapeHtmlAttr($_code) ?>">
+                            <td <?= /* @noEscape */ $block->getLabelProperties() ?> class="label">
+                                <?php if ($_total->getStrong()) : ?>
+                                    <strong><?= $block->escapeHtml($_total->getLabel()) ?></strong>
+                                <?php else : ?>
+                                    <?= $block->escapeHtml($_total->getLabel()) ?>
+                                <?php endif?>
+                            </td>
+
+                            <?php if ($_total->getStrong()) : ?>
+                                <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                                    <strong><?= /* @noEscape */ $block->formatValue($_total) ?></strong>
+                                </td>
+                            <?php else : ?>
+                                <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                                    <span><?= /* @noEscape */ $block->formatValue($_total) ?></span>
+                                </td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <tr class="col-<?= $block->escapeHtmlAttr($_code) ?>">
+                        <td <?= /* @noEscape */ $block->getLabelProperties() ?> class="label">
+                            <?php if ($_total->getStrong()) : ?>
+                                <strong><?= $block->escapeHtml($_total->getLabel()) ?></strong>
+                            <?php else : ?>
+                                <?= $block->escapeHtml($_total->getLabel()) ?>
+                            <?php endif?>
+                        </td>
+
+                        <?php if ($_total->getStrong()) : ?>
+                            <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                                <strong><?= /* @noEscape */ $block->formatValue($_total) ?></strong>
+                            </td>
+                        <?php else : ?>
+                            <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                                <span><?= /* @noEscape */ $block->formatValue($_total) ?></span>
+                            </td>
+                        <?php endif; ?>
+                    </tr>
+                <?php endif ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </tbody>
+    <?php endif; ?>
+</table>

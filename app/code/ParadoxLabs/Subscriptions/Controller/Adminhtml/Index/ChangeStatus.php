@@ -15,6 +15,12 @@ namespace ParadoxLabs\Subscriptions\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
 
+// Email notification
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
+
 /**
  * ChangeStatus Class
  */
@@ -45,7 +51,14 @@ class ChangeStatus extends View
         \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
         \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory,
         \ParadoxLabs\Subscriptions\Helper\Data $helper,
-        \ParadoxLabs\Subscriptions\Model\Source\Status $statusSource
+        \ParadoxLabs\Subscriptions\Model\Source\Status $statusSource,
+        ScopeConfigInterface $scopeConfig,
+        TransportBuilder $transportBuilder,
+        StateInterface $state,
+        StoreManagerInterface $storeManager,
+        \CreditCard\Expiring\Model\CreditCardExpiringModelFactory $creditCardExpiringModelFactory,
+        \ParadoxLabs\TokenBase\Model\CardFactory $cardFactory,
+        \Magento\Email\Model\TemplateFactory $templateFactory
     ) {
         parent::__construct(
             $context,
@@ -58,6 +71,13 @@ class ChangeStatus extends View
         );
 
         $this->statusSource = $statusSource;
+        $this->scopeConfig = $scopeConfig;
+        $this->inlineTranslation = $state;
+        $this->transportBuilder = $transportBuilder;
+        $this->storeManager = $storeManager;
+        $this->creditCardExpiringModelFactory = $creditCardExpiringModelFactory;
+        $this->cardFactory = $cardFactory;
+        $this->templateFactory = $templateFactory;
     }
 
     /**
@@ -88,6 +108,10 @@ class ChangeStatus extends View
                 $subscription->setStatus($newStatus);
                 $this->subscriptionRepository->save($subscription);
 
+                // ===================== Subscription Status Change Notification Email Start ======================================//
+                $this->sendSubscriptionStatusChangeEmail($subscription, $newStatus);
+                // ===================== Subscription Status Change Notification Email End ======================================= //
+
                 $this->messageManager->addSuccessMessage(
                     __(
                         'Subscription status changed to "%1".',
@@ -106,4 +130,95 @@ class ChangeStatus extends View
 
         return $resultRedirect;
     }
+    public function sendSubscriptionStatusChangeEmail($subscription, $newStatus)
+    {
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/subscriptions_custom_email.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customer = $objectManager->get('Magento\Customer\Model\CustomerFactory')->create()->load($subscription->getData('customer_id'));
+        $quote    = $objectManager->get('Magento\Quote\Model\QuoteFactory')->create()->load($subscription->getData('quote_id'));
+        $items    = $quote->getAllItems();
+
+        $productName = "";
+        foreach ($quote->getAllItems() as $item) {
+            $productName = $item->getName();
+        }
+
+        if($newStatus == 'paused')
+        {
+            $templateId = 45;
+        }
+        elseif($newStatus == 'active')
+        {
+            $templateId = 46;
+        }
+        elseif($newStatus == 'canceled')
+        {
+            $templateId = 45;  // canceled=paused
+        }
+
+        if($newStatus == 'paused')
+        {
+            $newStatus = 'Paused';
+        }
+
+        $name = $customer->getFirstname().' '.$customer->getLastname();
+        $customer_email = $customer->getEmail();
+
+        // ================ Send email code start ===============
+        $this->inlineTranslation->suspend();
+        $sender = [
+            'name'  => $this->scopeConfig->getValue('trans_email/ident_support/name',\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+            'email' => $this->scopeConfig->getValue('trans_email/ident_support/email',\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+        ];
+
+        $transport = $this->transportBuilder
+            ->setTemplateIdentifier($templateId)
+            ->setTemplateOptions(
+                [
+                    'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+                    'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
+                ]
+            )
+            ->setTemplateVars([
+                'customer_name'   => $name,
+                'today_date'      => date('F d Y'),
+                'status'          => $newStatus,
+                'product_name'    => $productName
+            ])
+            ->setFrom($sender)
+            ->addTo($customer_email)
+            ->getTransport();
+
+        
+        try {
+            $transport->sendMessage();
+            
+            // Text Message getting
+            $templateObject    = $this->templateFactory->create()->load($templateId);
+            $emailTextMessage  = $templateObject->getTemplateText();
+
+            $trackLog = $this->creditCardExpiringModelFactory->create();
+            $dataToSave = array('customer_email' => $customer_email, 'email_sent' => "yes", 'notification_type'=>'Status Change', 'email_message' => $emailTextMessage);
+            $trackLog->setData($dataToSave);
+            $trackLog->save();
+
+            $logger->info('Status change email sent successfully.');
+
+        } catch (\Exception $e) {
+            $trackLog = $this->creditCardExpiringModelFactory->create();
+            $dataToSave = array('customer_email' => $customer_email, 'email_sent' => "no", 'notification_type'=>'Status Change','email_message' => $e->getMessage());
+            $trackLog->setData($dataToSave);
+            $trackLog->save();
+
+            $logger->info('Error while sending status change email '.$e->getMessage());
+        }
+        $this->inlineTranslation->resume();
+
+
+
+    }
 }
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::customreports_downloadreport" title="Download Reports" translate="title" module="CustomReports_DownloadReports" sortOrder="200" parent="Magento_Reports::report_salesroot" action="downloadreports/index/index" resource="Magento_Reports::customreports_downloadreport"/>
+    </menu>
+</config>

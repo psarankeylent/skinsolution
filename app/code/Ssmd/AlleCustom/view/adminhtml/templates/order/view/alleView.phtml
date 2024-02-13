@@ -1,0 +1,94 @@
+<?php
+/**
+ * @var $block \Ssmd\AlleCustom\Block\Adminhtml\Order\View\AlleView
+ */
+
+/*
+
+    $order = $block->getOrder();
+    $collection = $block->getAllMemberDetailsByOrder($order->getIncrementId());
+    //print_r($collection->getData()); exit;
+
+?>
+
+<section class="brilliant-coupons admin__page-section-item order-totals">
+    <?php if($collection != null): ?>
+
+        <?php foreach ($collection as $alleMember): ?>
+                     <?php if( ($alleMember->getData('brilliantcoupon1') != "") && ($alleMember->getData('brilliantcoupon2') )): ?>
+                        <div class="admin__page-section-title">
+                            <span class="title"><?php echo __("Brilliant Distinctions Coupons"); ?></span>
+                        </div>
+                    <?php else: ?>
+                        <div class="admin__page-section-title">
+                            <span class="title"><?php echo __("Brilliant Distinctions Coupons"); ?></span>
+                        </div>
+                        <table class="data-table admin__table-secondary order-subtotal-table">
+                            <tbody>
+                                    <tr class="col-2">                                       
+                                        <td>
+                                            <span class="price"><?php echo __('No records found!') ?></span>
+                                        </td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                    <?php endif; ?>
+                    <div class="admin__page-section-content">
+
+                        <table class="data-table admin__table-secondary order-subtotal-table">
+                            <tbody>
+                                <?php if($alleMember->getData('brilliantcoupon1') != ""): ?>                                            
+                                    <tr class="col-2">
+                                        <td class="label">
+                                            Brilliant Distinctions Coupon #1
+                                        </td>
+                                        <td>
+                                            <span class="price"><?php echo $alleMember->getData('brilliantcoupon1') ?></span>
+                                        </td>
+                                    </tr>                                
+                                    <tr class="col-4">
+                                        <td class="label">Total value 1</td>
+
+                                        <td>
+                                            <span class="price">$<?php echo $alleMember->getData('brilliantamount1') ?></span>
+                                        </td>
+                                    </tr>
+                                    
+                                <?php endif; ?>
+
+                                <?php if($alleMember->getData('brilliantamount2') != ""): ?> 
+
+                                    <tr class="col-2">
+                                        <td class="label">
+                                            Brilliant Distinctions Coupon #2
+                                        </td>
+                                        <td>
+                                            <span class="price"><?php echo $alleMember->getData('brilliantcoupon2') ?></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="col-4">
+                                        <td class="label">Total value 2</td>
+
+                                        <td>
+                                            <span class="price">$<?php echo $alleMember->getData('brilliantamount2') ?></span>
+                                        </td>
+                                    </tr>
+                                    
+                                <?php endif; ?>
+
+                            </tbody>
+                     </table>
+                    </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+</section>
+
+<style type="text/css">    
+    .brilliant-coupons{
+         margin: 5rem 0;
+    }
+
+</style>
+
+<?php */ ?>

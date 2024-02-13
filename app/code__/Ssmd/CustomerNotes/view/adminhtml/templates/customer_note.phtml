@@ -1,0 +1,180 @@
+<?php
+/**
+ * @var $block \Ssmd\CustomerNotes\Block\Adminhtml\Customer\CustomerNotes
+ */
+
+//echo $this->getUrl('customernotes'); exit;.
+// echo $block->getAdminUserId(); exit;
+?>
+
+<div class="fieldset-wrapper customer-information">
+
+    <div>
+        <form method="post" name="add_note" id="add_note" data-mage-init='{"validation": {}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span><?= $block->escapeHtmlAttr(__('Customer Notes')) ?></span></legend>
+                <div class="fields col-md-6">
+                    <div class="field form_key">
+                        <div class="control">
+                            <input type="hidden" name="form_key" id="form_key" value="<?= $block->getFormKey() ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="fields col-md-6">
+                    <div class="field admin_user_id">
+                        <div class="control">
+                            <input type="hidden" name="admin_user_id" id="admin_user_id" value="<?= $block->getAdminUserId() ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="fields col-md-6">
+                    <div class="field mage_customer_id">
+                        <div class="control">
+                            <input type="hidden" name="mage_customer_id" id="mage_customer_id" value="<?= $block->getCustomerId() ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="fields col-md-6">
+                    <div class="field customer_note">
+                        <div class="control">
+                            <textarea name="customer_note" id="customer_note" cols="50" rows="10" data-validate="{required:true}"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" id="add_customer_note" title="Submit"><span><?= $block->
+                            escapeHtmlAttr(__('Submit Note')) ?></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <?php $collection = $block->getNotesCollection(); ?>
+
+        <div class="row">
+            <div class="divider-div col-12">
+                <?php if(count($collection->getData())>0): ?>
+                    <?php foreach($collection as $note): ?>
+
+                        <div class="divider">
+                            <div class="note-list-by">
+                                <span ><strong>By : </strong></span>
+                                <span><?php echo $block->getAdminUserName() ?></span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span>|</span>
+                                <span>&nbsp;&nbsp;</span>
+                                <span><strong>On : </strong></span>
+                                <span><?php echo date('jS F, Y G:i A', strtotime($note->getCreatedAt())) ?></span>
+                            </div>
+
+                            <div class="note-list-content">
+                                <span><?php echo $note->getCustomerNote() ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    require(['jquery'], function($) {
+
+        $(document).ready(function(){
+
+            $('#add_customer_note').click(function(e) {
+
+                e.preventDefault();
+
+                var admin_user_id = $('#admin_user_id').val();
+                var mage_customer_id = $('#mage_customer_id').val();
+                //alert(mage_customer_id);
+                var customer_note = $('#customer_note').val();
+                if(customer_note == "" || customer_note == null)
+                {
+                    alert('This is required field');
+                    return false;
+                }
+                //alert(customer_note);
+                var formKey = $("[name='form_key']").val();
+                //alert(formKey);
+
+                var url = '<?php echo $this->getUrl('customernotes') ?>';
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        'form_key':formKey,
+                        'admin_user_id': admin_user_id,
+                        'mage_customer_id':mage_customer_id,
+                        'customer_note':customer_note
+                    },
+                    showLoader: true,
+                    cache: false,
+                    success: function (data, status, xhr) {
+                        $('#customer_note').val("");
+                        $('.divider-div.col-12').prepend(data);
+
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        console.log('Error' + errorMessage);
+                    }
+                });
+
+            });
+
+        });
+    });
+</script>
+<style>
+    .divider-div {
+        padding-top: 20px;
+    }
+
+    .divider-div .divider {
+        border-bottom: 1px solid #e2e2e2;
+        /*margin-bottom: 30px;*/
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-right: 15px;
+    }
+
+    .divider p:empty {
+        display: none;
+    }
+    .divider-div .divider:last {
+        border-bottom:none;
+    }
+
+    .divider-div h4 {
+        font-weight: bold;
+        margin-bottom: 0px;
+        font-size: 18px;
+    }
+
+    .divider-div p#subhead {
+        margin: 20px 0px;
+        font-size: 12px;
+    }
+
+    .divider p {
+        margin-bottom: 5px;
+    }
+
+    .note-list-by{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .note-list-content{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+</style>

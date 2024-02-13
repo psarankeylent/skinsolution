@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::customreports_impersonation" title="Impersonation Report" translate="title" module="CustomReports_ImpersonationReport" sortOrder="110" parent="Magento_Reports::AdminGrid_Top" action="reports/impersonation/index" resource="Magento_Reports::customreports_impersonation"/>
+    </menu>
+</config>

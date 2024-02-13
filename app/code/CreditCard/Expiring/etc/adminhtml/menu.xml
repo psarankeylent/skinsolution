@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::creditcard_expiring"
+             title="Creditcard Notification Log"
+             translate="title"
+             module="CreditCard_Expiring"
+             sortOrder="120"
+             parent="Magento_Reports::AdminGrid_Top"
+             action="reports/creditcardexpiringlog/index"
+             resource="Magento_Reports::creditcard_expiring"
+        />
+    </menu>
+</config>

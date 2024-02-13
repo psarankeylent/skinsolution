@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="aw_helpdesk2_email_automation">
+        <job name="aw_helpdesk2_process_gateway" instance="Aheadworks\Helpdesk2\Cron\ProcessGateway" method="execute">
+            <schedule>*/1 * * * *</schedule>
+        </job>
+        <job name="aw_helpdesk2_process_email" instance="Aheadworks\Helpdesk2\Cron\ProcessEmail" method="execute">
+            <schedule>*/1 * * * *</schedule>
+        </job>
+    </group>
+    <group id="aw_helpdesk2_basic_automation">
+        <job name="aw_helpdesk2_create_automation_task" instance="Aheadworks\Helpdesk2\Cron\CreateAutomationTask" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="aw_helpdesk2_run_automation_task" instance="Aheadworks\Helpdesk2\Cron\RunAutomationTask" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="aw_helpdesk2_finish_automation_task" instance="Aheadworks\Helpdesk2\Cron\FinishAutomationTask" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job name="aw_helpdesk2_update_ticket_rating" instance="Aheadworks\Helpdesk2\Cron\UpdateTicketRating" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

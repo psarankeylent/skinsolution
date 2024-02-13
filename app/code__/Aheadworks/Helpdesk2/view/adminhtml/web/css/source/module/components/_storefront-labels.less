@@ -1,0 +1,36 @@
+//
+//  Storefront labels dynamic rows
+//  _____________________________________________
+
+.aw-helpdesk2.dynamic-rows.storefront_labels {
+    .select_field {
+        width: 20%;
+
+        &._disabled {
+            opacity: 1;
+        }
+        .admin__field.select_field {
+            width: 100%;
+        }
+    }
+
+    .action_delete_button._disabled {
+        opacity: 1;
+
+        button {
+            visibility: hidden;
+        }
+    }
+
+    th:first-child, td:first-child {
+        width: 20%;
+    }
+
+    th,td {
+        width: 79%;
+    }
+
+    td:nth-child(2), th:nth-child(2) {
+        padding-left: 1rem;
+    }
+}

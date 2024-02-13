@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category  Lof
+ * @package   Lof\GiftSalesRule
+ * @author    Landofcoder <landofcoder@gmail.com>
+ * @copyright 2020 Landofcoder
+ * @license   http://www.landofcoder.com/LICENSE-1.0.html
+ */
+ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Frontend REST API for free gift-->
+    <route url="/V1/lof_free_gift/cart/:cartId" method="GET">
+        <service class="Lof\GiftSalesRule\Api\ProductGiftInterface" method="getGiftsByQuoteId"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/lof_free_gift/cart/:cartId/:itemId" method="DELETE">
+        <service class="Lof\GiftSalesRule\Api\ProductGiftInterface" method="deleteGiftByQuoteItemId"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/lof_free_gift/cart" method="POST">
+        <service class="Lof\GiftSalesRule\Api\ProductGiftInterface" method="addGift"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/lof_free_gift/mine/cart" method="GET">
+        <service class="Lof\GiftSalesRule\Api\ProductGiftInterface" method="getCustomerGiftsByQuoteId"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/V1/lof_free_gift/mine/items/:itemId" method="DELETE">
+        <service class="Lof\GiftSalesRule\Api\ProductGiftInterface" method="deleteCustomerGiftByQuoteItemId"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/V1/lof_free_gift/mine/cart" method="POST">
+        <service class="Lof\GiftSalesRule\Api\ProductGiftInterface" method="addCustomerGift"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>

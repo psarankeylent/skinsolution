@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="form.additional.info">
+            <referenceBlock name="aw_helpdesk_contact_form" remove="true"/>
+            <block class="Aheadworks\Helpdesk2\Block\Customer\Ticket\Form\Create"
+                   name="aw.helpdesk2.contact_form.ticket.create"
+                   ifconfig="aw_helpdesk2/frontend/is_enabled_contact_form_integration"
+                   cacheable="false">
+                <arguments>
+                    <argument name="creation_view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\Ticket\Creation</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="aw_helpdesk2_form" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/form</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                    <item name="1" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                    <item name="2" xsi:type="string">aw_helpdesk2_form_validator</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="general" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                        <item name="sortOrder" xsi:type="number">10</item>
+                                        <item name="label" xsi:type="string"></item>
+                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/fieldset</item>
+                                        <item name="dataScope" xsi:type="string">data</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="subject" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="dataScope" xsi:type="string">subject</item>
+                                                <item name="label" xsi:type="string" translate="true">Subject</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">5</item>
+                                            </item>
+                                            <item name="cc_recipients" xsi:type="array">
+                                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                <item name="dataScope" xsi:type="string">cc_recipients</item>
+                                                <item name="label" xsi:type="string" translate="true">CC recipients</item>
+                                                <item name="notice" xsi:type="string" translate="true">Add emails separated by commas</item>
+                                                <item name="validation" xsi:type="array">
+                                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                                    <item name="aw-helpdesk2__validate-emails" xsi:type="boolean">true</item>
+                                                </item>
+                                                <item name="sortOrder" xsi:type="number">6</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="storefront_options" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/fieldset</item>
+                                        <item name="sortOrder" xsi:type="number">20</item>
+                                        <item name="label" xsi:type="string"></item>
+                                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/components/fieldset</item>
+                                        <item name="dataScope" xsi:type="string">data</item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="renderer" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/storefront-option/renderer</item>
+                                                <item name="departmentProvider" xsi:type="string">aw_helpdesk2_form.general.department_id</item>
+                                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                                <item name="configProvider" xsi:type="string">aw_helpdesk2_config_provider</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="aw_helpdesk2_form_data_provider" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                            </item>
+                            <item name="aw_helpdesk2_config_provider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiElement</item>
+                            </item>
+                            <item name="aw_helpdesk2_form_validator" xsi:type="array">
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                                </item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/contact-form/validator</item>
+                                <item name="provider" xsi:type="string">aw_helpdesk2_form_data_provider</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block class="Aheadworks\Helpdesk2\Block\Contact\RestrictEmailInput"
+                   name="aw.helpdesk2.contact_form.email.restrict"
+                   ifconfig="aw_helpdesk2/frontend/is_enabled_contact_form_integration"
+                   cacheable="false">
+                <arguments>
+                    <argument name="email_input_selector" xsi:type="string">.contact #email</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

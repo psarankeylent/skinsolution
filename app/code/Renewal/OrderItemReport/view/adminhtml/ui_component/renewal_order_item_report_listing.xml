@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">renewal_order_item_report_listing.renewal_order_item_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>renewal_order_item_report_listing_columns</spinner>
+        <deps>
+            <dep>renewal_order_item_report_listing.renewal_order_item_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="renewal_order_item_report_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">item_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider name="renewal_order_item_report_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>item_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <!-- <exportButton name="export_button" /> -->
+    </listingToolbar>
+    <columns name="renewal_order_item_report_listing_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>item_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="increment_id">
+            <settings>
+                <label translate="true">Order Number</label>
+            </settings>
+        </column>
+        <column name="customer_name" class="Renewal\OrderItemReport\Ui\Component\Listing\Columns\Name">
+            <settings>
+                <label translate="true">Customer Name</label>
+            </settings>
+        </column>
+        <column name="customer_email">
+            <settings>
+                <label translate="true">Customer Email</label>
+            </settings>
+        </column>
+        <column name="sku">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">SKU</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <label translate="true">Item Name</label>
+            </settings>
+        </column>
+        <column name="qty_ordered">
+            <settings>
+                <label translate="true">Qty</label>
+            </settings>
+        </column>
+        <column name="price" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Item Price</label>
+            </settings>
+        </column>
+        <!-- <column name="base_cost" class="Renewal\OrderItemReport\Ui\Component\Listing\Columns\Cost">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Item Cost</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column> -->
+        <column name="base_cost" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Item Cost</label>
+            </settings>
+        </column>
+        <column name="discount_amount">
+            <settings>
+                <label translate="true">Item Level Discount</label>
+            </settings>
+        </column>
+        <column name="order_level_discount">
+            <settings>
+                <label translate="true">Order Level Discount</label>
+            </settings>
+        </column>
+        <!-- <column name="tax_amount" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Item Tax</label>
+            </settings>
+        </column> -->
+        <column name="tax_invoiced" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Item Tax</label>
+            </settings>
+        </column>
+        <column name="shipping_amount">
+            <settings>
+                <label translate="true">Shipping Amount</label>
+            </settings>
+        </column>
+        <column name="row_total" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Item Total</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Order Status</label>
+            </settings>
+        </column>
+        <column name="region">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Shipping State</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Order Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                </item>
+            </argument>
+        </column>
+        <column name="invoice_created" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Invoice Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                </item>
+            </argument>
+        </column>
+        <column name="ship_date" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Ship Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                </item>
+            </argument>
+        </column>
+        <column name="order_type" class="Renewal\OrderItemReport\Ui\Component\Listing\Columns\OrderType">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Order Type</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipped_from">
+            <settings>
+                <label translate="true">Warehouse</label>
+            </settings>
+        </column>
+        <column name="shipment_cost" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <label translate="true">Shipment Cost</label>
+            </settings>
+        </column>
+    </columns>
+</listing>
+

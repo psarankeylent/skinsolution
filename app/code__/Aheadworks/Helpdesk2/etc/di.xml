@@ -1,0 +1,991 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketInterface" type="Aheadworks\Helpdesk2\Model\Ticket"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketOptionInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Option"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\TicketRepositoryInterface" type="Aheadworks\Helpdesk2\Model\TicketRepository"/>
+    <preference for="Aheadworks\Helpdesk2\Api\TicketManagementInterface" type="Aheadworks\Helpdesk2\Model\Service\TicketService"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\MessageInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Message"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\MessageAttachmentInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Message\Attachment"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\MessageSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\MessageRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Ticket\MessageRepository"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TagInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Tag"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TagSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\TagRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Ticket\TagRepository"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketStatusInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Status"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketStatusSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\TicketStatusRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Ticket\StatusRepository"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketPriorityInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Priority"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\TicketPrioritySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\TicketPriorityRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Ticket\PriorityRepository"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\DepartmentInterface" type="Aheadworks\Helpdesk2\Model\Department"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\DepartmentOptionInterface" type="Aheadworks\Helpdesk2\Model\Department\Option"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\DepartmentOptionValueInterface" type="Aheadworks\Helpdesk2\Model\Department\Option\Value"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\DepartmentPermissionInterface" type="Aheadworks\Helpdesk2\Model\Department\Permission"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\DepartmentSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\DepartmentRepositoryInterface" type="Aheadworks\Helpdesk2\Model\DepartmentRepository"/>
+    <preference for="Aheadworks\Helpdesk2\Api\DepartmentManagementInterface" type="Aheadworks\Helpdesk2\Model\Service\DepartmentService"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface" type="Aheadworks\Helpdesk2\Model\Gateway"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\GatewayDataSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\GatewayRepositoryInterface" type="Aheadworks\Helpdesk2\Model\GatewayRepository"/>
+    <preference for="Aheadworks\Helpdesk2\Api\GatewayManagementInterface" type="Aheadworks\Helpdesk2\Model\Service\GatewayService"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\EmailInterface" type="Aheadworks\Helpdesk2\Model\Gateway\Email"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\EmailAttachmentInterface" type="Aheadworks\Helpdesk2\Model\Gateway\Email\Attachment"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\RejectingPatternInterface" type="Aheadworks\Helpdesk2\Model\Rejection\Pattern"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\RejectingPatternSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\RejectingPatternRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Rejection\PatternRepository"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\AutomationInterface" type="Aheadworks\Helpdesk2\Model\Automation"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\AutomationSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\AutomationRepositoryInterface" type="Aheadworks\Helpdesk2\Model\AutomationRepository"/>
+    <preference for="Aheadworks\Helpdesk2\Model\Automation\EventDataInterface" type="Aheadworks\Helpdesk2\Model\Automation\EventData"/>
+    <preference for="Aheadworks\Helpdesk2\Model\Automation\TaskInterface" type="Aheadworks\Helpdesk2\Model\Automation\Task"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\TicketAttributeRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Ticket\AttributeRepository"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\StorefrontLabelInterface" type="Aheadworks\Helpdesk2\Model\StorefrontLabel"/>
+    <preference for="Aheadworks\Helpdesk2\Model\Email\MetadataInterface" type="Aheadworks\Helpdesk2\Model\Email\Metadata"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\QuickResponseInterface" type="Aheadworks\Helpdesk2\Model\QuickResponse"/>
+    <preference for="Aheadworks\Helpdesk2\Api\QuickResponseRepositoryInterface" type="Aheadworks\Helpdesk2\Model\QuickResponseRepository"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\QuickResponseSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <preference for="Aheadworks\Helpdesk2\Api\Data\RejectedMessageInterface" type="Aheadworks\Helpdesk2\Model\Rejection\Message"/>
+    <preference for="Aheadworks\Helpdesk2\Api\Data\RejectedMessageSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Aheadworks\Helpdesk2\Api\RejectedMessageRepositoryInterface" type="Aheadworks\Helpdesk2\Model\Rejection\MessageRepository"/>
+
+    <preference for="Aheadworks\Helpdesk2\Model\Email\Mail\Header\HeaderInterface" type="Aheadworks\Helpdesk2\Model\Email\Mail\Header\Header"/>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\ResourceModel\Automation\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Automation::MAIN_TABLE_NAME</argument>
+            <argument name="resourceModel" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Automation</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aw_helpdesk2_ticket_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Grid\Backend\Collection</item>
+                <item name="aw_helpdesk2_insert_customer_ticket_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Grid\Backend\Collection</item>
+                <item name="aw_helpdesk2_ticket_frontend_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Grid\Frontend\Collection</item>
+                <item name="aw_helpdesk2_department_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Grid\Collection</item>
+                <item name="aw_helpdesk2_gateway_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Gateway\Grid\Collection</item>
+                <item name="aw_helpdesk2_automation_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Automation\Grid\Collection</item>
+                <item name="aw_helpdesk2_rejecting_pattern_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\RejectingPattern\Grid\Collection</item>
+                <item name="aw_helpdesk2_rejecting_message_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\RejectedMessage\Grid\Collection</item>
+                <item name="aw_helpdesk2_quick_response_listing_data_source" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\QuickResponse\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket::TICKET_ENTITY_TABLE_NAME</item>
+                    <item name="eavEntityType" xsi:type="const">Aheadworks\Helpdesk2\Model\Ticket::ENTITY</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\TicketInterface::ENTITY_ID</item>
+                    <item name="entityContext" xsi:type="array">
+                        <item name="store" xsi:type="string">Magento\Store\Model\StoreScopeProvider</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketStatusInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Status::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\TicketStatusInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketPriorityInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Priority::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\TicketPriorityInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\MessageInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Message::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\MessageInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\DepartmentInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Department::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\DepartmentInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Gateway::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\StorefrontLabelInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Repository::MAIN_TABLE_NAME</item>
+                    <!-- Table has compound identifier, so ID is dummy -->
+                    <item name="identifierField" xsi:type="string">id</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\EmailInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Gateway\Email::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\EmailInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\DepartmentOptionInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Department::DEPARTMENT_OPTION_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\DepartmentOptionInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\DepartmentOptionValueInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Department::DEPARTMENT_OPTION_TYPE_VALUE_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\DepartmentOptionValueInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\AutomationInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\Automation::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\AutomationInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\RejectingPatternInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\RejectingPattern::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\RejectingPatternInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\QuickResponseInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\QuickResponse::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\QuickResponseInterface::ID</item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\RejectedMessageInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Aheadworks\Helpdesk2\Model\ResourceModel\RejectedMessage::MAIN_TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\RejectedMessageInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketInterface" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Hydrator</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Aheadworks\Helpdesk2\Api\Data\DepartmentInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="storeCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Store\SaveHandler</item>
+                        <item name="agentCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Agent\SaveHandler</item>
+                        <item name="permissionCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Permission\SaveHandler</item>
+                        <item name="gatewayCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Gateway\SaveHandler</item>
+                        <item name="storefrontLabelCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                        <item name="optionCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Option\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="storeReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Store\ReadHandler</item>
+                        <item name="agentReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Agent\ReadHandler</item>
+                        <item name="permissionReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Permission\ReadHandler</item>
+                        <item name="gatewayReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Gateway\ReadHandler</item>
+                        <item name="storefrontLabelReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\ReadHandler</item>
+                        <item name="optionReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Option\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="storeUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Store\SaveHandler</item>
+                        <item name="agentUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Agent\SaveHandler</item>
+                        <item name="permissionUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Permission\SaveHandler</item>
+                        <item name="gatewayUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Gateway\SaveHandler</item>
+                        <item name="storefrontLabelUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                        <item name="optionUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Relation\Option\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\EmailInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="attachment" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Gateway\Email\Relation\Attachment\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="attachment" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Gateway\Email\Relation\Attachment\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="attachment" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Gateway\Email\Relation\Attachment\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\MessageInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="attachment" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Message\Relation\Attachment\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="attachment" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Message\Relation\Attachment\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="attachment" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Message\Relation\Attachment\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\DepartmentOptionInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="optionValueCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Option\Relation\Value\SaveHandler</item>
+                        <item name="storefrontLabelsCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="optionValueReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Option\Relation\Value\ReadHandler</item>
+                        <item name="storefrontLabelsReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="optionValueUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Department\Option\Relation\Value\SaveHandler</item>
+                        <item name="storefrontLabelsUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\DepartmentOptionValueInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="storefrontLabelsCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="storefrontLabelsReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="storefrontLabelsUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="storefrontOption" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Relation\StorefrontOption\SaveHandler</item>
+                        <item name="tag" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Relation\Tag\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="storefrontOption" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Relation\StorefrontOption\ReadHandler</item>
+                        <item name="tag" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Relation\Tag\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="tag" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Relation\Tag\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\RejectingPatternInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="scope" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\RejectingPattern\Relation\Scope\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="scope" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\RejectingPattern\Relation\Scope\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="scope" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\RejectingPattern\Relation\Scope\SaveHandler</item>
+                    </item>
+                </item>
+                <item name="Aheadworks\Helpdesk2\Api\Data\QuickResponseInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="storefrontLabelsCreator" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="storefrontLabelsReader" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="storefrontLabelsUpdater" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\StorefrontLabel\Relation\Entity\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Helpdesk2\Model\TicketRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Entity\CreationScopeResolver" type="Magento\Framework\Model\Entity\ScopeResolver">
+        <arguments>
+            <argument name="metadataPool" xsi:type="object">Aheadworks\Helpdesk2\EntityCreator\MetadataPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Attribute\UpdateHandler" type="Magento\Eav\Model\ResourceModel\UpdateHandler">
+        <arguments>
+            <argument name="attributePersistor" xsi:type="object">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\AttributePersistor</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Attribute\CreateHandler" type="Magento\Eav\Model\ResourceModel\CreateHandler">
+        <arguments>
+            <argument name="metadataPool" xsi:type="object">Aheadworks\Helpdesk2\EntityCreator\MetadataPool</argument>
+            <argument name="scopeResolver" xsi:type="object">Aheadworks\Helpdesk2\Model\Entity\CreationScopeResolver</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\EntityManager\Operation\AttributePool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="eav" xsi:type="array">
+                    <item name="Aheadworks\Helpdesk2\Api\Data\TicketInterface" xsi:type="array">
+                        <item name="create" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Attribute\CreateHandler</item>
+                        <item name="update" xsi:type="string">Aheadworks\Helpdesk2\Model\ResourceModel\Ticket\Attribute\UpdateHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\EntityCreator\MetadataPool" type="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Helpdesk2\Api\Data\TicketInterface" xsi:type="array">
+                    <item name="entityContext" xsi:type="array">
+                        <item name="store" xsi:type="string">Magento\Store\Model\DefaultStoreScopeProvider</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Helpdesk2\Model\SampleData\Installer">
+        <arguments>
+            <argument name="installers" xsi:type="array">
+                <item name="ticket_status" xsi:type="object">Aheadworks\Helpdesk2\Model\SampleData\Installer\TicketStatus</item>
+                <item name="ticket_priority" xsi:type="object">Aheadworks\Helpdesk2\Model\SampleData\Installer\TicketPriority</item>
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\SampleData\Installer\Department</item>
+                <item name="automation" xsi:type="object">Aheadworks\Helpdesk2\Model\SampleData\Installer\Automation</item>
+                <item name="emailRejectionPattern" xsi:type="object">Aheadworks\Helpdesk2\Model\SampleData\Installer\EmailRejectionPattern</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Helpdesk2\Model\Gateway\Email\StorageFactory">
+        <arguments>
+            <argument name="storageList" xsi:type="array">
+                <item name="pop3" xsi:type="string">Zend\Mail\Storage\Pop3</item>
+                <item name="imap" xsi:type="string">Zend\Mail\Storage\Imap</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Gateway\Email\ProtocolFactory">
+        <arguments>
+            <argument name="protocolList" xsi:type="array">
+                <item name="pop3" xsi:type="string">Aheadworks\Helpdesk2\Model\Gateway\Email\Protocol\Pop3Adapter</item>
+                <item name="imap" xsi:type="string">Aheadworks\Helpdesk2\Model\Gateway\Email\Protocol\ImapAdapter</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Gateway\Email\ConnectionProvider">
+        <arguments>
+            <argument name="authModelList" xsi:type="array">
+                <item name="default" xsi:type="string">Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\AuthType\DefaultModel</item>
+                <item name="google" xsi:type="string">Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\AuthType\Google</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\DefaultParamExtractor" type="Aheadworks\Helpdesk2\Model\Gateway\ParamExtractor">
+        <arguments>
+            <argument name="paramMapper" xsi:type="array">
+                <item name="host" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::HOST</item>
+                <item name="protocol" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::GATEWAY_PROTOCOL</item>
+                <item name="user" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::LOGIN</item>
+                <item name="password" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::PASSWORD</item>
+                <item name="port" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::PORT</item>
+                <item name="ssl" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::SECURITY_PROTOCOL</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\AuthType\DefaultModel">
+        <arguments>
+            <argument name="paramExtractor" xsi:type="object">Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\DefaultParamExtractor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\GoogleParamExtractor" type="Aheadworks\Helpdesk2\Model\Gateway\ParamExtractor">
+        <arguments>
+            <argument name="paramMapper" xsi:type="array">
+                <item name="host" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::HOST</item>
+                <item name="protocol" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::GATEWAY_PROTOCOL</item>
+                <item name="port" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::PORT</item>
+                <item name="ssl" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\GatewayDataInterface::SECURITY_PROTOCOL</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\AuthType\Google\Connector">
+        <arguments>
+            <argument name="paramExtractor" xsi:type="object">Aheadworks\Helpdesk2\Model\Gateway\Email\Connection\GoogleParamExtractor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Model\Gateway\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Model\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="crypt" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Gateway\Crypt</item>
+                <item name="serialization" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Gateway\Serialization</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Validator\GatewayValidator"
+                 type="Aheadworks\Helpdesk2\Model\Data\Validator\Composite">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="status" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Gateway\Email</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Gateway">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Gateway\Processor</argument>
+            <argument name="validator" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\GatewayValidator</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\ResourceModel\Gateway\Collection">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Gateway\Processor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Model\Automation\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Model\ProcessorComposite">
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Validator\AutomationValidator"
+                 type="Aheadworks\Helpdesk2\Model\Data\Validator\Composite">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="conditions" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Automation\Conditions</item>
+                <item name="actions" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Automation\Actions</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Automation">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Automation\Processor</argument>
+            <argument name="validator" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\AutomationValidator</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Model\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="permission" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Permission</item>
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Agent</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Store</item>
+                <item name="gateway" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Gateway</item>
+                <item name="option" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Option</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Validator\DepartmentValidator" type="Aheadworks\Helpdesk2\Model\Data\Validator\Composite">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="gateway" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Department\Gateway</item>
+                <item name="storefrontLabel" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Department\StorefrontLabel</item>
+                <item name="status" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Department\Status</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Department">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Processor</argument>
+            <argument name="validator" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\DepartmentValidator</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\ResourceModel\Department\Collection">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Department\Processor</argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Helpdesk2\Model\Rejection\Message">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\RejectedMessage\JsonData</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\ResourceModel\RejectedMessage\Collection">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\RejectedMessage\JsonData</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Model\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="uId" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\UId</item>
+                <item name="external_link" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\ExternalLink</item>
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Agent</item>
+                <item name="rating" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Rating</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Validator\TicketValidator" type="Aheadworks\Helpdesk2\Model\Data\Validator\Composite">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Ticket\Agent</item>
+                <item name="customerRating" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Ticket\CustomerRating</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Ticket\Order</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Ticket">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Processor</argument>
+            <argument name="validator" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\TicketValidator</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Message\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Model\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="content" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Message\Content</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Ticket\Message">
+        <arguments>
+            <argument name="objectDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Model\Ticket\Message\Processor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Validator\Rejection\Pattern" type="Aheadworks\Helpdesk2\Model\Data\Validator\Composite">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="pattern" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Rejection\Pattern\Pattern</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Rejection\Pattern">
+        <arguments>
+            <argument name="validator" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Rejection\Pattern</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Validator\QuickResponseValidator" type="Aheadworks\Helpdesk2\Model\Data\Validator\Composite">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="storefrontLabel" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\Department\StorefrontLabel</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\QuickResponse">
+        <arguments>
+            <argument name="validator" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Validator\QuickResponseValidator</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Ui\Component\Listing\Department\Columns\Store" type="Magento\Store\Ui\Component\Listing\Column\Store">
+        <arguments>
+            <argument name="storeKey" xsi:type="const">Aheadworks\Helpdesk2\Api\Data\DepartmentInterface::STORE_IDS</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Aheadworks\Helpdesk2\Model\Gateway\ProcessorPool">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="email" xsi:type="object">Aheadworks\Helpdesk2\Model\Gateway\Processor\EmailProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Department\Option\Config\SchemaLocator" type="Magento\Framework\Config\SchemaLocator">
+        <arguments>
+            <argument name="realPath" xsi:type="string">urn:magento:module:Aheadworks_Helpdesk2:etc/storefront_required_options.xsd</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Department\Option\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="converter" xsi:type="object">Aheadworks\Helpdesk2\Model\Department\Option\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Aheadworks\Helpdesk2\Model\Department\Option\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">storefront_required_options.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Department\Option\Config">
+        <arguments>
+            <argument name="cacheId" xsi:type="string">storefront_required_options</argument>
+            <argument name="reader" xsi:type="object">Aheadworks\Helpdesk2\Model\Department\Option\Config\Reader</argument>
+        </arguments>
+    </type>
+
+    <!-- Automation section-->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmail">
+        <arguments>
+            <argument name="canSendEmailChecker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmail\CanSendEmailToCustomer</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmail">
+        <arguments>
+            <argument name="canSendEmailChecker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmail\CanSendEmailToAgent</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmailToSupervisor">
+        <arguments>
+            <argument name="canSendEmailChecker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmail\CanSendEmailToSupervisor</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Automation\Action\Pool">
+        <arguments>
+            <argument name="actions" xsi:type="array">
+                <item name="send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmailToCustomer</item>
+                <item name="send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmailToAgent</item>
+                <item name="send_email_to_supervisor" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\SendEmailToSupervisor</item>
+                <item name="change_status" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\ChangeStatus</item>
+                <item name="change_priority" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\ChangePriority</item>
+                <item name="assign_ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\AssignTicketToAgent</item>
+                <item name="change_department" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\ChangeDepartment</item>
+                <item name="add_ticket_tag" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\AddTag</item>
+                <item name="create_system_message" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Action\Handler\CreateSystemMessage</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToAgentVariables" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Ticket</item>
+                <item name="message" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Message</item>
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Agent</item>
+                <item name="ticketBackendUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketBackendUrl</item>
+                <item name="marker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Marker</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToCustomerVariables" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Ticket</item>
+                <item name="message" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Message</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Store</item>
+                <item name="externalUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\ExternalUrl</item>
+                <item name="marker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Marker</item>
+                <item name="ratingUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\RatingUrl</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultCustomerModifier" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="templateOptions" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateOptions</item>
+                <item name="sender" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\Sender</item>
+                <item name="customerRecipient" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\CustomerRecipient</item>
+                <item name="ccRecipients" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\CcRecipients</item>
+                <item name="replyTo" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\ReplyTo</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\Attachments</item>
+                <item name="ticketIdHeader" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TicketIdHeader</item>
+                <item name="suppressAutoResponseHeader" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\SuppressAutoResponseHeader</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="templateOptions" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateOptions</item>
+                <item name="sender" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\Sender</item>
+                <item name="adminRecipient" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\AdminRecipient</item>
+                <item name="replyTo" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\ReplyTo</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\Attachments</item>
+                <item name="ticketIdHeader" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TicketIdHeader</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromCustomerSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultCustomerModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultCustomerModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToCustomerVariables</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\NewTicketFromCustomerSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultToAgentVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToAgentVariables</item>
+                <item name="departmentName" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DepartmentName</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromCustomerSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultAgentModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\NewTicketFromCustomerSendEmailToAgent</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromAgentSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultCustomerModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultCustomerModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToCustomerVariables</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromAgentSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultAgentModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToCustomerVariables</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromCustomerSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultAgentModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToAgentVariables</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromCustomerSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultCustomerModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToCustomerVariables</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\NewReplyFromAgentSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultToCustomerVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToCustomerVariables</item>
+                <item name="externalUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\ExternalUrl</item>
+                <item name="ratingUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\RatingUrl</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromAgentSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultCustomerModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultCustomerModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\NewReplyFromAgentSendEmailToCustomer</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromAgentSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultAgentModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DefaultSendToAgentVariables</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketReassignedSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Ticket</item>
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Agent</item>
+                <item name="ticketStatus" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketStatus</item>
+                <item name="departmentName" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DepartmentName</item>
+                <item name="ticketBackendUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketBackendUrl</item>
+                <item name="marker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Marker</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketReassignedSendEmailToAgent" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultAgentModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultAgentModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketReassignedSendEmailToAgent</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketReassignedSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Ticket</item>
+                <item name="ticketStatus" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketStatus</item>
+                <item name="externalUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\ExternalUrl</item>
+                <item name="marker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Marker</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketReassignedSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultCustomerModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultCustomerModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketReassignedSendEmailToCustomer</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\OrderStatusChangedSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Ticket</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Store</item>
+                <item name="externalUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\ExternalUrl</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Order</item>
+                <item name="marker" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Marker</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\OrderStatusChangedSendEmailToCustomer" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="defaultCustomerModifier" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\DefaultCustomerModifier</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\OrderStatusChangedSendEmailToCustomer</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketEscalatedSendEmailToSupervisor" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\Ticket</item>
+                <item name="escalationMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\EscalationMessage</item>
+                <item name="ticketBackendUrl" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketBackendUrl</item>
+                <item name="agentName" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\AgentName</item>
+                <item name="ticketStatus" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketStatus</item>
+                <item name="ticketPriority" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketPriority</item>
+                <item name="departmentName" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\DepartmentName</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketEscalatedSendEmailToSupervisor" type="Aheadworks\Helpdesk2\Model\Automation\Email\CompositeModifier">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="templateOptions" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateOptions</item>
+                <item name="sender" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\Sender</item>
+                <item name="templateVariables" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\TemplateVariables\TicketEscalatedSendEmailToSupervisor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\ModifierPool">
+        <arguments>
+            <argument name="modifierList" xsi:type="array">
+                <item name="new_ticket_from_customer_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromCustomerSendEmailToCustomer</item>
+                <item name="new_ticket_from_customer_send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromCustomerSendEmailToAgent</item>
+                <item name="new_ticket_from_agent_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromAgentSendEmailToCustomer</item>
+                <item name="new_ticket_from_agent_send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewTicketFromAgentSendEmailToAgent</item>
+                <item name="new_reply_from_customer_send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromCustomerSendEmailToAgent</item>
+                <item name="new_reply_from_customer_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromCustomerSendEmailToCustomer</item>
+                <item name="new_reply_from_agent_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromAgentSendEmailToCustomer</item>
+                <item name="new_reply_from_agent_send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\NewReplyFromAgentSendEmailToAgent</item>
+                <item name="ticket_assigned_to_another_agent_send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketReassignedSendEmailToAgent</item>
+                <item name="ticket_assigned_to_another_agent_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketReassignedSendEmailToCustomer</item>
+                <item name="recurring_task_send_email_to_agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketReassignedSendEmailToAgent</item>
+                <item name="recurring_task_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketReassignedSendEmailToCustomer</item>
+                <item name="order_status_changed_send_email_to_customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\OrderStatusChangedSendEmailToCustomer</item>
+                <item name="ticket_escalated_send_email_to_supervisor" xsi:type="object">Aheadworks\Helpdesk2\Model\Automation\Email\Metadata\Modifier\List\TicketEscalatedSendEmailToSupervisor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Ticket detector -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\NewTicket" type="Aheadworks\Helpdesk2\Model\Ticket\Detector\DetectorComposite">
+        <arguments>
+            <argument name="detectors" xsi:type="array">
+                <item name="event_trigger" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\NewTicket\EventTrigger</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated" type="Aheadworks\Helpdesk2\Model\Ticket\Detector\DetectorComposite">
+        <arguments>
+            <argument name="detectors" xsi:type="array">
+                <item name="ticket_assigned_event_trigger" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\TicketAssignedEventTrigger</item>
+                <item name="internal_note" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\InternalNote</item>
+                <item name="ticket_locking" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\TicketLocking</item>
+                <item name="status" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\Status</item>
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\Agent</item>
+                <item name="priority" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\Priority</item>
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\Department</item>
+                <item name="tags" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated\Tags</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\NewMessage" type="Aheadworks\Helpdesk2\Model\Ticket\Detector\DetectorComposite">
+        <arguments>
+            <argument name="detectors" xsi:type="array">
+                <item name="event_trigger" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\NewMessage\EventTrigger</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketEscalated" type="Aheadworks\Helpdesk2\Model\Ticket\Detector\DetectorComposite">
+        <arguments>
+            <argument name="detectors" xsi:type="array">
+                <item name="ticket_escalated_event_trigger" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketEscalated\EventTrigger</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Ticket\Detector">
+        <arguments>
+            <argument name="typeObjects" xsi:type="array">
+                <item name="new_ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\NewTicket</item>
+                <item name="ticket_updated" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketUpdated</item>
+                <item name="ticket_escalated" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\TicketEscalated</item>
+                <item name="new_message" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Detector\Type\NewMessage</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- ticket rating -->
+    <type name="Aheadworks\Helpdesk2\Model\Ticket\Rating\CollectorComposite">
+        <arguments>
+            <argument name="collectors" xsi:type="array">
+                <item name="waiting" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting</item>
+                <item name="reply" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Reply</item>
+                <item name="status" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Status</item>
+                <item name="statusHistory" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\StatusHistory</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Priority\Factory">
+        <arguments>
+            <argument name="objectClasses" xsi:type="array">
+                <item name="default" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Priority\DefaultPriority</item>
+                <item name="1" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Priority\IfTime</item>
+                <item name="3" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Priority\Asap</item>
+                <item name="4" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Priority\Urgent</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Factory">
+        <arguments>
+            <argument name="objectClasses" xsi:type="array">
+                <item name="admin-message" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Admin</item>
+                <item name="customer-message" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\Customer</item>
+                <item name="default" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Waiting\DefaultWaiting</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Status\Factory">
+        <arguments>
+            <argument name="objectClasses" xsi:type="array">
+                <item name="default" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Status\DefaultStatus</item>
+                <item name="1" xsi:type="string">Aheadworks\Helpdesk2\Model\Ticket\Rating\Collector\Status\NewStatus</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--  Ticket order post data processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Order\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\General</item>
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Department</item>
+                <item name="automationTypeMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\AutomationTypeMessage</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Model\Automation\Event\OrderStatusChangedHandler">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Order\Processor</argument>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\CleanCreate</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="awHelpDesk2RunMigration" xsi:type="object">Aheadworks\Helpdesk2\Console\Command\RunMigration</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Migration\Processor">
+        <arguments>
+            <argument name="migrationSteps" xsi:type="array">
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\Migration\Step\Department</item>
+                <item name="ticket" xsi:type="object">Aheadworks\Helpdesk2\Model\Migration\Step\Ticket</item>
+                <item name="quickResponse" xsi:type="object">Aheadworks\Helpdesk2\Model\Migration\Step\QuickResponse</item>
+                <item name="gatewayEmails" xsi:type="object">Aheadworks\Helpdesk2\Model\Migration\Step\GatewayEmails</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Helpdesk2\Observer\Model\TicketBeforeDeleteObserver">
+        <arguments>
+            <argument name="removeAttachmentsCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\RemoveAttachments</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\FrontendProcessor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Customer</item>
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\General</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Store</item>
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Department</item>
+                <item name="customerMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\CustomerTypeMessage</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Order</item>
+                <item name="storefrontOption" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\StorefrontOption</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Eav\Model\ResourceModel\ReadSnapshot">
+        <plugin name="awHelpdesk2ReadSnapshot" type="Aheadworks\Helpdesk2\Plugin\Eav\Model\ReadSnapshotPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order">
+        <plugin name="awHelpdesk2OrderResourceModelPlugin" type="Aheadworks\Helpdesk2\Plugin\Sales\Model\ResourceModelPlugin"/>
+    </type>
+    <type name="Magento\User\Model\ResourceModel\User">
+        <plugin name="awHelpdesk2UserResourceModelPlugin" type="Aheadworks\Helpdesk2\Plugin\User\Model\ResourceModel\UserPlugin"/>
+    </type>
+</config>

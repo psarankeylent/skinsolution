@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.user.edit.tabs">
+            <block class="Aheadworks\Bup\Block\Adminhtml\User\Edit\Tab\UserProfile"
+                   name="adminhtml.user.tab.aw_bup_user_profile"/>
+            <action method="addTabAfter">
+                <argument name="name" xsi:type="string">aw_bup_user_profile</argument>
+                <argument name="block" xsi:type="string">adminhtml.user.tab.aw_bup_user_profile</argument>
+                <argument name="after" xsi:type="string">roles_section</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

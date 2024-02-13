@@ -1,0 +1,12 @@
+<?php
+/* @var $block \Aheadworks\Helpdesk2\Block\Contact\RestrictEmailInput */
+?>
+<script>
+    require([
+        "jquery",
+        "domReady!"
+    ], function($) {
+        var input = $('<?= $block->escapeJs($block->getData('email_input_selector')) ?>');
+        input.attr('readonly', 'readonly');
+    });
+</script>

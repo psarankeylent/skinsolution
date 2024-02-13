@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Gateway</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_gateway_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+            <button name="delete" class="Aheadworks\Helpdesk2\Block\Adminhtml\Gateway\Form\Button\Delete"/>
+            <button name="reset" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Reset"/>
+            <button name="save" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Save"/>
+            <button name="save_and_continue" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\SaveAndContinue"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_gateway_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_helpdesk2/gateway/save"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::getaways</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Gateway\FormDataProvider" name="aw_helpdesk2_gateway_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label></label>
+        </settings>
+        <field name="is_active" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Gateway</label>
+                <notice translate="true">New emails, directed to a gateway mailbox, are automatically converted to tickets. Customer may reply to ticket-related messages via email - no login required. Important: when setting up a gateway, make sure that the selected mailbox does not have any messages in the Inbox folder. If the Inbox folder is not empty, move its entire content to a different folder.</notice>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="name" formElement="input" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Gateway Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="default_store_id" formElement="select" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Default Storeview for New Tickets</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="type" formElement="hidden" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">email</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="gateway_protocol" formElement="select" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Protocol</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Gateway\GatewayProtocol"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="host" formElement="input" sortOrder="60">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Gateway Host</label>
+                <notice translate="true">for example, imap.gmail.com</notice>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="pattern" xsi:type="string">^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)+([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="authorization_type" formElement="select" sortOrder="70">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Authorization Type</label>
+                <switcherConfig>
+                    <enabled>true</enabled>
+                    <rules>
+                        <rule name="0">
+                            <value>default</value>
+                            <actions>
+                                <action name="0">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.email</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.login</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="2">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.password</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="3">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.client_id</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="4">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.client_secret</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="5">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.check_default_connection_button</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="6">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.verify_google_account</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>google</value>
+                            <actions>
+                                <action name="0">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.email</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.login</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="2">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.password</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="3">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.client_id</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="4">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.client_secret</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="5">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.check_default_connection_button</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="6">
+                                    <target>aw_helpdesk2_gateway_type_email_form.aw_helpdesk2_gateway_type_email_form.general.verify_google_account</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Gateway\AuthorizationType"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="email" formElement="input" sortOrder="80">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Gateway Email</label>
+                <notice translate="true">An email address for Help Desk to fetch messages from. This address must NOT be used by any other person or system!</notice>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="login" formElement="input" sortOrder="90">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Login</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="password" formElement="input" sortOrder="100">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Password</label>
+                <elementTmpl>Aheadworks_Helpdesk2/ui/form/element/password</elementTmpl>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="client_id" formElement="input" sortOrder="110">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Client ID</label>
+                <elementTmpl>Aheadworks_Helpdesk2/ui/form/element/password</elementTmpl>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="client_secret" formElement="input" sortOrder="120">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Client Secret</label>
+                <elementTmpl>Aheadworks_Helpdesk2/ui/form/element/password</elementTmpl>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="security_protocol" formElement="select" sortOrder="130">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Use SSL/TLS</label>
+                <notice translate="true">993 for IMAP-SSL, 143 for IMAP-TLS, 110 for POP3 and 995 for POP3-SSL by default. Make sure that the specified port is opened in your server's firewall settings, otherwise, the extension will be unable to connect to the gateway.</notice>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Gateway\SecurityProtocol"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="port" formElement="input" sortOrder="140">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Port</label>
+                <validation>
+                    <rule name="validate-integer" xsi:type="boolean">true</rule>
+                    <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="is_delete_from_host" sortOrder="150" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Delete Emails from Host</label>
+                <notice translate="true">This option defines whether an email will be removed from the gateway mailbox after it gets parsed by Help Desk.</notice>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <button name="check_default_connection_button" sortOrder="160" component="Aheadworks_Helpdesk2/js/ui/form/components/gateway/button/check-connection" template="ui/form/components/button/container">
+            <settings>
+                <title translate="true">Test Connection</title>
+                <dataScope />
+            </settings>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">button</item>
+                    <item name="source" xsi:type="string">gateway</item>
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="checkUrl" xsi:type="url" path="aw_helpdesk2/gateway/checkConnection"/>
+                        </item>
+                    </item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-small aw-helpdesk2__test-button</item>
+                </item>
+            </argument>
+        </button>
+        <button name="verify_google_account" sortOrder="170" component="Aheadworks_Helpdesk2/js/ui/form/components/gateway/button/verify-google-account" template="ui/form/components/button/container">
+            <settings>
+                <title translate="true">Verify Google Account</title>
+                <dataScope />
+                <imports>
+                    <link name="disabled">${ $.provider }:data.isDisabled</link>
+                </imports>
+            </settings>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">button</item>
+                    <item name="source" xsi:type="string">gateway</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/gateway/button/verify</item>
+                    <item name="disabled" xsi:type="boolean">false</item><!--check-->
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="url" xsi:type="url" path="https://accounts.google.com/o/oauth2/auth"/>
+                            <item name="redirectUrl" xsi:type="url" path="aw_helpdesk2/gateway_google/verify"/>
+                            <item name="dataSetUrl" xsi:type="url" path="aw_helpdesk2/gateway_google/beforeVerify"/>
+                        </item>
+                    </item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-small aw-helpdesk2__test-button</item>
+                    <item name="notice" xsi:type="string" translate="true">Please save the department for this button to become active.</item>
+                    <item name="verifiedSuccessMessage" xsi:type="string" translate="true">Verified</item>
+                </item>
+            </argument>
+        </button>
+    </fieldset>
+</form>

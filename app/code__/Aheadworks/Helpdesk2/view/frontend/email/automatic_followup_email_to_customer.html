@@ -1,0 +1,27 @@
+<!--@subject [#{{var ticket.uid}}] Ticket is about to be closed: {{var ticket.subject}}@-->
+<!--@styles .aw-helpdesk2-note {color: gray; font-size: 85%;} .aw-helpdesk2-reply-marker {background-color: lightgray; font-size: 85%; text-align: center;} @-->
+<!--@vars {
+"var ticket": "Ticket",
+"var store": "Store",
+"var external_url": "Ticket external URL"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var ticket.customer_name}}.</strong><br/><br/>
+
+This is an automatic message to remind you that your ticket [#{{var ticket.uid}}] "{{var ticket.subject}}" has been set to Pending status, so our team is waiting for either your reply to this ticket or a confirmation that it can be closed.<br/><br/>
+
+<strong>Best Regards,</strong><br/>
+
+<strong>Customer Support,</strong><br/>
+{{var store.frontend_name}}<br/><br/>
+
+<div class="aw-helpdesk2-note">
+    <!-- You can update the ticket <a href="{{var external_url}}">via web interface</a> or by replying to this email.<br/>
+    When updating the ticket via email, keep the ticket ID in the subject line to ensure that your reply will be tracked appropriately. -->
+
+    Do not reply here. You can update the ticket <a href="{{store url='customer/support/view'}}id/{{var ticket.entity_id}}/">via web interface</a>.
+
+</div>
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_automation_form.aw_helpdesk2_automation_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Automation</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_automation_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+            <button name="delete" class="Aheadworks\Helpdesk2\Block\Adminhtml\Automation\Form\Button\Delete"/>
+            <button name="save" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Save"/>
+            <button name="save_and_continue" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\SaveAndContinue"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_automation_form.aw_helpdesk2_automation_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_automation_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_helpdesk2/automation/save"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::automations</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Automation\FormDataProvider" name="aw_helpdesk2_automation_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label></label>
+        </settings>
+        <field name="is_active" formElement="select" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="name" formElement="input" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="priority" formElement="input" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Priority</label>
+                <validation>
+                    <rule name="validate-integer" xsi:type="boolean">true</rule>
+                    <rule name="validate-not-negative-number" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="is_required_to_break" formElement="select" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Discard Subsequent Rules</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="event" formElement="select" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Event</label>
+                <additionalClasses>
+                    <class name="automation-event">true</class>
+                </additionalClasses>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Automation\Event"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="conditions_fieldset" sortOrder="20">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>Conditions</label>
+        </settings>
+        <dynamicRows name="conditions" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows" template="ui/dynamic-rows/templates/default">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="paramProvider" xsi:type="string">${ $.ns }.${ $.ns }.general.event</item>
+                    <item name="paramDataScope" xsi:type="string">data.event</item>
+                    <item name="source" xsi:type="string">automation</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="dynamic-rows">true</class>
+                    <class name="automation">true</class>
+                </additionalClasses>
+                <columnsHeader>false</columnsHeader>
+                <addButton>true</addButton>
+                <addButtonLabel translate="true">Add</addButtonLabel>
+                <defaultRecord>false</defaultRecord>
+                <pageSize>100</pageSize>
+                <dndConfig>
+                    <param name="enabled" xsi:type="boolean">false</param>
+                </dndConfig>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="object" sortOrder="10" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/dependent-select" template="ui/form/field" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="optionSetProvider" xsi:type="string">${ $.provider }:value_mapper.conditions.object_options</item>
+                            <item name="paramProvider" xsi:type="string">${ $.ns }.${ $.ns }.general.event</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <dataScope>object</dataScope>
+                        <additionalClasses>
+                            <class name="column">true</class>
+                            <class name="object">true</class>
+                        </additionalClasses>
+                    </settings>
+                </field>
+                <field name="operator" sortOrder="20" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/dependent-select" template="ui/form/field" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="optionSetProvider" xsi:type="string">${ $.provider }:value_mapper.conditions.operator_options</item>
+                            <item name="paramProvider" xsi:type="string">${ $.parentName }.object</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <dataScope>operator</dataScope>
+                        <additionalClasses>
+                            <class name="column">true</class>
+                            <class name="operator">true</class>
+                        </additionalClasses>
+                    </settings>
+                </field>
+                <container name="value_container" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/value-renderer">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="conditionProvider" xsi:type="string">${ $.parentName }.object</item>
+                            <item name="componentType" xsi:type="string">container</item>
+                            <item name="additionalClasses" xsi:type="string">column value</item>
+                        </item>
+                    </argument>
+                </container>
+                <actionDelete name="action_delete" sortOrder="40">
+                    <settings>
+                        <dataType>text</dataType>
+                        <componentType>actionDelete</componentType>
+                        <additionalClasses>
+                            <class name="action_delete_button">true</class>
+                        </additionalClasses>
+                    </settings>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+    </fieldset>
+    <fieldset name="actions_fieldset" sortOrder="30">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label>Actions</label>
+        </settings>
+        <dynamicRows name="actions" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows" template="ui/dynamic-rows/templates/default">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="paramProvider" xsi:type="string">${ $.ns }.${ $.ns }.general.event</item>
+                    <item name="paramDataScope" xsi:type="string">data.event</item>
+                    <item name="source" xsi:type="string">automation</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="dynamic-rows">true</class>
+                    <class name="actions">true</class>
+                </additionalClasses>
+                <columnsHeader>false</columnsHeader>
+                <addButton>true</addButton>
+                <addButtonLabel translate="true">Add</addButtonLabel>
+                <defaultRecord>false</defaultRecord>
+                <pageSize>100</pageSize>
+                <dndConfig>
+                    <param name="enabled" xsi:type="boolean">false</param>
+                </dndConfig>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="action" sortOrder="10" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/dependent-select" template="ui/form/field" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="optionSetProvider" xsi:type="string">${ $.provider }:value_mapper.actions.action_options</item>
+                            <item name="paramProvider" xsi:type="string">${ $.ns }.${ $.ns }.general.event</item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <dataScope>action</dataScope>
+                        <additionalClasses>
+                            <class name="column">true</class>
+                            <class name="action">true</class>
+                        </additionalClasses>
+                    </settings>
+                </field>
+                <container name="value_container" sortOrder="20" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/action-value-renderer">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="optionSetProvider" xsi:type="string">${ $.provider }:value_mapper.actions.value_options</item>
+                            <item name="actionProvider" xsi:type="string">${ $.parentName }.action</item>
+                            <item name="additionalClasses" xsi:type="string">column value</item>
+                        </item>
+                    </argument>
+                </container>
+                <container name="config_container" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/config-renderer">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="actionProvider" xsi:type="string">${ $.parentName }.action</item>
+                            <item name="eventProvider" xsi:type="string">${ $.ns }.${ $.ns }.general.event</item>
+                            <item name="componentType" xsi:type="string">container</item>
+                            <item name="additionalClasses" xsi:type="string">column config</item>
+                        </item>
+                    </argument>
+                </container>
+                <actionDelete name="action_delete" sortOrder="30">
+                    <settings>
+                        <dataType>text</dataType>
+                        <componentType>actionDelete</componentType>
+                        <additionalClasses>
+                            <class name="action_delete_button">true</class>
+                        </additionalClasses>
+                    </settings>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+    </fieldset>
+</form>

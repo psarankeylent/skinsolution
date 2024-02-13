@@ -1,0 +1,15 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Framework\View\Element\Template */
+?>
+<div class="actions-toolbar">
+    <div class="primary">
+        <button type="submit"
+                onclick="location.href = '<?= $block->escapeUrl($block->getUrl('customer/support/createticket')) ?>'"
+                class="action create-ticket-link primary"
+                title="<?= $block->escapeHtml(__('Create Ticket')) ?>">
+            <span><?= $block->escapeHtml(__('Create Ticket')) ?></span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div data-role="collapsible" class="tab-title">
+    <span class="switch" tabindex="-1" data-bind="attr: {'id': tabIndex}" text="label"/>
+</div>
+<div data-role="content" class="aw-helpdesk2-tab" data-bind="css: additionalClasses, attr: {'id': tabIndex}">
+    <each args="data: elems, as: 'element'">
+        <render if="hasTemplate()"/>
+    </each>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--add custom block -->
+        <referenceBlock name="extra_customer_info">
+            <block class="Ssmd\AlleCustom\Block\Adminhtml\Order\View\AlleView" name="sales_alle_customer_view" template="Ssmd_AlleCustom::order/view/alleCustomerInfo.phtml"/>
+        </referenceBlock>
+
+         <!-- <referenceBlock name="order_additional_info">
+            <block class="Ssmd\AlleCustom\Block\Adminhtml\Order\View\AlleView" name="sales_alle_custom_view" template="order/view/alleView.phtml" />
+        </referenceBlock> -->
+
+        <referenceContainer name="content">            
+                <block name="alle_info" class="Ssmd\AlleCustom\Block\Adminhtml\Order\View\AlleView" template="Ssmd_AlleCustom::order/view/alleView.phtml" />      
+        </referenceContainer>
+
+    </body>
+</page>

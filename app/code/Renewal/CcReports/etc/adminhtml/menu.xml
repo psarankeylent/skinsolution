@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::CcReports_action_menu" title="Cc Expiration Report" translate="title" module="Magento_Reports" sortOrder="10" parent="Magento_Reports::AdminGrid_Top" action="reports/cc/index" resource="Magento_Reports::CcReports_action_menu"/>
+    </menu>
+</config>

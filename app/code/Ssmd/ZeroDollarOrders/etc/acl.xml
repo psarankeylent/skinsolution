@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+ - @package Ssmd_ZeroDollarOrders
+ - @version 1.0.0
+ - @category magento-module
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Ssmd_ZeroDollarOrders::zerodollarorder" title="Zero Dollar Order" sortOrder="10">
+					<resource id="Ssmd_ZeroDollarOrders::create_save" title="Create" sortOrder="30"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

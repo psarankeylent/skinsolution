@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <update handle="styles"/>
+    <body>
+        <!-- <referenceContainer name="content">
+            <uiComponent name="customersubscription_form"/>
+        </referenceContainer> -->
+
+        <referenceContainer name="left">
+            <block class="LegacySubscription\Subscriptions\Block\Adminhtml\Customer\Subscriptions\Edit\Tabs" name="legacy_edit_tabs" />
+
+                <!-- <block class="LegacySubscription\Subscriptions\Block\Adminhtml\Edit\Tab\Main" name="legacy_edit_tab_main"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">legacy_edit_tab_main</argument>
+                </action>
+                
+                <block class="LegacySubscription\Subscriptions\Block\Adminhtml\Edit\Tab\LegacySubscriptionsOrdersGrid" name="legacy_edit_tab_main1"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">legacy_section</argument>
+                    <argument name="block" xsi:type="string">legacy_edit_tab_main1</argument>
+                </action>-->
+           <!--  </block>  -->
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="LegacySubscription\Subscriptions\Block\Adminhtml\Edit" name="legacy_edit"/>
+        </referenceContainer>
+
+    </body>
+
+</page>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Save free gift plugin -->
+    <type name="Magento\SalesRule\Model\ResourceModel\Rule">
+        <plugin name="salesrule_save_gift_option_plugin" type="FreeGift\CartRulesFreeGift\Plugin\BeforeSaveCartRule" sortOrder="10"/>
+    </type>
+
+    <!-- Add new action into actions dropdown of salesrule -->
+    <type name="Magento\SalesRule\Model\Rule\Metadata\ValueProvider">
+        <plugin name="salesrule_add_custom_actions_plugin" type="FreeGift\CartRulesFreeGift\Plugin\Rule\Metadata\ValueProviderPlugin" sortOrder="10" />
+    </type>
+
+    <type name="Magento\SalesRule\Model\Rule\Action\Discount\CalculatorFactory">
+        <arguments>
+            <argument name="discountRules" xsi:type="array">
+                <item name="add_gift" xsi:type="string">FreeGift\CartRulesFreeGift\Model\Rule\Action\Discount\FreeGiftRule</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

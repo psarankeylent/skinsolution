@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <block template="Aheadworks_Helpdesk2::customer/ticket/form/agent-info.phtml" name="ticket.agent-info">
+        <arguments>
+            <argument name="view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\Ticket\AgentInfo</argument>
+        </arguments>
+    </block>
+</layout>

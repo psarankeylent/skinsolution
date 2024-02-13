@@ -15,6 +15,12 @@ namespace ParadoxLabs\Subscriptions\Model\Api\GraphQL;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 
+// Email notification
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
+
 /**
  * Soft dependency: Supporting 2.3 GraphQL without breaking <2.3 compatibility.
  * 2.3+ implements \Magento\Framework\GraphQL; lower does not.
@@ -70,12 +76,26 @@ class ChangeStatus implements \ParadoxLabs\TokenBase\Model\Api\GraphQL\ResolverI
         \ParadoxLabs\Subscriptions\Model\Api\GraphQL $graphQL,
         \ParadoxLabs\Subscriptions\Api\CustomerSubscriptionRepositoryInterface $customerSubscriptionRepository,
         \ParadoxLabs\Subscriptions\Model\Config $config,
-        \ParadoxLabs\Subscriptions\Model\Source\Status $statusSource
+        \ParadoxLabs\Subscriptions\Model\Source\Status $statusSource,
+        ScopeConfigInterface $scopeConfig,
+        TransportBuilder $transportBuilder,
+        StateInterface $state,
+        StoreManagerInterface $storeManager,
+        \CreditCard\Expiring\Model\CreditCardExpiringModelFactory $creditCardExpiringModelFactory,
+        \ParadoxLabs\TokenBase\Model\CardFactory $cardFactory,
+        \Magento\Email\Model\TemplateFactory $templateFactory
     ) {
         $this->graphQL = $graphQL;
         $this->customerSubscriptionRepository = $customerSubscriptionRepository;
         $this->config = $config;
         $this->statusSource = $statusSource;
+        $this->scopeConfig = $scopeConfig;
+        $this->inlineTranslation = $state;
+        $this->transportBuilder = $transportBuilder;
+        $this->storeManager = $storeManager;
+        $this->creditCardExpiringModelFactory = $creditCardExpiringModelFactory;
+        $this->cardFactory = $cardFactory;
+        $this->templateFactory = $templateFactory;
     }
 
     /**
@@ -91,7 +111,7 @@ class ChangeStatus implements \ParadoxLabs\TokenBase\Model\Api\GraphQL\ResolverI
      */
     public function resolve(
         \Magento\Framework\GraphQl\Config\Element\Field $field,
-        $context,
+                                                        $context,
         \Magento\Framework\GraphQl\Schema\Type\ResolveInfo $info,
         array $value = null,
         array $args = null
@@ -113,6 +133,11 @@ class ChangeStatus implements \ParadoxLabs\TokenBase\Model\Api\GraphQL\ResolverI
             $subscription
         );
 
+        // ===================== Subscription Status Change Notification Email Start ======================================//
+        $this->sendSubscriptionStatusChangeEmail($subscription, $args['status']);
+        // ===================== Subscription Status Change Notification Email End ======================================= //
+
+
         $requestedFields = $this->graphQL->getSubscriptionFields($info);
         return $this->graphQL->convertSubscriptionForGraphQL($subscription, $requestedFields);
     }
@@ -127,7 +152,7 @@ class ChangeStatus implements \ParadoxLabs\TokenBase\Model\Api\GraphQL\ResolverI
      */
     protected function validateStatus(
         \ParadoxLabs\Subscriptions\Api\Data\SubscriptionInterface $subscription,
-        $newStatus
+                                                                  $newStatus
     ) {
         if ($this->statusSource->canSetStatusAsCustomer($subscription, $newStatus) !== true) {
             throw new GraphQlInputException(__('Cannot change the status to "%1".', $newStatus));
@@ -150,4 +175,93 @@ class ChangeStatus implements \ParadoxLabs\TokenBase\Model\Api\GraphQL\ResolverI
             }
         }
     }
+
+    public function sendSubscriptionStatusChangeEmail($subscription, $newStatus)
+    {
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/subscriptions_custom_email.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customer = $objectManager->get('Magento\Customer\Model\CustomerFactory')->create()->load($subscription->getData('customer_id'));
+        $quote    = $objectManager->get('Magento\Quote\Model\QuoteFactory')->create()->load($subscription->getData('quote_id'));
+        
+        $productName = "";
+        foreach ($quote->getAllItems() as $item) {
+            $productName = $item->getName();
+        }
+
+        if($newStatus == 'paused')
+        {
+            $templateId = 1000045;
+        }
+        elseif($newStatus == 'active')
+        {
+            $templateId = 1000046;
+        }
+        elseif($newStatus == 'canceled')
+        {
+            $templateId = 1000045;
+        }
+        if($newStatus == 'paused')
+        {
+            $newStatus = 'Paused';
+        }
+            
+        $name = $customer->getFirstname().' '.$customer->getLastname();
+        $customer_email = $customer->getEmail();
+
+        // ================ Send email code start ===============
+        $this->inlineTranslation->suspend();
+        $sender = [
+            'name'  => $this->scopeConfig->getValue('trans_email/ident_support/name',\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+            'email' => $this->scopeConfig->getValue('trans_email/ident_support/email',\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+        ];
+
+        $transport = $this->transportBuilder
+            ->setTemplateIdentifier($templateId)
+            ->setTemplateOptions(
+                [
+                    'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+                    'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
+                ]
+            )
+            ->setTemplateVars([
+                'customer_name'   => $name,
+                'today_date'      => date('F d Y'),
+                'status'          => $newStatus,
+                'product_name'    => $productName
+            ])
+            ->setFrom($sender)
+            ->addTo($customer_email)
+            ->getTransport();
+
+        
+        try {
+            $transport->sendMessage();
+            
+            // Text Message getting
+            $templateObject    = $this->templateFactory->create()->load($templateId);
+            $emailTextMessage  = $templateObject->getTemplateText();
+
+            $trackLog = $this->creditCardExpiringModelFactory->create();
+            $dataToSave = array('customer_email' => $customer_email, 'email_sent' => "yes", 'notification_type'=>'Status Change', 'email_message' => $emailTextMessage);
+            $trackLog->setData($dataToSave);
+            $trackLog->save();
+
+            $logger->info('Status change email sent successfully.');
+
+        } catch (\Exception $e) {
+            $trackLog = $this->creditCardExpiringModelFactory->create();
+            $dataToSave = array('customer_email' => $customer_email, 'email_sent' => "no", 'notification_type'=>'Status Change','email_message' => $e->getMessage());
+            $trackLog->setData($dataToSave);
+            $trackLog->save();
+
+            $logger->info('Error while sending status change email '.$e->getMessage());
+        }
+        $this->inlineTranslation->resume();
+
+
+    }
 }
+

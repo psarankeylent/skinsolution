@@ -1,0 +1,23 @@
+<!--@subject [#{{var ticket.uid}}] Ticket assigned: {{var ticket.subject}}@-->
+<!--@styles .aw-helpdesk2-reply-marker {background-color: lightgray; font-size: 85%; text-align: center;} @-->
+<!--@vars {
+"var agent": "Agent",
+"var department_name": "Department Name",
+"var ticket": "Ticket",
+"var ticket_status": "Ticket Status",
+"var ticket_backend_url": "Ticket Backend URL"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var agent.firstname}}.</strong><br/><br/>
+
+The ticket [#{{var ticket.uid}}] has been reassigned to you:<br/><br/>
+
+<strong>Department:</strong> {{var department_name}}<br/>
+<strong>Status:</strong> {{var ticket_status}}<br/>
+<strong>Customer name:</strong> {{var ticket.customer_name}}<br/>
+<strong>Subject:</strong> {{var ticket.subject}}<br/><br/>
+
+Click <a href="{{var ticket_backend_url}}">here</a> to view the ticket.
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,124 @@
+<?php
+/*
+*  $block = \Ssmd\Impersonation\Block\Adminhtml\Impersonation\View.php
+*
+*/
+
+?>
+<?php
+      $customer = $block->getCustomerData();
+?>
+<style>
+.ilabel{
+	font-size:18px; font-weight:400;
+}
+.ivalue{font-size:18px;font-weight:600;}
+.row{display:flex;flex-direction:row;}
+.col-3{width:150px;}
+#copyEmail{cursor:pointer;font-size:14px; color:blue;text-decoration:underline;padding-left:20px;}
+</style>
+<div id="random number">
+    <!-- <strong><?php echo __('Random Number') ?></strong> -->
+    <span class="">
+      <?php 
+         $randomNumber = random_int(0, 999999);
+         $randomNumber = str_pad($randomNumber, 6, STR_PAD_LEFT);
+      ?>
+      
+      <form target="_blank" class="form" data-mage-init='{"validation": {}}' action="<?php echo $block->getPostUrl() ?>" method="post">
+
+              <div class="admin__field" style="font-size:18px; font-weight:bold;">
+                  <div class="control random_number_label">
+                      <label class="admin__field-label" for="random_number">
+                          <span><?php echo __('Impersonation Key : ') ?></span>
+                      </label>
+                      <label style="font-size:25px;"><?php echo substr($randomNumber, 0, 3) . ' ' . substr($randomNumber, 3); ?></label>
+                  </div>
+                  <div class="control">
+                      <input type="hidden"
+                             id="random_number"
+                             name="random_number"
+                             class="admin__control-text"
+                             value="<?php echo $randomNumber ?>"
+                             />
+                  
+
+                  </div>
+                  <div class="control">
+                     <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
+                  </div>
+              </div>
+              <div class="admin__field">
+                <div class="row">
+                    <div class=" col-3 ilabel">First Name :</div><div class="col ivalue"> <?php echo $customer->getFirstname() ?></div>
+                </div>
+                <div  class="row">
+                    <div class=" col-3 ilabel">Last Name : </div><div class="col ivalue"> <?php echo $customer->getLastname() ?></div>
+                </div>
+                <div class="row">
+                    <div class=" col-3 ilabel">Email : </div><div class="col ivalue"><?php echo $customer->getEmail() ?> 
+			<span id="copyEmail">Copy</span></div>
+                </div>
+                <div  class="row">     
+                    <div class=" col-3 ilabel">Phone No : </div><div class="col ivalue"> 
+                      <?php
+                            $address = $customer->getPrimaryBillingAddress();
+                            if ($address)
+                             echo $address->getTelephone();
+                      ?>
+                            
+                    </div>
+                </div>
+            </div>
+          <div class="actions-toolbar" style="margin:20px 0;">
+              <div class="primary">
+                  <button type="submit" class="action submit primary" title="<?php echo __('Submit') ?>">
+                      <span><?php echo __('Start Impersonation') ?></span>
+                  </button>
+              </div>
+          </div>
+
+      </form>
+
+    
+
+ </span>
+</div>
+
+<script>
+   require([
+        'jquery'
+    ],
+    function($) {
+       $('.action').click(function(event){
+            //alert('sdfsdf');
+       });
+
+       $('.page-main-actions').hide();
+    }
+);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var copyEmail = document.getElementById('copyEmail');
+    var emailText = "<?php echo $customer->getEmail(); ?>";
+
+    copyEmail.addEventListener('click', function() {
+        var textArea = document.createElement('textarea');
+        textArea.value = emailText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        // Change the button text to "Copied!"
+        copyEmail.innerText = 'Copied!';
+
+        // Optional: Reset the button text after a short delay
+        setTimeout(function() {
+            copyEmail.innerText = 'Copy';
+        }, 5000);
+    });
+});
+</script>
+

@@ -1,0 +1,13 @@
+# SSMD Multiple Coupon Codes
+
+input RemoveCouponFromCartInput {
+    cart_id: String!
+    coupon_code: String!
+}
+
+interface CartItemInterface @typeResolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\CartItemTypeResolver") {
+    id: String!
+    quantity: Float!
+    prices: CartItemPrices @resolver(class: "\\Ssmd\\MultipleCoupons\\Model\\Resolver\\CartItemPrices")
+    product: ProductInterface!
+}

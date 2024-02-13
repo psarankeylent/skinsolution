@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">reports_subscriptionfrequencyprice_index_list.backend_updatesubscriptionprice_grid_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>reports_subscriptionfrequencyprice_index_list_columns</spinner>
+        <deps>
+            <dep>reports_subscriptionfrequencyprice_index_list.backend_updatesubscriptionprice_grid_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="backend_updatesubscriptionprice_grid_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider name="backend_updatesubscriptionprice_grid_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <filterSearch name="fulltext"/>
+    </listingToolbar>
+
+    <columns name="reports_subscriptionfrequencyprice_index_list_columns">
+        <column name="id">
+            <settings>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="subscription_id">
+            <settings>
+                <label translate="true">Subscription Id</label>
+            </settings>
+        </column>
+        <column name="quote_id">
+            <settings>
+                <label translate="true">Quote Id</label>
+            </settings>
+        </column>
+        <column name="product_id">
+            <settings>
+                <label translate="true">Product Id</label>
+            </settings>
+        </column>
+        <column name="frequency">
+            <settings>
+                <label translate="true">Frequency</label>
+            </settings>
+        </column>
+        <column name="old_price">
+            <settings>
+                <label translate="true">Old Price</label>
+            </settings>
+        </column>
+        <column name="new_price">
+            <settings>
+                <label translate="true">New Price</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+
+    </columns>
+
+</listing>

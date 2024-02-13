@@ -1,0 +1,17 @@
+{
+    "alle_member_customers": {
+        "column": {
+            "id": true,
+            "increment_id": true,
+            "is_bdn": true,
+            "bdn": true,
+            "brilliantcoupon1": true,
+            "brilliantcoupon2": true,
+            "brilliantamount1": true,
+            "brilliantamount2": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

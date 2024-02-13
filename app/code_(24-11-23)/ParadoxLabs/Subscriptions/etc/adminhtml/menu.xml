@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="ParadoxLabs_Subscriptions::subscriptions_section" parent="Magento_Sales::sales" sortOrder="500" title="Subscriptions" module="ParadoxLabs_Subscriptions" resource="ParadoxLabs_Subscriptions::subscriptions" dependsOnModule="ParadoxLabs_Subscriptions" dependsOnConfig="subscriptions/general/active" />
+        <add id="ParadoxLabs_Subscriptions::subscriptions_manage" parent="ParadoxLabs_Subscriptions::subscriptions_section" sortOrder="100" title="Subscriptions" action="subscriptions/index" module="ParadoxLabs_Subscriptions" resource="ParadoxLabs_Subscriptions::subscriptions_manage" />
+        <add id="ParadoxLabs_Subscriptions::subscriptions_log_list" parent="ParadoxLabs_Subscriptions::subscriptions_section" sortOrder="200" title="Recent Activity" action="subscriptions/index/logs" module="ParadoxLabs_Subscriptions" resource="ParadoxLabs_Subscriptions::subscriptions_manage" />
+    </menu>
+</config>

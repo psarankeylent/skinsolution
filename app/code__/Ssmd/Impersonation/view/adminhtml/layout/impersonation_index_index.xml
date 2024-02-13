@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head><title>Impersonation</title></head>
+    <body>
+        <referenceContainer name="content">
+             <block class="Ssmd\Impersonation\Block\Adminhtml\Index" name="impersonation_index_index"/>
+        </referenceContainer>
+        <referenceContainer name="impersonation.grid"/>
+
+        <!-- <referenceContainer name="content">
+            <uiComponent name="impersonation_listing"/>
+        </referenceContainer> -->
+
+    </body>
+</page>

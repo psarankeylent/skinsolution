@@ -1,0 +1,23 @@
+{
+    "name": "aheadworks/module-helpdesk-graph-ql",
+    "description": "Helpdesk2 GraphQl by Aheadworks",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "require": {
+        "magento/module-config": ">100.0",
+        "magento/framework": ">100.0",
+        "aheadworks/module-bup": ">=1.0.0",
+        "aheadworks/module-helpdesk": ">=2.0.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aheadworks\\Helpdesk2GraphQl\\": ""
+        }
+    }
+}

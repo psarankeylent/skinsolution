@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="salesrule">
+        <column xsi:type="boolean" name="is_stackable_coupon" comment="Is Stackable Coupon"/>
+    </table>
+
+    <table name="quote_discounts" engine="innodb" comment="Sales Quote Discounts">
+        <column xsi:type="int" name="quote_id" padding="10" unsigned="true" nullable="false"  comment="Entity ID"/>
+        <column xsi:type="text" name="quote_discounts" nullable="false" comment="Quote Discount Details"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="quote_id"/>
+        </constraint>
+    </table>
+</schema>

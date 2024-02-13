@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<!-- working on this file -->
+<?php $discounts = $block->getTotal()->getAddress()->getExtensionAttributes()->getDiscounts(); ?>
+<?php foreach ($discounts as $discount): ?>
+    <tr class="<?= $block->escapeHtmlAttr($block->getTotal()->getCode()) ?> row-totals">
+        <td style="<?= $block->escapeHtmlAttr($block->getTotal()->getStyle()) ?>" class="admin__total-mark" colspan="<?= (int) $block->getColspan() ?>">
+            <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()) : ?><strong><?php endif; ?>
+                <?= $block->escapeHtml('Discount ('. $discount->getRuleLabel())  . ')'?>
+                <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()) : ?></strong><?php endif; ?>
+        </td>
+        <td style="<?= $block->escapeHtmlAttr($block->getTotal()->getStyle()) ?>" class="admin__total-amount">
+            <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()) : ?><strong><?php endif; ?>
+                <?= /* @noEscape */ '-' . $block->formatPrice($discount->getDiscountData()->getAmount()) ?>
+                <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()) : ?></strong><?php endif; ?>
+        </td>
+    </tr>
+<?php endforeach; ?>

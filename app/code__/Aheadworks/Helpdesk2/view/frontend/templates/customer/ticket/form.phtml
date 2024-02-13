@@ -1,0 +1,25 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Framework\View\Element\Template */
+?>
+<link rel='stylesheet' href='<?php echo $block->getViewFileUrl("css/myaccount_enhance.css") ?>' />
+<style>
+    select, input, textarea {
+    background: transparent !important;
+}
+.aw-helpdesk2__form {
+    max-width: 991px;
+    margin: auto;
+}
+</style>
+<div data-role="aw-helpdesk2-form" data-bind="scope: 'aw_helpdesk2_form'" class="aw-helpdesk2__form rounded-15 multi-shadow-1 p-3 mt-5 bg-transparent">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "[data-role=aw-helpdesk2-form]": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+</script>

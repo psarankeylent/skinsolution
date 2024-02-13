@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="autofill_product_categoryname" xsi:type="object">Ssmd\Catalog\Console\Command\ProductCategoryName</item>
+			</argument>
+		</arguments>
+	</type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="autofill_product_type" xsi:type="object">Ssmd\Catalog\Console\Command\ProductType</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\CatalogEavValidationRules">
+        <plugin name="ssmd_product_attribute_validation" type="Ssmd\Catalog\Model\Plugin\Product\ValidationRules"/>
+    </type>
+</config>

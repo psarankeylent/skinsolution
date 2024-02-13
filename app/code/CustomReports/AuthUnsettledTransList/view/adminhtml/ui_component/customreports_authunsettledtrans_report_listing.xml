@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customreports_authunsettledtrans_report_listing.customreports_authunsettledtrans_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>customreports_authunsettledtrans_report_listing_columns</spinner>
+        <deps>
+            <dep>customreports_authunsettledtrans_report_listing.customreports_authunsettledtrans_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customreports_authunsettledtrans_report_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">customreports_authunsettledtrans_report_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">trans_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" path="mui/index/render" xsi:type="url"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">trans_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button" />
+    </listingToolbar>
+    <columns name="customreports_authunsettledtrans_report_listing_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>trans_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="trans_id">
+            <settings>
+                <sorting>desc</sorting>
+                <label translate="true">Trans ID</label>
+            </settings>
+        </column>
+        <column name="submit_time_utc">
+            <settings>
+                <label translate="true">Submit Time UTC</label>
+            </settings>
+        </column>
+        <column name="submit_time_local">
+            <settings>
+                <label translate="true">Submit Time Local</label>
+            </settings>
+        </column>
+        <column name="transaction_status">
+            <settings>
+                <label translate="true">Transaction Status</label>
+            </settings>
+        </column>
+        <column name="subscription_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Subscription ID</label>
+            </settings>
+        </column>
+        <column name="generate_order">
+            <settings>
+                <label translate="true">Generate Order</label>
+            </settings>
+        </column>
+        <column name="first_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">First Name</label>
+            </settings>
+        </column>
+        <column name="last_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Last Name</label>
+            </settings>
+        </column>
+        <column name="account_type">
+            <settings>
+                <label translate="true">Account Type</label>
+            </settings>
+        </column>
+        <column name="account_number">
+            <settings>
+                <label translate="true">Account Number</label>
+            </settings>
+        </column>
+        <column name="settle_amount">
+            <settings>
+                <label translate="true">Settle Amount</label>
+            </settings>
+        </column>
+        <column name="market_type">
+            <settings>
+                <label translate="true">Market Type</label>
+            </settings>
+        </column>
+        <column name="product">
+            <settings>
+                <label translate="true">Product</label>
+            </settings>
+        </column>
+        <column name="pay_num">
+            <settings>
+                <label translate="true">Pay Num</label>
+            </settings>
+        </column>
+        <column name="invoice_number">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Invoice Number</label>
+            </settings>
+        </column>
+        <!--<column name="customer_profile_id">
+            <settings>
+                <label translate="true">Customer Profile ID</label>
+            </settings>
+        </column>
+        <column name="customer_payment_profile_id">
+            <settings>
+                <label translate="true">Customer Payment Profile ID</label>
+            </settings>
+        </column>-->
+    </columns>
+</listing>

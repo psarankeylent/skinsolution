@@ -1,0 +1,23 @@
+<!--@subject {{var ticket.customer_name}} escalated ticket [#{{var ticket.uid}}]@-->
+<!--@vars {
+"var ticket":"Ticket",
+"var escalation_message": "Escalation message",
+"var ticket_backend_url": "Backend URL",
+"var department_name": "Department Name",
+"var ticket_status": "Ticket Status",
+"var ticket_priority": "Ticket Priority",
+"var agent_name": "Agent Name"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<strong>Escalation Message: </strong>
+<blockquote style="text-align:justify; margin-top: 10px; margin-bottom: 10px;">
+    <p>{{var escalation_message|raw}}</p>
+</blockquote>
+<strong>Ticket Subject: </strong><a href="{{var ticket_backend_url}}">{{var ticket.subject}}</a><br/>
+<strong>Department: </strong>{{var department_name}}<br/>
+<strong>Help Desk Agent: </strong>{{var agent_name}}<br/>
+<strong>Priority: </strong>{{var ticket_priority}}<br/>
+<strong>Current Status: </strong>{{var ticket_status}}<br/>
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_definition.xsd">
+
+    <container>
+        <argument name="data" xsi:type="array">
+            <item name="additionalClasses" xsi:type="string"/>
+        </argument>
+    </container>
+
+    <fieldset>
+        <settings>
+            <additionalClasses/>
+        </settings>
+    </fieldset>
+
+</components>

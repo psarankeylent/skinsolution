@@ -1,0 +1,124 @@
+<?php
+
+$baseurl        = $block->getBaseUrl();
+$customerId     = $block->getCustomerId();
+$currentStcoreCredit = $block->getStoreCreditByCustomerId($customerId);
+$storeCreditHistoryArr = $block->getStoreCreditHistoryByCustomerId($customerId);
+?>
+
+<div class="fieldset-wrapper-title" data-bind="attr: {tabindex: !collapsible ? -1 : 0,
+               'data-state-collapsible': collapsible ? opened() ? 'open' : 'closed' : null}, click: toggleOpened, keyboard: {13: toggleOpened}" tabindex="-1">
+
+        <strong data-bind="css: {'admin__collapsible-title': collapsible,
+                      title: !collapsible,
+                      '_changed': changed,
+                      '_loading': loading,
+                      '_error': error}" class="title">
+            <span data-bind="i18n: label">Store Credit Information</span>
+            <!-- ko if: collapsible --><!-- /ko -->
+        </strong>
+    </div>
+
+<div class="admin__fieldset-wrapper-content _hide" data-bind="css: {'admin__collapsible-content': collapsible, '_show': opened, '_hide': !opened()}">
+        <!-- ko if: opened() || _wasOpened || initializeFieldsetDataByDefault --><fieldset class="admin__fieldset" data-bind="foreach: {data: elems, as: 'element'}"><!-- ko template: getTemplate() -->
+<!-- /ko --><!-- ko template: getTemplate() -->
+
+<div class="admin__field" data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="prefix">
+    <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+        <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label"></span>
+        </label><!-- /ko -->
+    </div>
+    <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+        <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label">Current Store Credit : 
+                <span id="current_score_credit"><?php echo $currentStcoreCredit?></span>
+            </span>
+        </label><!-- /ko -->
+    </div>
+</div>
+
+<div class="admin__field" data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="prefix">
+    <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+        <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label">Update Store Credit</span>
+        </label><!-- /ko -->
+    </div>
+    <div class="admin__field-control" data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+        <!-- ko ifnot: hasAddons() --><!-- ko template: elementTmpl -->
+    <input class="admin__control-text" type="number" name="credit_txt_box" id="credit_txt_box" maxlength="255">
+
+    </div>
+</div>
+
+<div class="admin__field" data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="prefix">
+    <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+        <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label">Comments</span>
+        </label><!-- /ko -->
+    </div>
+    <div class="admin__field-control" data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+        <!-- ko ifnot: hasAddons() --><!-- ko template: elementTmpl -->
+    <textarea class="admin__control-text" name="credit_txt_comments" id="credit_txt_comments" cols="65" rows="3"></textarea>
+    </div>
+</div>
+
+<div class="admin__field" data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="prefix">
+    <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+        <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="YF5RSNF">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label"></span>
+        </label><!-- /ko -->
+    </div>
+    <div class="admin__field-control" data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+        <button type="button" class="action submit primary" id="add_credit_score">
+            <span><?= $block->escapeHtml(__('Update')) ?></span>
+        </button>
+    </div>
+</div>
+
+<?php 
+if($storeCreditHistoryArr)
+foreach ($storeCreditHistoryArr as $storeCreditHistory) { ?>
+<div class="admin__field" data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="prefix">
+    <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+        <!-- ko if: $data.label --><label data-bind="attr: {for: uid}" for="YF5RSNF">
+            <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label"></span>
+        </label><!-- /ko -->
+    </div>
+    <div class="admin__field-control" data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+        <span id="current_score_credit">Store Credit <b><?php echo $storeCreditHistory['credits']?></b></span>
+        <span id="current_score_credit"> | <?php echo $storeCreditHistory['created_at']?></span>
+    </div>
+</div>
+<?php }?>
+
+
+</div>
+
+<script type="text/javascript">
+    require([ 'jquery'], function($){
+        $(document).on("click","#add_credit_score", function() {
+            var current_score_credit  = jQuery('#current_score_credit').text();
+            var credit_input_value  = jQuery('#credit_txt_box').val();
+            var credit_txt_comments = jQuery('#credit_txt_comments').val();
+            var customer_id         = "<?php echo $customerId;?>";
+            var url                 = "<?php echo $baseurl.'storecredit/storecredit/creditview'?>";
+
+            $.ajax({
+                url: url,
+                type: 'POST',  // http method
+                data: { customer_id: customer_id, current_score_credit: current_score_credit, credit_input_value: credit_input_value, credit_txt_comments: credit_txt_comments},  // data to submit
+                success: function (data, status, xhr) {
+                    jQuery('#credit_txt_box').val('');
+                    jQuery('#credit_txt_comments').val('');
+                    jQuery('#current_score_credit').text(data);
+                    //console.log('status: ' + status + ', data: ' + data);
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    console.log('Error' + errorMessage);
+                }
+            });
+        });
+    });
+</script>
+

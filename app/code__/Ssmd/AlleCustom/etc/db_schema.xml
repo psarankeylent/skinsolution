@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+            
+    <!-- Alle Member Customers table -->
+	<table name="alle_member_customers">
+		<column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+		<!-- <column xsi:type="int" name="cart_id" padding="10" nullable="false" comment="Cart ID"/>
+		<column xsi:type="int" name="quote_id" padding="10" nullable="false" comment="Quote ID"/>
+		<column xsi:type="int" name="customer_id" padding="10" nullable="false" comment="Magento Customer ID"/> 
+		<column xsi:type="varchar" name="alle_email" length="100" nullable="true" comment="Alle Member Email"/>
+		<column xsi:type="varchar" name="alle_number" length="100" nullable="true" comment="Alle Member Number"/> -->
+		
+		<column xsi:type="varchar" name="increment_id" length="50" nullable="false" comment="Magento Order Increment ID"/>
+		<column xsi:type="smallint" name="is_bdn" nullable="false" comment="Is Bdn 1 for is bdn member and 0 for not a bdn member"/>
+		<column xsi:type="varchar" name="bdn" length="50" nullable="false" comment="Alle Member Number"/>
+		<column xsi:type="varchar" name="brilliantcoupon1" length="50" nullable="false" comment="Brilliantcoupon1"/>
+		<column xsi:type="varchar" name="brilliantcoupon2" length="50" nullable="false" comment="Brilliantcoupon2"/>
+		<column xsi:type="varchar" name="brilliantamount1" length="50" nullable="false" comment="Brilliantamount1"/>
+		<column xsi:type="varchar" name="brilliantamount2" length="50" nullable="false" comment="Brilliantamount2"/>
+		<!-- <column xsi:type="timestamp" name="createdAt" comment="Created Date"/>
+		<column xsi:type="timestamp" name="updatedAt" comment="Updated Date"/> -->
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>	 
+	</table>
+	   
+</schema>

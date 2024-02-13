@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="authnet_unsettled_transaction_list" resource="default" engine="innodb" comment="schedule renewal prescription email Table">
+		<column xsi:type="int" name="trans_id" unsigned="true" nullable="false" identity="true" comment="Transaction Primary Id"/>
+		<column xsi:type="datetime" name="submit_time_utc" nullable="true"  comment="Submit Time Utc"/>
+        <column xsi:type="datetime" name="submit_time_local" nullable="true"  comment="Submit Time Local"/>
+		<column xsi:type="varchar" name="transaction_status" length="255" nullable="true" comment="Transaction Status" />
+        <column xsi:type="varchar" name="subscription_id" length="55" nullable="true" comment="Subscription ID" />
+        <column xsi:type="varchar" name="generate_order" length="20" default="no" comment="Generate Order" />
+        <column xsi:type="varchar" name="first_name" length="255" nullable="true" comment="First Name" />
+        <column xsi:type="varchar" name="last_name" length="255" nullable="true" comment="Last Name" />
+        <column xsi:type="varchar" name="account_type" length="55" nullable="true" comment="Account Type" />
+        <column xsi:type="varchar" name="account_number" length="255" nullable="true" comment="Account Number" />
+        <column xsi:type="decimal" name="settle_amount" nullable="true" scale="2" precision="10" comment="Settle Account" />
+        <column xsi:type="varchar" name="market_type" length="255" nullable="true" comment="Market Type" />
+        <column xsi:type="varchar" name="product" length="255" nullable="true" comment="Product" />
+        <column xsi:type="varchar" name="pay_num" length="20" nullable="true" comment="Pay Num" />
+        <column xsi:type="varchar" name="invoice_number" length="255" nullable="true" comment="Invoice Number" />
+        <column xsi:type="varchar" name="customer_profile_id" length="55" nullable="true" comment="Customer Profile ID" />
+        <column xsi:type="varchar" name="customer_payment_profile_id" length="55" nullable="true" comment="Customer Payment Profile ID" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="trans_id"/>
+		</constraint>
+	</table>
+</schema>

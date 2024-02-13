@@ -1,0 +1,12 @@
+<?php
+/** @var \Aheadworks\Helpdesk2\Block\Customer\Order\Info\Buttons\CreateTicketButton $block */
+?>
+
+<?php if ($block->isShowButton()) : ?>
+    <a href="<?= $block->escapeUrl($block->getSubmitUrl()) ?>"
+       class="action"
+       target="_blank"
+       rel="noopener">
+        <span><?= $block->escapeHtml(__('Submit Ticket ')) ?></span>
+    </a>
+<?php endif ?>

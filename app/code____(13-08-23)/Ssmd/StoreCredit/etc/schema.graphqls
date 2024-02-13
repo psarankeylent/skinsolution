@@ -1,0 +1,9 @@
+
+type Query {
+    storecredit  : Storecredit @resolver( class: "Ssmd\\StoreCredit\\Model\\Resolver\\Storecredit") @doc(description: "Storecredit Query")
+}
+
+type Storecredit {
+    id  : Int  @doc(description: "Query by id.")
+    credits  : String  @doc(description: "Query by credits.")
+}

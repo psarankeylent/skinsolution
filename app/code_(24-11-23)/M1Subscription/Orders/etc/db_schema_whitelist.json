@@ -1,0 +1,25 @@
+{
+    "subscription_profile": {
+        "column": {
+            "entity_id": true,
+            "subscription_engine_code": true,
+            "reference_id": true,
+            "customer_id": true,
+            "status": true,
+            "amount": true,
+            "created_at": true,
+            "updated_at": true,
+            "start_date": true,
+            "subscription_type_id": true,
+            "last_order_id": true,
+            "last_order_date": true,
+            "initial_details": true,
+            "details": true,
+            "discount_code": true,
+            "discount_amount": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

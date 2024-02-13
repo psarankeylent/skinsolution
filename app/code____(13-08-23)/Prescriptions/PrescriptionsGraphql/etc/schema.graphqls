@@ -1,0 +1,20 @@
+
+type Query {
+    prescriptions  : [Prescriptions] @resolver( class: "Prescriptions\\PrescriptionsGraphql\\Model\\Resolver\\Prescriptions") @doc(description: "Prescription Query")
+}
+
+type Prescriptions {
+    id  : Int  @doc(description: "Query by id.")
+    prescription_name  : String  @doc(description: "Query by prescription_name.")
+    class_name  : String  @doc(description: "Query by  class_name.")
+    ingredient  : String  @doc(description: "Query by  ingredient.")
+    strength  : String  @doc(description: "Query by  strength.")
+    unit  : String  @doc(description: "Query by  unit.")
+    sf_states  : String  @doc(description: "Query by  sf_states.")
+    vc_states  : String  @doc(description: "Query by  vc_states.")
+    dns_states  : String  @doc(description: "Query by  dns_states.")
+}
+
+interface ProductInterface {
+    prescription_info: Prescriptions @doc(description: "Prescription Information") @resolver(class: "Prescriptions\\PrescriptionsGraphql\\Model\\Resolver\\ProductPrescription")
+}

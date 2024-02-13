@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="prescriptions" resource="default" engine="innodb" comment="Prescriptions Table">
+        <column xsi:type="int" name="id" padding="11" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="int" name="vh_prescription_id" padding="10" nullable="false" comment="Virtual Hub Prescription Id"/>
+        <column xsi:type="varchar" name="prescription_name" nullable="true" length="55" comment="Prescription Name"/>
+        <column xsi:type="varchar" name="class_name" nullable="true" length="55" comment="Class Name"/>
+        <column xsi:type="varchar" name="ingredient" nullable="true" length="55" comment="Ingredient"/>
+        <column xsi:type="varchar" name="strength" nullable="true" length="55" comment="Strength"/>
+        <column xsi:type="varchar" name="unit" nullable="true" length="55" comment="Unit"/>
+        <column xsi:type="varchar" name="vc_states" nullable="true" length="555" comment="Vc States"/>
+        <column xsi:type="varchar" name="sf_states" nullable="true" length="555" comment="Sf States"/>
+        <column xsi:type="varchar" name="dns_states" nullable="true" length="555" comment="Dns States"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

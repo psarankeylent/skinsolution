@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Save Store Config Plugin -->
+    <type name="Magento\Config\Model\Config">
+        <plugin name="save_store_config_plugin" 
+          type="TrackingActivityLog\TrackAdminUser\Plugin\Config\SaveStoreConfigPlugin"/>
+    </type>
+
+    <!-- Set Customer Default Address PLugin -->
+    <type name="Magento\Customer\Controller\Adminhtml\Address\DefaultBillingAddress">
+        <plugin name="set_default_billing_address_plugin" 
+          type="TrackingActivityLog\TrackAdminUser\Plugin\Customer\Address\DefaultBillingAddressPlugin"/>
+    </type>
+    <type name="Magento\Customer\Controller\Adminhtml\Address\DefaultShippingAddress">
+        <plugin name="set_default_shipping_address_plugin" 
+          type="TrackingActivityLog\TrackAdminUser\Plugin\Customer\Address\DefaultShippingAddressPlugin"/>
+    </type>
+
+
+</config>

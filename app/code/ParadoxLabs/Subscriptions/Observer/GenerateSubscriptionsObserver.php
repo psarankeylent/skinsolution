@@ -15,6 +15,11 @@ namespace ParadoxLabs\Subscriptions\Observer;
 
 use \ParadoxLabs\Subscriptions\Model\Source\Status;
 
+// Email notification
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
+
 /**
  * GenerateSubscriptionsObserver Class
  */
@@ -136,7 +141,13 @@ class GenerateSubscriptionsObserver implements \Magento\Framework\Event\Observer
      * @param \ParadoxLabs\Subscriptions\Observer\GenerateSubscriptionsObserver\Context $context
      */
     public function __construct(
-        \ParadoxLabs\Subscriptions\Observer\GenerateSubscriptionsObserver\Context $context
+        \ParadoxLabs\Subscriptions\Observer\GenerateSubscriptionsObserver\Context $context,
+        ScopeConfigInterface $scopeConfig,
+        TransportBuilder $transportBuilder,
+        StateInterface $state,
+        \CreditCard\Expiring\Model\CreditCardExpiringModelFactory $creditCardExpiringModelFactory,
+        \ParadoxLabs\TokenBase\Model\CardFactory $cardFactory,
+        \Magento\Email\Model\TemplateFactory $templateFactory
     ) {
         $this->helper = $context->getHelper();
         $this->subscriptionFactory = $context->getSubscriptionFactory();
@@ -160,6 +171,12 @@ class GenerateSubscriptionsObserver implements \Magento\Framework\Event\Observer
         $this->customerSession = $context->getCustomerSession();
         $this->paymentService = $context->getPaymentService();
         $this->eventManager = $context->getEventManager();
+        $this->scopeConfig = $scopeConfig;
+        $this->inlineTranslation = $state;
+        $this->transportBuilder = $transportBuilder;
+        $this->creditCardExpiringModelFactory = $creditCardExpiringModelFactory;
+        $this->cardFactory = $cardFactory;
+        $this->templateFactory = $templateFactory;
     }
 
     /**
@@ -264,6 +281,13 @@ class GenerateSubscriptionsObserver implements \Magento\Framework\Event\Observer
                     );
 
                     $this->subscriptionRepository->save($subscription);
+
+                    // ===================== Subscription Notification Email Start ======================================//
+                    $subscriptionEmail = $this->sendSubscriptionEmail($subscription);
+                    // ===================== Subscription Notification Email End ======================================= //
+
+
+
                 } catch (\Throwable $e) {
                     $this->helper->log('subscriptions', (string)$e);
 
@@ -434,11 +458,11 @@ class GenerateSubscriptionsObserver implements \Magento\Framework\Event\Observer
         $updatedAt = $this->dateProcessor->date('2038-01-01', null, false);
 
         $quote->setIsMultiShipping(false)
-              ->setIsActive(false)
-              ->setIsSuperMode(true)
-              ->setUpdatedAt($updatedAt->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT))
-              ->setBillingAddress($billingAddress)
-              ->setShippingAddress($shippingAddress);
+            ->setIsActive(false)
+            ->setIsSuperMode(true)
+            ->setUpdatedAt($updatedAt->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT))
+            ->setBillingAddress($billingAddress)
+            ->setShippingAddress($shippingAddress);
 
         /**
          * Set the product and price
@@ -460,8 +484,8 @@ class GenerateSubscriptionsObserver implements \Magento\Framework\Event\Observer
         );
 
         $quote->setTotalsCollectedFlag(false)
-              ->collectTotals()
-              ->setTriggerRecollect(0);
+            ->collectTotals()
+            ->setTriggerRecollect(0);
 
         return $quote;
     }
@@ -682,4 +706,87 @@ class GenerateSubscriptionsObserver implements \Magento\Framework\Event\Observer
             $targetPaymentExtnAttr->setTokenbaseId($tokenbaseId);
         }
     }
+
+    public function sendSubscriptionEmail($subscription)
+    {
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/subscriptions_custom_email.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customer = $objectManager->get('Magento\Customer\Model\CustomerFactory')->create()->load($subscription->getData('customer_id'));
+        $quote = $objectManager->get('Magento\Quote\Model\QuoteFactory')->create()->load($subscription->getData('quote_id'));
+        
+        $productName = "";
+        foreach ($quote->getAllItems() as $item) {
+            $productName = $item->getName();
+        }
+
+        $frequency='';
+        if($subscription->getData('frequency_count') == 1)
+        {
+            $frequency = $subscription->getData('frequency_count').' '.$subscription->getData('frequency_unit');
+        }
+        else
+        {
+            $frequency = $subscription->getData('frequency_count').' '.$subscription->getData('frequency_unit').'s';
+        }
+
+        $templateId = 44;
+        $name = $customer->getFirstname().' '.$customer->getLastname();
+        $customer_email = $customer->getEmail();
+
+        // ================ Send email code start ===============
+        $this->inlineTranslation->suspend();
+        $sender = [
+            'name'  => $this->scopeConfig->getValue('trans_email/ident_support/name',\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+            'email' => $this->scopeConfig->getValue('trans_email/ident_support/email',\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+        ];
+
+        $transport = $this->transportBuilder
+            ->setTemplateIdentifier($templateId)
+            ->setTemplateOptions(
+                [
+                    'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+                    'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
+                ]
+            )
+            ->setTemplateVars([
+                'customer_name'   => $name,
+                'last_run'        => date('F d Y',strtotime($subscription->getData('last_run'))),
+                'next_run'        => date('F d Y',strtotime($subscription->getData('next_run'))),
+                'product_name'    => $productName,
+                'frequency'       => $frequency
+            ])
+            ->setFrom($sender)
+            ->addTo($customer_email)
+            ->getTransport();
+
+        
+        try {
+            $transport->sendMessage();
+            
+            // Text Message getting
+            $templateObject    = $this->templateFactory->create()->load($templateId);
+            $emailTextMessage  = $templateObject->getTemplateText();
+
+            $trackLog = $this->creditCardExpiringModelFactory->create();
+            $dataToSave = array('customer_email' => $customer_email, 'email_sent' => "yes", 'notification_type'=>'New subscription created', 'email_message' => $emailTextMessage);
+            $trackLog->setData($dataToSave);
+            $trackLog->save();
+
+            $logger->info('New subscription email sent successfully.');
+
+        } catch (\Exception $e) {
+            $trackLog = $this->creditCardExpiringModelFactory->create();
+            $dataToSave = array('customer_email' => $customer_email, 'email_sent' => "no", 'notification_type'=>'New subscription created','email_message' => $e->getMessage());
+            $trackLog->setData($dataToSave);
+            $trackLog->save();
+
+            $logger->info('Error while sending new subscription email '.$e->getMessage());
+        }
+        $this->inlineTranslation->resume();
+
+    }
 }
+

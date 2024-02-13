@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd'> 
+
+       <type name='Magento\Sales\Block\Adminhtml\Order\Create\Customer'>
+           <plugin name='impersonation_session_button_block' type='Ssmd\Impersonation\Block\Adminhtml\Order\Create\CustomerPlugin' disabled='false' />
+       </type>
+
+       <type name='Magento\Customer\Block\Adminhtml\Edit\OrderButton'>
+           <plugin name='impersonation_customer_edit_button_block' type='Ssmd\Impersonation\Block\Adminhtml\Edit\OrderButtonPlugin' disabled='false' />
+       </type>
+
+ </config>

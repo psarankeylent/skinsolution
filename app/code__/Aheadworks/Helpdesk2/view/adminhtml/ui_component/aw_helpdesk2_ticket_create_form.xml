@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_ticket_create_form.aw_helpdesk2_ticket_create_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Department</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_ticket_create_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+            <button name="reset" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Reset"/>
+            <button name="save" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Save"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_ticket_create_form.aw_helpdesk2_ticket_create_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_ticket_create_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_helpdesk2/ticket/save"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::tickets</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\FormDataProvider" name="aw_helpdesk2_ticket_create_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label/>
+        </settings>
+        <field name="subject" formElement="input" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Subject</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="department_id" formElement="select" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Department</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Ticket\DepartmentList"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="agent_id" formElement="select" sortOrder="30" component="Aheadworks_Helpdesk2/js/ui/form/components/automation/dynamic-rows/dependent-select" class="Aheadworks\Helpdesk2\Ui\Component\Form\Ticket\AgentSelectField">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="paramProvider" xsi:type="string">${ $.parentName }.department_id:value</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Agent</label>
+            </settings>
+        </field>
+        <field name="store_id" formElement="select" sortOrder="40">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Store View</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="customer_email" formElement="input" sortOrder="50">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Email</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <htmlContent name="customer_email_autocomplete_init">
+            <settings>
+                <deps>
+                    <dep>aw_helpdesk2_ticket_create_form.aw_helpdesk2_ticket_create_form.general.customer_email</dep>
+                    <dep>aw_helpdesk2_ticket_create_form.aw_helpdesk2_ticket_create_form.general.customer_name</dep>
+                </deps>
+                <visible>false</visible>
+            </settings>
+            <block class="Magento\Backend\Block\Template" name="customer_email_autocomplete" template="Aheadworks_Helpdesk2::ui/form/element/autocomplete.phtml">
+                <arguments>
+                    <argument name="serializer_view_model" xsi:type="object">Aheadworks\Helpdesk2\ViewModel\JsonSerializer</argument>
+                    <argument name="service_url" xsi:type="string">*/autocomplete/customers</argument>
+                    <argument name="input_selector" xsi:type="string">[name=customer_email]</argument>
+                    <argument name="suggestions_map" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="input_selector" xsi:type="string">[name=customer_email]</item>
+                            <item name="suggestion_field" xsi:type="string">value</item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="input_selector" xsi:type="string">[name=customer_name]</item>
+                            <item name="suggestion_field" xsi:type="string">customer_name</item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </htmlContent>
+        <field name="customer_name" formElement="input" sortOrder="60">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="order_id" formElement="select" component="Aheadworks_Helpdesk2/js/ui/form/components/ticket/order-select" sortOrder="70">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="service_url" xsi:type="url" path="aw_helpdesk2/autocomplete/orders"/>
+                    <item name="caption" xsi:type="string" translate="true">Unassigned</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Order</label>
+            </settings>
+        </field>
+        <field name="cc_recipients" formElement="input" sortOrder="80">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">CC Recipients</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                    <rule name="aw-helpdesk2__validate-emails" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="status_id" formElement="select" sortOrder="90">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">3</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Ticket\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="priority_id" formElement="select" sortOrder="100">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">2</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Priority</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Ticket\Priority"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="content" sortOrder="110">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Content</item>
+                    <item name="placeholder" xsi:type="string">Type here to add an answer</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="toggle_button" xsi:type="boolean">false</item>
+                        <item name="add_variables" xsi:type="boolean">false</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="tinymce4" xsi:type="array">
+                            <item name="toolbar" xsi:type="string">pastetext removeformat | formatselect | bold italic underline | codesample blockquote | alignleft aligncenter alignright | bullist numlist | link image table charmap | code preview</item>
+                            <item name="plugins" xsi:type="string">autolink lists link charmap media noneditable table contextmenu paste code help table preview legacyoutput codesample</item>
+                        </item>
+                        <item name="settings" xsi:type="array">
+                            <item name="browser_spellcheck" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="attachments" sortOrder="120">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Attach files</item>
+                    <item name="openDialogTitle" xsi:type="string">Attach files</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                    <item name="additionalClasses" xsi:type="string">create-ticket-attach-files</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="aw_helpdesk2/ticket_attachment/upload"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

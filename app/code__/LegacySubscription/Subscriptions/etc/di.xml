@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+    <!-- Subscription M1 Di -->    
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customersubscription_form_data_source" xsi:type="string">LegacySubscription\Subscriptions\Model\ResourceModel\CustomerSubscription\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type> 
+    <virtualType name="LegacySubscription\Subscriptions\Model\ResourceModel\CustomerSubscription\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">m1_customer_subscriptions</argument>
+            <argument name="resourceModel" xsi:type="string">LegacySubscription\Subscriptions\Model\ResourceModel\CustomerSubscription</argument>
+        </arguments>
+    </virtualType>
+
+
+</config>

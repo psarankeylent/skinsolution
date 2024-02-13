@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Aheadworks\Bup\Model\DataProcessor\UserProfilePostDataProcessor" type="Aheadworks\Bup\Model\DataProcessor\PostDataComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="image" xsi:type="object">Aheadworks\Bup\Model\DataProcessor\UserProfilePostDataProcessor\Image</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Bup\Plugin\User\Model\ModelPlugin">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Bup\Model\DataProcessor\UserProfilePostDataProcessor</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Bup\Plugin\User\Controller\Adminhtml\User\SavePlugin">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Bup\Model\DataProcessor\UserProfilePostDataProcessor</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\User\Controller\Adminhtml\User\Save">
+        <plugin name="aw_bup_user_save_plugin" type="Aheadworks\Bup\Plugin\User\Controller\Adminhtml\User\SavePlugin"/>
+    </type>
+    <type name="Magento\Backend\Block\System\Account\Edit\Form">
+        <plugin name="aw_bup_user_account_edit_form_plugin" type="Aheadworks\Bup\Plugin\User\Block\Account\EditFormPlugin"/>
+    </type>
+    <type name="Magento\User\Model\User">
+        <plugin name="aw_bup_user_check_password_plugin" type="Aheadworks\Bup\Plugin\User\Model\ModelPlugin"/>
+    </type>
+    <type name="Magento\Framework\Data\Form\Element\AbstractElement">
+        <plugin name="aw_bup_user_set_validation_image_plugin" type="Aheadworks\Bup\Plugin\User\Block\Form\ElementPlugin"/>
+    </type>
+    <type name="Magento\Backend\Block\Widget\Form">
+        <plugin name="aw_bup_user_set_enctype_attribute_plugin" type="Aheadworks\Bup\Plugin\User\Controller\Adminhtml\User\EditPlugin"/>
+    </type>
+</config>

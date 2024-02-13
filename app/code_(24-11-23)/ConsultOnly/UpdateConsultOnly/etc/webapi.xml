@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/consultonly/updateconsultonly" method="POST">
+		<service class="ConsultOnly\UpdateConsultOnly\Api\UpdateConsultOnlyManagementInterface" method="postUpdateConsultOnly"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/consultonly/consultonlyinfo/:customerId" method="GET">
+		<service class="ConsultOnly\UpdateConsultOnly\Api\ConsultOnlyInfoManagementInterface" method="getConsultOnlyInfo"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+</routes>

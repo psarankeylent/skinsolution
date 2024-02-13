@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category  Lof
+ * @package   Lof\GiftSalesRule
+ * @author    Landofcoder <landofcoder@gmail.com>
+ * @copyright 2020 Landofcoder
+ * @license   http://www.landofcoder.com/LICENSE-1.0.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_cart_product_add_after">
+        <observer name="lof_gift_salesrule_product_add" instance="Lof\GiftSalesRule\Observer\SetGiftItemPrice" />
+    </event>
+    <event name="salesrule_rule_save_before">
+        <observer name="lof_gift_salesrule_save_rule" instance="Lof\GiftSalesRule\Observer\UpdateGiftRuleActions" />
+    </event>
+    <event name="catalog_product_type_prepare_full_options">
+        <observer name="lof_gift_salesrule_prepare_options" instance="Lof\GiftSalesRule\Observer\AddGiftRuleOption"/>
+    </event>
+    <event name="sales_quote_collect_totals_after">
+        <observer name="lof_gift_salesrule_collect_totals_after" instance="Lof\GiftSalesRule\Observer\CollectGiftRule"/>
+    </event>
+    <event name="lof_gift_sales_rule_gift_rule_load_after">
+        <observer name="lof_gift_salesrule_set_number_offered_product_after_load" instance="Lof\GiftSalesRule\Observer\SetNumberOfferedProduct"/>
+    </event>
+    <event name="sales_rules_skip_actions_validation">
+        <observer name="lof_gift_salesrule_set_skip_actions_validation" instance="Lof\GiftSalesRule\Observer\ValidateGiftRuleActions"/>
+    </event>
+</config>

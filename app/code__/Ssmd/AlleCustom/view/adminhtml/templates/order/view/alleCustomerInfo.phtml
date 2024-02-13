@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var $block \Ssmd\AlleCustom\Block\Adminhtml\Order\View\AlleView
+ */
+    $order = $block->getOrder();
+    $collection = $block->getAllMemberDetailsByOrder($order->getIncrementId());
+?>
+
+<?php if($collection != null): ?>
+
+    <?php foreach($collection as $alleMember): ?>
+        <tr>
+            <th>Alle Member Email</th>
+            <td><span><?php echo $alleMember->getBdn() ?></span></td>
+        </tr>
+
+        <?php if($alleMember->getData('brilliantcoupon1') != ""): ?>
+            <tr>
+                <th>Brilliant Distinctions Coupon 1</th>
+                <td><span><?php echo $alleMember->getData('brilliantcoupon1') ?></span></td>
+            </tr>
+        <?php endif; ?>
+
+        <?php if($alleMember->getData('brilliantcoupon2') != ""): ?>
+            <tr>
+                <th>Brilliant Distinctions Coupon 2</th>
+                <td><span><?php echo $alleMember->getData('brilliantcoupon2') ?></span></td>
+            </tr>
+        <?php endif; ?>   
+    
+    <?php endforeach; ?>
+
+<?php else: ?>
+        <tr>
+            <th>Alle Member Email</th>
+            <td><span><?php echo __("Customer is not an Alle Member."); ?></span></td>
+        </tr>
+
+
+<?php endif; ?>
+                          
+               

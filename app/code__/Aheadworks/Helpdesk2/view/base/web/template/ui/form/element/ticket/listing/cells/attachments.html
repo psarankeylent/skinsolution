@@ -1,0 +1,11 @@
+<div class="data-grid-cell-content" data-bind="css: additionalClasses">
+    <ol class="list-items">
+        <li class="list-item" repeat="foreach: $col.getLabel($row()), item: '$attachment'">
+            <div class="info">
+                <a data-bind="attr: {href: $attachment().file_url}"
+                   text="$attachment().file_name"></a>
+                (<!-- ko text: $attachment().file_length --><!-- /ko -->)
+            </div>
+        </li>
+    </ol>
+</div>

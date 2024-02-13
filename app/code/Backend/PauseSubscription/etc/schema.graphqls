@@ -1,0 +1,15 @@
+
+type Mutation {
+    pauseSubscription(input: PauseSubscriptionInput): PauseSubscriptionOutput @resolver(class: "Backend\\PauseSubscription\\Model\\Resolver\\pauseSubscription")
+}
+
+input PauseSubscriptionInput {
+    customer_id  : Int
+    subscription_id: Int!
+    pause_reason: String
+    discount_accepted_by_customer: String
+}
+
+type PauseSubscriptionOutput {
+    message: String
+}

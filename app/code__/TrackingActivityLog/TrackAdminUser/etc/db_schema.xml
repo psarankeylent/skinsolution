@@ -1,0 +1,19 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="admin_user_actions_log">
+        <column xsi:type="int" name="id" identity="true" padding="11" unsigned="true" nullable="false" comment="Id"/>
+        <column xsi:type="varchar" name="entity" nullable="true" length="20" comment="Entity name"/>
+        <column xsi:type="varchar" name="identifier" nullable="true" length="50" comment="Product Sku"/>
+        <column xsi:type="varchar" name="user_name" nullable="false" length="50" comment="Username loggedin in admin"/>
+        <column xsi:type="varchar" name="action" nullable="false" length="25" comment="Action like save"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="longtext" name="data_before_save" comment="Product details data before save"/>
+        <column xsi:type="longtext" name="data_after_save" comment="Product details data before after"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+</schema>

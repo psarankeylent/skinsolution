@@ -1,0 +1,86 @@
+
+type Query {
+    m1SubscriptionDetails (reference_id: String) : M1SubscriptionDetails @resolver( class: "M1Subscription\\M1SubscriptionGraphql\\Model\\Resolver\\M1SubscriptionDetails")
+
+    listLegacySubscriptions : [subscriptionsList] @resolver(class: "M1Subscription\\M1SubscriptionGraphql\\Model\\Resolver\\SubscriptionsList")
+}
+
+type subscriptionsList {
+    reference_id: String
+    customer_id: String
+    status: String
+    amount: String
+    sku: String
+    create_at: String
+    title: String
+    product_name: String
+    product_price: String
+}
+
+type M1SubscriptionDetails {
+    shipping_address: M1SubscriptionShipping
+    billing_address: M1SubscriptionBilling
+    payments: M1SubscriptionPayments
+}
+
+type M1SubscriptionShipping {
+    address_id: Int @doc(description: "Query by address_id.")
+    customer_address_id: String @doc(description: "Query by customer_address_id.")
+    firstname: String @doc(description: "Query by firstname.")
+    lastname: String @doc(description: "Query by lastname.")
+    street: String @doc(description: "Query by street.")
+    city: String @doc(description: "Query by city.")
+    region: String @doc(description: "Query by region.")
+    region_id: Int @doc(description: "Query by region_id.")
+    postcode: String @doc(description: "Query by postcode.")
+    telephone: String @doc(description: "Query by telephone.")
+}
+
+type M1SubscriptionBilling {
+    address_id: Int @doc(description: "Query by address_id.")
+    customer_address_id: String @doc(description: "Query by customer_address_id.")
+    firstname: String @doc(description: "Query by firstname.")
+    lastname: String @doc(description: "Query by lastname.")
+    street: String @doc(description: "Query by street.")
+    city: String @doc(description: "Query by city.")
+    region: String @doc(description: "Query by region.")
+    region_id: Int @doc(description: "Query by region_id.")
+    postcode: String @doc(description: "Query by postcode.")
+    telephone: String @doc(description: "Query by telephone.")
+}
+
+type M1SubscriptionPayments {
+    payment_id: Int
+    quote_id: Int
+    method: String
+    cc_type: String
+    cc_last_4: String
+    cc_exp_month: String
+    cc_exp_year: String
+}
+
+type Mutation {
+   m1SubscriptionUpdateAddress(input: M1SubscriptionUpdateAddressInput!): M1SubscriptionUpdateAddressOutput @resolver(class: "M1Subscription\\M1SubscriptionGraphql\\Model\\Resolver\\M1SubscriptionUpdateAddress")
+}
+
+input M1SubscriptionUpdateAddressInput {
+    reference_id: String!
+    customer_address_id: String!
+    firstname: String!
+    lastname: String!
+    street: String!
+    city: String!
+    region: String!
+    region_id: Int!
+    postcode: String!
+    telephone: String!
+}
+
+type M1SubscriptionUpdateAddressOutput {
+    CustomAlleObject: AllDisplayOutput
+}
+
+type AllDisplayOutput {
+    response: String
+}
+

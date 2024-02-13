@@ -1,0 +1,59 @@
+type Query {
+    listLegacySubscriptions (id: Int): [LegacySubscriptionsOutput] @resolver(class: "\\LegacySubscription\\Subscriptions\\Model\\Resolver\\ListLegacySubscriptions") @doc(description:"Display legacy customer subscriptions")
+
+    getLegacySubscriptionDetails (profile_id: Int!): GetLegacySubscriptionDetailsOutput @resolver(class: "\\LegacySubscription\\Subscriptions\\Model\\Resolver\\GetLegacySubscriptionDetails") @doc(description:"Display legacy customer subscriptions") 
+}
+
+type LegacySubscriptionsOutput {
+    id: Int @doc(description: "Primary Id")
+    profile_id: Int @doc(description: "Profile_id Id")
+    customer_id: Int @doc(description: "Customer  Id")
+    status: String @doc(description: "Status")
+    create_date: String @doc(description: "Create Date")
+    last_update_date: String @doc(description: "Last Update Date")
+    amount: Float @doc(description: "Amount")
+    discount_amount: String @doc(description: "Discount Amount")
+    title: String @doc(description: "Title")
+    period_length: String @doc(description: "Period Length")
+    period_unit: String @doc(description: "Period Unit")
+    regular_price: Float @doc(description: "Regular Price")
+    trial_price: Float @doc(description: "Trial Price")
+    sku: String @doc(description: "Sku")
+}
+
+type GetLegacySubscriptionDetailsOutput {
+
+    billing_address: BillingAddressObj
+    shipping_address: ShippingAddressObj
+    payment_method: String
+    
+}
+
+type BillingAddressObj {
+    firstname: String
+    lastname: String
+    street: String
+    city: String
+    region: String
+    region_id: Int
+    country_id: String
+    postcode: String
+    telephone: String
+}
+
+type ShippingAddressObj {
+    firstname: String
+    lastname: String
+    street: String
+    city: String
+    region: String
+    region_id: Int
+    country_id: String
+    postcode: String
+    telephone: String
+}
+
+
+
+
+

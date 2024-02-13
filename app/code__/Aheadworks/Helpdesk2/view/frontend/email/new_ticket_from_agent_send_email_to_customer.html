@@ -1,0 +1,53 @@
+<!--@subject [#{{var ticket.uid}}] Ticket created: {{var ticket.subject}}@-->
+<!--@styles .aw-helpdesk2-note {color: gray; font-size: 85%;} .aw-helpdesk2-note-reply-marker {background-color: lightgray; font-size: 85%; text-align: center;} @-->
+<!--@vars {
+"var ticket": "Ticket",
+"var message": "Message",
+"var store": "Store",
+"var external_url": "Ticket External URL",
+"layout area=\"frontend\" handle=\"aw_helpdesk2_ticket_agent_info\" ticket=$ticket":"Ticket Agent Information Section"
+} @-->
+{{template config_path="design/email/header_template"}}
+{{inlinecss file="Aheadworks_Helpdesk2::css/email/agent-info.css"}}
+
+<strong>Hello, {{var ticket.customer_name}}.</strong><br/><br/>
+
+{{var message.content|raw}}<br/><br/>
+
+<strong>Best Regards,</strong><br/>
+
+
+<!-- <strong>{{var message.author_name}}</strong><br/> -->
+<strong>Customer Support</strong><br/>
+{{var store.frontend_name}}<br/><br/>
+
+{{layout area="frontend" handle="aw_helpdesk2_ticket_agent_info" ticket=$ticket}}
+
+<div class="aw-helpdesk2-note">
+    <!-- You can update the ticket <a href="{{var external_url}}">via web interface</a> or by replying to this email.<br/>
+    When updating the ticket via email, keep the ticket ID in the subject line to ensure that your reply will be tracked appropriately. -->
+
+   Do not reply here. You can update the ticket <a href="{{store url='customer/support/view'}}id/{{var ticket.entity_id}}/">via web interface</a>.
+</div>
+
+<!--
+<p style="margin-top: 20px">
+    How likely that you would recommend us to a friend or colleague?
+    <a href="{{var rating_url_star_1}}" target="_blank">★</a>
+    <a href="{{var rating_url_star_2}}" target="_blank">★</a>
+    <a href="{{var rating_url_star_3}}" target="_blank">★</a>
+    <a href="{{var rating_url_star_4}}" target="_blank">★</a>
+    <a href="{{var rating_url_star_5}}" target="_blank">★</a>
+</p>
+-->
+
+<p style="margin-top: 20px">
+    How likely that you would recommend us to a friend or colleague?
+    <a href="{{var rating_url_star_1}}" target="_blank"><u><img src="{{media url='images/star.png'}}" width="12" height="12" style="color:#15c;" /></u></a>
+    <a href="{{var rating_url_star_2}}" target="_blank"><u><img src="{{media url='images/star.png'}}" width="12" height="12" style="color:#15c;" /></u></a>
+    <a href="{{var rating_url_star_3}}" target="_blank"><u><img src="{{media url='images/star.png'}}" width="12" height="12" style="color:#15c;" /></u></a>
+    <a href="{{var rating_url_star_4}}" target="_blank"><u><img src="{{media url='images/star.png'}}" width="12" height="12" style="color:#15c;" /></u></a>
+    <a href="{{var rating_url_star_5}}" target="_blank"><u><img src="{{media url='images/star.png'}}" width="12" height="12" style="color:#15c;" /></u></a>
+</p>
+
+{{template config_path="design/email/footer_template"}}

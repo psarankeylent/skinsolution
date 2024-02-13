@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="items_grid">
+            <block class="Magento\Sales\Block\Adminhtml\Order\Create\Coupons" template="Ssmd_MultipleCoupons::order/create/coupons/form.phtml" name="coupons">
+                <block class="Magento\Sales\Block\Adminhtml\Order\Create\Coupons\Form" template="Ssmd_MultipleCoupons::order/create/coupons/form.phtml" name="order_create_coupons_form" as="form"/>
+            </block>
+        </referenceBlock>
+    </body>
+    <body>
+        <referenceBlock name="order_totals">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ssmd_MultipleCoupons::order/totals.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>
+

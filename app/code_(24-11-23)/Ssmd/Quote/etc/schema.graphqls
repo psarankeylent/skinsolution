@@ -1,0 +1,15 @@
+type Mutation {
+
+    setCustomPriceOnCartItem (input: SetCustomPriceOnCartItemInput) : SetCustomPriceOnCartItemOutput @resolver( class: "Ssmd\\Quote\\Model\\Resolver\\SetCustomPriceOnCartItem")
+}
+
+input SetCustomPriceOnCartItemInput @doc(description:"Update Cart Item Custom Price Input") {
+    cart_id: String! @doc(description: "Cart ID")
+    cart_item_id: Int! @doc(description: "Cart Item ID")
+    custom_price: Float @doc(description: "Custom Price")
+}
+
+type SetCustomPriceOnCartItemOutput @doc(description: "Update Cart ITem Custom Price Output") {
+    cart: Cart @doc(description: "Cart Details")
+}
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Backend_CustomerPhotos::backend_Photos_Photos"
+             title="Customer Photos"
+             module="Backend_CustomerPhotos"
+             sortOrder="10000"
+             resource="Magento_Backend::content"
+             parent="Backend::top_level"
+             action="backend/customerphotos/index"/>
+    </menu>
+</config>

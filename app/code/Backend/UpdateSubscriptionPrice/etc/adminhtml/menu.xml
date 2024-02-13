@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+        <add id="Magento_Reports::backend_updatesubscriptionprice"
+             title="Subscription Frequency Price Changes"
+             translate="title"
+             module="Backend_UpdateSubscriptionPrice"
+             sortOrder="120"
+             parent="Magento_Reports::AdminGrid_Top"
+             action="reports/subscriptionfrequencyprice/index"
+             resource="Magento_Reports::backend_updatesubscriptionprice"
+        />
+    </menu>
+
+</config>

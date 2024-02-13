@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::customreports_storecreditusage"
+             title="Store Credit Usage Report"
+             translate="title"
+             module="CustomReports_StoreCreditUsage"
+             sortOrder="120"
+             parent="Magento_Reports::AdminGrid_Top"
+             action="reports/storecreditusage/index"
+             resource="Magento_Reports::customreports_storecreditusage"
+        />
+    </menu>
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!--
+ - @package Ssmd_ZeroDollarOrders
+ - @version 1.0.0
+ - @category magento-module
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Ssmd\ZeroDollarOrders\Api\ZeroDollarOrdersHistoryRepositoryInterface" type="Ssmd\ZeroDollarOrders\Model\ZeroDollarOrdersHistoryRepository"/>
+	<preference for="Ssmd\ZeroDollarOrders\Api\Data\ZeroDollarOrdersHistoryInterface" type="Ssmd\ZeroDollarOrders\Model\Data\ZeroDollarOrdersHistory"/>
+	<preference for="Ssmd\ZeroDollarOrders\Api\Data\ZeroDollarOrdersHistorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\Bup\Api\UserProfileRepositoryInterface" type="Aheadworks\Bup\Model\UserProfileRepository"/>
+    <preference for="Aheadworks\Bup\Api\Data\UserProfileInterface" type="Aheadworks\Bup\Model\UserProfile"/>
+    <preference for="Aheadworks\Bup\Api\Data\UserProfileSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <preference for="Aheadworks\Bup\Api\UserProfileMetadataRepositoryInterface" type="Aheadworks\Bup\Model\UserProfileMetadataRepository"/>
+    <preference for="Aheadworks\Bup\Api\Data\UserProfileMetadataInterface" type="Aheadworks\Bup\Model\UserProfileMetadata"/>
+    <preference for="Aheadworks\Bup\Api\Data\UserProfileMetadataSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Magento\User\Model\ResourceModel\User">
+        <plugin name="aw_bup_save_user_plugin" type="Aheadworks\Bup\Plugin\User\Model\ResourceModelPlugin"/>
+    </type>
+</config>

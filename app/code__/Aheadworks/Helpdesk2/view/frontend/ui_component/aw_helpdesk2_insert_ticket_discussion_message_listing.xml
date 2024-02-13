@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_insert_ticket_discussion_message_listing.aw_helpdesk2_insert_ticket_discussion_message_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>columns</spinner>
+        <deps>
+            <dep>aw_helpdesk2_insert_ticket_discussion_message_listing.aw_helpdesk2_insert_ticket_discussion_message_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_insert_ticket_discussion_message_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\Thread\DiscussionProvider" name="aw_helpdesk2_insert_ticket_discussion_message_listing_data_source">
+            <settings>
+                <requestFieldName>ticket_id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="displayMode" xsi:type="string">list</item>
+                <item name="listTemplate" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing</item>
+                <item name="additionalClasses" xsi:type="string">aw-helpdesk2-thread</item>
+            </item>
+        </argument>
+        <column name="author_name" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array"> 
+                    <item name="additionalClasses" xsi:type="string">author</item>
+                </item>
+            </argument>
+            <settings>
+                <bodyTmpl>Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</bodyTmpl>
+            </settings>
+        </column> 
+        <column name="created_at" sortOrder="20" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">date</item>
+                </item>
+            </argument>
+            <settings>
+                <bodyTmpl>Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</bodyTmpl>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="content" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">content</item>
+                </item>
+            </argument>
+            <settings>
+                <bodyTmpl>Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/iframe</bodyTmpl>
+            </settings>
+        </column>
+        <column name="attachments" sortOrder="40" class="Aheadworks\Helpdesk2\Ui\Component\Listing\Ticket\Columns\AttachmentsColumn">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">attachments</item>
+                    <item name="isBackend" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <settings>
+                <bodyTmpl>Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/attachments</bodyTmpl>
+            </settings>
+        </column>
+    </columns>
+</listing>

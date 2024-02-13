@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_insert_ticket_listing.aw_helpdesk2_insert_ticket_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>columns</spinner>
+        <deps>
+            <dep>aw_helpdesk2_insert_ticket_listing.aw_helpdesk2_insert_ticket_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_insert_ticket_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\CustomerTicketsProvider"
+                      name="aw_helpdesk2_insert_ticket_listing_data_source">
+            <settings>
+                <requestFieldName>ticket_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="displayMode" xsi:type="string">list</item>
+                <item name="listTemplate" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing</item>
+                <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-row</item>
+            </item>
+        </argument>
+
+        <column name="subject" sortOrder="20" class="Aheadworks\Helpdesk2\Ui\Component\Listing\Ticket\Columns\LinkSubjectColumn" component="Aheadworks_Helpdesk2/js/ui/grid/columns/tooltip-link">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">aw_helpdesk2/ticket/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">entity_id</item>
+                    <item name="entityFieldName" xsi:type="string">entity_id</item>
+                    <item name="additionalClasses" xsi:type="string">subject</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/tooltip-link</item>
+                </item>
+            </argument>
+        </column>
+        <column name="uid" sortOrder="30" class="Aheadworks\Helpdesk2\Ui\Component\Listing\Columns\LinkColumn" component="Aheadworks_Helpdesk2/js/ui/grid/columns/link">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">aw_helpdesk2/ticket/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">entity_id</item>
+                    <item name="entityFieldName" xsi:type="string">entity_id</item>
+                    <item name="additionalClasses" xsi:type="string">ticket-id</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/link</item>
+                </item>
+            </argument>
+        </column>
+        <column name="status_id" component="Aheadworks_Helpdesk2/js/ui/grid/columns/colored-select" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">status</item>
+                    <item name="wrapperClass" xsi:type="string">aw-ticket-status</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/html</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="Aheadworks\Helpdesk2\Model\Source\Ticket\Status"/>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="last_message_date" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">date-created</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>date</dataType>
+            </settings>
+        </column>
+        <column name="agent_id" component="Magento_Ui/js/grid/columns/select" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">agent-id</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="Aheadworks\Helpdesk2\Model\Source\Department\AgentList"/>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="department_id" component="Magento_Ui/js/grid/columns/select" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">department_id</item>
+                    <item name="bodyTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/listing/cells/text</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="Aheadworks\Helpdesk2\Model\Source\Ticket\DepartmentList"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Department</label>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+            </settings>
+        </column>
+    </columns>
+</listing>

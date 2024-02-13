@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Renewal\NotificationReport\Api\NotificationReportRepositoryInterface" type="Renewal\NotificationReport\Model\NotificationReportRepository"/>
+	<preference for="Renewal\NotificationReport\Api\Data\NotificationReportInterface" type="Renewal\NotificationReport\Model\NotificationReport"/>
+	<preference for="Renewal\NotificationReport\Api\Data\NotificationReportSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Renewal\NotificationReport\Model\ResourceModel\NotificationReport\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">rxschedule_log</argument>
+			<argument name="resourceModel" xsi:type="string">Renewal\NotificationReport\Model\ResourceModel\NotificationReport\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="renewal_notificationreport_notificationreport_listing_data_source" xsi:type="string">Renewal\NotificationReport\Model\ResourceModel\NotificationReport\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

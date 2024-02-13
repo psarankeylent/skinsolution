@@ -1,0 +1,13 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Aheadworks\Helpdesk2\ViewModel\Order\CreateTicketButton $viewModel */
+$viewModel = $block->getViewModel();
+?>
+<button type="button"
+        class="create-ticket-button action-basic"
+        onclick="window.location.href = '<?= $block->escapeHtmlAttr($viewModel->getActionUrl()) ?>'"
+        title="<?= $block->escapeHtmlAttr(__('Create Ticket')) ?>">
+    <span><?= $block->escapeHtml(__('Create Ticket')) ?></span>
+</button>

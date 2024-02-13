@@ -1,0 +1,24 @@
+<!--@subject [#{{var ticket.uid}}] New Ticket created: {{var ticket.subject}}@-->
+<!--@styles .aw-helpdesk2-reply-marker {background-color: lightgray; font-size: 85%; text-align: center;} @-->
+<!--@vars {
+"var agent": "Agent",
+"var department_name": "Department Name",
+"var ticket": "Ticket",
+"var message": "Message",
+"var ticket_backend_url": "Backend URL"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var agent.firstname}}.</strong><br/><br/>
+
+You've been assigned a new ticket:<br/><br/>
+
+<strong>Department:</strong> {{var department_name}}<br/>
+<strong>Customer name:</strong> {{var ticket.customer_name}}<br/>
+<strong>Subject:</strong> {{var ticket.subject}}<br/>
+<strong>Content:</strong><br/>
+{{var message.content|raw}}<br/><br/>
+
+Click <a href="{{var ticket_backend_url}}">here</a> to view the ticket.
+
+{{template config_path="design/email/footer_template"}}

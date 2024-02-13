@@ -1,0 +1,53 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    //
+    //  Ticket view
+    //  _____________________________________________
+
+    .aw_helpdesk2-ticket-view, .aw_helpdesk2-ticket-external {
+        .admin__data-grid-loading-mask {
+            background: rgba(255, 255, 255, 0.5);
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 399;
+            .lib-vendor-prefix-display();
+
+            //  Base spinner
+            .spinner {
+                ._aw-hd2-spinner-loop(
+                        @aw-hd2-spinner-spin-count,
+                        @aw-hd2-spinner-rotate,
+                        @aw-hd2-spinner-delay
+                );
+                ._aw-hd2-spinner-keyframes();
+                display: inline-block;
+                font-size: @aw-hd2-spinner__base-size;
+                height: 1em;
+                margin-left: -2rem;
+                margin-top: -2rem;
+                left: 50%;
+                top: 50%;
+                position: absolute;
+                width: 1em;
+                background: none;
+
+                > span {
+                    ._aw-hd2-spinner_transform();
+                    background-color: #fff;
+                    border-radius: @aw-hd2-spinner-border-radius;
+                    clip: rect(0 1em/3.5 .1em 0);
+                    height: .1em;
+                    margin-top: 1em / 2;
+                    position: absolute;
+                    width: 1em;
+                }
+            }
+        }
+    }
+}

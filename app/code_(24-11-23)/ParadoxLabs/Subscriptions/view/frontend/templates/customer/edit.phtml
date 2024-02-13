@@ -1,0 +1,28 @@
+<?php /** @var \ParadoxLabs\Subscriptions\Block\Customer\Edit $block */ ?>
+<?php /* @codingStandardsIgnoreFile */ ?>
+
+<p class="change-notice message warning">
+    <?= $block->escapeHtml(__('Any changes to the settings below will take effect with the next billing.')); ?>
+</p>
+
+<form class="form-subscription-edit form-address-edit" action="<?= $block->escapeUrl($block->getSaveUrl()) ?>" method="post" id="form-validate" enctype="multipart/form-data" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" data-mage-init='{"subscriptionsEdit":{},"validation":{}}'>
+    <?= $block->getChildHtml('subscriptions_edit_payment') ?>
+
+    <?php if ((bool)$block->getSubscription()->getQuote()->getIsVirtual() === false): ?>
+        <?= $block->getChildHtml('subscriptions_edit_shipping') ?>
+    <?php endif; ?>
+
+    <?= $block->getChildHtml('additional') ?>
+    <?= $block->getBlockHtml('formkey') ?>
+
+    <div class="actions-toolbar widget">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Save Subscription')) ?>">
+                <span><?= $block->escapeHtml(__('Save Subscription')) ?></span>
+            </button>
+        </div>
+        <div class="secondary">
+            <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= $block->escapeHtml(__('Go back')) ?></span></a>
+        </div>
+    </div>
+</form>

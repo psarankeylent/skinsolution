@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+    
+        <!--<route id="aw_helpdesk2" frontName="aw_helpdesk2">
+            <module name="Aheadworks_Helpdesk2"/>
+        </route> -->
+        
+        <route id="customer" frontName="customer">
+            <module name="Aheadworks_Helpdesk2"/>
+        </route>
+        
+    </router>
+</config>

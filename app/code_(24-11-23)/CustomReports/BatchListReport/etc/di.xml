@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--  BatchList Report grid -->
+    <type name="CustomReports\BatchListReport\Model\ResourceModel\BatchListReport\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">authnet_settled_batch_list</argument>
+            <argument name="eventPrefix" xsi:type="string">batchlist_report_grid_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">batchlist_report_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">CustomReports\BatchListReport\Model\ResourceModel\BatchListReport</argument>
+        </arguments>
+    </type>
+    <!--  Batch Stats Report grid -->
+    <type name="CustomReports\BatchListReport\Model\ResourceModel\BatchStatsReport\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">authnet_batch_stats</argument>
+            <argument name="eventPrefix" xsi:type="string">batchstats_report_grid_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">batchstats_report_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">CustomReports\BatchListReport\Model\ResourceModel\BatchStatsReport</argument>
+        </arguments>
+    </type>
+    <!--  Batch Transactions Report grid -->
+    <type name="CustomReports\BatchListReport\Model\ResourceModel\TransactionList\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">authnet_transaction_list</argument>
+            <argument name="eventPrefix" xsi:type="string">batchtrans_report_grid_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">batchtrans_report_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">CustomReports\BatchListReport\Model\ResourceModel\TransactionList</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customreports_batchlist_report_listing_data_source" xsi:type="string">CustomReports\BatchListReport\Model\ResourceModel\BatchListReport\Grid\Collection</item>
+                <item name="customreports_batchstats_report_listing_data_source" xsi:type="string">CustomReports\BatchListReport\Model\ResourceModel\BatchStatsReport\Grid\Collection</item>
+                <item name="customreports_batchtrans_report_listing_data_source" xsi:type="string">CustomReports\BatchListReport\Model\ResourceModel\TransactionList\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

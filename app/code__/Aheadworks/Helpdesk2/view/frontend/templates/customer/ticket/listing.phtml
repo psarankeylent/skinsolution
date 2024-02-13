@@ -1,0 +1,15 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var $block \Magento\Ui\Block\Wrapper */
+?>
+<style>
+.admin__data-grid-pager{
+    display: none;
+}
+</style>
+<link rel='stylesheet' href='<?php echo $block->getViewFileUrl("css/myaccount_enhance.css") ?>' />
+<div class="block aw-helpdesk2-listing <?= /* @escapeNotVerified */ $block->getData('additionalClasses') ?>">
+    <div class="block-content">
+        <?= /* @escapeNotVerified */ $block->renderApp(); ?>
+    </div>
+</div>

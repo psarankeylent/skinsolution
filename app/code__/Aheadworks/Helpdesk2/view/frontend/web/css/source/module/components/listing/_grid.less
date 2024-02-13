@@ -1,0 +1,119 @@
+@import '_spinner';
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .aw-helpdesk2-listing {
+        .admin__data-grid-outer-wrap {
+            position: relative;
+
+            .col-xs-3 {
+                width: 25%;
+                float: left;
+            }
+
+            .col-xs-9 {
+                width: 75%;
+                float: right;
+            }
+
+            .admin__control-support-text {
+                border: 1px solid transparent;
+                display: inline-block;
+                font-size: 1.4rem;
+                line-height: 1.36;
+                padding-bottom: 0.6rem;
+                padding-top: 0.6rem;
+            }
+
+            .data-grid {
+                td, th {
+                    padding: 11px 15px;
+                }
+
+                tbody {
+                    tr {
+                        td {
+                            border-top: 1px solid @color-gray80;
+                        }
+                    }
+                }
+
+                .data-grid-th {
+                    &._sortable {
+                        position: relative;
+                        cursor: pointer;
+                        &._descend,
+                        &._ascend {
+                            &::before {
+                                position: absolute;
+                                right: 4px;
+                                font-size: @font-size__l;
+                                bottom: 10px;
+                            }
+                        }
+                    }
+
+                    &._sortable {
+                        &._descend {
+                            &::before {
+                                content: '\2191';
+                            }
+                        }
+                    }
+
+                    &._sortable {
+                        &._ascend {
+                            &::before {
+                                content: '\2193';
+                            }
+                        }
+                    }
+                }
+            }
+            .admin__data-grid-loading-mask {
+                background: rgba(255, 255, 255, 0.5);
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 399;
+                .lib-vendor-prefix-display();
+
+                //  Base spinner
+                .spinner {
+                    ._aw-hd2-spinner-loop(
+                            @aw-hd2-spinner-spin-count,
+                            @aw-hd2-spinner-rotate,
+                            @aw-hd2-spinner-delay
+                    );
+                    ._aw-hd2-spinner-keyframes();
+                    display: inline-block;
+                    font-size: @aw-hd2-spinner__base-size;
+                    height: 1em;
+                    margin-left: -2rem;
+                    margin-top: -2rem;
+                    left: 50%;
+                    top: 50%;
+                    position: absolute;
+                    width: 1em;
+                    background: none;
+
+                    > span {
+                        ._aw-hd2-spinner_transform();
+                        background-color: #fff;
+                        border-radius: @aw-hd2-spinner-border-radius;
+                        clip: rect(0 1em/3.5 .1em 0);
+                        height: .1em;
+                        margin-top: 1em / 2;
+                        position: absolute;
+                        width: 1em;
+                    }
+                }
+            }
+        }
+    }
+}

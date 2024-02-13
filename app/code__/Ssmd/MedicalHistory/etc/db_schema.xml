@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <!-- customer_medical_history table -->
+	<table name="customer_medical_history">
+		<column xsi:type="bigint" name="id" identity="true" unsigned="true" nullable="false" comment="Primary Id"/>
+		<column xsi:type="int" name="question_id" nullable="false" comment="Question ID"/>
+		<column xsi:type="int" name="customer_id" nullable="true" comment="Customer ID"/>
+		<column xsi:type="text" name="question_text" nullable="false" comment="Question Text"/>
+		<column xsi:type="text" name="response" nullable="false" comment="Response"/>
+		<column xsi:type="varchar" name="unique_id" length="100" nullable="false" comment="Unique ID"/>
+		<column xsi:type="varchar" name="cart_id" length="100" nullable="true" comment="Cart ID"/>
+		<column xsi:type="varchar" name="status" length="100" nullable="false" comment="Status"/>
+		<column xsi:type="varchar" name="order_number" length="100" nullable="true" comment="Order Number"/>
+		<column xsi:type="int" name="full_face" nullable="true" comment="full face photo"/>
+		<column xsi:type="int" name="govt_id" nullable="true" comment="govt id photo"/>
+		<column xsi:type="timestamp" name="created_at" nullable="true" comment="Created Date"/>
+		<column xsi:type="timestamp" name="updated_at" nullable="true" comment="Updated Date"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>
+	</table>
+
+    <!--  customer_medical_history_order_date table  -->
+    <table name="customer_medical_history_order_date">
+        <column xsi:type="int" name="id" identity="true" unsigned="true" nullable="false" comment="Primary Id"/>
+        <column xsi:type="int" name="customer_id" nullable="true" comment="Customer ID"/>
+        <column xsi:type="varchar" name="recent_order_increment_id" length="50" nullable="true" comment="Recent Mage Order Increment ID"/>
+        <column xsi:type="timestamp" name="recent_order_date" nullable="true" comment="Recent Mage Order Date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+</schema>
+
+
+

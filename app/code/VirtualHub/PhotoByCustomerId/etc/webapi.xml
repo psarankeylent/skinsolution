@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/virtualhub/photobycustomerid/:customerId" method="GET">
+		<service class="VirtualHub\PhotoByCustomerId\Api\PhotoByCustomerIdManagementInterface" method="getPhotoByCustomerId"/>
+		<resources>
+			<resource ref="VirtualHub_PhotoByCustomerId::API"/>
+		</resources>
+	</route>
+</routes>

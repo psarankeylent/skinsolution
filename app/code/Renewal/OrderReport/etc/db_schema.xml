@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="order_shipment" resource="default" engine="innodb" comment="Order Shipment">
+        <column name="id" xsi:type="int" nullable="false" identity="true" comment="Primary ID" />
+        <column name="increment_id" xsi:type="varchar" length="50" nullable="true" comment="Order Increment ID" />  
+        <column name="shipstation_order_id" xsi:type="varchar" length="50" nullable="true" comment="Shipstation Order ID" />
+        <column name="shipstation_shipment_id" xsi:type="varchar" length="50" nullable="true" comment="Shipstation Shipment ID" />
+        <column name="customer_email" xsi:type="varchar" length="250" nullable="true" comment="Customer Email" />
+        <column name="ship_date" xsi:type="timestamp" nullable="true" comment="Ship Date" />
+        <column name="shipment_cost" xsi:type="float" nullable="true" comment="Shipment Cost" />
+        <column name="tracking_number" xsi:type="varchar" length="100" nullable="true" comment="Tracking Number" />
+        <column name="carrier_code" xsi:type="varchar" length="150" nullable="true" comment="Carrier Code" />
+        <column name="service_code" xsi:type="varchar" length="150" nullable="true" comment="Service Code" />
+        <column name="shipped_from" xsi:type="varchar" length="50" nullable="true" comment="Shipped From Warehouse- From which shipping made" />
+        <column name="weight" xsi:type="float" nullable="true" comment="Weight" />
+        <column name="weight_unit" xsi:type="varchar" length="50" nullable="true" comment="Weight Unit" />
+        <column name="latest_tracking_details" xsi:type="text" nullable="true" comment="Latest Tracking Details" />
+        <column name="delivery_status" xsi:type="varchar" length="50" nullable="true" comment="Delivery Status" />
+
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+    </table>
+</schema>

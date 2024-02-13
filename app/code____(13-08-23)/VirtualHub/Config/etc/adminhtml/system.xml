@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="virtualhub" translate="label" sortOrder="999">
+			<label>virtualhub</label>
+		</tab>
+		<section id="configuration" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>configuration</label>
+			<tab>virtualhub</tab>
+			<resource>VirtualHub_Config::config_virtualhub_config</resource>
+			<group id="authorization" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>VirtualHub Auth Token</label>
+				<field id="auth_url" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Auth URL</label>
+					<comment/>
+				</field>
+				<field id="auth_username" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Auth User Name</label>
+					<comment/>
+				</field>
+				<field id="auth_password" type="obscure" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Auth Password</label>
+					<comment/>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<config_path>configuration/authorization/auth_password</config_path>
+				</field>
+			</group>
+			<group id="api_list" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>VirtualHub API List</label>
+				<field id="order_sync_api" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Order Sync Api</label>
+					<comment/>
+				</field>
+				<field id="order_cancellation_api" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Order Cancellation Api</label>
+					<comment/>
+				</field>
+
+				<field id="order_address_update_api" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Order Address Update Api</label>
+					<comment/>
+				</field>
+				<field id="consultonly_status" type="text" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>ConsultOnly Status</label>
+					<comment/>
+				</field>
+				<field id="update_medical_history" type="text" sortOrder="30" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Update Medical History</label>
+					<comment/>
+				</field>
+				<field id="update_photo" type="text" sortOrder="40" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Update Photo</label>
+					<comment/>
+				</field>
+			</group>
+			 <group id="chatwoot_api_list" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Chatwoot(Tickets) API List</label>
+                <field id="ticket_api_access_key" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Api Access Key</label>
+                    <comment/>
+                </field>
+                <field id="contact_search_api" type="text" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Contact Search Api</label>
+                    <comment/>
+                </field>
+                <field id="contact_conversations_api" type="text" sortOrder="30" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Contact Conversations Api</label>
+                    <comment/>
+                </field>
+                <field id="conversations_view_api" type="text" sortOrder="30" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Conversations View Api</label>
+                    <comment/>
+                </field>
+            </group>
+		</section>
+	</system>
+</config>
+
+

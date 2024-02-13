@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--
+ - @package Ssmd_ZeroDollarOrders
+ - @version 1.0.0
+ - @category magento-module
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Ssmd_ZeroDollarOrders::zerodollarorder" title="Zero Dollar Orders" module="Ssmd_ZeroDollarOrders" sortOrder="300" resource="Ssmd_ZeroDollarOrders::zerodollarorder" parent="Magento_Sales::sales"/>
+		<add id="Ssmd_ZeroDollarOrders::create_save" title="Zero Dollar Orders" module="Ssmd_ZeroDollarOrders" sortOrder="310" resource="Ssmd_ZeroDollarOrders::create_save" parent="Ssmd_ZeroDollarOrders::zerodollarorder" action="zerodollarorder/order/index" />
+	</menu>
+</config>

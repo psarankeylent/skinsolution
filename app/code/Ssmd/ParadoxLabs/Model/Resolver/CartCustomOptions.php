@@ -27,9 +27,13 @@ class CartCustomOptions implements ResolverInterface
      * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
      */
     public function __construct(
-        \Magento\Catalog\Model\Product\Option $productCustomOption
+        \Magento\Catalog\Model\Product\Option $productCustomOption,
+        \Magento\Quote\Model\Quote\Item $quoteItem,
+        \Magento\Quote\Api\CartRepositoryInterface $quoteRepository
     ) {
         $this->productCustomOption = $productCustomOption;
+        $this->quoteItem = $quoteItem;
+        $this->quoteRepository = $quoteRepository;
     }
 
     /**
@@ -53,44 +57,61 @@ class CartCustomOptions implements ResolverInterface
 
     protected function getCustomOptions($cartItem)
     {
-        $customOptions = $cartItem->getProduct()->getCustomOptions();
+        /*
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/productCustomOptions.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+        $logger->info('response');
+        $logger->info($cartItem->getQuoteId());
+        */
 
-        if (array_key_exists('info_buyRequest',$customOptions)) {
-            $customOptions = $customOptions['info_buyRequest']->getData('value');
-        } else {
-            return [];
-        }
+        try {
 
-        $options = [];
-        $customOptions = json_decode($customOptions);
+            $customOptions = $cartItem->getProduct()->getCustomOptions();
 
-        $product = $cartItem->getProduct();
-        $productCustomOptions = $this->productCustomOption
-            ->getProductOptionCollection($product);
-
-        $customOptionsData = [];
-        foreach($productCustomOptions as $option) {
-            $values = $option->getValues();
-            if (empty($values)) {
-                continue;
+            if (array_key_exists('info_buyRequest',$customOptions)) {
+                $customOptions = $customOptions['info_buyRequest']->getData('value');
+            } else {
+                return [];
             }
 
-            foreach($values as $value) {
-                $valueData = $value->getData();
-                $customOptionsData[$valueData['option_type_id']] = $valueData;
+            $options = [];
+            $customOptions = json_decode($customOptions);
+
+            $product = $cartItem->getProduct();
+            $productCustomOptions = $this->productCustomOption
+                ->getProductOptionCollection($product);
+
+            $customOptionsData = [];
+            foreach($productCustomOptions as $option) {
+                $values = $option->getValues();
+                if (empty($values)) {
+                    continue;
+                }
+
+                foreach($values as $value) {
+                    $valueData = $value->getData();
+                    $customOptionsData[$valueData['option_type_id']] = $valueData;
+                }
             }
+
+            if (isset($customOptions->options))
+                foreach ($customOptions->options as $key => $value) {
+                    $options[] = [ 'id' => $key, 'value' => $value, 'title' => $customOptionsData[$value]['title']];
+                }
+
+            return $options;
+
+        } catch (\Exception $e) {
+
+            $quoteItem = $this->quoteItem->load($cartItem->getId());
+            $quoteItem->delete();//deletes the item
+
+            $options[] = [ 'id' => 0];
+
+            return $options;
         }
 
-if (isset($customOptions->options)){
-	if(!empty($customOptions->options)) {
-	    foreach ($customOptions->options as $key => $value) {
-
-	        $options[] = [ 'id' => $key, 'value' => $value, 'title' => $customOptionsData[$value]['title']];
-	    }
     }
 }
 
-        return $options;
-
-    }
-}

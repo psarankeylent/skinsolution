@@ -1,0 +1,82 @@
+//
+//  Automation form
+//  _____________________________________________
+
+.aw_helpdesk2-automation-edit {
+    .dynamic-rows {
+        .admin__control-table {
+            width: auto;
+        }
+
+        .object.column, .action.column {
+            width: 28rem;
+
+            .admin__control-select {
+                width: 27rem;
+            }
+        }
+
+        .operator.column {
+            width: 22rem;
+
+            .admin__control-select {
+                width: 21rem;
+            }
+        }
+
+        .value.column {
+            width: 29rem;
+
+            .admin__control-select, .admin__control-multiselect, .admin__control-text {
+                width: 28rem;
+            }
+        }
+
+        &.actions {
+            .value.column {
+                width: 45rem;
+
+                .Tokenize {
+                    .Dropdown {
+                        max-width: 30rem;
+                    }
+                }
+
+                .admin__control-select, .admin__control-multiselect, .admin__control-text {
+                    width: 44rem;
+                }
+            }
+
+            .column.config {
+                .admin__field-label {
+                    text-align: left;
+                    min-width: 70px;
+                }
+
+                &.boolean {
+                    min-width: 300px;
+
+                    .admin__field-label {
+                        margin-right: 25px;
+                        float: left;
+                    }
+
+                    .admin__field-control {
+                        margin-right: 25px;
+                        text-align: center;
+                        float: right;
+                    }
+                }
+
+                &.multiselect {
+                    .admin__field-label {
+                        float: left;
+                    }
+                    .admin__field-control {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+}

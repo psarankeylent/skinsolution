@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Renewal\ExpirationReport\Model\ResourceModel\ExpirationReport\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">consultonly</argument>
+            <argument name="eventPrefix" xsi:type="string">expiration_report_grid_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">expiration_report_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Renewal\ExpirationReport\Model\ResourceModel\ExpirationReport</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="renewal_expiration_report_listing_data_source" xsi:type="string">Renewal\ExpirationReport\Model\ResourceModel\ExpirationReport\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Plugin for Exporting custom columns to csv -->
+    <type name="Magento\Ui\Model\Export\ConvertToCsv">
+        <plugin name="custom_columns_exported_in_csv_reports" type="Renewal\ExpirationReport\Plugin\Export\ConvertToCsv" sortOrder="110"/>
+    </type>
+
+    <!-- Plugin for Exporting custom columns to xml -->
+    <type name="Magento\Ui\Model\Export\ConvertToXml">
+        <plugin name="custom_columns_exported_in_xml_reports" type="Renewal\ExpirationReport\Plugin\Export\ConvertToXml" sortOrder="100"/>
+    </type>
+    <!--<preference for="Magento\Ui\Model\Export\MetadataProvider" type="Renewal\ExpirationReport\Model\Export\MetadataProvider"/>-->
+
+</config>

@@ -1,0 +1,24 @@
+<div data-role="aw-helpdesk2-tabs" class="aw-helpdesk2-tabs" data-mage-init='{"mage/tabs":{"openedState":"active", "active": 0}}'>
+    <each args="data: tabs, as: '$tab', noChildContext: true">
+
+        <div data-role="collapsible" class="tab-title">
+            <span class="switch" tabindex="-1" data-bind="attr: {'id': $tab.tabIndex}" text="$parent.getTabLabel($tab)"/>
+        </div>
+        <div data-role="content" class="aw-helpdesk2-tab" data-bind="css: $tab.additionalClasses, attr: {'id': $tab.tabIndex}">
+
+            <ol class="list-items">
+                <li class="list-item" repeat="foreach: $parent.getRows($tab.messageType), item: '$row'">
+                    <div class="item-info" data-bind="css: $row().type">
+                        <!--ko foreach: {data: $parent.getVisible(), as: '$col'}-->
+                        <!-- ko template: getBody() --><!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </li>
+                <li class="list-no-data" ifnot="$parent.hasData()">
+                    <span data-bind="i18n: 'We couldn\'t find any records.'"></span>
+                </li>
+            </ol>
+
+        </div>
+    </each>
+</div>

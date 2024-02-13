@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aheadworks" translate="label" sortOrder="300">
+            <label>Aheadworks Extensions</label>
+        </tab>
+        <section id="aw_helpdesk2" translate="label" type="text" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Help Desk Ultimate 2</label>
+            <tab>aheadworks</tab>
+            <resource>Aheadworks_Helpdesk2::config_aw_helpdesk2</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="primary_department" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Primary Department</label>
+                    <comment>When the Department selector is disabled on the frontend, all new tickets are automatically assigned to this department.</comment>
+                    <source_model>Aheadworks\Helpdesk2\Model\Source\Ticket\DepartmentList</source_model>
+                </field>
+                <field id="is_enabled_customer_rating" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Ticket Customer Rating</label>
+                    <comment>Customers can rate tickets either from emails or My Account. Rating is possible within 15 days since the latest change of the status of the ticket.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="backend_ticket_page" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Backend Ticket Page Settings</label>
+                <field id="count_of_displayed_tickets" translate="label comment" type="text" sortOrder="10" showInDefault="1">
+                    <label>Display X tickets in Customer Tickets block</label>
+                    <validate>validate-number validate-integer integer</validate>
+                    <comment>Leave empty or 0 to show all tickets.</comment>
+                </field>
+                <field id="count_of_displayed_orders" translate="label comment" type="text" sortOrder="20" showInDefault="1">
+                    <label>Display X orders in Customer Orders block</label>
+                    <validate>validate-number validate-integer integer</validate>
+                    <comment>Leave empty or 0 to show all tickets.</comment>
+                </field>
+                <field id="displayed_order_statuses" translate="label" type="multiselect" sortOrder="30" showInDefault="1">
+                    <label>Order Statuses are displayed in Customer Orders</label>
+                    <source_model>Aheadworks\Helpdesk2\Model\Source\Config\Order\Status</source_model>
+                    <backend_model>Aheadworks\Helpdesk2\Model\Config\Backend\OrderStatuses</backend_model>
+                    <validate>required</validate>
+                </field>
+            </group>
+            <group id="frontend" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Frontend</label>
+                <field id="is_enabled_contact_form_integration" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Contact Form Integration</label>
+                    <comment>Enables submitting tickets via the native Magento 2 Contact form and page for both logged-in and guest customers.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_allowed_to_attach_files" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow Customer to Attach Files</label>
+                    <comment>Allows/blocks attaching files to ticket messages sent via the web-form. For email attachments refer to the settings of the Gateway.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="max_upload_file_size" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Upload File Size (Mb)</label>
+                    <comment>Restricts the size of an attachment. Leave empty or 0 to allow any size.</comment>
+                    <validate>validate-digits validate-not-negative-number</validate>
+                </field>
+                <field id="allowed_file_extensions" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow File Extensions</label>
+                    <comment>Restricts the types of files allowed as attachments. Use commas to separate file types.</comment>
+                </field>
+            </group>
+            <group id="ticket_escalation" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Ticket Escalation</label>
+                <field id="is_ticket_escalation_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow Ticket Escalation</label>
+                    <comment>Enables/disables the escalate functionality.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="supervisor_emails" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Supervisor Email(s)</label>
+                    <comment>Email addresses of senior Help Desk representatives to receive escalated tickets. Use commas to separate email addresses.</comment>
+                    <validate>validate-emails</validate>
+                </field>
+                <field id="email_template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template to Supervisor</label>
+                    <comment>The template of the notification on escalation of a ticket.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

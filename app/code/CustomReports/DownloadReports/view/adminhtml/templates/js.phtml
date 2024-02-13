@@ -1,0 +1,11 @@
+<div id="popup-modal-main" style="display:none;">
+</div>
+
+<?php $adminPath  = $this->helper('\Magento\Backend\Helper\Data')->getHomePageUrl(); ?>
+<script>
+    require([
+        "prototype"
+    ], function () {
+        window.adminUrl = '<?= /** @noEscape */ $adminPath ?>';
+    });
+</script>

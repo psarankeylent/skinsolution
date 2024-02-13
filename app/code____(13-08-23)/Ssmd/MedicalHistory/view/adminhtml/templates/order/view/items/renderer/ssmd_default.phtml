@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var \Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer $block */ ?>
+<?php $_item = $block->getItem() ?>
+<?php $block->setPriceDataObject($_item) ?>
+ <?php
+        $uniqueId=null;
+       // $uniqueId = $this->helper('Ssmd\MedicalHistory\Helper\Data')->getRXNONProductByUniqueId($_item->getOrder()->getId());
+    $product = $_item->getProduct();
+
+?>
+<tr>
+    <?php $i = 0;
+    $columns = $block->getColumns();
+    $lastItemNumber = count($columns) ?>
+
+    <?php foreach ($columns as $columnName => $columnClass) : ?>
+        <?php $i++; ?>
+        <td class="<?= /* @noEscape */ $columnClass ?><?= /* @noEscape */ ($i === $lastItemNumber ? ' last' : '') ?>">
+            <?= $block->getColumnHtml($_item, $columnName) ?>
+            <?php
+            if($columnClass == "col-product"){
+                if($product)
+                {
+                    $prescription = $product->getData('prescription');
+                    if($prescription == 0)
+                    {
+                        ?>
+                        <div class="product-sku-block">NON-RX Product</div>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        <div class="product-sku-block">RX Product</div>
+                        <?php
+                    }
+                }
+
+            }
+            ?>
+        </td>
+    <?php endforeach; ?>
+</tr>
+

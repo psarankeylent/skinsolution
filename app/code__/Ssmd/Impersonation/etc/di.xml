@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd'> 
+
+     <virtualType name="Magento\Customer\Model\ResourceModel\Customer\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+           <arguments>
+               <argument name="mainTable" xsi:type="string">customer_entity</argument>
+               <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\ResourceModel\Customer\Grid\Collection</argument>
+           </arguments>
+       </virtualType>
+       <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+           <arguments>
+               <argument name="collections" xsi:type="array">
+                   <item name="impersonation_listing_data_source" xsi:type="string">Magento\Customer\Model\ResourceModel\Customer\Grid\Collection</item>
+               </argument>
+           </arguments>
+       </type>
+ 
+
+    <!-- <virtualType name="Ssmd\Impersonation\Model\ResourceModel\Impersonation\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+           <arguments>
+               <argument name="mainTable" xsi:type="string">impersonation</argument>
+               <argument name="resourceModel" xsi:type="string">Ssmd\Impersonation\Model\ResourceModel\Impersonation\Collection</argument>
+           </arguments>
+       </virtualType>
+       <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+           <arguments>
+               <argument name="collections" xsi:type="array">
+                   <item name="impersonation_listing_data_source" xsi:type="string">Ssmd\Impersonation\Model\ResourceModel\Impersonation\Collection</item>
+               </argument>
+           </arguments>
+       </type> -->
+
+
+ </config>

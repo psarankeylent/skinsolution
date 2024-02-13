@@ -1,0 +1,713 @@
+"Order Number","Order Status","Order Total","Sales Tax",Discounts,Shipping,"# of Items","Shipping State","Customer Name","Customer Email","Order Date","Invoice Date","Ship Date","Invoice #","Total (Invoiced)Paid","Shipment Cost",Warehouse,"Order Type"
+9100358618,payment_accepted,39.8700,2.8700,0.0000,0.0000,1.0000,California,"Shailendra Pathak",info.shail@gmail.com,"2023-01-12 15:00:50",,,,,,,Onetime
+9100358619,payment_accepted,236.7400,0.0000,0.0000,0.0000,3.0000,Texas,"stage test",stagetest12@example.com,"2023-01-12 19:13:24",,,,,,,Onetime
+9100358620,payment_accepted,190.0000,0.0000," -50.0000",0.0000,1.0000,Arizona,"sa sa",sansf@test.com,"2023-01-13 06:05:25",,,,,,,Onetime
+9100358621,payment_accepted,277.7500,0.0000," -50.0000",0.0000,2.0000,California,"sa sa",sansf@test.com,"2023-01-13 06:09:24",,,,,,,Onetime
+9100358622,processing,199.0000,0.0000,0.0000,0.0000,1.0000,California,"sa sa",sansf@test.com,"2023-01-13 06:42:49","2023-01-13 06:42:50",,9100342714,199.0000,,,Onetime
+1100358623,pending,343.0000,0.0000,0.0000,10.0000,2.0000,California,"sa sa",sansf@test.com,"2023-01-13 11:32:07",,,,,,,Onetime
+1100358624,pending,163.0000,0.0000,0.0000,10.0000,2.0000,California,"sa sa",qa1901sa@test.com,"2023-01-19 05:55:12",,,,,,,Onetime
+1100358625,pending,71.5000,0.0000,0.0000,10.0000,2.0000,California,"sa sa",salla0706.c0a561@burnermail.io,"2023-01-19 07:41:42",,,,,,,Onetime
+1100358626,pending,15.9900,0.0000,0.0000,5.0000,1.0000,Wisconsin,"Beverly Ayers",Ba.chanel11@gmail.com,"2023-01-23 12:38:28",,,,,,,Onetime
+1100358627,pending,33.1800,0.0000,0.0000,10.0000,2.0000,Wisconsin,"Beverly Ayers",Ba.chanel11@gmail.com,"2023-01-23 12:46:23",,,,,,,Subscription
+1100358628,pending,38.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"qa qa",moviy61465@octovie.com,"2023-01-24 12:55:29",,,,,,,Onetime
+1100358630,pending,71.9100,1.4100,0.0000,10.0000,2.0000,Illinois,"Monica Walus",monawalus@gmail.com,"2023-01-25 09:15:02",,,,,,,Onetime
+1100358631,pending,81.5000,0.0000,0.0000,5.0000,1.0000,"New York","test jan",test@jan.com,"2023-01-25 10:41:19",,,,,,,Onetime
+1100358632,pending,81.5000,0.0000,0.0000,5.0000,1.0000,"New York","test jan",test@jan.com,"2023-01-25 10:44:14",,,,,,,Onetime
+1100358633,pending,81.5000,0.0000,0.0000,5.0000,1.0000,Arizona,"testone test",KristopherGLanning@teleworm.us,"2023-01-25 11:02:17",,,,,,,Onetime
+1100358634,pending,291.0000,0.0000,0.0000,30.0000,6.0000,California,"testone test",KristopherGLanning@teleworm.us,"2023-01-25 11:06:49",,,,,,,Onetime
+1100358635,pending,244.5000,0.0000,0.0000,15.0000,3.0000,California,"test jan",test@jan.com,"2023-01-25 11:06:53",,,,,,,Onetime
+1100358636,pending,450.3100,31.3100,0.0000,15.0000,3.0000,California,"sa sa",cohesoj359@paxven.com,"2023-01-25 12:02:07",,,,,,,Onetime
+1100358637,pending,261.8400,0.8500,0.0000,10.0000,2.0000,California,"sa sa",sansf@test.com,"2023-01-25 12:08:46",,,,,,,Onetime
+1100358638,pending,163.0000,0.0000,0.0000,10.0000,2.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-01-25 14:04:14",,,,,,,Onetime
+1100358639,pending,275.5000,0.0000,0.0000,20.0000,4.0000,California,"testone test",KristopherGLanning@teleworm.us,"2023-01-25 17:09:40",,,,,,,Onetime
+1100358640,pending,211.5000,0.0000,0.0000,10.0000,2.0000,"New York","test jan",test@jan.com,"2023-01-26 02:27:05",,,,,,,Onetime
+1100358641,pending,98.7500,0.0000,0.0000,5.0000,1.0000,California,"Eric Styles",EricMStyles@armyspy.com,"2023-01-26 04:11:12",,,,,,,Onetime
+1100358642,pending,98.7500,0.0000,0.0000,5.0000,1.0000,California,"Eric Styles",EricMStyles@armyspy.com,"2023-01-26 04:18:04",,,,,,,Onetime
+1100358643,pending,98.7500,0.0000,0.0000,5.0000,1.0000,California,"Eric Styles",EricMStyles@armyspy.com,"2023-01-26 04:32:03",,,,,,,Onetime
+1100358644,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",sansf@test.com,"2023-01-27 05:14:51",,,,,,,Onetime
+1100358645,pending,31.2300,1.5300,0.0000,10.0000,2.0000,California,"sa sa",qa1901sa@test.com,"2023-01-27 08:25:36",,,,,,,Subscription
+1100358646,pending,78.3600,4.5600,0.0000,15.0000,3.0000,California,"Shailendra Pathak",info.shail@gmail.com,"2023-01-27 11:04:03",,,,,,,Subscription
+1100358647,pending,79.3500,5.3500,0.0000,5.0000,1.0000,California,"Eric Styles",EricMStyles@armyspy.com,"2023-01-27 11:16:20",,,,,,,Onetime
+1100358648,pending,160.1300,7.4300,0.0000,20.0000,4.0000,Arizona,"sa sa",cohesoj310@paxven.com,"2023-01-27 11:22:08",,,,,,,Subscription
+1100358649,pending,382.6200,3.8700,0.0000,20.0000,4.0000,"New York","thirtyone jan",31@jan.com,"2023-01-31 06:50:55",,,,,,,Subscription
+1100358650,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","thirtyone jan",31@jan.com,"2023-01-31 07:02:56",,,,,,,Onetime
+1100358651,pending,218.5000,15.0000,0.0000,10.0000,2.0000,California,"Wesley test",WesleyVSession@rhyta.com,"2023-01-31 07:27:28",,,,,,,Onetime
+QA100358652,pending,195.5000,0.0000,0.0000,10.0000,2.0000,"New York","thirtyone jan",31@jan.com,"2023-01-31 09:26:28",,,,,,,Subscription
+QA100358653,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","thirtyone jan",31@jan.com,"2023-01-31 10:14:07",,,,,,,Onetime
+QA100358654,pending,206.0000,0.0000,0.0000,20.0000,4.0000,Alabama,"chris mat",chrismat27@test.com,"2023-01-31 11:49:47",,,,,,,Onetime
+QA100358655,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Dev Test",EmileGRichardson@teleworm.us,"2023-01-31 13:55:07",,,,,,,Subscription
+QA100358656,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Dev Test",EmileGRichardson@teleworm.us,"2023-01-31 14:03:46",,,,,,,Onetime
+QA100358657,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Dev Test",EmileGRichardson@teleworm.us,"2023-01-31 14:10:58",,,,,,,Subscription
+QA100358658,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-01-31 15:28:28",,,,,,,Onetime
+QA100358659,pending,1286.7400,7.7400,0.0000,70.0000,14.0000,"New York","thirtyone jan",31@jan.com,"2023-02-01 07:24:46",,,,,,,Subscription
+QA100358660,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Dev Test",EmileGRichardson@teleworm.us,"2023-02-01 08:34:19",,,,,,,Subscription
+QA100358661,pending,55.1000,3.6000,0.0000,5.0000,1.0000,California,"Sanchita Test",sanchitabarik121@gmail.com,"2023-02-01 08:50:09",,,,,,,Onetime
+QA100358662,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Jos Buttler",Jos+1@gmail.com,"2023-02-01 09:02:02",,,,,,,Onetime
+QA100358663,pending,55.1000,3.6000,0.0000,5.0000,1.0000,California,"neniceFname neniceLname",nenice9916@chotunai.com,"2023-02-01 09:42:28",,,,,,,Onetime
+QA100358664,pending,983.2300,67.4800,0.0000,45.0000,9.0000,California,"Testfive Test",JulieMLopez@dayrep.com,"2023-02-01 09:44:05",,,,,,,Onetime
+QA100358665,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Tina Test",VickiBSchulz@rhyta.com,"2023-02-01 10:15:45",,,,,,,Subscription
+QA100358666,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Tina Test",VickiBSchulz@rhyta.com,"2023-02-01 10:33:02",,,,,,,Subscription
+QA100358668,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Texas,"Dev Test",devtest34@test.com,"2023-02-01 19:54:01",,,,,,,Subscription
+QA100358669,pending,642.1000,19.3500,0.0000,30.0000,6.0000,"New York","one feb",1@feb.com,"2023-02-02 05:37:47",,,,,,,Subscription
+QA100358670,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Texas,"Dev Test",devtest37@test.com,"2023-02-02 06:03:52",,,,,,,Subscription
+QA100358671,pending,228.0000,0.0000,0.0000,10.0000,2.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-02-02 06:28:35",,,,,,,Subscription
+QA100358672,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-02 10:35:43",,,,,,,Subscription
+QA100358673,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","DevThree Test",bogawak164@brandoza.com,"2023-02-02 10:52:51",,,,,,,Subscription
+QA100358674,pending,43.4800,1.4800,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-02-02 11:01:53",,,,,,,Onetime
+QA100358675,pending,43.4800,1.4800,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-02-02 11:05:29",,,,,,,Onetime
+QA100358676,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","DevThree Test",bogawak164@brandoza.com,"2023-02-02 11:23:51",,,,,,,Onetime
+QA100358667,pending,228.0000,0.0000,0.0000,10.0000,2.0000,California,"chris mat",chrismat27@test.com,"2023-02-02 12:40:58",,,,,,,Subscription
+QA100358677,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"chris mat",chrismat27@test.com,"2023-02-02 13:18:27",,,,,,,Onetime
+QA100358678,pending,195.5000,0.0000,0.0000,10.0000,2.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-02 14:09:43",,,,,,,Onetime
+QA100358679,pending,398.3600,11.6100,0.0000,20.0000,4.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-02-02 14:42:39",,,,,,,Onetime
+QA100358680,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Danny Tom",denom84304@chotunai.com,"2023-02-02 17:01:30",,,,,,,Subscription
+QA100358681,pending,103.0000,0.0000,0.0000,10.0000,2.0000,Alabama,"chris mat",chrismat27@test.com,"2023-02-03 10:13:40",,,,,,,Onetime
+QA100358682,pending,51.5000,0.0000,0.0000,5.0000,1.0000,Alabama,"chris mat",chrismat27@test.com,"2023-02-03 10:23:29",,,,,,,Onetime
+QA100358683,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"chris mat",chrismat27@test.com,"2023-02-03 10:59:41",,,,,,,Subscription
+QA100358684,pending,814.5000,0.0000,0.0000,40.0000,8.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-02-03 11:56:03",,,,,,,Subscription
+QA100358685,pending,593.2500,0.0000,0.0000,35.0000,7.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-04 19:08:23",,,,,,,Subscription
+QA100358686,pending,228.0000,0.0000,0.0000,10.0000,2.0000,California,"mego vi",megovi3837@chotunai.com,"2023-02-06 05:26:22",,,,,,,Onetime
+QA100358687,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"mego vi",megovi3837@chotunai.com,"2023-02-06 05:45:11",,,,,,,Onetime
+QA100358688,pending,43.4800,1.4800,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-02-06 06:43:39",,,,,,,Onetime
+QA100358689,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-06 10:06:51",,,,,,,Onetime
+QA100358690,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-06 10:10:28",,,,,,,Onetime
+QA100358691,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"mego vi",megovi3837@chotunai.com,"2023-02-06 10:45:14",,,,,,,Onetime
+QA100358692,pending,215.7500,0.0000,0.0000,10.0000,2.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-06 13:31:28",,,,,,,Subscription
+QA100358693,pending,213.8100,10.8100,0.0000,20.0000,4.0000,California,"DevThree Test",bogawak164@brandoza.com,"2023-02-06 14:31:31",,,,,,,Onetime
+QA100358694,pending,215.7500,0.0000,0.0000,10.0000,2.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-06 15:03:41",,,,,,,Subscription
+QA100358695,pending,456.0000,0.0000,0.0000,20.0000,4.0000,California,"mego vi",megovi3837@chotunai.com,"2023-02-07 05:05:09",,,,,,,Onetime
+QA100358696,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"mego vi",megovi3837@chotunai.com,"2023-02-07 05:17:27",,,,,,,Onetime
+QA100358697,pending,279.3100,10.8100,0.0000,20.0000,4.0000,California,"mego vi",megovi3837@chotunai.com,"2023-02-07 05:23:38",,,,,,,Onetime
+QA100358698,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"qa qa",dekaje2897@bymercy.com,"2023-02-07 11:27:25",,,,,,,Onetime
+QA100358699,pending,169.1000,3.6000,0.0000,10.0000,2.0000,California,"qa qa",dekaje2897@bymercy.com,"2023-02-07 11:34:12",,,,,,,Onetime
+QA100358700,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"mathew simon",mathsbrik@gmail.com,"2023-02-07 11:40:35",,,,,,,Onetime
+QA100358701,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"mathew simon",mathsbrik@gmail.com,"2023-02-07 11:42:33",,,,,,,Onetime
+QA100358702,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-07 11:44:42",,,,,,,Onetime
+QA100358703,pending,228.0000,0.0000,0.0000,10.0000,2.0000,Arizona,"mathew simon",mathsbrik@gmail.com,"2023-02-07 11:52:10",,,,,,,Onetime
+QA100358704,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-07 11:59:53",,,,,,,Onetime
+QA100358705,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"seven feb",7@feb.com,"2023-02-07 13:35:52",,,,,,,Subscription
+QA100358706,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-07 19:08:41",,,,,,,Onetime
+QA100358707,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"mathew simon",mathsbrik@gmail.com,"2023-02-08 06:35:03",,,,,,,Onetime
+QA100358708,pending,223.2500,7.5000,0.0000,10.0000,2.0000,California,"seven feb",7@feb.com,"2023-02-08 09:57:37",,,,,,,Subscription
+QA100358709,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"seven feb",7@feb.com,"2023-02-08 10:09:45",,,,,,,Subscription
+QA100358710,pending,320.0000,0.0000,0.0000,25.0000,5.0000,Pennsylvania,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-08 10:45:37",,,,,,,Subscription
+QA100358711,pending,43.4800,1.4800,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-02-08 10:48:53",,,,,,,Onetime
+QA100358712,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"tefi san",tefisan269@chotunai.com,"2023-02-08 11:01:02",,,,,,,Onetime
+QA100358713,pending,190.7500,7.5000,0.0000,10.0000,2.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-08 11:06:02",,,,,,,Onetime
+QA100358714,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"tefi san",tefisan269@chotunai.com,"2023-02-08 12:00:30",,,,,,,Onetime
+QA100358715,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-02-08 12:05:41",,,,,,,Subscription
+QA100358716,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"tefi san",tefisan269@chotunai.com,"2023-02-08 12:17:40",,,,,,,Onetime
+QA100358717,pending,169.1000,3.6000,0.0000,10.0000,2.0000,California,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-08 12:43:54",,,,,,,Onetime
+QA100358718,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"seven feb",7@feb.com,"2023-02-08 15:17:08",,,,,,,Subscription
+QA100358719,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"eight feb",8@feb.com,"2023-02-08 18:09:16",,,,,,,Onetime
+QA100358720,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-09 05:12:36",,,,,,,Onetime
+QA100358721,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"sisomi Alex",sisomi1985@brandoza.com,"2023-02-09 05:14:23",,,,,,,Onetime
+QA100358722,processing,114.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-09 05:16:00","2023-03-15 10:15:04",,1100342717,114.0000,,,Onetime
+QA100358723,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Arizona,"sisomi Alex",sisomi1985@brandoza.com,"2023-02-09 05:38:31",,,,,,,Onetime
+QA100358724,pending,168.1000,2.6000,0.0000,10.0000,2.0000,Arizona,"sisomi Alex",sisomi1985@brandoza.com,"2023-02-09 05:59:04",,,,,,,Onetime
+QA100358725,pending,211.0000,0.0000,0.0000,15.0000,3.0000,"New York","nine feb",9@feb.com,"2023-02-09 08:55:19",,,,,,,Subscription
+QA100358726,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-09 10:34:51",,,,,,,Onetime
+QA100358727,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"kegar san",kegar93927@bymercy.com,"2023-02-09 12:32:17",,,,,,,Onetime
+QA100358728,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-09 12:32:41",,,,,,,Subscription
+QA100358729,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-09 12:58:06",,,,,,,Subscription
+QA100358730,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-09 13:09:14",,,,,,,Onetime
+QA100358731,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"kegar san",kegar93927@bymercy.com,"2023-02-10 05:07:26",,,,,,,Subscription
+QA100358732,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"kegar san",kegar93927@bymercy.com,"2023-02-10 05:26:30",,,,,,,Subscription
+QA100358733,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-10 10:31:34",,,,,,,Subscription
+QA100358734,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-02-10 10:37:08",,,,,,,Onetime
+QA100358735,pending,197.5000,0.0000,0.0000,10.0000,2.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-02-10 10:42:57",,,,,,,Onetime
+QA100358736,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-02-10 11:08:30",,,,,,,Subscription
+QA100358737,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","ten feb",10v2@feb.com,"2023-02-10 14:14:28",,,,,,,Subscription
+QA100358738,pending,228.0000,0.0000,0.0000,10.0000,2.0000,"New York","Dev Test",devtest200@test.com,"2023-02-10 14:24:33",,,,,,,Onetime
+QA100358739,pending,301.1200,3.8700,0.0000,15.0000,3.0000,"New York","ten feb",10@feb.com,"2023-02-13 09:32:53",,,,,,,Subscription
+QA100358740,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","ten feb",10@feb.com,"2023-02-13 09:59:41",,,,,,,Onetime
+QA100358741,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","ten feb",10@feb.com,"2023-02-13 10:47:17",,,,,,,Onetime
+QA100358742,pending,244.5000,0.0000,0.0000,15.0000,3.0000,"New York","Dev Test",devtest300@test.com,"2023-02-13 19:16:38",,,,,,,Onetime
+QA100358743,pending,382.8500,26.1000,0.0000,20.0000,4.0000,California,"fourteen feb",14@feb.com,"2023-02-14 05:09:12",,,,,,,Onetime
+QA100358744,pending,395.0000,0.0000,0.0000,20.0000,4.0000,California,"sa sa",cohesoj359@paxven.com,"2023-02-14 05:33:25",,,,,,,Onetime
+QA100358745,pending,176.8000,12.0000," -38.7000",10.0000,2.0000,California,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-14 05:50:05",,,,,,,Onetime
+QA100358746,pending,98.7500,0.0000,0.0000,5.0000,1.0000,California,"sa sa",cohesoj359@paxven.com,"2023-02-14 08:38:36",,,,,,,Onetime
+QA100358747,pending,98.7500,0.0000,0.0000,5.0000,1.0000,Florida,"sa sa",cohesoj359@paxven.com,"2023-02-14 08:43:14",,,,,,,Onetime
+QA100358748,canceled,332.5000,15.0000,0.0000,15.0000,3.0000,Texas,"Shailendra Pathak",info.shail+1@gmail.com,"2023-02-14 10:33:35",,,,,,,Onetime
+QA100358749,canceled,98.7500,0.0000,0.0000,5.0000,1.0000,Florida,"sa sa",cohesoj359@paxven.com,"2023-02-14 12:47:54",,,,,,,Onetime
+QA100358750,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-14 13:55:30",,,,,,,Onetime
+QA100358751,pending,98.7500,0.0000,0.0000,5.0000,1.0000,Arkansas,"sa sa",cohesoj359@paxven.com,"2023-02-15 05:05:56",,,,,,,Onetime
+QA100358752,pending,98.7500,0.0000,0.0000,5.0000,1.0000,Alabama,"sa sa",cohesoj359@paxven.com,"2023-02-15 05:27:02",,,,,,,Onetime
+QA100358753,pending,98.7500,0.0000,0.0000,5.0000,1.0000,Arkansas,"sa sa",cohesoj359@paxven.com,"2023-02-15 10:56:34",,,,,,,Onetime
+QA100358754,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-02-16 12:08:24",,,,,,,Onetime
+QA100358755,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"joy en",joyosi1159@mirtox.com,"2023-02-16 12:28:27",,,,,,,Onetime
+QA100358756,pending,604.1000,9.6000,0.0000,25.0000,5.0000,"New York","Dev Test",devtest27@test.com,"2023-02-16 23:43:38",,,,,,,Subscription
+QA100358757,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"nojo mew",nojomew366@aosod.com,"2023-02-17 09:08:59",,,,,,,Onetime
+QA100358758,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"came john",camew86147@otanhome.com,"2023-02-17 09:20:49",,,,,,,Onetime
+QA100358759,pending,414.9600,14.7100,0.0000,25.0000,5.0000,California,"ten feb",10@feb.com,"2023-02-17 09:58:11",,,,,,,Subscription
+QA100358760,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"moheh iucake",moheh27349@iucake.com,"2023-02-17 10:00:57",,,,,,,Onetime
+QA100358761,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"seventeen feb",17@feb.com,"2023-02-17 10:44:19",,,,,,,Onetime
+QA100358762,pending,55.1000,3.6000,0.0000,5.0000,1.0000,California,"seventeen feb",17@feb.com,"2023-02-17 10:46:21",,,,,,,Onetime
+QA100358763,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"seventeen feb",17@feb.com,"2023-02-17 11:01:22",,,,,,,Onetime
+QA100358764,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"xises mustbeit",xises11500@mustbeit.com,"2023-02-17 16:02:42",,,,,,,Onetime
+QA100358765,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"xises mustbeit",xises11500@mustbeit.com,"2023-02-17 16:05:36",,,,,,,Onetime
+QA100358766,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Delaware,"maddy yan",maddy1@gmail.com,"2023-02-20 04:41:43",,,,,,,Onetime
+QA100358767,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"maddy yan",maddy1@gmail.com,"2023-02-20 04:53:37",,,,,,,Onetime
+QA100358768,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"maddy yan",maddy1@gmail.com,"2023-02-20 06:10:51",,,,,,,Onetime
+QA100358769,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"connieq josh",cohesoj3459@paxven.com,"2023-02-21 07:53:04",,,,,,,Onetime
+QA100358770,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Florida,"connieq josh",cohesoj3459@paxven.com,"2023-02-21 08:03:40",,,,,,,Subscription
+QA100358771,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Florida,"connieq josh",cohesoj3459@paxven.com,"2023-02-22 05:31:50",,,,,,,Subscription
+QA100358772,pending,51.5000,0.0000,0.0000,5.0000,1.0000,Pennsylvania,"six Test",6jan@test.com,"2023-02-22 05:48:02",,,,,,,Onetime
+QA100358773,pending,81.5000,0.0000,0.0000,5.0000,1.0000,"New York","sanchita Test",sanchita220@test.com,"2023-02-22 09:08:53",,,,,,,Onetime
+QA100358774,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Florida,"connieq josh",cohesoj3459@paxven.com,"2023-02-22 10:48:41",,,,,,,Onetime
+QA100358775,pending,356.5000,0.0000,0.0000,30.0000,6.0000,"New York","Dev Test",devtest400@test.com,"2023-02-22 12:14:11",,,,,,,Subscription
+QA100358776,pending,617.0000,0.0000,0.0000,50.0000,10.0000,"New York","Dev Test",devtest400@test.com,"2023-02-22 12:35:20",,,,,,,Onetime
+QA100358777,pending,630.7500,7.5000,0.0000,35.0000,7.0000,California,"fourteen feb",14@feb.com,"2023-02-22 13:45:17",,,,,,,Subscription
+QA100358778,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Dev Test",devtest401@test.com,"2023-02-22 14:54:18",,,,,,,Subscription
+QA100358779,pending,53.3600,1.8600,0.0000,5.0000,1.0000,"New York","Dev Test",devtest401@test.com,"2023-02-22 15:21:43",,,,,,,Onetime
+QA100358780,pending,167.3600,1.8600,0.0000,10.0000,2.0000,"New York","Dev Test",devtest401@test.com,"2023-02-22 15:23:16",,,,,,,Subscription
+QA100358781,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Dev Test",devtest401@test.com,"2023-02-22 15:24:17",,,,,,,Subscription
+QA100358782,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-23 04:46:18",,,,,,,Onetime
+QA100358783,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Florida,"connieq josh",cohesoj3459@paxven.com,"2023-02-23 04:49:26",,,,,,,Onetime
+QA100358784,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-23 04:53:17",,,,,,,Onetime
+QA100358785,pending,48.5000,0.0000,0.0000,5.0000,1.0000,"New York","Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-23 05:00:22",,,,,,,Onetime
+QA100358786,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-02-23 05:06:41",,,,,,,Onetime
+QA100358787,pending,218.5000,15.0000,0.0000,10.0000,2.0000,California,"Sanchita Bariktest",sanchitabariktest@test.com,"2023-02-23 06:07:09",,,,,,,Onetime
+QA100358788,pending,165.3100,10.8100,0.0000,15.0000,3.0000,California,"Jos Buttler",Jos+2@gmail.com,"2023-02-23 06:23:40",,,,,,,Onetime
+QA100358789,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Jey Evih",jeyevih485@mirtox.com,"2023-02-23 06:49:18",,,,,,,Onetime
+QA100358790,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Devthree Test",devtest402@test.com,"2023-02-23 06:53:27",,,,,,,Subscription
+QA100358791,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Jey Evih",jeyevih485@mirtox.com,"2023-02-23 07:08:31",,,,,,,Onetime
+QA100358792,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Jey Evih",jeyevih485@mirtox.com,"2023-02-23 07:13:01",,,,,,,Onetime
+QA100358793,pending,228.0000,0.0000,0.0000,10.0000,2.0000,Florida,"QA qa",qa1@test.com,"2023-02-23 10:12:34",,,,,,,Subscription
+QA100358794,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"george math",math.geo@gmail.com,"2023-02-24 05:01:11",,,,,,,Onetime
+QA100358795,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"george math",math.geo@gmail.com,"2023-02-24 10:46:42",,,,,,,Onetime
+QA100358796,pending,316.8600,11.6100,0.0000,15.0000,3.0000,"New York","fourteen feb",14@feb.com,"2023-02-27 03:37:59",,,,,,,Onetime
+QA100358797,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Illinois,"swami go",giwami7306@wiroute.com,"2023-02-27 05:30:44",,,,,,,Subscription
+QA100358798,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Illinois,"swami go",giwami7306@wiroute.com,"2023-02-27 05:38:54",,,,,,,Onetime
+QA100358799,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Georgia,"swami go",giwami7306@wiroute.com,"2023-02-27 06:01:54",,,,,,,Onetime
+QA100358800,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Georgia,"swami go",giwami7306@wiroute.com,"2023-02-27 10:57:03",,,,,,,Onetime
+QA100358801,pending,228.0000,0.0000,0.0000,10.0000,2.0000,Georgia,"swami go",giwami7306@wiroute.com,"2023-02-27 11:17:37",,,,,,,Subscription
+QA100358802,pending,300.0800,2.5800,0.0000,15.0000,3.0000,Georgia,"swami go",giwami7306@wiroute.com,"2023-02-28 05:31:06",,,,,,,Subscription
+QA100358803,pending,350.6200,3.8700,0.0000,10.0000,2.0000,"New York","twentyeight feb",28@feb.com,"2023-02-28 08:54:20",,,,,,,Onetime
+QA100358804,pending,359.0000,0.0000,0.0000,10.0000,2.0000,"New York","fourteen feb",14@feb.com,"2023-02-28 09:34:10",,,,,,,Subscription
+QA100358805,pending,878.7200,23.2200,0.0000,35.0000,7.0000,"New York","Dev Test",devtest403@test.com,"2023-02-28 14:01:09",,,,,,,Onetime
+QA100358806,pending,2016.2400,37.4900,0.0000,55.0000,11.0000,California,"Dev Test",devtest403@test.com,"2023-02-28 14:14:45",,,,,,,Onetime
+QA100358807,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Texas,"juli fish",jolid22330@youke1.com,"2023-03-01 06:01:59",,,,,,,Onetime
+QA100358808,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jason fish",jolid223301@youke1.com,"2023-03-01 06:22:08",,,,,,,Onetime
+QA100358809,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Georgia,"swami go",giwami7306@wiroute.com,"2023-03-01 06:29:17",,,,,,,Subscription
+QA100358810,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jason fish",jolid223301@youke1.com,"2023-03-01 06:34:31",,,,,,,Subscription
+QA100358811,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jason fish",jolid223301@youke1.com,"2023-03-01 06:35:11",,,,,,,Subscription
+QA100358812,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-01 07:29:06",,,,,,,Subscription
+QA100358813,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-01 12:37:24",,,,,,,Onetime
+QA100358814,pending,264.2500,0.0000,0.0000,15.0000,3.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-01 12:49:43",,,,,,,Subscription
+QA100358815,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-01 16:06:16",,,,,,,Subscription
+QA100358816,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"jason fish",jolid223301@youke1.com,"2023-03-02 10:12:37",,,,,,,Onetime
+QA100358817,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"jason fish",jolid223301@youke1.com,"2023-03-02 10:14:35",,,,,,,Onetime
+QA100358818,pending,960.5000,0.0000,0.0000,20.0000,4.0000,"New York","Dev Test",devtest404@test.com,"2023-03-02 10:49:21",,,,,,,Subscription
+QA100358819,pending,354.2500,7.5000,0.0000,10.0000,2.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-02 11:11:21",,,,,,,Onetime
+QA100358820,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"jason fish",jolid223301@youke1.com,"2023-03-02 12:14:03",,,,,,,Onetime
+QA100358821,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Sanchita Barik",sanchitabarik20@gmail.com,"2023-03-03 13:11:57",,,,,,,Onetime
+QA100358822,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-03-04 09:21:06",,,,,,,Onetime
+QA100358823,pending,213.0000,0.0000," -32.0000",5.0000,1.0000,Alabama,"chris mat",chrismat27@test.com,"2023-03-06 11:51:50",,,,,,,Onetime
+QA100358824,pending,2024.5000,0.0000," -30.0000",45.0000,9.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 12:01:20",,,,,,,Subscription
+QA100358825,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 13:29:41",,,,,,,Onetime
+QA100358826,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 13:30:25",,,,,,,Subscription
+QA100358827,pending,327.7400,22.4900,0.0000,15.0000,3.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 15:10:49",,,,,,,Onetime
+QA100358828,pending,208.0700,14.2500," -9.6800",10.0000,2.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 16:13:10",,,,,,,Onetime
+QA100358829,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 16:15:17",,,,,,,Onetime
+QA100358830,pending,244.5000,0.0000,0.0000,15.0000,3.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 16:17:13",,,,,,,Onetime
+QA100358831,pending,327.7400,22.4900,0.0000,15.0000,3.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-06 16:18:11",,,,,,,Onetime
+QA100358832,pending,73.8500,0.0000," -7.6500",5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 06:16:33",,,,,,,Onetime
+QA100358833,pending,92.2000,0.0000," -21.8000",5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 06:28:29",,,,,,,Onetime
+QA100358834,pending,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 06:35:19",,,,,,,Subscription
+QA100358835,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Minnesota,"Jose Pulver",JoseHPulver@dayrep.com,"2023-03-07 06:36:32",,,,,,,Onetime
+QA100358836,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Minnesota,"Jose Pulver",JoseHPulver@dayrep.com,"2023-03-07 06:46:43",,,,,,,Onetime
+QA100358837,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Minnesota,"Jose Pulver",JoseHPulver@dayrep.com,"2023-03-07 06:48:44",,,,,,,Onetime
+QA100358838,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Minnesota,"Jose Pulver",JoseHPulver@dayrep.com,"2023-03-07 07:09:19",,,,,,,Onetime
+QA100358839,pending,208.0700,14.2500," -9.6800",10.0000,2.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 07:11:23",,,,,,,Onetime
+QA100358840,pending,454.6200,3.8700," -10.0000",15.0000,3.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 07:19:17",,,,,,,Subscription
+QA100358841,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 07:20:49",,,,,,,Onetime
+QA100358842,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 07:28:55",,,,,,,Onetime
+QA100358843,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 07:29:53",,,,,,,Onetime
+QA100358844,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 07:30:22",,,,,,,Onetime
+QA100358845,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 07:30:49",,,,,,,Onetime
+QA100358846,processing,245.0000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 07:43:14","2023-03-15 10:10:23",,1100342716,245.0000,,,Onetime
+QA100358847,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 07:45:18",,,,,,,Onetime
+QA100358848,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 07:47:09",,,,,,,Subscription
+QA100358849,pending,327.7400,22.4900,0.0000,15.0000,3.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 07:48:53",,,,,,,Onetime
+QA100358850,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 08:54:11",,,,,,,Onetime
+QA100358851,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 08:55:14",,,,,,,Onetime
+QA100358852,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 08:56:20",,,,,,,Onetime
+QA100358853,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 08:57:50",,,,,,,Onetime
+QA100358854,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 09:07:23",,,,,,,Onetime
+QA100358855,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-07 09:10:03",,,,,,,Onetime
+QA100358856,pending,103.1000,0.0000," -10.9000",5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 12:22:16",,,,,,,Subscription
+QA100358857,pending,426.5600,29.2400," -9.6800",20.0000,4.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 12:27:34",,,,,,,Onetime
+QA100358858,pending,163.7600,0.0000," -61.7400",5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-07 12:53:31",,,,,,,Subscription
+QA100358859,pending,107.8000,6.0500,0.0000,5.0000,1.0000,Illinois,"Dev Test",feyir61803@maazios.com,"2023-03-07 13:41:16",,,,,,,Onetime
+QA100358860,pending,502.0000,0.0000," -20.0000",15.0000,3.0000,Texas,"Dev Test",dev17@test.com,"2023-03-07 18:45:12",,,,,,,Subscription
+QA100358861,pending,101.7500,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 05:12:05",,,,,,,Onetime
+QA100358862,pending,215.7500,0.0000,0.0000,10.0000,2.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 05:32:30",,,,,,,Onetime
+QA100358863,pending,215.7500,0.0000,0.0000,10.0000,2.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 05:54:19",,,,,,,Subscription
+QA100358864,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 06:12:10",,,,,,,Subscription
+QA100358865,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 06:15:04",,,,,,,Onetime
+QA100358866,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 06:27:00",,,,,,,Subscription
+QA100358867,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-08 06:38:26",,,,,,,Subscription
+QA100358868,pending,349.0000,0.0000," -10.0000",10.0000,2.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-08 09:49:56",,,,,,,Onetime
+QA100358869,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-08 09:55:36",,,,,,,Onetime
+QA100358870,pending,215.7500,0.0000,0.0000,5.0000,1.0000,"New York","Dev Test",devtest36@test.com,"2023-03-09 03:45:35",,,,,,,Onetime
+QA100358871,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 04:25:20",,,,,,,Onetime
+QA100358872,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-09 04:41:40",,,,,,,Subscription
+QA100358873,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"jaci be",jacibe4214@orgria.com,"2023-03-09 04:42:36",,,,,,,Subscription
+QA100358874,pending,163.7600,0.0000," -61.7400",5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 04:43:53",,,,,,,Subscription
+QA100358875,pending,215.7500,0.0000,0.0000,5.0000,1.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-09 04:53:29",,,,,,,Onetime
+QA100358876,pending,244.5000,0.0000,0.0000,15.0000,3.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 05:38:49",,,,,,,Onetime
+QA100358877,pending,163.0000,0.0000,0.0000,10.0000,2.0000,Pennsylvania,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 05:46:36",,,,,,,Onetime
+QA100358878,pending,195.5000,0.0000,0.0000,10.0000,2.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 06:01:00",,,,,,,Subscription
+QA100358879,pending,637.9800,15.4800," -10.0000",25.0000,5.0000,"New York","Devten Test",hoyas44166@fenwazi.com,"2023-03-09 06:19:58",,,,,,,Subscription
+QA100358880,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","Devten Test",hoyas44166@fenwazi.com,"2023-03-09 06:36:24",,,,,,,Subscription
+QA100358881,pending,184.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 06:43:35",,,,,,,Onetime
+QA100358882,pending,542.3600,11.6100,0.0000,20.0000,4.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 06:57:55",,,,,,,Subscription
+QA100358883,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 08:22:49",,,,,,,Subscription
+QA100358884,pending,225.5000,0.0000,0.0000,5.0000,1.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-09 08:33:15",,,,,,,Subscription
+QA100358885,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","Devten Test",hoyas44166@fenwazi.com,"2023-03-09 10:09:12",,,,,,,Onetime
+QA100358886,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"Devten Test",hoyas44166@fenwazi.com,"2023-03-09 10:40:11",,,,,,,Onetime
+QA100358887,pending,215.5000,0.0000," -10.0000",5.0000,1.0000,"New York","DevNine Test",jeviga5526@fenwazi.com,"2023-03-09 11:02:26",,,,,,,Subscription
+QA100358888,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","DevNine Test",jeviga5526@fenwazi.com,"2023-03-09 11:16:16",,,,,,,Subscription
+QA100358889,pending,600.5000,0.0000,0.0000,20.0000,4.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-09 11:17:34",,,,,,,Onetime
+QA100358890,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","DevNine Test",jeviga5526@fenwazi.com,"2023-03-09 11:20:20",,,,,,,Subscription
+QA100358891,pending,359.0000,0.0000,0.0000,10.0000,2.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-09 11:25:27",,,,,,,Onetime
+QA100358892,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-10 04:33:21",,,,,,,Onetime
+QA100358893,pending,223.2000,0.0000," -103.3000",10.0000,2.0000,"New York","fourteen feb",14@feb.com,"2023-03-10 05:28:29",,,,,,,Onetime
+QA100358894,pending,350.6200,3.8700,0.0000,10.0000,2.0000,"New York","fourteen feb",14@feb.com,"2023-03-10 05:52:07",,,,,,,Onetime
+QA100358895,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",gimov83830@terkoer.com,"2023-03-10 05:55:42",,,,,,,Onetime
+QA100358896,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-10 06:02:24",,,,,,,Onetime
+QA100358897,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-10 10:51:15",,,,,,,Onetime
+QA100358898,pending,542.6000,0.0000," -254.4000",25.0000,5.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-10 11:41:49",,,,,,,Subscription
+QA100358899,pending,258.5000,0.0000," -100.0000",20.0000,4.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-10 11:45:21",,,,,,,Subscription
+QA100358900,pending,187.2000,0.0000," -118.0500",15.0000,3.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-10 13:11:52",,,,,,,Onetime
+QA100358901,pending,344.2000,0.0000," -206.0500",20.0000,4.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-10 13:37:15",,,,,,,Onetime
+QA100358902,pending,519.2200,0.0000," -44.0300",30.0000,6.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-10 15:21:38",,,,,,,Subscription
+QA100358903,pending,1192.2400,7.7400,0.0000,35.0000,7.0000,"New York","Dev Test",dev17@test.com,"2023-03-10 19:47:34",,,,,,,Subscription
+QA100358904,pending,261.7900,2.8000,0.0000,10.0000,2.0000,"New York","fourteen feb",14@feb.com,"2023-03-13 05:49:44",,,,,,,Subscription
+QA100358905,pending,225.5000,0.0000,0.0000,5.0000,1.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-13 08:06:06",,,,,,,Subscription
+QA100358906,pending,560.6000,0.0000," -195.1500",30.0000,6.0000,Alabama,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-13 09:36:03",,,,,,,Subscription
+QA100358907,pending,218.5000,15.0000,0.0000,10.0000,2.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-13 09:48:33",,,,,,,Onetime
+QA100358908,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-13 09:50:48",,,,,,,Subscription
+QA100358909,pending,245.0000,0.0000,0.0000,5.0000,1.0000,"New York","fourteen feb",14@feb.com,"2023-03-13 11:15:42",,,,,,,Onetime
+QA100358910,pending,235.0000,0.0000," -10.0000",5.0000,1.0000,"New York","thirteen mar",13@march.com,"2023-03-13 16:51:05",,,,,,,Onetime
+QA100358911,pending,184.0000,0.0000,0.0000,5.0000,1.0000,"New York","thirteen mar",13@march.com,"2023-03-13 16:59:56",,,,,,,Onetime
+QA100358912,pending,184.0000,0.0000,0.0000,5.0000,1.0000,"New York","thirteen mar",13@march.com,"2023-03-13 17:05:05",,,,,,,Onetime
+QA100358913,pending,1840.0000,0.0000,0.0000,50.0000,10.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-13 19:37:29",,,,,,,Onetime
+QA100358914,pending,490.0000,0.0000,0.0000,10.0000,2.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-13 20:30:11",,,,,,,Onetime
+QA100358915,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Alekya Byneni",abyneni@skinsolutions.md,"2023-03-14 05:02:38",,,,,,,Subscription
+QA100358916,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","thirteen mar",13@march.com,"2023-03-14 05:21:10",,,,,,,Subscription
+QA100358917,pending,89.3700,0.0000," -9.3800",5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-03-14 05:51:58",,,,,,,Onetime
+QA100358918,pending,184.0000,0.0000,0.0000,5.0000,1.0000,"New York","thirteen mar",13@march.com,"2023-03-14 06:08:18",,,,,,,Onetime
+QA100358919,pending,184.0000,0.0000,0.0000,5.0000,1.0000,"New York","thirteen mar",13@march.com,"2023-03-14 06:13:09",,,,,,,Onetime
+QA100358920,pending,327.7400,22.4900,0.0000,15.0000,3.0000,California,"Alekya Byneni",test1@test.com,"2023-03-14 07:08:04",,,,,,,Onetime
+QA100358921,pending,327.7400,22.4900,0.0000,15.0000,3.0000,California,"Alekya Byneni",test1@test.com,"2023-03-14 07:09:58",,,,,,,Onetime
+QA100358922,pending,235.0000,0.0000," -10.0000",5.0000,1.0000,Alabama,"qa qa",fosiwo1553@loongwin.com,"2023-03-14 10:29:36",,,,,,,Onetime
+QA100358923,pending,329.5000,0.0000," -10.0000",10.0000,2.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-14 10:51:36",,,,,,,Subscription
+QA100358924,pending,920.0000,0.0000,0.0000,25.0000,5.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-14 11:02:40",,,,,,,Onetime
+QA100358925,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-14 11:18:52",,,,,,,Subscription
+QA100358926,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-14 11:23:43",,,,,,,Subscription
+QA100358927,pending,197.0000,0.0000," -48.0000",5.0000,1.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-14 11:26:41",,,,,,,Onetime
+QA100358928,pending,921.5500,0.0000," -39.9500",25.0000,5.0000,Pennsylvania,"Alekya Test",abyneni@skinsolutions.md,"2023-03-14 11:30:39",,,,,,,Subscription
+QA100358929,pending,225.5000,0.0000,0.0000,5.0000,1.0000,Pennsylvania,"Alekya Test",abyneni@skinsolutions.md,"2023-03-14 12:28:57",,,,,,,Subscription
+QA100358930,pending,114.0000,0.0000,0.0000,5.0000,1.0000,Oregon,"Alekya Test",abyneni@skinsolutions.md,"2023-03-14 14:27:41",,,,,,,Subscription
+QA100358931,pending,165.5500,11.5500,0.0000,5.0000,1.0000,California,"qa qa",boyil90668@oniecan.com,"2023-03-15 07:26:48",,,,,,,Onetime
+QA100358932,pending,235.0000,0.0000," -10.0000",5.0000,1.0000,California,"qa qa",boyil90668@oniecan.com,"2023-03-15 07:37:54",,,,,,,Onetime
+QA100358933,pending,410.5500,11.5500,0.0000,10.0000,2.0000,California,"qa qa",boyil90668@oniecan.com,"2023-03-15 07:45:35",,,,,,,Onetime
+QA100358934,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"qa qa",boyil90668@oniecan.com,"2023-03-15 07:48:30",,,,,,,Onetime
+QA100358935,pending,154.0000,0.0000,0.0000,5.0000,1.0000,Florida,"qa qa",boyil90668@oniecan.com,"2023-03-15 07:51:48",,,,,,,Onetime
+QA100358936,processing,245.0000,0.0000,0.0000,5.0000,1.0000,Florida,"qa qa",boyil90668@oniecan.com,"2023-03-15 08:00:50","2023-03-15 09:24:46",,1100342715,245.0000,,,Onetime
+QA100358937,processing,235.0000,0.0000," -10.0000",5.0000,1.0000,Alabama,"qa qa",vipid53517@oniecan.com,"2023-03-15 11:30:20","2023-03-15 15:09:31",,1100342718,235.0000,,,Onetime
+QA100358938,processing,114.0000,0.0000,0.0000,5.0000,1.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-15 12:38:38","2023-03-16 07:43:53",,1100342722,114.0000,,,Subscription
+QA100358939,pending,175.4000,0.0000," -50.1000",5.0000,1.0000,California,"Devten Test",devtest410@test.com,"2023-03-15 14:44:47",,,,,,,Subscription
+QA100358940,pending,184.0000,0.0000,0.0000,5.0000,1.0000,"New York","DevEle Test",devtest411@test.com,"2023-03-15 14:55:43",,,,,,,Onetime
+QA100358941,processing,359.0000,0.0000,0.0000,10.0000,2.0000,Alabama,"qa qa",vipid53517@oniecan.com,"2023-03-15 15:13:22","2023-03-15 15:17:33",,1100342719,359.0000,,,Onetime
+QA100358942,pending,184.0000,0.0000,0.0000,5.0000,1.0000,California,"DevEle Test",devtest411@test.com,"2023-03-15 15:57:17",,,,,,,Onetime
+QA100358943,pending,350.6200,3.8700,0.0000,10.0000,2.0000,"New York","fourteen feb",14@feb.com,"2023-03-15 16:59:05",,,,,,,Onetime
+QA100358944,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Fourteen Feb",14@feb.com,"2023-03-15 17:00:56",,,,,,,Onetime
+QA100358945,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Fourteen Feb",14@feb.com,"2023-03-15 17:05:54",,,,,,,Onetime
+QA100358946,pending,402.5000,15.0000,0.0000,15.0000,3.0000,California,"DevEle Test",devtest411@test.com,"2023-03-16 04:33:45",,,,,,,Onetime
+QA100358947,pending,286.6700,10.4500," -29.0300",15.0000,3.0000,"New York","Devtwe Test",devtest412@test.com,"2023-03-16 06:20:29",,,,,,,Onetime
+QA100358948,processing,235.0000,0.0000," -10.0000",5.0000,1.0000,Illinois,"Jos Buttler",Jos+7@gmail.com,"2023-03-16 06:38:57","2023-03-16 07:31:08",,1100342720,235.0000,,,Onetime
+QA100358949,processing,245.0000,0.0000,0.0000,5.0000,1.0000,Illinois,"Jos Buttler",Jos+7@gmail.com,"2023-03-16 06:46:45","2023-03-16 07:35:02",,1100342721,245.0000,,,Onetime
+QA100358950,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"sanchita test",sanchitatest@test.com,"2023-03-16 06:49:04",,,,,,,Onetime
+QA100358951,pending,55.1000,3.6000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitatest@test.com,"2023-03-16 06:52:21",,,,,,,Onetime
+QA100358952,processing,1462.5000,0.0000," -235.0000",45.0000,9.0000,California,"Devtwe Test",devtest412@test.com,"2023-03-16 07:49:09","2023-03-16 07:57:02",,1100342723,1462.5000,,,Subscription
+QA100358953,processing,245.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"qa qa",vipid53517@oniecan.com,"2023-03-16 10:19:37","2023-03-16 10:23:44",,1100342724,245.0000,,,Onetime
+QA100358954,processing,399.0000,0.0000,0.0000,10.0000,2.0000,Alabama,"sa sa",vipid53517@oniecan.com,"2023-03-16 10:30:43","2023-03-16 10:34:06",,1100342725,399.0000,,,Onetime
+QA100358955,processing,235.0000,0.0000," -10.0000",5.0000,1.0000,California,"QA aq",pefaj27289@kaudat.com,"2023-03-16 11:46:07","2023-03-16 12:19:50",,1100342727,235.0000,,,Onetime
+QA100358956,processing,114.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-16 11:48:54","2023-03-16 12:19:26",,1100342726,114.0000,,,Onetime
+QA100358957,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"Fourteen Feb",14@feb.com,"2023-03-16 11:57:44",,,,,,,Subscription
+QA100358958,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-16 12:01:24",,,,,,,Onetime
+QA100358959,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-16 12:09:40",,,,,,,Onetime
+QA100358960,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-16 12:18:40",,,,,,,Onetime
+QA100358961,processing,359.0000,0.0000,0.0000,10.0000,2.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-16 12:22:55","2023-03-16 12:49:22",,1100342729,359.0000,,,Onetime
+QA100358962,processing,324.1000,0.0000," -34.9000",10.0000,2.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-16 12:26:04","2023-03-16 12:46:51",,1100342728,324.1000,,,Onetime
+QA100358963,pending,326.5000,0.0000,0.0000,10.0000,2.0000,California,"test test",14@feb.com,"2023-03-17 04:54:22",,,,,,,Onetime
+QA100358964,pending,327.7400,22.4900,0.0000,15.0000,3.0000,California,"test test",14@feb.com,"2023-03-17 10:56:13",,,,,,,Onetime
+QA100358965,pending,81.5000,0.0000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-17 11:03:16",,,,,,,Onetime
+QA100358966,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-17 11:15:44",,,,,,,Onetime
+QA100358967,pending,368.0000,0.0000,0.0000,10.0000,2.0000,California,"Smith Texas",devtest412@test.com,"2023-03-17 12:48:59",,,,,,,Onetime
+QA100358968,pending,184.0000,0.0000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 12:51:46",,,,,,,Onetime
+QA100358969,pending,496.5000,0.0000," -75.0000",15.0000,3.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 12:53:21",,,,,,,Onetime
+QA100358970,pending,1104.0000,0.0000,0.0000,30.0000,6.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 12:58:13",,,,,,,Onetime
+QA100358971,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 13:03:15",,,,,,,Subscription
+QA100358972,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 13:04:14",,,,,,,Subscription
+QA100359461,processing,107.7500,7.7500,0.0000,0.0000,1.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,"2024-01-07 17:46:12","2024-01-18 04:56:11","2023-11-16 10:16:47",1100342794,107.7500,44.04,BBB,Onetime
+QA100359457,complete,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-15 14:06:55","2023-12-18 07:23:57","2023-12-18 07:24:01",1100342793,75.4100,10.3,CCC,Subscription
+QA100359455,pending,69.9900,0.0000,,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-12-12 12:06:30",,"2023-11-13 10:16:47",,,100,DDD,Subscription
+QA100358973,pending,109.2500,7.5000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 13:04:55",,,,,,,Onetime
+QA100358974,pending,184.0000,0.0000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 13:06:29",,,,,,,Onetime
+QA100358975,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 13:07:41",,,,,,,Subscription
+QA100358976,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-17 13:12:24",,,,,,,Subscription
+QA100358977,pending,231.2000,2.2000," -100.0000",20.0000,4.0000,"New York","Alekya Test",abyneni@skinsolutions.md,"2023-03-20 06:25:46",,,,,,,Onetime
+QA100358978,pending,3114.0000,0.0000," -90.0000",100.0000,20.0000,"New York","Sanchita Barik",sanchitabarik20@gmail.com,"2023-03-20 06:41:43",,,,,,,Onetime
+QA100358979,pending,468.2500,7.5000,0.0000,15.0000,3.0000,California,"test test",14@feb.com,"2023-03-20 07:26:23",,,,,,,Subscription
+QA100358980,pending,777.5000,0.0000,0.0000,20.0000,4.0000,Oregon,"Alex Anna 4th",abyneni@skinsolutions.md,"2023-03-20 07:32:12",,,,,,,Subscription
+QA100358981,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-20 07:53:17",,,,,,,Subscription
+QA100358982,pending,193.3500,5.3500,0.0000,10.0000,2.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-20 10:49:34",,,,,,,Subscription
+QA100358983,pending,114.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-20 10:52:45",,,,,,,Subscription
+QA100358984,pending,184.0000,0.0000,0.0000,5.0000,1.0000,California,"test test",14@feb.com,"2023-03-20 12:05:30",,,,,,,Onetime
+QA100358985,pending,354.2500,7.5000,0.0000,10.0000,2.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-20 12:11:50",,,,,,,Onetime
+QA100358986,pending,184.0000,0.0000,0.0000,5.0000,1.0000,California,"Sanchita Barik",sanchitabarik20@gmail.com,"2023-03-20 12:31:10",,,,,,,Onetime
+QA100358987,pending,339.5000,0.0000,0.0000,10.0000,2.0000,California,"Smith Texas new",devtest412@test.com,"2023-03-20 13:16:07",,,,,,,Subscription
+QA100358988,pending,222.1500,8.3500," -52.2000",5.0000,1.0000,"New York","Smith test Texas new",devtest412@test.com,"2023-03-20 13:22:43",,,,,,,Onetime
+QA100358989,pending,726.0000,0.0000," -125.0000",25.0000,5.0000,California,"Smith test Texas new",devtest412@test.com,"2023-03-20 15:50:11",,,,,,,Onetime
+QA100358990,pending,28.1700,1.6700," -25.0000",5.0000,1.0000,California,"Smith test Texas new",devtest412@test.com,"2023-03-20 15:57:09",,,,,,,Onetime
+QA100358991,pending,5.0000,0.0000," -0.0100",5.0000,1.0000,California,"Smith test Texas new",devtest412@test.com,"2023-03-20 16:04:06",,,,,,,Onetime
+QA100358992,pending,2695.0000,0.0000,0.0000,55.0000,11.0000,California,"Smith test Texas new",devtest412@test.com,"2023-03-20 16:17:11",,,,,,,Onetime
+QA100358993,pending,243.9700,1.6700," -34.7000",10.0000,2.0000,"New York","Dev Test",devtest27@test.com,"2023-03-20 18:40:10",,,,,,,Subscription
+QA100358994,pending,245.0000,0.0000,0.0000,5.0000,1.0000,California,"sa sa",pefaj27289@kaudat.com,"2023-03-21 05:54:45",,,,,,,Onetime
+QA100358995,pending,106.9800,3.7300," -50.0000",10.0000,2.0000,"New York","Alex Anna 4th",abyneni@skinsolutions.md,"2023-03-21 09:46:59",,,,,,,Onetime
+QA100358996,pending,660.6500,4.6500," -159.0000",20.0000,4.0000,California,"Smith test Texas new",devtest412@test.com,"2023-03-21 10:00:30",,,,,,,Onetime
+QA100358997,pending,225.5000,0.0000,0.0000,5.0000,1.0000,California,"Smith test Texas new",devtest412@test.com,"2023-03-21 10:46:20",,,,,,,Subscription
+QA100358998,pending,1661.0000,0.0000," -179.0000",50.0000,10.0000,"New York","Smith test Texas new",devtest412@test.com,"2023-03-21 13:12:41",,,,,,,Onetime
+QA100358999,pending,101.7500,0.0000,0.0000,5.0000,1.0000,Wisconsin,"Devfive Test",devtest415@test.com,"2023-03-21 13:32:57",,,,,,,Onetime
+QA100359000,pending,215.5000,0.0000," -10.0000",5.0000,1.0000,"New York","Devfive Test",devtest415@test.com,"2023-03-21 13:38:32",,,,,,,Subscription
+QA100359001,pending,104.0000,0.0000," -11.0000",5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-03-22 15:47:20",,,,,,,Onetime
+QA100359002,pending,115.0000,0.0000,0.0000,5.0000,1.0000,Illinois,"qa qa",sanqa2303@gmail.com,"2023-03-23 11:32:04",,,,,,,Onetime
+QA100359003,pending,308.0000,0.0000,0.0000,10.0000,2.0000,Alabama,"qa qa",sanqa2303@gmail.com,"2023-03-23 11:46:30",,,,,,,Onetime
+QA100359004,pending,235.0000,0.0000," -10.0000",5.0000,1.0000,Alabama,"qa qa",sanqa2303@gmail.com,"2023-03-23 11:49:44",,,,,,,Onetime
+QA100359005,pending,215.5000,0.0000," -10.0000",5.0000,1.0000,"New York","Dev Test",devtest416@test.com,"2023-03-23 12:18:25",,,,,,,Subscription
+QA100359006,pending,280.6000,3.6000,0.0000,10.0000,2.0000,California,"Dev Test",devtest416@test.com,"2023-03-23 12:31:43",,,,,,,Subscription
+QA100359007,pending,245.0000,0.0000,0.0000,5.0000,1.0000,Alabama,"qa qa",sanqa2303@gmail.com,"2023-03-23 12:55:32",,,,,,,Onetime
+QA100359008,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","Alex Anna 4th",abyneni@skinsolutions.md,"2023-03-23 14:32:52",,,,,,,Subscription
+QA100359012,pending,237.3600,1.8600,0.0000,10.0000,2.0000,"New York","Dev Test",devtest416@test.com,"2023-03-24 14:22:44",,,,,,,Onetime
+QA100359011,pending,532.0000,0.0000,0.0000,10.0000,2.0000,Florida,"DevNine Test",devtest419@test.com,"2023-03-24 14:23:08",,,,,,,Onetime
+QA100359013,pending,105.6200,3.8700,0.0000,5.0000,1.0000,"New York","Shailendra Pathak",info.shail@gmail.com,"2023-03-24 14:31:50",,,,,,,Onetime
+QA100359014,pending,331.1200,3.8700,0.0000,10.0000,2.0000,"New York","Smith test Texas new",devtest412@test.com,"2023-03-24 14:34:12",,,,,,,Subscription
+QA100359015,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","Smith test Texas new",devtest412@test.com,"2023-03-24 14:42:57",,,,,,,Subscription
+QA100359016,pending,778.3800,20.8800,0.0000,15.0000,3.0000,"New York","Smith test Texas new",devtest412@test.com,"2023-03-24 14:45:13",,,,,,,Subscription
+QA100359017,pending,220.7200,3.7200,0.0000,15.0000,3.0000,"New York","Smith test Texas new",devtest412@test.com,"2023-03-24 14:47:47",,,,,,,Subscription
+QA100359018,pending,215.5000,0.0000," -10.0000",5.0000,1.0000,Florida,"Devtwe Test",devtest420@test.com,"2023-03-24 14:55:11",,,,,,,Subscription
+QA100359019,pending,225.5000,0.0000,0.0000,5.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-03-24 14:56:20",,,,,,,Subscription
+QA100359020,pending,225.5000,0.0000,0.0000,5.0000,1.0000,"New York","alexa anu",devtest416@test.com,"2023-03-24 15:11:26",,,,,,,Subscription
+QA100359021,pending,551.4000,0.0000,0.0000,14.4000,3.0000,California,"sa a",salla1907.310c5f@burnermail.io,"2023-04-22 19:50:07",,,,,,,Onetime
+QA100359041,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 17:25:02",,,,,,,Onetime
+QA100359042,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 17:31:58",,,,,,,Onetime
+QA100359043,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:03:23",,,,,,,Onetime
+QA100359044,pending,90.0000,0.0000," -9.0000",0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:04:20",,,,,,,Onetime
+QA100359045,pending,90.0000,0.0000," -9.0000",0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:14:11",,,,,,,Onetime
+QA100359046,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:16:52",,,,,,,Onetime
+QA100359047,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:17:40",,,,,,,Onetime
+QA100359048,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:21:53",,,,,,,Onetime
+QA100359049,complete,90.0000,0.0000," -9.0000",0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:26:19","2023-04-23 18:29:16",,1100342731,90.0000,,,Onetime
+QA100359050,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-23 18:30:30",,,,,,,Onetime
+QA100359051,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-24 04:22:08",,,,,,,Onetime
+QA100359052,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Illinois,"Chaithanya Kadiyala",ckadiyala@skinsolutions.md,"2023-04-24 05:15:08",,,,,,,Onetime
+QA100359053,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 11:35:17",,,,,,,Onetime
+QA100359054,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 11:44:52",,,,,,,Onetime
+QA100359055,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 11:54:13",,,,,,,Onetime
+QA100359056,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 11:55:49",,,,,,,Onetime
+QA100359057,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 12:25:18",,,,,,,Onetime
+QA100359058,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 12:49:01",,,,,,,Onetime
+QA100359059,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 12:54:13",,,,,,,Onetime
+QA100359060,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 12:54:21",,,,,,,Onetime
+QA100359061,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 13:03:18",,,,,,,Onetime
+QA100359062,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 13:03:18",,,,,,,Onetime
+QA100359063,pending,62.0000,0.0000,0.0000,0.0000,1.0000,Florida,"sangeetha sa",salla4546@skinsolutions.md,"2023-04-24 13:03:19",,,,,,,Onetime
+QA100359064,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 13:30:39",,,,,,,Onetime
+QA100359065,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 13:30:47",,,,,,,Onetime
+QA100359066,pending,62.0000,0.0000,0.0000,0.0000,1.0000,Florida,"sangeetha sa",salla4546@skinsolutions.md,"2023-04-24 13:30:58",,,,,,,Onetime
+QA100359067,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 15:07:46",,,,,,,Onetime
+QA100359068,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-24 15:07:54",,,,,,,Onetime
+QA100359069,pending,62.0000,0.0000,0.0000,0.0000,1.0000,Florida,"sangeetha sa",salla4546@skinsolutions.md,"2023-04-24 15:08:05",,,,,,,Onetime
+QA100359070,pending,68.2500,0.0000,0.0000,0.0000,1.0000,Florida,"sa sa",salla0906@mailinator.com,"2023-04-24 17:58:09",,,,,,,Onetime
+QA100359071,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-25 05:37:23",,,,,,,Onetime
+QA100359072,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-04-25 05:37:24",,,,,,,Onetime
+QA100359073,pending,62.0000,0.0000,0.0000,0.0000,1.0000,Florida,"sangeetha sa",salla4546@skinsolutions.md,"2023-04-25 05:37:25",,,,,,,Onetime
+QA100359074,pending,68.9600,4.9600,0.0000,0.0000,1.0000,California,"Shailendra Pathak",info.shail@gmail.com,"2023-04-25 08:31:47",,,,,,,Onetime
+QA100359075,pending,68.9600,4.9600,0.0000,0.0000,1.0000,California,"Shailendra Pathak",info.shail@gmail.com,"2023-04-25 08:32:23",,,,,,,Onetime
+QA100359076,pending,68.9600,4.9600,0.0000,0.0000,1.0000,California,"Shailendra Pathak",info.shail@gmail.com,"2023-04-25 08:33:47",,,,,,,Onetime
+QA100359077,pending,200.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-25 09:34:51",,,,,,,Onetime
+QA100359078,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-25 10:58:19",,,,,,,Onetime
+QA100359079,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-29 08:11:37",,,,,,,Onetime
+QA100359080,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-29 08:47:17",,,,,,,Onetime
+QA100359081,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-29 09:21:42",,,,,,,Onetime
+QA100359082,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-29 09:40:40",,,,,,,Onetime
+QA100359083,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-29 17:04:23",,,,,,,Onetime
+QA100359084,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-04-29 18:26:46",,,,,,,Onetime
+QA100359085,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-05-01 05:07:52",,,,,,,Onetime
+QA100359086,pending,70.9900,0.0000,0.0000,0.0000,2.0000,Florida,"Newton one",devtest420@test.com,"2023-07-31 08:52:38",,,,,,,Onetime
+QA100359087,pending,119.9000,0.0000,0.0000,0.0000,2.0000,Florida,"Newton one",devtest420@test.com,"2023-07-31 09:11:04",,,,,,,Subscription
+QA100359094,pending,10.7500,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-02 18:36:04",,,,,,,Onetime
+QA100359095,pending,10.7500,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-02 19:30:17",,,,,,,Onetime
+QA100359096,pending,10.7500,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-02 19:33:39",,,,,,,Onetime
+QA100359097,pending,10.7500,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-02 19:34:43",,,,,,,Onetime
+QA100359098,pending,10.7500,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-03 07:16:27",,,,,,,Onetime
+QA100359099,pending,10.7500,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-03 07:19:42",,,,,,,Onetime
+QA100359100,pending,125.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-03 07:45:54",,,,,,,Onetime
+QA100359101,pending,134.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-08-04 15:55:34",,,,,,,Onetime
+QA100359102,pending,99.0000,0.0000,0.0000,0.0000,1.0000,Texas,"Test Dev",test@skinsolutions.md,"2023-08-04 15:55:35",,,,,,,Onetime
+QA100359103,pending,62.0000,0.0000,0.0000,0.0000,1.0000,Florida,"sangeetha sa",salla4546@skinsolutions.md,"2023-08-04 15:55:35",,,,,,,Onetime
+QA100359125,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:12:20",,,,,,,Onetime
+QA100359126,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:25:53",,,,,,,Onetime
+QA100359127,pending,125.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:29:52",,,,,,,Onetime
+QA100359128,pending,125.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:32:45",,,,,,,Onetime
+QA100359129,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:35:13",,,,,,,Onetime
+QA100359130,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:36:07",,,,,,,Onetime
+QA100359131,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-10 18:42:29",,,,,,,Onetime
+QA100359132,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-13 17:07:48",,,,,,,Onetime
+QA100359139,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:22:35",,,,,,,Onetime
+QA100359140,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:26:10",,,,,,,Onetime
+QA100359141,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:29:51",,,,,,,Onetime
+QA100359143,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:34:10",,,,,,,Onetime
+QA100359144,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:34:56",,,,,,,Onetime
+QA100359145,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:35:08",,,,,,,Onetime
+QA100359146,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:35:48",,,,,,,Onetime
+QA100359147,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 05:38:48",,,,,,,Onetime
+QA100359148,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:22:24",,,,,,,Onetime
+QA100359149,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:24:16",,,,,,,Onetime
+QA100359150,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:26:14",,,,,,,Onetime
+QA100359151,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:30:09",,,,,,,Onetime
+QA100359152,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:31:45",,,,,,,Onetime
+QA100359153,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:33:51",,,,,,,Onetime
+QA100359154,pending,210.5000,0.0000,0.0000,0.0000,1.0000,Illinois,"sa sa",salla27061@mailinator.com,"2023-08-14 13:37:05",,,,,,,Onetime
+QA100359155,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:44:20",,,,,,,Onetime
+QA100359156,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 13:48:12",,,,,,,Onetime
+QA100359157,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-08-14 14:04:00",,,,,,,Onetime
+QA100359158,complete,43.9100,3.1600,0.0000,0.0000,2.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,"2023-08-28 07:04:14","2023-08-28 07:05:51",,1100342732,43.9100,,,Subscription
+QA100359159,pending,9.6400,0.6900,0.0000,0.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-08-31 17:52:27",,,,,,,Subscription
+QA100359160,pending,69.6400,4.6500," -10.0000",5.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-09-01 15:00:42",,,,,,,Onetime
+QA100359161,pending,69.6400,4.6500," -10.0000",5.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-09-01 15:02:42",,,,,,,Onetime
+QA100359162,pending,69.6400,4.6500," -10.0000",5.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-09-01 15:04:45",,,,,,,Subscription
+QA100359163,pending,220.5000,0.0000,0.0000,0.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-09-01 15:59:20",,,,,,,Subscription
+QA100359164,pending,220.5000,0.0000,0.0000,0.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-09-01 16:02:34",,,,,,,Subscription
+QA100359165,pending,59.2500,4.2600," -15.0000",0.0000,1.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,"2023-09-26 08:25:39",,,,,,,Subscription
+QA100359166,pending,6.2000,0.4500," -5.0000",0.0000,1.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,"2023-09-26 09:49:26",,,,,,,Onetime
+QA100359167,pending,1.0700,0.0800," -10.0000",0.0000,1.0000,California,"sa sa",salla27061@mailinator.com,"2023-09-26 11:09:43",,,,,,,Onetime
+QA100359172,pending,253.2100,18.2100,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-10-12 06:56:02",,,,,,,Onetime
+QA100359173,pending,69.9900,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-10-12 07:05:14",,,,,,,Subscription
+QA100359176,pending,69.9900,0.0000,,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-10-24 08:34:30",,,,,,,Subscription
+QA100359177,pending,33.1800,0.0000,0.0000,10.0000,2.0000,Wisconsin,"Beverly Ayers",Ba.chanel11@gmail.com,"2023-10-24 08:36:30",,,,,,,Subscription
+QA100359180,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:16:36",,,,,,,Onetime
+QA100359181,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:16:48",,,,,,,Onetime
+QA100359182,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:33:01",,,,,,,Onetime
+QA100359183,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:36:25",,,,,,,Onetime
+QA100359184,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:39:07",,,,,,,Onetime
+QA100359185,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:45:24",,,,,,,Onetime
+QA100359186,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:50:48",,,,,,,Onetime
+QA100359187,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:56:21",,,,,,,Onetime
+QA100359188,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:58:00",,,,,,,Onetime
+QA100359189,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 07:58:56",,,,,,,Onetime
+QA100359190,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:02:40",,,,,,,Onetime
+QA100359191,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:06:03",,,,,,,Onetime
+QA100359192,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:06:55",,,,,,,Onetime
+QA100359193,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:10:13",,,,,,,Onetime
+QA100359194,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:11:26",,,,,,,Onetime
+QA100359195,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:14:39",,,,,,,Onetime
+QA100359196,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:25:51",,,,,,,Onetime
+QA100359197,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:27:35",,,,,,,Onetime
+QA100359198,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:30:35",,,,,,,Onetime
+QA100359199,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:36:22",,,,,,,Onetime
+QA100359200,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:36:51",,,,,,,Onetime
+QA100359201,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 08:39:14",,,,,,,Onetime
+QA100359202,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 09:51:27",,,,,,,Onetime
+QA100359203,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 09:54:13",,,,,,,Onetime
+QA100359204,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 09:55:23",,,,,,,Onetime
+QA100359205,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 09:56:41",,,,,,,Onetime
+QA100359206,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 10:01:57",,,,,,,Onetime
+QA100359207,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 10:04:09",,,,,,,Onetime
+QA100359208,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 10:05:03",,,,,,,Onetime
+QA100359209,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 10:09:07",,,,,,,Onetime
+QA100359210,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 10:21:38",,,,,,,Onetime
+QA100359211,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 10:57:40",,,,,,,Onetime
+QA100359212,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:19:59",,,,,,,Onetime
+QA100359213,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:31:58",,,,,,,Onetime
+QA100359214,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:36:21",,,,,,,Onetime
+QA100359215,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:41:19",,,,,,,Onetime
+QA100359216,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:42:20",,,,,,,Onetime
+QA100359217,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:43:38",,,,,,,Onetime
+QA100359218,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:45:08",,,,,,,Onetime
+QA100359219,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:47:59",,,,,,,Onetime
+QA100359220,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:49:56",,,,,,,Onetime
+QA100359221,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-09 13:57:28",,,,,,,Onetime
+QA100359222,pending,9.6400,0.6900,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 15:00:17",,,,,,,Subscription
+QA100359223,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 15:34:43",,,,,,,Onetime
+QA100359224,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 17:28:02",,,,,,,Onetime
+QA100359225,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:02:55",,,,,,,Onetime
+QA100359226,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:04:24",,,,,,,Onetime
+QA100359227,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:07:48",,,,,,,Onetime
+QA100359228,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:28:53",,,,,,,Onetime
+QA100359229,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:31:02",,,,,,,Onetime
+QA100359230,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:38:56",,,,,,,Onetime
+QA100359231,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:40:06",,,,,,,Onetime
+QA100359232,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:46:49",,,,,,,Onetime
+QA100359233,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:48:07",,,,,,,Onetime
+QA100359234,processing,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:49:50","2023-11-09 18:50:00",,1100342733,10.9000,,,Onetime
+QA100359235,processing,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 18:55:31","2023-11-09 18:55:42",,1100342734,10.9000,,,Onetime
+QA100359236,processing,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 19:00:57","2023-11-09 19:01:08",,1100342735,10.9000,,,Onetime
+QA100359237,processing,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-09 19:10:26","2023-11-09 19:10:36",,1100342736,10.9000,,,Onetime
+QA100359238,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 06:10:17",,,,,,,Onetime
+QA100359239,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 06:14:52",,,,,,,Onetime
+QA100359240,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 06:16:37",,,,,,,Onetime
+QA100359241,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 09:27:07",,,,,,,Onetime
+QA100359242,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 09:48:20",,,,,,,Onetime
+QA100359243,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 09:49:08",,,,,,,Onetime
+QA100359244,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 09:50:06",,,,,,,Onetime
+QA100359245,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 09:51:14",,,,,,,Onetime
+QA100359246,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 09:52:26",,,,,,,Onetime
+QA100359247,pending,9.6400,0.6900,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:01:40",,,,,,,Subscription
+QA100359248,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:13:57",,,,,,,Onetime
+QA100359249,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:16:08",,,,,,,Onetime
+QA100359250,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:17:31",,,,,,,Onetime
+QA100359251,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:19:29",,,,,,,Onetime
+QA100359252,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:29:58",,,,,,,Onetime
+QA100359253,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:30:31",,,,,,,Onetime
+QA100359254,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:31:29",,,,,,,Onetime
+QA100359255,pending,10.9000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-14 10:35:12",,,,,,,Onetime
+QA100359264,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 10:59:07",,,,,,,Onetime
+QA100359265,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 10:59:16",,,,,,,Onetime
+QA100359266,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 10:59:39",,,,,,,Onetime
+QA100359267,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 10:59:47",,,,,,,Onetime
+QA100359268,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 11:00:12",,,,,,,Onetime
+QA100359269,pending,10.9000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 11:00:23",,,,,,,Onetime
+QA100359270,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 11:36:21",,,,,,,Onetime
+QA100359271,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 11:40:02","2023-11-14 11:40:12",,1100342737,109.0000,,,Onetime
+QA100359272,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 12:51:19","2023-11-14 12:51:29",,1100342738,109.0000,,,Onetime
+QA100359273,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 13:46:45","2023-11-14 13:47:02",,1100342739,109.0000,,,Onetime
+QA100359274,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 13:52:51","2023-11-14 13:54:30",,1100342740,109.0000,,,Onetime
+QA100359275,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 13:56:32",,,,,,,Onetime
+QA100359276,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:15:00","2023-11-14 17:15:17",,1100342741,109.0000,,,Onetime
+QA100359277,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:17:51","2023-11-14 17:18:02",,1100342742,109.0000,,,Onetime
+QA100359278,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:23:09",,,,,,,Onetime
+QA100359279,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:25:44","2023-11-14 17:25:55",,1100342743,109.0000,,,Onetime
+QA100359280,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:28:55","2023-11-14 17:29:06",,1100342744,109.0000,,,Onetime
+QA100359281,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:31:02","2023-11-14 17:31:13",,1100342745,109.0000,,,Onetime
+QA100359282,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:34:50","2023-11-14 17:35:07",,1100342746,109.0000,,,Onetime
+QA100359283,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:36:38",,,,,,,Onetime
+QA100359284,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:37:41","2023-11-14 17:37:52",,1100342747,109.0000,,,Onetime
+QA100359285,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:38:45",,,,,,,Onetime
+QA100359286,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:39:14",,,,,,,Onetime
+QA100359287,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 17:40:15","2023-11-14 17:40:27",,1100342748,109.0000,,,Onetime
+QA100359288,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 18:03:36","2023-11-14 18:03:54",,1100342749,109.0000,,,Onetime
+QA100359289,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 18:05:18",,,,,,,Onetime
+QA100359290,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 18:08:36","2023-11-14 18:08:46",,1100342750,109.0000,,,Onetime
+QA100359291,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 18:10:35",,,,,,,Onetime
+QA100359292,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 18:15:09",,,,,,,Onetime
+QA100359293,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-14 18:16:11","2023-11-14 18:16:32",,1100342751,109.0000,,,Onetime
+QA100359294,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 05:40:58","2023-11-15 05:41:10",,1100342752,109.0000,,,Onetime
+QA100359295,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 06:31:36","2023-11-15 06:31:52",,1100342753,109.0000,,,Onetime
+QA100359296,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 06:50:56","2023-11-15 06:51:07",,1100342754,109.0000,,,Onetime
+QA100359297,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:19:16","2023-11-15 07:19:33",,1100342755,109.0000,,,Onetime
+QA100359298,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:27:36","2023-11-15 07:27:51",,1100342756,109.0000,,,Onetime
+QA100359299,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:30:55","2023-11-15 07:31:07",,1100342757,109.0000,,,Onetime
+QA100359300,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:33:27","2023-11-15 07:33:43",,1100342758,109.0000,,,Onetime
+QA100359301,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:34:17",,,,,,,Onetime
+QA100359302,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:35:13",,,,,,,Onetime
+QA100359303,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:37:32","2023-11-15 07:37:41",,1100342759,109.0000,,,Onetime
+QA100359304,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:50:17","2023-11-15 07:50:29",,1100342760,109.0000,,,Onetime
+QA100359305,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:52:29","2023-11-15 07:52:42",,1100342761,109.0000,,,Onetime
+QA100359306,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:53:17",,,,,,,Onetime
+QA100359307,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:54:35","2023-11-15 07:54:48",,1100342762,109.0000,,,Onetime
+QA100359308,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 07:57:45","2023-11-15 07:57:57",,1100342763,109.0000,,,Onetime
+QA100359309,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:01:00","2023-11-15 08:01:12",,1100342764,109.0000,,,Onetime
+QA100359310,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:01:59",,,,,,,Onetime
+QA100359311,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:10:20","2023-11-15 08:10:33",,1100342765,109.0000,,,Onetime
+QA100359312,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:11:05",,,,,,,Onetime
+QA100359313,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:24:52","2023-11-15 08:25:04",,1100342766,109.0000,,,Onetime
+QA100359314,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:31:16","2023-11-15 08:31:32",,1100342767,109.0000,,,Onetime
+QA100359315,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:32:29",,,,,,,Onetime
+QA100359316,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:33:41","2023-11-15 08:33:55",,1100342768,109.0000,,,Onetime
+QA100359317,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 08:36:41","2023-11-15 08:36:56",,1100342769,109.0000,,,Onetime
+QA100359318,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:00:13","2023-11-15 10:00:24",,1100342770,109.0000,,,Onetime
+QA100359319,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:03:20","2023-11-15 10:03:30",,1100342771,109.0000,,,Onetime
+QA100359320,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:06:05","2023-11-15 10:06:16",,1100342772,109.0000,,,Onetime
+QA100359321,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:08:05",,,,,,,Onetime
+QA100359322,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:13:40","2023-11-15 10:13:50",,1100342773,109.0000,,,Onetime
+QA100359323,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:15:27",,,,,,,Onetime
+QA100359324,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:16:01","2023-11-15 10:16:29",,1100342774,109.0000,,,Subscription
+QA100359325,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:39:26","2023-11-15 10:39:43",,1100342775,109.0000,,,Onetime
+QA100359326,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 10:41:34","2023-11-15 10:41:44",,1100342776,109.0000,,,Onetime
+QA100359327,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 11:03:24","2023-11-15 11:03:35",,1100342777,109.0000,,,Onetime
+QA100359328,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 11:04:45",,,,,,,Onetime
+QA100359329,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 11:05:12",,,,,,,Onetime
+QA100359330,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 11:06:00","2023-11-15 11:06:10",,1100342778,109.0000,,,Onetime
+QA100359331,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 11:25:25","2023-11-15 11:25:41",,1100342779,109.0000,,,Subscription
+QA100359332,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 12:04:36","2023-11-15 12:04:47",,1100342780,109.0000,,,Onetime
+QA100359333,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 12:09:44","2023-11-15 12:09:52",,1100342781,109.0000,,,Onetime
+QA100359334,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 12:21:51","2023-11-15 12:22:00",,1100342782,109.0000,,,Subscription
+QA100359335,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 12:29:28","2023-11-15 12:29:39",,1100342783,109.0000,,,Subscription
+QA100359341,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-15 15:02:44","2023-11-15 15:02:57",,1100342784,109.0000,,,Subscription
+QA100359342,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 05:15:42","2023-11-16 05:15:57",,1100342785,109.0000,,,Subscription
+QA100359343,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 08:48:48","2023-11-16 08:49:09",,1100342786,109.0000,,,Subscription
+QA100359344,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 09:30:20","2023-11-16 09:30:32",,1100342787,109.0000,,,Subscription
+QA100359345,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 09:35:05","2023-11-16 09:35:17",,1100342788,109.0000,,,Subscription
+QA100359346,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 10:00:49","2023-11-16 10:01:01",,1100342789,109.0000,,,Subscription
+QA100359347,pending,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 10:12:55",,,,,,,Onetime
+QA100359348,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 10:13:54","2023-11-16 10:14:05",,1100342790,109.0000,,,Subscription
+QA100359349,processing,109.0000,0.0000,0.0000,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 10:16:34","2023-11-16 10:16:47",,1100342791,109.0000,,,Subscription
+QA100359350,processing,109.0000,4.0000," -3.0000",5.0000,1.0000,Florida,"Newton one",devtest420@test.com,"2023-11-16 10:26:13","2023-11-16 10:26:24",,1100342792,109.0000,,,Subscription
+QA100359351,pending,80.4100,5.4200,0.0000,5.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 05:32:51",,,,,,,Subscription
+QA100359352,pending,80.4100,5.4200,0.0000,5.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 06:50:50",,,,,,,Subscription
+QA100359353,pending,80.4100,5.4200,0.0000,5.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 06:54:08",,,,,,,Subscription
+QA100359354,pending,220.5000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 07:14:25",,,,,,,Subscription
+QA100359355,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 07:21:35",,,,,,,Subscription
+QA100359356,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 07:27:05",,,,,,,Subscription
+QA100359357,pending,80.4100,5.4200,0.0000,5.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 08:46:58",,,,,,,Subscription
+QA100359358,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:11:10",,,,,,,Subscription
+QA100359359,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:14:05",,,,,,,Subscription
+QA100359360,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:35:38",,,,,,,Subscription
+QA100359361,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:39:01",,,,,,,Subscription
+QA100359362,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:40:53",,,,,,,Subscription
+QA100359363,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:46:42",,,,,,,Subscription
+QA100359364,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:49:40",,,,,,,Subscription
+QA100359365,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:53:45",,,,,,,Subscription
+QA100359366,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 09:58:40",,,,,,,Subscription
+QA100359367,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 10:14:00",,,,,,,Subscription
+QA100359368,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 10:18:22",,,,,,,Subscription
+QA100359369,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 10:23:42",,,,,,,Subscription
+QA100359370,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 10:56:29",,,,,,,Subscription
+QA100359371,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 11:10:56",,,,,,,Subscription
+QA100359372,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 11:12:17",,,,,,,Subscription
+QA100359373,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 11:13:36",,,,,,,Subscription
+QA100359374,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 11:14:57",,,,,,,Subscription
+QA100359375,pending,220.5000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 11:20:57",,,,,,,Subscription
+QA100359376,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 13:25:55",,,,,,,Subscription
+QA100359377,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 13:51:07",,,,,,,Subscription
+QA100359378,pending,80.4100,5.4200,0.0000,5.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 13:54:59",,,,,,,Subscription
+QA100359379,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 14:36:58",,,,,,,Subscription
+QA100359380,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-29 14:51:11",,,,,,,Subscription
+QA100359381,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 05:19:12",,,,,,,Subscription
+QA100359382,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 06:18:36",,,,,,,Subscription
+QA100359383,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 06:22:43",,,,,,,Subscription
+QA100359384,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 06:26:32",,,,,,,Subscription
+QA100359385,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 06:31:16",,,,,,,Subscription
+QA100359386,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 08:57:15",,,,,,,Subscription
+QA100359387,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 12:50:20",,,,,,,Subscription
+QA100359388,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-11-30 12:52:46",,,,,,,Subscription
+QA100359389,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-01 09:30:09",,,,,,,Subscription
+QA100359390,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-01 09:35:54",,,,,,,Subscription
+QA100359391,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-01 09:38:18",,,,,,,Subscription
+QA100359392,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-01 09:40:28",,,,,,,Subscription
+QA100359415,pending,160.4700,11.5400,,0.0000,3.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-02 14:02:11",,,,,,,Onetime
+QA100359448,pending,119.9000,0.0000,,0.0000,2.0000,Florida,"Newton one",devtest420@test.com,"2023-12-02 14:09:33",,,,,,,Onetime
+INFL100359449,pending,450.6400,0.6900,,0.0000,3.0000,California,"Dev Test",devtest32@test.com,"2023-12-02 14:09:45",,,,,,,Onetime
+QA100359450,pending,80.4100,5.4200,0.0000,5.0000,1.0000,California,"Dev Test",devtest32@test.com,"2023-12-02 14:10:00",,,,,,,Subscription
+QA100359451,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-06 15:35:00",,,,,,,Subscription
+QA100359452,pending,220.5000,0.0000,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-06 15:40:06",,,,,,,Subscription
+QA100359453,pending,75.4100,5.4200,0.0000,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-08 16:34:37",,,,,,,Subscription
+QA100359454,pending,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,"2023-12-08 17:08:51",,,,,,,Subscription
+QA100359458,pending,684.0000,0.0000,0.0000,30.0000,6.0000,Florida,"Newton one",devtest420@test.com,"2023-12-15 14:06:59",,,,,,,Subscription
+QA100359460,pending,301.6600,21.7000,,0.0000,4.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,"2023-12-21 05:01:11",,,,,,,Subscription
+QA100359462,pending,210.7500,0.0000,0.0000,0.0000,1.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,"2024-01-10 04:49:24",,,,,,,Onetime

@@ -1,0 +1,18 @@
+<!--@subject [#{{var ticket.uid}}] Ticket replied: {{var ticket.subject}}@-->
+<!--@styles .aw-helpdesk2-reply-marker {background-color: lightgray; font-size: 85%; text-align: center;} @-->
+<!--@vars {
+"var agent": "Agent",
+"var ticket": "Ticket",
+"var message": "Message",
+"var ticket_backend_url": "Backend URL"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var agent.firstname}}.</strong><br/><br/>
+
+You've got a new message from <strong>{{var ticket.customer_name}}</strong>:<br/>
+{{var message.content|raw}}<br/><br/>
+
+Click <a href="{{var ticket_backend_url}}">here</a> to view the ticket.
+
+{{template config_path="design/email/footer_template"}}

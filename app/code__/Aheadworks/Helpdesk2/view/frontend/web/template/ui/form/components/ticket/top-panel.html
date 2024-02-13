@@ -1,0 +1,7 @@
+<div class="top-panel">
+    <each args="data: elems, as: 'element'">
+        <div visible="element.visible" class="panel-element">
+            <render if="hasTemplate()"/>
+        </div>
+    </each>
+</div>

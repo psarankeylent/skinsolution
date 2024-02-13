@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="alle_custom_email">
+		<job name="alle_custom_email_send" instance="Ssmd\AlleCustomEmail\Cron\SendAlleCustomEmail" method="execute">
+			<schedule>*/1 * * * *</schedule>
+		</job>
+	</group>
+</config>

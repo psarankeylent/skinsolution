@@ -12,9 +12,14 @@
     },
     "version": "2.3.7-p4",
     "require": {
+        "authorizenet/authorizenet": "^2.0",
+        "lukascivil/treewalker": "dev-master",
         "magento/composer-root-update-plugin": "~1.1",
         "magento/data-migration-tool": "~2.3",
-        "magento/product-community-edition": "2.3.7-p4"
+        "magento/product-community-edition": "2.3.7-p4",
+        "nyholm/psr7": "^1.8",
+        "railsware/mailtrap-php": "^1.7",
+        "symfony/http-client": "^5.4"
     },
     "autoload": {
         "exclude-from-classmap": [

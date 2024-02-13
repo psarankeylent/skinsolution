@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category  Lof
+ * @package   Lof\GiftSalesRule
+ * @author    Landofcoder <landofcoder@gmail.com>
+ * @copyright 2020 Landofcoder
+ * @license   http://www.landofcoder.com/LICENSE-1.0.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="landofcoder" translate="label" sortOrder="101">
+            <label>Landofcoder</label>
+        </tab>
+
+        <section id="lof_gift_sales_rule" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Lof Gift Sales Rule</label>
+            <tab>landofcoder</tab>
+            <resource>Lof_GiftSalesRule::config</resource>
+
+            <group id="configuration" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuration</label>
+
+                <field id="automatic_add" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Automatically add gift product</label>
+                    <comment>Added if there are only 1 gift product parameterized</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="show_notice_gift" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Notice For Gift</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="notice_text" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+					<label>Notice Content</label>
+				</field>
+                <field id="gift_icon" translate="label comment" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Gift Icon</label>
+                    <comment><![CDATA[
+                    Recommended dimension: 20x20px <br/>
+                    Recommended image file type: <strong>.png,.jpg,.gif</strong>
+                    ]]></comment>
+					<backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+					<upload_dir config="system/filesystem/media" scope_info="1">lof/freegift</upload_dir>
+					<base_url type="media" scope_info="1">lof/freegift</base_url>
+				</field>
+            </group>
+            <group id="button_design" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Button Design</label>
+                <field id="button_label" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+					<label>Button Label</label>
+				</field>
+                <field id="button_text" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+					<label>Button Text</label>
+				</field>
+            </group>
+        </section>
+    </system>
+</config>

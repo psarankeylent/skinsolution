@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_helpdesk2>
+            <general>
+                <primary_department>1</primary_department>
+                <is_enabled_customer_rating>1</is_enabled_customer_rating>
+            </general>
+            <backend_ticket_page>
+                <count_of_displayed_tickets>5</count_of_displayed_tickets>
+                <count_of_displayed_tasks>5</count_of_displayed_tasks>
+                <count_of_displayed_orders>5</count_of_displayed_orders>
+                <displayed_order_statuses>all</displayed_order_statuses>
+            </backend_ticket_page>
+            <frontend>
+                <is_enabled_contact_form_integration>0</is_enabled_contact_form_integration>
+                <is_allowed_to_attach_files>1</is_allowed_to_attach_files>
+                <max_upload_file_size>2</max_upload_file_size>
+                <allowed_file_extensions>zip,rar,jpg,jpeg,png,gif,pdf,doc,docx,xls,xlsx</allowed_file_extensions>
+            </frontend>
+            <ticket_escalation>
+                <is_ticket_escalation_enabled>0</is_ticket_escalation_enabled>
+                <email_template>aw_helpdesk2_ticket_escalation_email_template</email_template>
+            </ticket_escalation>
+        </aw_helpdesk2>
+    </default>
+</config>

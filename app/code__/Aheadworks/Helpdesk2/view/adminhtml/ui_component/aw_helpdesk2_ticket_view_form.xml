@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_ticket_view_form.aw_helpdesk2_ticket_view_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Department</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_ticket_view_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_ticket_view_form.aw_helpdesk2_ticket_view_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_ticket_view_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <aclResource>Aheadworks_Helpdesk2::tickets</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\FormDataProvider" name="aw_helpdesk2_ticket_view_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label/>
+        </settings>
+        <container name="aw-helpdesk2_wrapper">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-wrapper</item>
+                    <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                </item>
+            </argument>
+            <!-- Left panel -->
+            <container name="left_side">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-left-side</item>
+                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                    </item>
+                </argument>
+
+                <!-- Ticket notes -->
+                <fieldset name="ticket_notes">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">10</item>
+                            <item name="label" xsi:type="string" translate="true">Ticket Notes</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-notes</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <field name="internal_note" sortOrder="10">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="labelVisible" xsi:type="boolean">false</item>
+                                <item name="formElement" xsi:type="string">textarea</item>
+                                <item name="placeholder" xsi:type="string">Text note</item>
+                                <item name="rows" xsi:type="number">10</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <button name="save_note" sortOrder="20"
+                            component="Aheadworks_Helpdesk2/js/ui/form/components/ticket/button/request">
+                        <settings>
+                            <title translate="true">Save Note</title>
+                        </settings>
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="formElement" xsi:type="string">button</item>
+                                <item name="buttonClasses" xsi:type="string">primary</item>
+                                <item name="blockLoaderSelector" xsi:type="string">[data-index=ticket_notes]</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                        <item name="payload" xsi:type="array">
+                                            <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                            <item name="internal_note" xsi:type="string">${ $.provider }:data.internal_note</item>
+                                            <item name="ticket_action" xsi:type="string">update</item>
+                                        </item>
+                                        <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </button>
+                </fieldset>
+
+                <!-- Tags -->
+                <fieldset name="tags">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">15</item>
+                            <item name="label" xsi:type="string" translate="true">Tags</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-tags</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">false</item>
+                        </item>
+                    </argument>
+                    <field name="tag_names">
+                        <argument name="data" xsi:type="array">
+                            <item name="options" xsi:type="object">Aheadworks\Helpdesk2\Model\Source\Ticket\Tags</item>
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/tags</item>
+                                <item name="elementTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/tags</item>
+                                <item name="dataType" xsi:type="string">string</item>
+                                <item name="formElement" xsi:type="string">multiselect</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <button name="save_tags"
+                            component="Aheadworks_Helpdesk2/js/ui/form/components/ticket/button/request">
+                        <settings>
+                            <title translate="true">Save Tags</title>
+                        </settings>
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="formElement" xsi:type="string">button</item>
+                                <item name="buttonClasses" xsi:type="string">primary</item>
+                                <item name="blockLoaderSelector" xsi:type="string">[data-index=tags]</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                        <item name="payload" xsi:type="array">
+                                            <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                            <item name="tag_names" xsi:type="string">${ $.provider }:data.tag_names</item>
+                                            <item name="ticket_action" xsi:type="string">update</item>
+                                        </item>
+                                        <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </button>
+                </fieldset>
+
+                <!-- Customer summary -->
+                <fieldset name="customer_summary">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">20</item>
+                            <item name="label" xsi:type="string" translate="true">Customer Summary</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-customer-summary</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <field name="name">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Customer</item>
+                                <item name="labelVisible" xsi:type="boolean">true</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/link</item>
+                                <item name="target" xsi:type="string">_blank</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="text" xsi:type="string">${ $.provider }:data.customer_name</item>
+                                    <item name="url" xsi:type="string">${ $.provider }:data.customer.backend_profile_url</item>
+                                    <item name="isLinkActive" xsi:type="string">${ $.provider }:data.is_registered_customer</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="email" formElement="input" sortOrder="20">
+                        <settings>
+                            <elementTmpl>ui/form/element/text</elementTmpl>
+                            <label translate="true">Email</label>
+                            <imports>
+                                <link name="value">${ $.provider }:data.customer_email</link>
+                            </imports>
+                        </settings>
+                    </field>
+                    <field name="country" formElement="input" sortOrder="30">
+                        <settings>
+                            <elementTmpl>ui/form/element/text</elementTmpl>
+                            <label translate="true">Country</label>
+                            <imports>
+                                <link name="value">${ $.provider }:data.customer.country</link>
+                                <link name="visible">${ $.provider }:data.is_registered_customer</link>
+                            </imports>
+                        </settings>
+                    </field>
+                    <field name="cc_recipients" formElement="input" sortOrder="40">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/preview-element/input</item>
+                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                <item name="imports" xsi:type="array">
+                                    <item name="isEditModeAllowed" xsi:type="string">${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="payload" xsi:type="array">
+                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                    <item name="cc_recipients" xsi:type="string">${ $.provider }:data.cc_recipients</item>
+                                    <item name="ticket_action" xsi:type="string">update</item>
+                                </item>
+                                <item name="service" xsi:type="array">
+                                    <item name="label" xsi:type="string" translate="true">Save</item>
+                                    <item name="buttonClasses" xsi:type="string">save</item>
+                                </item>
+                                <item name="validation" xsi:type="array">
+                                    <item name="required-entry" xsi:type="boolean">false</item>
+                                    <item name="aw-helpdesk2__validate-emails" xsi:type="boolean">true</item>
+                                </item>
+                                <item name="additionalClasses" xsi:type="string">cc-recipients</item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <elementTmpl>ui/form/element/input</elementTmpl>
+                            <label translate="true">CC Recipients</label>
+                            <imports>
+                                <link name="value">${ $.provider }:data.cc_recipients</link>
+                            </imports>
+                        </settings>
+                    </field>
+                    <field name="customer_rating" formElement="input" sortOrder="50">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/rating-result</item>
+                                <item name="additionalClasses" xsi:type="string">customer-rating</item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <label translate="true">Ticket Rating</label>
+                            <imports>
+                                <link name="value">${ $.provider }:data.customer_rating</link>
+                            </imports>
+                        </settings>
+                    </field>
+                </fieldset>
+
+                <!-- Coupon code generation -->
+                <fieldset name="coupon_code_generation" class="Aheadworks\Helpdesk2\Ui\Component\Form\Ticket\Element\CouponCodeGenerator">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">30</item>
+                            <item name="label" xsi:type="string" translate="true">Coupon Code Generation</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-coupon-code-generation</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <insertForm name="insert_coupon_code_generation_form">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="imports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                </item>
+                                <item name="exports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                </item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <formSubmitType>ajax</formSubmitType>
+                            <showSpinner>true</showSpinner>
+                            <autoRender>true</autoRender>
+                            <ns>aw_helpdesk2_insert_coupon_generation_form</ns>
+                        </settings>
+                    </insertForm>
+                </fieldset>
+
+                <!-- Customer attributes -->
+                <fieldset name="customer_attributes" class="Aheadworks\Helpdesk2\Ui\Component\Form\Ticket\Element\CustomerAttributes">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">40</item>
+                            <item name="label" xsi:type="string" translate="true">Customer Attributes</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-customer-attributes</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <insertForm name="insert_customer_attributes_form">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="imports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                </item>
+                                <item name="exports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                </item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <formSubmitType>ajax</formSubmitType>
+                            <showSpinner>true</showSpinner>
+                            <autoRender>true</autoRender>
+                            <ns>aw_helpdesk2_insert_customer_attributes_form</ns>
+                        </settings>
+                    </insertForm>
+                </fieldset>
+
+                <!-- Ticket options -->
+                <fieldset name="ticket_options">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">45</item>
+                            <item name="label" xsi:type="string" translate="true">Additional Information</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-options</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                            <item name="imports" xsi:type="array">
+                                <item name="visible" xsi:type="string">!aw_helpdesk2_insert_ticket_options_form.aw_helpdesk2_insert_ticket_options_form_data_source:data.empty</item>
+                            </item>
+                        </item>
+                    </argument>
+                    <insertForm name="insert_ticket_options_form">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="imports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                </item>
+                                <item name="exports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                </item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <formSubmitType>ajax</formSubmitType>
+                            <showSpinner>true</showSpinner>
+                            <autoRender>true</autoRender>
+                            <ns>aw_helpdesk2_insert_ticket_options_form</ns>
+                        </settings>
+                    </insertForm>
+                </fieldset>
+
+                <!-- Customer tickets -->
+                <fieldset name="customer_tickets">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">50</item>
+                            <item name="label" xsi:type="string" translate="true">All Customer Tickets</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-customer-tickets</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <insertListing name="aw_helpdesk2_ticket_listing">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/limited-insert-listing</item>
+                                <item name="sortOrder" xsi:type="number">10</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                </item>
+                                <item name="exports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                    <item name="params.ticket_id" xsi:type="string">${ $.externalProvider }:params.ticket_id</item>
+                                </item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <dataLinks>
+                                <exports>false</exports>
+                                <imports>true</imports>
+                            </dataLinks>
+                            <autoRender>true</autoRender>
+                            <externalProvider>aw_helpdesk2_insert_ticket_listing.aw_helpdesk2_insert_ticket_listing_data_source</externalProvider>
+                            <dataScope>tickets</dataScope>
+                            <ns>aw_helpdesk2_insert_ticket_listing</ns>
+                        </settings>
+                    </insertListing>
+                    <button name="show_more" sortOrder="20"
+                            template="ui/form/components/button/container">
+                        <settings>
+                            <title translate="true">Show more</title>
+                        </settings>
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="displayAsLink" xsi:type="boolean">true</item>
+                                <item name="formElement" xsi:type="string">button</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="visible" xsi:type="string">aw_helpdesk2_insert_ticket_listing.aw_helpdesk2_insert_ticket_listing_data_source:data.isShowButton</item>
+                                </item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">${ $.parentName }.aw_helpdesk2_ticket_listing</item>
+                                        <item name="actionName" xsi:type="string">loadMore</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </button>
+                </fieldset>
+
+                <!-- Customer orders -->
+                <fieldset name="customer_orders" class="Aheadworks\Helpdesk2\Ui\Component\Form\Ticket\Element\CustomerOrders">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">60</item>
+                            <item name="label" xsi:type="string" translate="true">Customer Orders</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-customer-orders</item>
+                            <item name="collapsible" xsi:type="boolean">true</item>
+                            <item name="opened" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <insertListing name="aw_helpdesk2_orders_listing">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/limited-insert-listing</item>
+                                <item name="sortOrder" xsi:type="number">10</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                </item>
+                                <item name="exports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                    <item name="params.ticket_id" xsi:type="string">${ $.externalProvider }:params.ticket_id</item>
+                                </item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <dataLinks>
+                                <exports>false</exports>
+                                <imports>true</imports>
+                            </dataLinks>
+                            <autoRender>true</autoRender>
+                            <externalProvider>aw_helpdesk2_insert_order_listing.aw_helpdesk2_insert_order_listing_data_source</externalProvider>
+                            <dataScope>tickets</dataScope>
+                            <ns>aw_helpdesk2_insert_order_listing</ns>
+                        </settings>
+                    </insertListing>
+                    <button name="show_more" sortOrder="20"
+                            template="ui/form/components/button/container">
+                        <settings>
+                            <title translate="true">Show more</title>
+                        </settings>
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="displayAsLink" xsi:type="boolean">true</item>
+                                <item name="formElement" xsi:type="string">button</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="visible" xsi:type="string">aw_helpdesk2_insert_order_listing.aw_helpdesk2_insert_order_listing_data_source:data.isShowButton</item>
+                                </item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">${ $.parentName }.aw_helpdesk2_orders_listing</item>
+                                        <item name="actionName" xsi:type="string">loadMore</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </button>
+                </fieldset>
+
+            </container>
+
+            <!-- Main area -->
+            <container name="main">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-main</item>
+                        <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                    </item>
+                </argument>
+
+                <!-- Top panel -->
+                <container name="top_panel">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">10</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-ticket-panel</item>
+                            <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                        </item>
+                    </argument>
+                    <field name="is_locked">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">boolean</item>
+                                <item name="formElement" xsi:type="string">checkbox</item>
+                                <item name="label" xsi:type="string" translate="true">Locked</item>
+                                <item name="additionalClasses" xsi:type="string">ticket-locking</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/lock</item>
+                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                <item name="prefer" xsi:type="string">toggle</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="isAllowedToLock" xsi:type="string">${ $.provider }:data.is_allowed_to_lock_ticket</item>
+                                    <item name="isAllowedToUnlock" xsi:type="string">${ $.provider }:data.is_allowed_to_unlock_ticket</item>
+                                </item>
+                                <item name="payload" xsi:type="array">
+                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                    <item name="is_locked" xsi:type="string">${ $.provider }:data.is_locked</item>
+                                </item>
+                                <item name="valueMap" xsi:type="array">
+                                    <item name="true" xsi:type="string">1</item>
+                                    <item name="false" xsi:type="string">0</item>
+                                </item>
+                                <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="status_id">
+                        <argument name="data" xsi:type="array">
+                            <item name="options" xsi:type="object">Aheadworks\Helpdesk2\Model\Source\Ticket\Status</item>
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Ticket Status</item>
+                                <item name="additionalClasses" xsi:type="string">ticket-status</item>
+                                <item name="formElement" xsi:type="string">select</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/preview-element/select</item>
+                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                <item name="imports" xsi:type="array">
+                                    <item name="isEditModeAllowed" xsi:type="string">${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="payload" xsi:type="array">
+                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                    <item name="status_id" xsi:type="string">${ $.provider }:data.status_id</item>
+                                    <item name="ticket_action" xsi:type="string">update</item>
+                                </item>
+                                <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                                <item name="bindAttributeMap" xsi:type="array">
+                                    <item name="data-color" xsi:type="string">value</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="priority_id">
+                        <argument name="data" xsi:type="array">
+                            <item name="options" xsi:type="object">Aheadworks\Helpdesk2\Model\Source\Ticket\Priority</item>
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Priority</item>
+                                <item name="additionalClasses" xsi:type="string">ticket-priority</item>
+                                <item name="formElement" xsi:type="string">select</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/preview-element/select</item>
+                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                <item name="imports" xsi:type="array">
+                                    <item name="isEditModeAllowed" xsi:type="string">${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="payload" xsi:type="array">
+                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                    <item name="priority_id" xsi:type="string">${ $.provider }:data.priority_id</item>
+                                    <item name="ticket_action" xsi:type="string">update</item>
+                                </item>
+                                <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                                <item name="bindAttributeMap" xsi:type="array">
+                                    <item name="data-color" xsi:type="string">value</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="department_id">
+                        <argument name="data" xsi:type="array">
+                            <item name="options" xsi:type="object">Aheadworks\Helpdesk2\Model\Source\Ticket\DepartmentList</item>
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Department</item>
+                                <item name="formElement" xsi:type="string">select</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/preview-element/select</item>
+                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                <item name="imports" xsi:type="array">
+                                    <item name="isEditModeAllowed" xsi:type="string">${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="payload" xsi:type="array">
+                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                    <item name="department_id" xsi:type="string">${ $.provider }:data.department_id</item>
+                                    <item name="ticket_action" xsi:type="string">update</item>
+                                </item>
+                                <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="agent_id" class="Aheadworks\Helpdesk2\Ui\Component\Form\Ticket\AgentSelectField">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Agent</item>
+                                <item name="formElement" xsi:type="string">select</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="paramProvider" xsi:type="string">${ $.parentName }.department_id:value</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/preview-element/dependent-select</item>
+                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/update"/>
+                                <item name="imports" xsi:type="array">
+                                    <item name="isEditModeAllowed" xsi:type="string">${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                </item>
+                                <item name="payload" xsi:type="array">
+                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                    <item name="agent_id" xsi:type="string">${ $.provider }:data.agent_id</item>
+                                    <item name="ticket_action" xsi:type="string">update</item>
+                                </item>
+                                <item name="reloadComponent" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="order_id">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">Order</item>
+                                <item name="labelVisible" xsi:type="boolean">true</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/link</item>
+                                <item name="target" xsi:type="string">_blank</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="visible" xsi:type="string">${ $.provider }:data.is_order_assigned</item>
+                                    <item name="text" xsi:type="string">${ $.provider }:data.order.text</item>
+                                    <item name="url" xsi:type="string">${ $.provider }:data.order.url</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="external_link">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="label" xsi:type="string" translate="true">External Link</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/external-link</item>
+                                <item name="elementTmpl" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/external-link</item>
+                                <item name="target" xsi:type="string">_blank</item>
+                                <item name="imports" xsi:type="array">
+                                    <item name="text" xsi:type="string">URL</item>
+                                    <item name="url" xsi:type="string">${ $.provider }:data.external_link</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                </container>
+
+                <!-- Message area -->
+                <container name="message_area">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">20</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-message-area</item>
+                            <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                        </item>
+                    </argument>
+
+                    <field name="content" sortOrder="20">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-message-content</item>
+                                <item name="label" xsi:type="string" translate="true">Content</item>
+                                <item name="labelVisible" xsi:type="boolean">false</item>
+                                <item name="placeholder" xsi:type="string">Type here to add an answer</item>
+                                <item name="formElement" xsi:type="string">wysiwyg</item>
+                                <item name="wysiwyg" xsi:type="boolean">true</item>
+                                <item name="wysiwygConfigData" xsi:type="array">
+                                    <item name="toggle_button" xsi:type="boolean">false</item>
+                                    <item name="add_variables" xsi:type="boolean">false</item>
+                                    <item name="add_widgets" xsi:type="boolean">false</item>
+                                    <item name="add_images" xsi:type="boolean">true</item>
+                                    <item name="add_directives" xsi:type="boolean">true</item>
+                                    <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                                    <item name="height" xsi:type="string">300px</item>
+                                    <item name="tinymce4" xsi:type="array">
+                                        <item name="toolbar" xsi:type="string">pastetext removeformat | formatselect | bold italic underline | codesample blockquote | alignleft aligncenter alignright | bullist numlist | link image table charmap | code preview</item>
+                                        <item name="plugins" xsi:type="string">autolink lists link charmap media noneditable table contextmenu paste code help table preview legacyoutput codesample</item>
+                                    </item>
+                                    <item name="settings" xsi:type="array">
+                                        <item name="browser_spellcheck" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                                <item name="validation" xsi:type="array">
+                                    <item name="required-entry" xsi:type="boolean">true</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+
+                    <container name="control_area">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-message-control-area</item>
+                                <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                            </item>
+                        </argument>
+
+                        <container name="attachments_area">
+                            <argument name="data" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-message-attachments</item>
+                                    <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                                </item>
+                            </argument>
+
+                            <field name="quick_response">
+                                <argument name="data" xsi:type="array">
+                                    <item name="options" xsi:type="object">Aheadworks\Helpdesk2\Model\Source\Ticket\QuickResponse</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/quick-response</item>
+                                        <item name="targetName" xsi:type="string">${ $.ns }.${ $.ns }.general.aw-helpdesk2_wrapper.main.message_area.content</item>
+                                        <item name="provider" xsi:type="boolean">false</item>
+                                        <item name="labelVisible" xsi:type="boolean">false</item>
+                                        <item name="label" xsi:type="string"/>
+                                        <item name="formElement" xsi:type="string">select</item>
+                                        <item name="dataType" xsi:type="string">text</item>
+                                        <item name="additionalClasses" xsi:type="string">quick-response</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </field>
+                            <field name="attachments" sortOrder="30">
+                                <argument name="data" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="label" xsi:type="string" translate="true">Attach files</item>
+                                        <item name="labelVisible" xsi:type="boolean">false</item>
+                                        <item name="openDialogTitle" xsi:type="string">Attach files</item>
+                                        <item name="visible" xsi:type="boolean">true</item>
+                                        <item name="formElement" xsi:type="string">fileUploader</item>
+                                        <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                        </item>
+                                        <item name="uploaderConfig" xsi:type="array">
+                                            <item name="url" xsi:type="url" path="aw_helpdesk2/ticket_attachment/upload"/>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </field>
+                        </container>
+                        <container name="buttons_area">
+                            <argument name="data" xsi:type="array">
+                                <item name="config" xsi:type="array">
+                                    <item name="additionalClasses" xsi:type="string">aw-helpdesk2-view-message-buttons</item>
+                                    <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                                </item>
+                            </argument>
+
+                            <button name="close_action" sortOrder="40"
+                                    component="Aheadworks_Helpdesk2/js/ui/form/components/ticket/button/reply"
+                                    template="ui/form/components/button/container">
+                                <settings>
+                                    <title translate="true">Reply + Closed</title>
+                                </settings>
+                                <argument name="data" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="formElement" xsi:type="string">button</item>
+                                        <item name="blockLoaderSelector" xsi:type="string">[data-index=message_area]</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                        </item>
+                                        <item name="actions" xsi:type="array">
+                                            <item name="0" xsi:type="array">
+                                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/reply"/>
+                                                <item name="payload" xsi:type="array">
+                                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                                    <item name="status_id" xsi:type="string">Aheadworks\Helpdesk2\Model\Source\Ticket\Status::CLOSED</item>
+                                                    <item name="content" xsi:type="string">${ $.provider }:data.content</item>
+                                                    <item name="attachments" xsi:type="string">${ $.provider }:data.attachments</item>
+                                                </item>
+                                                <item name="clear" xsi:type="array">
+                                                    <item name="0" xsi:type="string">${ $.parentName }.content</item>
+                                                    <item name="1" xsi:type="string">${ $.parentName }.attachments</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </button>
+                            <button name="open_action" sortOrder="50"
+                                    component="Aheadworks_Helpdesk2/js/ui/form/components/ticket/button/reply"
+                                    template="ui/form/components/button/container">
+                                <settings>
+                                    <title translate="true">Reply + Open</title>
+                                </settings>
+                                <argument name="data" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="formElement" xsi:type="string">button</item>
+                                        <item name="blockLoaderSelector" xsi:type="string">[data-index=message_area]</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                        </item>
+                                        <item name="actions" xsi:type="array">
+                                            <item name="0" xsi:type="array">
+                                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/reply"/>
+                                                <item name="payload" xsi:type="array">
+                                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                                    <item name="status_id" xsi:type="string">Aheadworks\Helpdesk2\Model\Source\Ticket\Status::OPEN</item>
+                                                    <item name="content" xsi:type="string">${ $.provider }:data.content</item>
+                                                    <item name="attachments" xsi:type="string">${ $.provider }:data.attachments</item>
+                                                </item>
+                                                <item name="clear" xsi:type="array">
+                                                    <item name="0" xsi:type="string">${ $.parentName }.content</item>
+                                                    <item name="1" xsi:type="string">${ $.parentName }.attachments</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </button>
+                            <button name="reply_action" sortOrder="60"
+                                    component="Aheadworks_Helpdesk2/js/ui/form/components/ticket/button/reply"
+                                    template="ui/form/components/button/container">
+                                <settings>
+                                    <title translate="true">Reply + WFC</title>
+                                </settings>
+                                <argument name="data" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="formElement" xsi:type="string">button</item>
+                                        <item name="buttonClasses" xsi:type="string">primary</item>
+                                        <item name="blockLoaderSelector" xsi:type="string">[data-index=message_area]</item>
+                                        <item name="imports" xsi:type="array">
+                                            <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                                        </item>
+                                        <item name="actions" xsi:type="array">
+                                            <item name="0" xsi:type="array">
+                                                <item name="requestUrl" xsi:type="url" path="aw_helpdesk2/ticket/reply"/>
+                                                <item name="payload" xsi:type="array">
+                                                    <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                                    <item name="status_id" xsi:type="string">Aheadworks\Helpdesk2\Model\Source\Ticket\Status::WAITING</item>
+                                                    <item name="content" xsi:type="string">${ $.provider }:data.content</item>
+                                                    <item name="attachments" xsi:type="string">${ $.provider }:data.attachments</item>
+                                                </item>
+                                                <item name="clear" xsi:type="array">
+                                                    <item name="0" xsi:type="string">${ $.parentName }.content</item>
+                                                    <item name="1" xsi:type="string">${ $.parentName }.attachments</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </button>
+                        </container>
+                    </container>
+                </container>
+
+                <!-- Thread area -->
+                <container name="thread_area">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">30</item>
+                            <item name="additionalClasses" xsi:type="string">aw-helpdesk2-thread-area-wrapper</item>
+                            <item name="template" xsi:type="string">Aheadworks_Helpdesk2/ui/form/element/ticket/container</item>
+                        </item>
+                    </argument>
+
+                    <insertListing name="aw_helpdesk2_thread_listing">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="imports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                                </item>
+                                <item name="exports" xsi:type="array">
+                                    <item name="ticket_id" xsi:type="string">${ $.name }:params.ticket_id</item>
+                                    <item name="params.ticket_id" xsi:type="string">${ $.externalProvider }:params.ticket_id</item>
+                                </item>
+                            </item>
+                        </argument>
+                        <settings>
+                            <dataLinks>
+                                <exports>false</exports>
+                                <imports>true</imports>
+                            </dataLinks>
+                            <autoRender>true</autoRender>
+                            <externalProvider>aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing_data_source</externalProvider>
+                            <dataScope>messages</dataScope>
+                            <ns>aw_helpdesk2_insert_thread_listing</ns>
+                        </settings>
+                    </insertListing>
+                </container>
+            </container>
+        </container>
+    </fieldset>
+</form>

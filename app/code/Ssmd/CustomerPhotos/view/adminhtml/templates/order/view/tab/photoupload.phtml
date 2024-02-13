@@ -5,401 +5,100 @@
 ?>
 
 <?php echo $block->getChildHtml(); ?>
+<?php $formKey = $block->getFormKey(); ?>
 
 <?php
 // Admin url
 $url = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getCustomerPhotoUrl();
 
-
-$faceimageName = '';
-$topHeadimageName = '';
-$sideHeadimageName = '';
-$govtImageName = '';
-$path = '';
-$imagePath = '';
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-
 $order = $block->getOrderByOrderId($block->getOrderId());
-$item_id ='';
-$customerPrescriptionId = '';
 $customerId = '';
-/*foreach($order->getAllItems() as $item)
-{
-    $item_id = $item->getItemId();
-}*/
-$customerId = $order->getCustomerId();
+$customerId = $block->getCustomerId();
 
-if($customerId != "")
-{
-    $customerPrescriptionObj = $block->getCustomerPrescriptionDetails($block->getOrderId());
+?>
+<?php
+$imageBasePath = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getRootPath();
+$photosArray = $block->getMedicalHistoryPhotosByOrder();
+$fullFacePhoto = '';
+$govtIdPhoto = '';
+$fullFacePhotoId = null;
+$govtPhotoId = null;
+
+if (!empty($photosArray) && is_array($photosArray)) {
+    foreach ($photosArray as $key => $photosValue) {
+        if($photosValue['photo_type'] == 'full_face'){
+            $fullFacePhoto = $photosValue['path'];
+            $fullFacePhotoId = $photosValue['photo_id'];
+        }
+        if($photosValue['photo_type'] == 'govt_id'){
+            $govtIdPhoto = $photosValue['path'];
+            $govtPhotoId = $photosValue['photo_id'];
+        }
+    }
 }
 
-// Check customer order items prescription status
-$helperPhotoManagement = $this->helper('Ssmd\CustomerPhotos\Helper\Data');
-$photoUploadButton = $helperPhotoManagement->checkCustomerPrescriptionStatusByOrder($order);
-
 ?>
 
-<?php
-// Function for facePhoto
-$facePhotoData = $block->getPhotoDetailsByOrderIdForAdminFacePhoto($block->getOrderId(),1);
+    <div><h4 style="margin-top:40px;">Moved!</h4>
+        <p>Please see customer screen for medical photo. </p>
+    </div>
 
-$topHeadPhotoData = $block->getPhotoDetailsByOrderIdForAdminTopHeadPhoto($block->getOrderId(),2);
-
-$sideHeadPhotoData = $block->getPhotoDetailsByOrderIdForAdminSideHeadPhoto($block->getOrderId(),3);
-
-$govtIdPhotoData = $block->getPhotoDetailsByOrderIdForAdminGovtIdPhoto($block->getOrderId(),4);
-
-//echo "<pre>";
-//print_r($govtIdPhotoData);
-//exit;
-
-
-
-?>
-
-
+<!--
 <div class="fieldset-wrapper order-information">
     <div>
         <h2>Customer Photos</h2>
     </div>
 
-    <table class="admin__table-secondary">
-        <tbody>
 
+    <form action="<?php /* @escapeNotVerified */ echo $this->getUrl('customerphotos/index/index') ?>" method="post" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
 
-        <!-- ========================================================== Face Photo ================================================================ -->
+        <table class="admin__table-secondary" style="min-width:700px;">
+            <tbody>
 
-
-        <?php if(!empty( $facePhotoData )){ ?>
-
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Facing Forward') ?></th>
-
-                <td class="head-forward" id="<?= $facePhotoData['customer_photo_id'] ?>">
-                    <?php
-                    $faceimageName = $facePhotoData['photo_file_path'];
-                    $path = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getFacephotoDirUrl().$customerId.'/'.$faceimageName;
-
-                    /* Encrypted image display code start */
-                    if(file_exists($path))
-                    {
-                        $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $data = file_get_contents($path);
-                        $imageData = base64_encode($data);
-                        $imagePathFace = 'data: '.mime_content_type($path).';base64,'.$imageData;
-                    }
-                    else
-                    {
-                        $imagePathFace = '';
-                    }
-                    /* Encrypted image display code end */
-
-                    ?>
-
-                    <a data-fancybox="gallery" href="<?php echo $imagePathFace ?>">
-                        <img src="<?php echo $imagePathFace ?>" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-
-                <?php if($photoUploadButton == 0):?>
-
-                    <td>
-                        <form class="form face_photo" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_face" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-
-                            <input type="file" name="face_photo" id="face_photo" title="<?php echo __('Forward Face Photo')?>" class="input-text" />
-
-                            <input type="hidden" name="face_photo_type_id" id="face_photo_type_id" value="1"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value="<?= $facePhotoData['customer_photo_id'] ?>"/>
-                            <input type="hidden" name="customer_prescription_id" id="customer_prescription_id" value="<?= $facePhotoData['customer_prescription_id'] ?>"/>
-                            <input type="hidden" name="prescription_id" id="prescription_id" value="<?= $facePhotoData['prescription_id']?>"/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $facePhotoData['order_id'] ?>"/>
-                            <input type="hidden" name="item_id" id="item_id" value="<?= $facePhotoData['item_id'] ?>"/>
-                        </form>
-                    </td>
-                <?php endif; ?>
-
-            </tr>
-
-        <?php }else{ ?>
-
+            
 
             <tr>
                 <th><?php /* @escapeNotVerified */ echo __('Facing Forward') ?></th>
 
-
-                <td class="head-forward" id="">
-
-                    <a data-fancybox="gallery" href="">
-                        <img src="" alt="" style="max-height: 185px" />
-                    </a>
+                <td class="head-forward phid_<?php echo $fullFacePhotoId; ?>" id="<?php echo $fullFacePhoto ?>">
+                    <img src="<?php echo $imageBasePath.'/'.$fullFacePhoto ?>" alt="" style="max-height: 185px" />
                 </td>
-
-                <?php if($photoUploadButton == 0):?>
-
-                    <td>
-                        <form class="form face_photo" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_face" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-
-                            <input type="file" name="face_photo" id="face_photo" title="<?php echo __('Forward Face Photo')?>" class="input-text" />
-
-                            <input type="hidden" name="face_photo_type_id" id="face_photo_type_id" value="1"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value=""/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $block->getOrderId() ?>"/>
-                        </form>
-                    </td>
-                <?php endif; ?>
-            </tr>
-
-
-        <?php } ?>
-
-        <?php
-
-        // Check Prescription of order
-       /* $prescriptionOrder = $objectManager->create('Enhance\Prescriptions\Model\CustomerPrescriptionOrders')
-            ->load($block->getOrderId(), 'order_id');
-
-        $prescriptionId = $prescriptionOrder->getPrescriptionId();
-
-        $prescription = $objectManager->create('Enhance\Prescriptions\Model\Prescriptions')
-            ->load($prescriptionId);*/
-
-
-        // If Only Hairloss prescription then show all four photo uploads
-       // if($prescription->getPrescriptionFlow() == 'Hairloss'):
-
-        $prescriptionFlow = 'Hairloss';
-        if($prescriptionFlow == 'Hairloss'):
-
-
-        ?>
-
-
-            <!-- ========================================================== Top Head Photo ================================================================ -->
-
-            <?php if(!empty( $topHeadPhotoData )){ ?>
-
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Top of your head') ?></th>
-                <td class="head-top" id="<?= $topHeadPhotoData['customer_photo_id'] ?>">
-                    <?php
-                    $topHeadimageName = $topHeadPhotoData['photo_file_path'];
-                    $path = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getTopHeadphotoDirUrl().$customerId.'/'.$topHeadimageName;
-                    /* Encrypted image display code start */
-                    if(file_exists($path))
-                    {
-                        $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $data = file_get_contents($path);
-                        $imageData = base64_encode($data);
-                        $imagePathTopHead = 'data: '.mime_content_type($path).';base64,'.$imageData;
-                    }
-                    else
-                    {
-                        $imagePathTopHead = '';
-                    }
-                    /* Encrypted image display code end */
-                    ?>
-                    <a data-fancybox="gallery" href="<?php echo $imagePathTopHead ?>">
-                        <img src="<?php echo $imagePathTopHead ?>" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-
-                <?php if($photoUploadButton == 0):?>
-
-                    <td>
-                        <form class="form top_head_photo" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_top" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-
-                            <input type="file" name="top_head_photo" id="top_head_photo" title="<?php echo __('Top Head Photo')?>" class="input-text" />
-                            <input type="hidden" name="top_photo_type_id" id="top_photo_type_id" value="2"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value="<?= $topHeadPhotoData['customer_photo_id'] ?>"/>
-
-                            <input type="hidden" name="customer_prescription_id" id="customer_prescription_id" value="<?= $topHeadPhotoData['customer_prescription_id'] ?>"/>
-                            <input type="hidden" name="prescription_id" id="prescription_id" value="<?= $topHeadPhotoData['prescription_id']?>"/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $topHeadPhotoData['order_id'] ?>"/>
-                            <input type="hidden" name="item_id" id="item_id" value="<?= $topHeadPhotoData['item_id'] ?>"/>
-
-                        </form>
-                    </td>
-                <?php endif; ?>
-            </tr>
-
-        <?php }else { ?>
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Top of your head') ?></th>
-                <td class="head-top" id="">
-
-                    <a data-fancybox="gallery" href="">
-                        <img src="" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-                <?php if($photoUploadButton == 0):?>
-                    <td>
-                        <form class="form top_head_photo" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_top" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-
-                            <input type="file" name="top_head_photo" id="top_head_photo" title="<?php echo __('Top Head Photo')?>" class="input-text" />
-                            <input type="hidden" name="top_photo_type_id" id="top_photo_type_id" value="2"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value=""/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $block->getOrderId() ?>"/>
-
-                        </form>
-                    </td>
-                <?php endif; ?>
-            </tr>
-
-        <?php } ?>
-
-            <!-- ========================================================== Side Head Photo ================================================================ -->
-
-
-            <?php if(!empty( $sideHeadPhotoData )){ ?>
-
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Side of your head') ?></th>
-                <td class="head-side" id="<?= $sideHeadPhotoData['customer_photo_id'] ?>">
-                    <?php
-                    $sideHeadimageName = $sideHeadPhotoData['photo_file_path'];
-                    $path = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getSideHeadphotoDirUrl().$customerId.'/'.$sideHeadimageName;
-                    /* Encrypted image display code start */
-                    if(file_exists($path))
-                    {
-                        $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $data = file_get_contents($path);
-                        $imageData = base64_encode($data);
-                        $imagePathSideHead = 'data: '.mime_content_type($path).';base64,'.$imageData;
-                    }
-                    else
-                    {
-                        $imagePathSideHead = '';
-                    }
-                    /* Encrypted image display code end */
-                    ?>
-                    <a data-fancybox="gallery" href="<?php echo $imagePathSideHead ?>">
-                        <img src="<?php echo $imagePathSideHead ?>" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-                <?php if($photoUploadButton == 0):?>
-                    <td>
-                        <form class="form side_photo" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_side" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-
-                            <input type="file" name="side_head_photo" id="side_head_photo" title="<?php echo __('Side Head Photo')?>" class="input-text" />
-                            <input type="hidden" name="side_photo_type_id" id="side_photo_type_id" value="3"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value="<?= $sideHeadPhotoData['customer_photo_id'] ?>"/>
-
-                            <input type="hidden" name="customer_prescription_id" id="customer_prescription_id" value="<?= $sideHeadPhotoData['customer_prescription_id'] ?>"/>
-                            <input type="hidden" name="prescription_id" id="prescription_id" value="<?= $sideHeadPhotoData['prescription_id']?>"/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $sideHeadPhotoData['order_id'] ?>"/>
-                            <input type="hidden" name="item_id" id="item_id" value="<?= $sideHeadPhotoData['item_id'] ?>"/>
-                        </form>
-                    </td>
-                <?php endif; ?>
-            </tr>
-
-        <?php } else { ?>
-
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Side of your head') ?></th>
-                <td class="head-side" id="">
-
-                    <a data-fancybox="gallery" href="">
-                        <img src="" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-                <?php if($photoUploadButton == 0):?>
-                    <td>
-                        <form class="form side_photo" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_side" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-
-                            <input type="file" name="side_head_photo" id="side_head_photo" title="<?php echo __('Side Head Photo')?>" class="input-text" />
-                            <input type="hidden" name="side_photo_type_id" id="side_photo_type_id" value="3"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value=""/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $block->getOrderId() ?>"/>
-
-                        </form>
-                    </td>
-                <?php endif; ?>
-            </tr>
-
-        <?php } ?>
-
-        <?php endif; ?>
-
-        <!-- ========================================================== Govt ID Photo ================================================================ -->
-
-        <?php if(!empty( $govtIdPhotoData )){ ?>
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Government ID') ?></th>
-                <td class="photoid" id="<?= $govtIdPhotoData['customer_photo_id'] ?>">
-                    <?php
-                    $govtImageName = $govtIdPhotoData['photo_file_path'];
-                    $path = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getPhotoIdDirUrl().$customerId.'/'.$govtImageName;
-                    /* Encrypted image display code start */
-                    if(file_exists($path))
-                    {
-                        $type = pathinfo($path, PATHINFO_EXTENSION);
-                        $data = file_get_contents($path);
-                        $imageData = base64_encode($data);
-                        $imagePath = 'data: '.mime_content_type($path).';base64,'.$imageData;
-                    }
-                    else
-                    {
-                        $imagePath = '';
-                    }
-                    /* Encrypted image display code end */
-                    ?>
-                    <a data-fancybox="gallery" href="<?php echo $imagePath ?>">
-                        <img src="<?php echo $imagePath ?>" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-                <?php if($photoUploadButton == 0):?>
-                    <td>
-                        <form class="form photo_id" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_govid" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-                            <input type="file" name="photo_id" id="photo_id" title="<?php echo __('GovtID Photo')?>" class="input-text" />
-                            <input type="hidden" name="govtid_photo_type_id" id="govtid_photo_type_id" value="4"/>
-                            <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                            <input type="hidden" name="customer_photo_id" id="customer_photo_id" value="<?= $govtIdPhotoData['customer_photo_id'] ?>"/>
-
-                            <input type="hidden" name="customer_prescription_id" id="customer_prescription_id" value="<?= $govtIdPhotoData['customer_prescription_id'] ?>"/>
-                            <input type="hidden" name="prescription_id" id="prescription_id" value="<?= $govtIdPhotoData['prescription_id']?>"/>
-                            <input type="hidden" name="order_id" id="order_id" value="<?= $govtIdPhotoData['order_id'] ?>"/>
-                            <input type="hidden" name="item_id" id="item_id" value="<?= $govtIdPhotoData['item_id'] ?>"/>
-                        </form>
-                    </td>
-                <?php endif; ?>
-            </tr>
-
-        <?php } else { ?>
-            <tr>
-                <th><?php /* @escapeNotVerified */ echo __('Government ID') ?></th>
-                <td class="photoid" id="">
-                    <a data-fancybox="gallery" href="">
-                        <img src="" alt="" style="max-height: 185px" />
-                    </a>
-                </td>
-                <?php if($photoUploadButton == 0):?>
                 <td>
-                    <form class="form photo_id" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form_photo_govid" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
-                        <input type="file" name="photo_id" id="photo_id" title="<?php echo __('GovtID Photo')?>" class="input-text" />
-                        <input type="hidden" name="govtid_photo_type_id" id="govtid_photo_type_id" value="4"/>
-                        <input type="hidden" name="customer_id" id="customer_id" value="<?= $customerId ?>"/>
-                        <input type="hidden" name="customer_photo_id" id="customer_photo_id" value=""/>
-                        <input type="hidden" name="order_id" id="order_id" value="<?= $block->getOrderId() ?>"/>
-
-                    </form>
-                    <?php endif; ?>
+                    <input type="file" name="face_photo" id="face_photo" title="<?php echo __('Forward Face Photo')?>" class="input-text" />
                 </td>
             </tr>
 
-        <?php } ?>
+            
 
-        </tbody>
+            <tr>
+                <th><?php /* @escapeNotVerified */ echo __('Government ID') ?></th>
+                <td class="photoid phid_<?php echo $govtPhotoId; ?>" id="<?= $govtIdPhoto ?>">
+                    <img src="<?php echo $imageBasePath.'/'.$govtIdPhoto ?>" alt="" style="max-height: 185px" />
+                </td>
+                <td>
+                    <input type="file" name="govt_photo" id="govt_photo" title="<?php echo __('GovtID Photo')?>" class="input-text" />
+                </td>
+            </tr>
 
-    </table>
+            
+
+
+            <input type="hidden" name="face_photo_type" id="face_photo_type" value="<?php echo $this->helper('Ssmd\CustomerPhotos\Helper\Data')::FULL_FACE ?>"/>
+
+            <input type="hidden" name="govt_photo_type" id="govt_photo_type" value="<?php echo $this->helper('Ssmd\CustomerPhotos\Helper\Data')::FULL_GOVT ?>"/>
+
+            <input type="hidden" name="face_photo_id" id="face_photo_id" value="<?php echo $fullFacePhotoId ?>"/>
+            <input type="hidden" name="govt_photo_id" id="face_photo_id" value="<?php echo $govtPhotoId ?>"/>
+
+            <input type="hidden" name="increment_id" id="increment_id" value="<?php echo $order->getIncrementId() ?>"/>
+            <input type="hidden" name="order_id" id="order_id" value="<?php echo $block->getOrderId() ?>"/>
+            <input type="hidden" name="customer_id" id="customer_id" value="<?php echo $customerId ?>"/>
+            <input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>"/>
+
+            </tbody>
+        </table>
+        <input type="submit" name="submit" value="Submit" />
+    </form>
 
 </div>
 
@@ -414,306 +113,8 @@ $govtIdPhotoData = $block->getPhotoDetailsByOrderIdForAdminGovtIdPhoto($block->g
             return false;
         });
 
-        $(document).ready(function(){
-
-            var synCheck = true;
-            $('#order_syncphotos').click(function(event){
-                //alert('button clicked');
-                var src_face_photo = $(".head-forward img").attr('src');
-                if(src_face_photo == "" || src_face_photo == "data: directory;base64,")
-                {
-                    synCheck = false;
-                }
-                //alert(src_face_photo);
-                var src_topHead_photo = $(".head-top img").attr('src');
-                if(src_topHead_photo == "" || src_topHead_photo == "data: directory;base64,")
-                {
-                    synCheck = false;
-                }
-                //alert(src_topHead_photo);
-                var src_sideHead_photo = $(".head-side img").attr('src');
-                if(src_topHead_photo == "" || src_topHead_photo == "data: directory;base64,")
-                {
-                    synCheck = false;
-                }
-                //alert(src_sideHead_photo);
-                var src_photoid_photo = $(".photoid img").attr('src');
-                if(src_photoid_photo == "" || src_photoid_photo == "data: directory;base64,")
-                {
-                    synCheck = false;
-                }
-                //alert(src_photoid_photo);
-                if(synCheck == false)
-                {
-                    alert('Some of photos missing to upload!');
-                    //alert('call');
-                    $('#order_syncphotos').attr('onclick',"");
-                    $('.modal-popup').remove();
-                    $('.modals-overlay').remove();
-                    $('body').removeClass("_has-modal");
-                    event.preventDefault();
-                    return false;
-                }
-
-            });
-
-            $("#face_photo").change(function(event){
-                var target = event.target || event.srcElement;
-                if (target.value.length == 0) {
-                    return false;
-                }
-                uploadPhotofunction("face_photo");
-            });
-
-            $("#top_head_photo").change(function(event){
-                var target1 = event.target || event.srcElement;
-                if (target1.value.length == 0) {
-                    return false;
-                }
-                uploadPhotofunction_tophead("top_head_photo");
-            });
-
-            $("#side_head_photo").change(function(event){
-                var target1 = event.target || event.srcElement;
-                if (target1.value.length == 0) {
-                    return false;
-                }
-                uploadPhotofunction_sidehead("side_head_photo");
-            });
-
-            $("#photo_id").change(function(event){
-                var target1 = event.target || event.srcElement;
-                if (target1.value.length == 0) {
-                    return false;
-                }
-                uploadPhotofunction_photo_id("photo_id");
-            });
-        });
-
     });
 
-
-    function uploadPhotofunction(photoId){
-
-        var validFiles = ["jpg", "jpeg", "png","heic"];
-        var str = document.getElementById(photoId).value;
-        //alert(str);
-        var res = '';
-        if(str != "")
-        {
-            res = str.split(".");
-            res = res[1];
-        }
-        var validImg = validFiles.includes(res);
-        if(validImg == false)
-        {
-            alert('Please Upload Valid Image!');
-            return false;
-        }
-
-        var form = jQuery('#form_photo_face')[0];
-        var formData = new FormData(form);
-
-        formData.append('form_key', window.FORM_KEY);
-
-
-        url = '<?php echo $url ?>';
-
-        jQuery.ajax({
-            url: url,
-            type: "POST",
-            dataType: "JSON",
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false, /* Important */
-            data: formData,
-            showLoader: true,
-            cache: false,
-            success: function(response){
-                //alert('success');
-                //jQuery("#face_photo").val(null);
-
-                if(response.face_image_path != "")
-                {
-                    //alert(1);
-                    //alert(response.face_image_path);
-                    jQuery('.head-forward').html(response.face_image_path);
-                }
-
-            },
-            error: function(response)
-            {
-                alert('Something went wrong!');
-            }
-        });
-        return;
-    }
-
-    function uploadPhotofunction_tophead(photoId){
-
-        var validFiles = ["jpg", "jpeg", "png","heic"];
-        var str = document.getElementById(photoId).value;
-        //alert(str);
-        var res = '';
-        if(str != "")
-        {
-            res = str.split(".");
-            res = res[1];
-        }
-        var validImg = validFiles.includes(res);
-        if(validImg == false)
-        {
-            alert('Please Upload Valid Image!');
-            return false;
-        }
-
-        var form = jQuery('#form_photo_top')[0];
-        var formData = new FormData(form);
-        //console.log(formData);
-        formData.append('form_key', window.FORM_KEY);
-
-
-        url = '<?php echo $url ?>';
-
-        jQuery.ajax({
-            url: url,
-            type: "POST",
-            dataType: "JSON",
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false, /* Important */
-            data: formData,
-            showLoader: true,
-            cache: false,
-            success: function(response){
-                //alert('success');
-                //jQuery("#top_head_photo").val(null);
-
-
-                if(response.topHead_image_path != "")
-                {
-                    jQuery('.head-top').html(response.topHead_image_path);
-                }
-            },
-            error: function(response)
-            {
-                alert('Something went wrong!');
-            }
-        });
-        return;
-    }
-
-    function uploadPhotofunction_sidehead(photoId){
-
-        var validFiles = ["jpg", "jpeg", "png","heic"];
-        var str = document.getElementById(photoId).value;
-        //alert(str);
-        var res = '';
-        if(str != "")
-        {
-            res = str.split(".");
-            res = res[1];
-        }
-        var validImg = validFiles.includes(res);
-        if(validImg == false)
-        {
-            alert('Please Upload Valid Image!');
-            return false;
-        }
-
-        var form = jQuery('#form_photo_side')[0];
-        var formData = new FormData(form);
-
-        formData.append('form_key', window.FORM_KEY);
-
-        url = '<?php echo $url ?>';
-
-        jQuery.ajax({
-            url: url,
-            type: "POST",
-            dataType: "JSON",
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false, /* Important */
-            data: formData,
-            showLoader: true,
-            cache: false,
-            success: function(response){
-                //alert('success');
-
-                //jQuery("#side_head_photo").val(null);
-
-                if(response.sideHead_image_path != "")
-                {
-                    jQuery('.head-side').html(response.sideHead_image_path);
-                }
-
-            },
-            error: function(response)
-            {
-                alert('Something went wrong!');
-            }
-        });
-        return;
-    }
-
-
-    function uploadPhotofunction_photo_id(photoId){
-
-        var validFiles = ["jpg", "jpeg", "png","heic"];
-        var str = document.getElementById(photoId).value;
-        //alert(str);
-        var res = '';
-        if(str != "")
-        {
-            res = str.split(".");
-            res = res[1];
-        }
-        var validImg = validFiles.includes(res);
-        if(validImg == false)
-        {
-            alert('Please Upload Valid Image!');
-            return false;
-        }
-
-        var form = jQuery('#form_photo_govid')[0];
-        var formData = new FormData(form);
-
-        formData.append('form_key', window.FORM_KEY);
-
-        url = '<?php echo $url ?>';
-
-        jQuery.ajax({
-            url: url,
-            type: "POST",
-            dataType: "JSON",
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false, /* Important */
-            data: formData,
-            showLoader: true,
-            cache: false,
-            success: function(response){
-                //alert('success');
-
-                //jQuery("#photoid_image_path").val(null);
-
-                if(response.photoid_image_path != "")
-                {
-                    jQuery('.photoid').html(response.photoid_image_path);
-                }
-
-            },
-            error: function(response)
-            {
-                alert('Something went wrong!');
-            }
-        });
-        return;
-    }
-
 </script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+-->
 

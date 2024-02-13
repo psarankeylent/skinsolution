@@ -1,0 +1,23 @@
+type Mutation {
+   saveAlleMember(input: AlleMemberSaveInput!): CustomOutput @resolver(class: "Ssmd\\AlleCustom\\Model\\Resolver\\SaveAlle") @doc(description:"Save Alle") 
+}
+
+input AlleMemberSaveInput @doc(description: "Alle Member Save Info") {
+    increment_id: String @doc(description: "Order Increment ID")
+    bdn: String @doc(description: "Order Increment ID")
+    brilliantcoupon1: String @doc(description: "Order Increment ID")
+    brilliantcoupon2: String @doc(description: "Order Increment ID")
+}
+
+type CustomOutput @doc(description: "Output Alle") {
+    CustomAlleObject: AllDisplayOutput
+}
+
+type AllDisplayOutput @doc(description: "Alle info") {
+    id: Int
+    increment_id: String
+    bdn: String
+    brilliantcoupon1: String
+    brilliantcoupon2: String
+}
+

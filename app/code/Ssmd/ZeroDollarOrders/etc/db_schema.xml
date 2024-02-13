@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--
+ - @package Ssmd_ZeroDollarOrders
+ - @version 1.0.0
+ - @category magento-module
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="zero_dollar_orders_history" resource="default" engine="innodb" comment="zero_dollar_orders_history Table">
+		<column xsi:type="int" name="history_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="history_id"/>
+		</constraint>
+		<column name="order_id" nullable="true" xsi:type="int" comment="increment_id" identity="false"/>
+		<column name="increment_id" nullable="true" xsi:type="varchar" comment="order_id" length="255"/>
+		<column name="customer_id" nullable="true" xsi:type="int" comment="customer_id" identity="false"/>
+		<column name="admin_id" nullable="true" xsi:type="int"  comment="admin_id" identity="false"/>
+		<column name="create_at" nullable="true" xsi:type="datetime" comment="create_at" default="CURRENT_TIMESTAMP"/>
+	</table>
+</schema>

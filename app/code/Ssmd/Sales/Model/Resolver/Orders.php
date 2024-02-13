@@ -15,6 +15,8 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactoryInterface;
 use Prescriptions\PrescriptionsCollection\Model\PrescriptionsFactory;
+use ParadoxLabs\Subscriptions\Model\ResourceModel\Log\CollectionFactory as LogCollectionFactory;
+use Ssmd\StoreCredit\Helper\Data as StoreCreditHelper;
 
 /**
  * Ssmd Sales Orders data resolver
@@ -28,15 +30,26 @@ class Orders implements ResolverInterface
 
     protected $prescriptionsFactory;
 
+    protected $logCollectionFactory;
+
+    /**
+     * @var StoreCreditHelper
+     */
+    protected  $storeCreditHelper;
+
     /**
      * @param CollectionFactoryInterface $collectionFactory
      */
     public function __construct(
         CollectionFactoryInterface $collectionFactory,
-        PrescriptionsFactory  $prescriptionsFactory
+        PrescriptionsFactory  $prescriptionsFactory,
+        LogCollectionFactory $logCollectionFactory,
+        StoreCreditHelper $storeCreditHelper
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->prescriptionsFactory = $prescriptionsFactory;
+        $this->logCollectionFactory = $logCollectionFactory;
+        $this->storeCreditHelper = $storeCreditHelper;
     }
 
     /**
@@ -60,6 +73,12 @@ class Orders implements ResolverInterface
         /** @var \Magento\Sales\Model\Order $order */
         foreach ($orders as $order) {
 
+            $quoteId = $order->getQuoteId();
+            $baseDiscount = $this->storeCreditHelper->getQuotesStoreCredit($quoteId);
+
+            $orderInfo = $order->getData();
+            $orderInfo['applied_storecredit']  = $baseDiscount;
+
             $items[] = [
                 'id' => $order->getId(),
                 'increment_id' => $order->getIncrementId(),
@@ -72,8 +91,9 @@ class Orders implements ResolverInterface
                 'shipping_address' => serialize(json_encode($order->getShippingAddress()->getData())),
                 'order_items' => $this->getOrderItems($order),
                 'tax' => $order->getFullTaxInfo(),
-                'order_info' => serialize(json_encode($order->getData())),
-                'payment_details' => serialize(json_encode($order->getPayment()->getData())),
+                'order_info' => serialize(json_encode($orderInfo)),
+                'shipment_track_details' => serialize(json_encode($order->getTracksCollection()->getData())),
+                'payment_details' => $order->getPayment()?serialize(json_encode($order->getPayment()->getData())):'',
             ];
         }        return ['items' => $items];
     }
@@ -95,12 +115,35 @@ class Orders implements ResolverInterface
         $items = [];
         foreach ($order->getItems() as $item) {
             $orderItem = $item->getData();
-            $orderItem['product'] = $item->getProduct()->getData();
-            $orderItem['product']['prescription_info'] = "test-test-test";
-            if (isset($orderItem['product']['prescription']))
+            $orderItem['product'] = $item->getProduct()?$item->getProduct()->getData():'';
+            if (isset($orderItem['product']['prescription'])) {
                 $orderItem['product']['prescription_info'] = $this->getPrescriptionId($orderItem['product']['prescription']);
-                $items[] = $orderItem;
+            }
+
+            if(isset($orderItem['product']['subscription_info'] )){
+                $orderItem['product']['subscription_info'] =  $this->getSubscriptionInfo($order->getIncrementId());
+            }
+            //if ($orderItem['product']['subscription_active'] == 1) {
+//                $orderItem['product']['subscription_info'] =  $this->getSubscriptionInfo($order->getIncrementId());
+            //}
+
+            $items[] = $orderItem;
+
         }
         return serialize(json_encode($items));
     }
+
+    protected function getSubscriptionInfo($incrementId)
+    {
+        $logCollection = $this->logCollectionFactory->create();
+        $logCollection->addFieldToFilter('order_increment_id', $incrementId);
+
+        foreach ($logCollection as $log) {
+            return $log->getData();
+        }
+
+        return null;
+    }
 }
+
+

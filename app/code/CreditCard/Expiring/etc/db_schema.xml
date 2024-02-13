@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="customer_notification_log" resource="default" engine="innodb">
+		<column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"/>
+		<column xsi:type="varchar" name="customer_name" nullable="true" length="55" />
+		<column xsi:type="varchar" name="customer_email" nullable="true" length="55" />
+		<column xsi:type="varchar" name="phone" nullable="true" length="55" />
+		<column xsi:type="varchar" name="email_sent" nullable="true" length="55" />
+		<column xsi:type="varchar" name="sms_sent" nullable="true" length="55" />
+		<column xsi:type="varchar" name="notification_type" nullable="true" length="55" />
+		<column xsi:type="text" name="email_message" nullable="true" />
+		<column xsi:type="text" name="sms_message" nullable="true" />
+		<column xsi:type="timestamp" name="created_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" />
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+	</table>
+</schema>

@@ -1,0 +1,25 @@
+
+type Query {
+    storecredit  : Storecredit @resolver( class: "Ssmd\\StoreCredit\\Model\\Resolver\\GetStoreCredit") @doc(description: "Storecredit Query")
+}
+
+type CartPrices {
+    applied_storecredit: Money @doc(description: "Applied Store Credit")
+}
+
+type Storecredit {
+    amount  : Float  @doc(description: "Query by Amounts.")
+}
+
+type Mutation {
+    applyStoreCredit(input: StoreCreditInput): StoreCreditOutput @resolver(class: "Ssmd\\StoreCredit\\Model\\Resolver\\ApplyStoreCredit")
+    removeStoreCredit(input: StoreCreditInput): StoreCreditOutput @resolver(class: "Ssmd\\StoreCredit\\Model\\Resolver\\RemoveStoreCredit")
+}
+
+input StoreCreditInput {
+    cart_id: String!
+}
+
+type StoreCreditOutput {
+    cart: Cart
+}

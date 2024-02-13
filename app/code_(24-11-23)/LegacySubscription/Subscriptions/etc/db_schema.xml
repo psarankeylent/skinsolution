@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <!-- ssmd_web_customer_subscriptions table -->
+    <table name="ssmd_web_customer_subscriptions" resource="default" engine="innodb">
+
+        <column xsi:type="int" name="id" identity="true" unsigned="true" nullable="false" comment="Primary Id"/>
+        <column xsi:type="int" name="profile_id" nullable="true" comment="profile_id ID"/>
+        <column xsi:type="int" name="customer_id" nullable="true" comment="Customer ID"/>
+        <column xsi:type="varchar" name="status" length="25" nullable="true" comment="Status"/>
+        <column xsi:type="float" name="amount" nullable="true" comment="Amount"/>
+        <column xsi:type="varchar" name="discount_amount" length="15" nullable="true" comment="Discount Amount"/>
+        <column xsi:type="varchar" name="title" length="300" nullable="true" comment="Title"/>
+        <column xsi:type="varchar" name="period_length" length="100" nullable="true" comment="Period Length"/>
+        <column xsi:type="varchar" name="period_unit" length="50" nullable="true" comment="Period Unit"/>
+        <column xsi:type="float" name="regular_price" nullable="true" comment="Regular Price"/>
+        <column xsi:type="float" name="trial_price" nullable="true" comment="Trial Price"/>
+        <column xsi:type="varchar" name="sku" length="25" nullable="true" comment="Sku"/>
+        <column xsi:type="varchar" name="bill_first_name" length="25" nullable="true" comment="Bill Firstname"/>
+        <column xsi:type="varchar" name="bill_last_name" length="25" nullable="true" comment="Bill Lastname"/>
+        <column xsi:type="varchar" name="bill_address" length="25" nullable="true" comment="Bill Address"/>
+        <column xsi:type="varchar" name="bill_city" length="25" nullable="true" comment="Bill City"/>
+        <column xsi:type="varchar" name="bill_state" length="25" nullable="true" comment="Bill State"/>
+        <column xsi:type="varchar" name="bill_country" length="25" nullable="true" comment="Bill Country"/>
+        <column xsi:type="varchar" name="bill_zip" length="25" nullable="true" comment="Bill Zip"/>
+        <column xsi:type="varchar" name="bill_telephone" length="25" nullable="true" comment="Bill Telephone"/>
+        <column xsi:type="varchar" name="ship_first_name" length="25" nullable="true" comment="Ship Firstname"/>
+        <column xsi:type="varchar" name="ship_last_name" length="25" nullable="true" comment="Ahip Lastname"/>
+        <column xsi:type="varchar" name="ship_address" length="25" nullable="true" comment="Ship Address"/>
+        <column xsi:type="varchar" name="ship_city" length="25" nullable="true" comment="Ship City"/>
+        <column xsi:type="varchar" name="ship_state" length="25" nullable="true" comment="Ship State"/>
+        <column xsi:type="varchar" name="ship_country" length="25" nullable="true" comment="Ship Country"/>
+        <column xsi:type="varchar" name="ship_zip" length="25" nullable="true" comment="Ship Zip"/>
+        <column xsi:type="varchar" name="ship_telephone" length="25" nullable="true" comment="Shipp Telephone"/>
+        <column xsi:type="varchar" name="address_updated" length="25" nullable="true" comment="Address Updated"/>
+        <column xsi:type="timestamp" name="create_date" nullable="true" comment="Create Date"/>
+        <column xsi:type="timestamp" name="last_update_date" nullable="true" comment="Last Update  Date"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <!-- lagecy_subscription table -->
+    <table name="legacy_subscription" resource="default" engine="innodb">
+        <column xsi:type="int" name="id" identity="true" unsigned="true" nullable="false" comment="Primary Id"/>
+        <column xsi:type="int" name="legacy_subscription" nullable="true" comment="Legacy Subscription"/>
+        <column xsi:type="varchar" name="order_increment_id" length="25" nullable="true" comment="Order Increment ID"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+</schema>

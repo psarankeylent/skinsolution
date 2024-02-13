@@ -1,0 +1,10 @@
+<div class="admin__field-tooltip aw-helpdesk2-tooltip data-grid-cell-content">
+    <!-- ko text: $col.getLabel($row()) --><!-- /ko -->
+    <div class="admin__field-tooltip-content" data-bind="css: $col.getMessageType($row())">
+        <div class="inner">
+            <div class="author" text="$col.getMessageAuthor($row())"/>
+            <div class="date" text="$col.getMessageDate($row())"/>
+        </div>
+        <div class="content" html="$col.getMessageContent($row())"/>
+    </div>
+</div>

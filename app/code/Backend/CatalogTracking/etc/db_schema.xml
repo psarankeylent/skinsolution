@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tracking_catalog" resource="default" engine="innodb" comment="tracking_catalog">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="varchar" name="identifier" nullable="true" length="55" comment="Product Sku"/>
+        <column xsi:type="varchar" name="user_name" nullable="true" length="55" comment="loggedin admin name"/>
+        <column xsi:type="longtext" name="data_before_save" comment="Product details data before save"/>
+        <column xsi:type="longtext" name="data_after_save" comment="Product details data before after"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

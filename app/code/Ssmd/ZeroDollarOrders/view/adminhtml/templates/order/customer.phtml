@@ -1,0 +1,114 @@
+<?php
+/**
+ * @package Ssmd_ZeroDollarOrders
+ * @version 1.0.0
+ * @category magento-module
+ */
+?>
+<?php /** @var  $block \Ssmd\ZeroDollarOrders\Block\Adminhtml\Order */ ?>
+
+<div id="order-customer-selector" class="fieldset-wrapper order-customer-selector">
+    <div class="admin__page-section-title">
+        <span class="title"><?= __('Please select a customer');?></span>
+    </div>
+    <form id="search_form" method="POST" action="<?= /** @noEscape */ $block->getUrl('zerodollarorder/order/customer',['_current' => true]);?>">
+    <?= $block->getBlockHtml('formkey') ?>
+    <div class="form-inputbox admin__field _required">
+        <div class="admin__field-label">
+            <label for="customer-email">
+                <span><?= __('Email');?></span>
+            </label>
+        </div>
+        <div class="admin__field-control">
+                <input id="customer-email" class="admin__control-text" type="text" name="email" maxlength="255">
+        </div>
+    </div>
+    <div class="admin__field-control">
+        <button id="search-customer" title="Search Customer" type="button" class="action- scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-action="<?= /** @noEscape */ $block->getUrl('zerodollarorder/order/customer',['_current' => true]);?>">
+            <span class="ui-button-text">
+                <span><?= __('Search Customer');?></span>
+            </span>
+        </button>
+    </div>
+    </form>
+    <div id="sales_order_create_customer_grid">
+        <div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+            <table class="data-grid" id="sales_order_create_customer_grid_table">
+                <thead>
+                    <tr>
+                        <th data-column="name" class="data-grid-th col-name">
+                            <span><?= __('Name');?></span>
+                        </th>
+                        <th data-column="email" class="data-grid-th col-email">
+                            <span><?= __('Email');?></span>
+                        </th>
+                        <th data-column="email" class="data-grid-th col-email">
+                            <span><?= __('Create $0 Order');?></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    require([
+        "jquery",
+        "mage/url"
+    ], function ($, url) {
+        var createUrl = '<?= /** @noEscape */ $block->getUrl('zerodollarorder/order/review')?>';
+        $("#search_form").submit(function(e){
+            e.preventDefault();
+            $("#search-customer").trigger("click");
+        });
+        $(document).on("click", "#search-customer", function(){
+            var requestUri = $(this).data('action')+'?isAjax=true';
+            $.ajax({
+                showLoader: true, 
+                url: requestUri, 
+                data: $("#search_form").serialize(),
+                type: "POST", 
+                dataType: 'json'
+            }).done(function (data) {
+                var JsonObj = Object.values(data);
+                var listTr = "";
+                JsonObj.forEach(function(item) {
+                    var itemUrl = createUrl+'customer/'+item.entity_id;
+                    listTr +=`<tr data-role="row"class="even _clickable">
+                        <td data-column="entity_id" class="a-right col-name ">
+                        ${item.firstname} ${item.lastname}
+                        </td>
+                        <td data-column="entity_id" class="col-email ">
+                        ${item.email}
+                        </td>
+                        <td data-column="entity_id" class="a-right col-action ">
+                            <a class="action-menu-item" href="${itemUrl}">Create</a>
+                        </td>
+                    </tr>`;
+                });
+                $("#sales_order_create_customer_grid_table tbody").html(listTr);
+            });
+        });
+    });
+
+</script>
+<style>
+ .order-customer-selector .admin__field._required {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+.order-customer-selector .form-inputbox .admin__field-label {
+    float: left;
+    text-align: center;
+    margin-right: 31px;
+}
+.order-customer-selector .form-inputbox .admin__field-control {
+    float: left;
+    width: 30%;
+}   
+</style>
+

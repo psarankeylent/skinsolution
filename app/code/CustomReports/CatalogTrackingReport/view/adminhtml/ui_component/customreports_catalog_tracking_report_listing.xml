@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customreports_catalog_tracking_report_listing.customreports_catalog_tracking_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>customreports_catalog_tracking_report_listing_columns</spinner>
+        <deps>
+            <dep>customreports_catalog_tracking_report_listing.customreports_catalog_tracking_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customreports_catalog_tracking_report_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider name="customreports_catalog_tracking_report_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button" />
+    </listingToolbar>
+    <columns name="customreports_catalog_tracking_report_listing_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="identifier">
+            <settings>
+                <label translate="true">Identifier</label>
+            </settings>
+        </column>
+        <column name="user_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">User Name</label>
+            </settings>
+        </column>
+        <column name="data_before_save">
+            <settings>
+                <label translate="true">Data Before Save</label>
+            </settings>
+        </column>
+        <column name="data_after_save">
+            <settings>
+                <label translate="true">Data After Save</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Create Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                    <item name="sorting" xsi:type="string">desc</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

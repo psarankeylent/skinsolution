@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\SalesRule\Model\Quote\Discount"
+                type="Ssmd\MultipleCoupons\Model\Quote\Discount"/>
+
+    <preference for="Magento\SalesRule\Model\RulesApplier" type="Ssmd\MultipleCoupons\Model\RulesApplier"/>
+
+    <preference for="Magento\QuoteGraphQl\Model\Resolver\ApplyCouponToCart"
+                type="Ssmd\MultipleCoupons\Model\GraphQl\Resolver\ApplyCouponToCart"/>
+
+    <preference for="Magento\QuoteGraphQl\Model\Resolver\RemoveCouponFromCart"
+                type="Ssmd\MultipleCoupons\Model\GraphQl\Resolver\RemoveCouponFromCart"/>
+
+    <preference for="Magento\Quote\Api\CouponManagementInterface"
+                type="Ssmd\MultipleCoupons\Api\CouponManagementInterface"/>
+
+    <preference for="Magento\Quote\Model\CouponManagement" type="Ssmd\MultipleCoupons\Model\CouponManagement"/>
+
+    <preference for="Ssmd\MultipleCoupons\Api\CouponManagementInterface"
+                type="Ssmd\MultipleCoupons\Model\CouponManagement"/>
+
+    <preference for="Magento\Quote\Model\Quote\TotalsCollector"
+                type="Ssmd\MultipleCoupons\Model\Quote\TotalsCollector"/>
+
+    <preference for="Magento\SalesRule\Model\Rule\Action\Discount\ByPercent"
+                type="Ssmd\MultipleCoupons\Model\Rule\Action\Discount\ByPercent"/>
+
+<!--    <preference for="Magento\Quote\Model\Quote\Item\AbstractItem"
+                type="Ssmd\MultipleCoupons\Model\Quote\Item\AbstractItem"/>-->
+
+    <preference for="Magento\Quote\Model\Quote\Item"
+                type="Ssmd\MultipleCoupons\Model\Quote\Item"/>
+
+    <preference for="Magento\QuoteGraphQl\Model\Resolver\CartItemPrices"
+                type="Ssmd\MultipleCoupons\Model\Resolver\CartItemPrices"/>
+
+    <preference for="Magento\SalesRule\Model\Validator" type="Ssmd\MultipleCoupons\Model\Validator" />
+    <type name="Ssmd\MultipleCoupons\Model\Quote\Discount">
+        <arguments>
+            <argument name="validator" xsi:type="object">Ssmd\MultipleCoupons\Model\Validator</argument>
+        </arguments>
+    </type>
+
+</config>

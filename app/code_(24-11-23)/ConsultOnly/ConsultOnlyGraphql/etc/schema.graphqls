@@ -1,0 +1,32 @@
+
+type Query {
+    consultonly : [ConsultOnly] @resolver( class: "ConsultOnly\\ConsultOnlyGraphql\\Model\\Resolver\\ConsultOnly") @doc(description: "ConsultOnly Query")
+}
+
+type ConsultOnly {
+    id  : Int
+    customer_id  : String
+    vh_prescription_id  : String
+    prescription_id  : String
+    prescription_name  : String
+    start_date  : String
+    expiration_date  : String
+    vh_status  : String
+    np_id  : String
+    np_name  : String
+    consultation_type  : String
+}
+
+type Mutation {
+    consultOnlySave(input: ConsultOnlyInput!): ConsultOnlyOutput @resolver(class: "ConsultOnly\\ConsultOnlyGraphql\\Model\\Resolver\\ConsultOnlySave")
+}
+
+input ConsultOnlyInput {
+    prescription_id: Int 
+    customer_id: Int
+}
+
+type ConsultOnlyOutput {
+   success: Boolean,
+   message: String
+}

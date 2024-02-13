@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="consultonly" resource="default" engine="innodb" comment="consultonly Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="int" name="customer_id" nullable="false" comment="Customer Id"/>
+        <column xsi:type="int" name="vh_prescription_id" nullable="false" comment="Virtual Hub Prescription Id"/>
+        <column xsi:type="varchar" name="prescription_name" nullable="true" length="55" comment="prescription name"/>
+        <column xsi:type="int" name="prescription_id" nullable="false" comment="Magento Prescription Id"/>
+        <column xsi:type="varchar" name="start_date" nullable="true" length="55" comment="Start Date"/>
+        <column xsi:type="varchar" name="expiration_date" nullable="true" length="55" comment="Expiration Date"/>
+        <column xsi:type="varchar" name="consultation_type" nullable="true" length="11" comment="consultation_type"/>        
+        <column xsi:type="varchar" name="vh_status" nullable="true" length="55" comment="vh_status"/>
+        <column xsi:type="varchar" name="np_id" nullable="true" length="55" comment="np id"/>
+        <column xsi:type="varchar" name="np_name" nullable="true" length="55" comment="np name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

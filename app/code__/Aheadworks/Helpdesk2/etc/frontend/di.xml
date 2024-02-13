@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\Helpdesk2\Model\Ticket\Layout\Renderer\CreationRendererInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Layout\Renderer\CreationRenderer"/>
+    <preference for="Aheadworks\Helpdesk2\Model\Ticket\Layout\Renderer\ViewRendererInterface" type="Aheadworks\Helpdesk2\Model\Ticket\Layout\Renderer\ViewRenderer"/>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\DiscussionProvider" type="Aheadworks\Helpdesk2\Model\Data\Provider\Form\Ticket\Thread\ProviderComposite">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="messages" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Provider\Form\Ticket\Thread\DiscussionMessages</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\DiscussionProcessor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="wysiwyg_directives" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\WysiwygDirectives</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\Thread\DiscussionProvider">
+        <arguments>
+            <argument name="dataProvider" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\DiscussionProvider</argument>
+            <argument name="dataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\DiscussionProcessor</argument>
+        </arguments>
+    </type>
+
+    <!--  Ticket controller post data processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\FrontendProcessor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Customer</item>
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\General</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Store</item>
+                <item name="department" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\Department</item>
+                <item name="customerMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\CustomerTypeMessage</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Order</item>
+                <item name="storefrontOption" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\StorefrontOption</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Save">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\FrontendProcessor</argument>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Create</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Close">
+        <arguments>
+            <argument name="closeCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Close</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Rate">
+        <arguments>
+            <argument name="rateCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Rate</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Escalate">
+        <arguments>
+            <argument name="escalateCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Escalate</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Reopen">
+        <arguments>
+            <argument name="reopenCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Reopen</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\ReplyProcessor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="customerMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Frontend\CustomerTypeMessage</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Reply">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\ReplyProcessor</argument>
+            <argument name="replyCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Reply</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Ticket\Attachment\Download">
+        <arguments>
+            <argument name="downloadCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Message\DownloadAttachment</argument>
+        </arguments>
+    </type>
+
+    <!--  Ticket frontend layout processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Layout\CreationProcessor" type="Aheadworks\Helpdesk2\Model\Ticket\Layout\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="departmentFrontend" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\Creation\Department</item>
+                <item name="orderFrontend" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\Creation\Order</item>
+                <item name="storefrontOption" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\Creation\StorefrontOption</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\Attachments</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Block\Customer\Ticket\Form\Create">
+        <arguments>
+            <argument name="layoutProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\CreationProcessor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\Attachments" type="Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\Attachments">
+        <arguments>
+            <argument name="configPath" xsi:type="string">components/aw_helpdesk2_form/children/reply/children/bottom_action_toolbar/children/upload_file</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Ticket\Layout\ViewProcessor" type="Aheadworks\Helpdesk2\Model\Ticket\Layout\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\General</item>
+                <item name="closeTicketData" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\CloseTicketData</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\Order</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\Attachments</item>
+                <item name="ticketEscalation" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\TicketEscalation</item>
+                <item name="customerRating" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\Processor\View\CustomerRating</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Block\Customer\Ticket\Form\View">
+        <arguments>
+            <argument name="layoutProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Ticket\Layout\ViewProcessor</argument>
+        </arguments>
+    </type>
+
+    <!--  Contact form ticket post data processor  -->
+    <type name="Aheadworks\Helpdesk2\Plugin\Contact\Controller\PostPlugin">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\FrontendProcessor</argument>
+            <argument name="createCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Create</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Contact\Controller\Index\Post">
+        <plugin name="aw-helpdesk2-rewrite-contact-form-controller" type="Aheadworks\Helpdesk2\Plugin\Contact\Controller\PostPlugin"/>
+    </type>
+</config>

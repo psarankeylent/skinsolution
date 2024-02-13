@@ -1,0 +1,116 @@
+<?php
+/**
+ * @var $block \Ssmd\CustomerPhotos\Block\Adminhtml\Order\View\Tab\Photoupload
+ */
+?>
+
+<?php
+echo $block->getChildHtml();
+$formKey = $block->getFormKey();
+
+// Admin url
+$url = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getCustomerPhotoUrl();
+$imageBasePath = $this->helper('Ssmd\CustomerPhotos\Helper\Data')->getRootPath();
+
+$photosArray = $block->getCustomerMedicalPhotos();
+$fullFacePhoto = '';
+$govtIdPhoto = '';
+$fullFacePhotoId = null;
+$govtPhotoId = null;
+
+if (!empty($photosArray) && is_array($photosArray)) {
+    foreach ($photosArray as $key => $photosValue) {
+        if($photosValue['photo_type'] == 'full_face'){
+            $fullFacePhoto = $photosValue['path'];
+            $fullFacePhotoId = $photosValue['photo_id'];
+        }
+        if($photosValue['photo_type'] == 'govt_id'){
+            $govtIdPhoto = $photosValue['path'];
+            $govtPhotoId = $photosValue['photo_id'];
+        }
+    }
+}
+
+?>
+
+
+
+<div class="fieldset-wrapper order-information">
+    <div>
+        <h2>Customer Photos</h2>
+    </div>
+
+
+    <form action="<?php /* @escapeNotVerified */ echo $this->getUrl('medicalphotos/index/index') ?>" method="post" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation": {}}'>
+
+        <table class="admin__table-secondary" style="min-width:700px;">
+            <tbody>
+
+            <!-- ======================================== Face Photo =========================================== -->
+
+            <tr>
+                <th><?php /* @escapeNotVerified */ echo __('Facing Forward') ?></th>
+
+                <td class="head-forward phid_<?php echo $fullFacePhotoId; ?>" id="<?php echo $fullFacePhoto ?>">
+                    <img src="<?php echo $imageBasePath.'/'.$fullFacePhoto ?>" alt="" style="max-height: 185px" />
+                </td>
+                <td>
+                    <input type="file" name="face_photo" id="face_photo" title="<?php echo __('Forward Face Photo')?>" class="input-text" />
+                </td>
+            </tr>
+
+            <!-- ====================================== Govt ID Photo ============================================ -->
+
+            <tr>
+                <th><?php /* @escapeNotVerified */ echo __('Government ID') ?></th>
+                <td class="photoid phid_<?php echo $govtPhotoId; ?>" id="<?= $govtIdPhoto ?>">
+                    <img src="<?php echo $imageBasePath.'/'.$govtIdPhoto ?>" alt="" style="max-height: 185px" />
+                </td>
+                <td>
+                    <input type="file" name="govt_photo" id="govt_photo" title="<?php echo __('GovtID Photo')?>" class="input-text" />
+                </td>
+            </tr>
+
+            <!-- ====================================== Extra Hidden Variables ============================================ -->
+
+
+            <input type="hidden" name="face_photo_type" id="face_photo_type" value="<?php echo $this->helper('Ssmd\CustomerPhotos\Helper\Data')::FULL_FACE ?>"/>
+
+            <input type="hidden" name="govt_photo_type" id="govt_photo_type" value="<?php echo $this->helper('Ssmd\CustomerPhotos\Helper\Data')::FULL_GOVT ?>"/>
+
+            <!--
+            <input type="hidden" name="face_photo_id" id="face_photo_id" value="<?php //echo $fullFacePhotoId ?>"/>
+            <input type="hidden" name="govt_photo_id" id="face_photo_id" value="<?php //echo $govtPhotoId ?>"/>
+            <input type="hidden" name="increment_id" id="increment_id" value="<?php //echo $order->getIncrementId() ?>"/>
+            <input type="hidden" name="order_id" id="order_id" value="<?php //echo $block->getOrderId() ?>"/>
+            -->
+            
+            <input type="hidden" name="customer_id" id="customer_id" value="<?php echo $block->getCustomerId() ?>"/>
+            <input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>"/>
+
+            </tbody>
+        </table>
+        <input type="submit" name="submit" value="Save Photo" style="height:40px; width:125px; background-color: #eb5202; border-color: #eb5202; color: #ffffff; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);">
+    </form>
+
+</div>
+
+<script>
+
+    require([
+        'jquery'
+    ],function ($) {
+
+        /* images not right clickable code */
+        $("table").on("contextmenu",function(e){
+            return false;
+        });
+
+    });
+
+</script>
+
+
+
+
+

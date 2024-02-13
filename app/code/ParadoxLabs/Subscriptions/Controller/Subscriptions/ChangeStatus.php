@@ -18,6 +18,12 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use ParadoxLabs\Subscriptions\Model\Source\Status;
 
+// Email notification
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
+
 /**
  * ChangeStatus Class
  */
@@ -63,7 +69,11 @@ class ChangeStatus extends View
         \ParadoxLabs\Subscriptions\Api\SubscriptionRepositoryInterface $subscriptionRepository,
         \Magento\Customer\Helper\Session\CurrentCustomer $currentCustomer,
         \ParadoxLabs\Subscriptions\Model\Config $config,
-        Status $statusSource
+        Status $statusSource,
+        ScopeConfigInterface $scopeConfig,
+        TransportBuilder $transportBuilder,
+        StateInterface $state,
+        StoreManagerInterface $storeManager
     ) {
         parent::__construct(
             $context,
@@ -81,6 +91,10 @@ class ChangeStatus extends View
 
         $this->statusSource = $statusSource;
         $this->config = $config;
+        $this->scopeConfig = $scopeConfig;
+        $this->inlineTranslation = $state;
+        $this->transportBuilder = $transportBuilder;
+        $this->storeManager = $storeManager;
     }
 
     /**
@@ -90,6 +104,12 @@ class ChangeStatus extends View
      */
     public function execute()
     {
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/subscriptions_change_status.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+
+        $logger->info("Calling file.");
+
         $initialized    = $this->initModels();
         $resultRedirect = $this->resultRedirectFactory->create();
 
@@ -100,7 +120,7 @@ class ChangeStatus extends View
             $resultRedirect->setPath('*/*/index');
             return $resultRedirect;
         }
-
+        $logger->info("Calling file again.");
         /** @var \ParadoxLabs\Subscriptions\Model\Subscription $subscription */
         $subscription = $this->registry->registry('current_subscription');
 
@@ -109,6 +129,10 @@ class ChangeStatus extends View
 
             $subscription->setStatus($newStatus);
             $this->subscriptionRepository->save($subscription);
+
+            // ===================== Subscription Status Change Notification Email Start ======================================//
+            $this->sendSubscriptionStatusChangeEmail($subscription, $newStatus);
+            // ===================== Subscription Status Change Notification Email End ======================================= //
 
             $this->messageManager->addSuccessMessage(
                 __(
@@ -150,4 +174,74 @@ class ChangeStatus extends View
 
         return $newStatus;
     }
+
+    public function sendSubscriptionStatusChangeEmail($subscription, $newStatus)
+    {
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/subscriptions_custom_email.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+
+        try{
+
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $customer = $objectManager->get('Magento\Customer\Model\CustomerFactory')->create()->load($subscription->getData('customer_id'));
+            $quote    = $objectManager->get('Magento\Quote\Model\QuoteFactory')->create()->load($subscription->getData('quote_id'));
+            $items    = $quote->getAllItems();
+
+            $productName = "";
+            foreach ($quote->getAllItems() as $item) {
+                $productName = $item->getName();
+            }
+
+            if($newStatus == 'paused')
+            {
+                $templateId = 1000045;
+            }
+            elseif($newStatus == 'active')
+            {
+                $templateId = 1000046;
+            }
+            elseif($newStatus == 'canceled')
+            {
+                $templateId = 1000047;
+            }
+            $templateVars = [
+                'customer_name'   => $customer->getFirstname().' '.$customer->getLastname(),
+                'today_date'      => date('F d Y'),
+                'status'          => $newStatus,
+                'product_name'    => $productName
+            ];
+
+
+            $fromEmail = $this->scopeConfig->getValue("trans_email/ident_sales/email",\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+            $fromName = $this->scopeConfig->getValue("trans_email/ident_sales/name",\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+            $toEmail = $customer->getEmail();
+            $storeId = $this->storeManager->getStore()->getStoreId();
+            $from = ['email' => $fromEmail, 'name' => $fromName];
+
+            $this->inlineTranslation->suspend();
+            $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+            $templateOptions = [
+                'area' => \Magento\Framework\App\Area::AREA_ADMINHTML,
+                'store' => $storeId
+            ];
+
+
+            $transport = $this->transportBuilder->setTemplateIdentifier($templateId, $storeScope)
+                ->setTemplateOptions($templateOptions)
+                ->setTemplateVars($templateVars)
+                ->setFrom($from)
+                ->addTo($toEmail)
+                ->getTransport();
+
+            $transport->sendMessage();
+            $this->inlineTranslation->resume();
+            $logger->info('Subscription email sent successfully.');
+
+        }catch(\Exception $e){
+            $logger->info('Error while sending email '.$e->getMessage());
+        }
+
+    }
 }
+

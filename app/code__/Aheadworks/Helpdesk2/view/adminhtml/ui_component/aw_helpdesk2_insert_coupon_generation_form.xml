@@ -1,0 +1,103 @@
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_insert_coupon_generation_form.aw_helpdesk2_insert_coupon_generation_form_data_source</item>
+            <item name="deps" xsi:type="string">aw_helpdesk2_insert_coupon_generation_form.aw_helpdesk2_insert_coupon_generation_form_data_source</item>
+        </item>
+        <item name="config" xsi:type="array">
+            <item name="ajaxSave" xsi:type="boolean">true</item>
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">aw_helpdesk2_insert_coupon_generation_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="aw_helpdesk2_insert_coupon_generation_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aheadworks\Helpdesk2\Ui\DataProvider\ThirdParty\Aheadworks\CouponCodeGenerator\CouponGenerateDataProvider</argument>
+            <argument name="name" xsi:type="string">aw_helpdesk2_insert_coupon_generation_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">ticket_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="aw_helpdesk2/thirdparty_aheadworks_coupongenerator/generate"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Aheadworks_Helpdesk2/js/ui/form/components/ticket/coupon-generation-provider</item>
+                <item name="reloadAfterSubmit" xsi:type="string">aw_helpdesk2_insert_thread_listing.aw_helpdesk2_insert_thread_listing</item>
+                <item name="externalSource" xsi:type="string">aw_helpdesk2_ticket_view_form.aw_helpdesk2_ticket_view_form_data_source</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+            <label/>
+        </settings>
+        <field name="rule_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Helpdesk2\Model\Source\ThirdPartyModule\Aheadworks\CouponCodeGenerator\RuleList</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shopping Cart Price Rule</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="send_separate_email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Send Coupon in a Separate email</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">checkbox</item>
+                    <item name="additionalClasses" xsi:type="string">send_separate_email</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                    </item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </field>
+        <button name="generate_coupon">
+            <settings>
+                <title translate="true">Generate</title>
+            </settings>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">button</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="disabled" xsi:type="string">!${ $.provider }:data.is_allowed_to_update_ticket</item>
+                    </item>
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.ns }.${ $.ns }</item>
+                            <item name="actionName" xsi:type="string">save</item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.parentName }.rule_id</item>
+                            <item name="actionName" xsi:type="string">reset</item>
+                        </item>
+                        <item name="2" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.parentName }.send_separate_email</item>
+                            <item name="actionName" xsi:type="string">reset</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </button>
+    </fieldset>
+</form>

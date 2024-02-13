@@ -1,0 +1,44 @@
+<?php
+/** @var $block \Aheadworks\Helpdesk2\Block\Adminhtml\Notification\MigrationPopup */
+?>
+<div id="aw-helpdesk2-migration-notification" style="display: none">
+    <div class="content">
+        <p><?= $block->escapeHtml(__('Thank you for upgrading Aheadworks Help Desk to version 2.')); ?></p>
+        <p><?= /* @noEscape */ __('Now you <strong>should perform</strong> data migration. Follow the instructions here:'); ?>
+            <a target="_blank" href="https://aheadworks.atlassian.net/wiki/spaces/EUDOC/pages/2479718401/Help+Desk+Ultimate+2+-+Magento+2#HelpDeskUltimate2-Magento2-MigratingticketsfromHelpDeskUltimate(version1.*.*)forMagento2">
+                <?= $block->escapeHtml(__('Migration guide')); ?>
+            </a>
+        </p>
+    </div>
+</div>
+<script>
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal",
+        "domReady!"
+    ], function($) {
+        $('#aw-helpdesk2-migration-notification').modal({
+            autoOpen: true,
+            modalClass: "modal-system-messages",
+            title: "<?= $block->escapeHtmlAttr(__('Perform Help Desk data migration')); ?>",
+            responsive: true,
+            buttons: [
+                {
+                    text: "<?= $block->escapeHtmlAttr(__("Close and don't show again")); ?>",
+                    class: "aw-helpdesk2-migration-notification-close-do-not-show-again",
+                    click: function () {
+                        this.closeModal();
+                        $.ajax({
+                            url: '<?= /* @noEscape */ $block->getDoNotShowAgainUrl(); ?>',
+                            type: "POST",
+                            dataType: 'json',
+                            data: {
+                                doNotShowAgain: 1
+                            }
+                        })
+                    }
+                }
+            ]
+        });
+    });
+</script>

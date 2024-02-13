@@ -1,0 +1,35 @@
+<?php
+/*
+*  $block = \TrackingActivityLog\TrackAdminUser\Block\Adminhtml\Index
+*
+*/
+
+?>
+<?php
+      $activityLogs = $block->getListLogs();
+?>
+
+<div id="activity_logs">    
+    <h2><strong>Activity</strong></h2>
+    <div class="activity_logs">
+        <?php foreach ($activityLogs as $key => $value): ?>
+        <div class="admin__field component">
+            <div class="control">               
+                    <span><strong>Components:</strong> <?php echo $value->getAction(); ?></span>&nbsp;<span><?php echo $value->getEntity(); ?></span>                
+            </div>
+            <div>by <?php echo $value->getUserName() ?> | <a href="<?php echo $this->getUrl('trackAdminUser/index/view').'id/'.$value->getId() ?>">View Details</a></div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<style>
+    .activity_logs{
+        padding: 20px;
+        font-size: 16px;
+    }
+    .component{
+        border-bottom: solid 1px gray;
+        padding-bottom: 10px;
+    }
+
+</style>

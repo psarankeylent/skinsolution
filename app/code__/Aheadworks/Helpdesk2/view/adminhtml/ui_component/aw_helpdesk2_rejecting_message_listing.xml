@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_rejecting_message_listing.aw_helpdesk2_rejecting_message_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>aw_helpdesk2_rejecting_message_columns</spinner>
+        <deps>
+            <dep>aw_helpdesk2_rejecting_message_listing.aw_helpdesk2_rejecting_message_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_rejecting_message_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::rejected_messages</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="aw_helpdesk2_rejecting_message_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <title translate="true">Delete Emails</title>
+                        <message translate="true">Are you sure you want to delete selected emails?</message>
+                    </confirm>
+                    <url path="aw_helpdesk2/rejecting_message/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="markAsUnprocessed">
+                <settings>
+                    <confirm>
+                        <title translate="true">Mark Email as unprocessed</title>
+                        <message translate="true">Are you sure you want to mark selected emails as unprocessed?</message>
+                    </confirm>
+                    <url path="aw_helpdesk2/rejecting_message/massMarkAsUnprocessed"/>
+                    <type>markAsUnprocessed</type>
+                    <label translate="true">Mark Email as unprocessed</label>
+                </settings>
+            </action>
+            <action name="process">
+                <settings>
+                    <confirm>
+                        <title translate="true">Convert to Ticket</title>
+                        <message translate="true">Are you sure you want to submit selected emails?</message>
+                    </confirm>
+                    <url path="aw_helpdesk2/rejecting_message/massProcess"/>
+                    <type>process</type>
+                    <label translate="true">Convert to Ticket</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="aw_helpdesk2_rejecting_message_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>id</indexField>
+                <preserveSelectionsOnFilter>true</preserveSelectionsOnFilter>
+            </settings>
+        </selectionsColumn>
+        <column name="id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="type" component="Magento_Ui/js/grid/columns/select" sortOrder="15">
+            <settings>
+                <options class="Aheadworks\Helpdesk2\Model\Source\RejectedMessage\Type"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Source</label>
+            </settings>
+        </column>
+        <column name="from" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">From</label>
+            </settings>
+        </column>
+        <column name="subject" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Subject</label>
+            </settings>
+        </column>
+        <column name="content" sortOrder="40"
+                class="Aheadworks\Helpdesk2\Ui\Component\Listing\Rejection\Message\Columns\ContentColumn"
+                component="Aheadworks_Helpdesk2/js/ui/grid/columns/tooltip">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="messageContent" xsi:type="string">content_tooltip</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Content</label>
+            </settings>
+        </column>
+        <column name="reject_pattern_id" component="Magento_Ui/js/grid/columns/select" sortOrder="50">
+            <settings>
+                <options class="Aheadworks\Helpdesk2\Model\Source\RejectingPattern\PatternList"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Rejected by Pattern</label>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="60" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Date</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

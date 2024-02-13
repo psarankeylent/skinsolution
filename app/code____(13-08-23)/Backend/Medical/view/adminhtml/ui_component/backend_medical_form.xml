@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">backend_medical_form.medical_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Backend\Medical\Block\Adminhtml\Medical\Edit\BackButton"/>
+            <!-- <button name="delete" class="Backend\Medical\Block\Adminhtml\Medical\Edit\DeleteButton"/>
+            <button name="save_and_continue" class="Backend\Medical\Block\Adminhtml\Medical\Edit\SaveAndContinueButton"/>-->
+            <button name="save" class="Backend\Medical\Block\Adminhtml\Medical\Edit\SaveButton"/>
+
+        </buttons>
+        <namespace>backend_medical_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>backend_medical_form.medical_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="medical_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="medical_form_data_source" class="Backend\Medical\Model\Medical\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label>Edit Medical</label>
+        </settings>
+         <field name="question_text" formElement="textarea" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Medical</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Question</label>
+                <dataScope>question_text</dataScope>
+                <disabled>1</disabled>
+            </settings>
+        </field>
+        <field name="response" formElement="textarea" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Medical</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Response</label>
+                <dataScope>response</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="updated_at" formElement="hidden" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Medical</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Response</label>
+                <dataScope>updated_at</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

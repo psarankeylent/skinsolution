@@ -1,0 +1,27 @@
+<div class="text" visible="visible">
+    <label class="label" text="$data.getLabel()"></label>
+    <div class="value">
+        <div class="rating vote" css="$data.additionalClasses">
+            <each args="data: stars, as: 'star'">
+                <input type="radio"
+                       ko-checked="$parent.value"
+                       ko-disabled="$parent.disabled"
+                       data-bind="attr: {
+                            name: star.name,
+                            id: star.id,
+                            value: star.value
+                       }"
+                />
+                <label data-bind="attr: {
+                    for: star.id,
+                    class: star.labelClass,
+                    disabled: $parent.disabled
+                }">
+                    <span text="star.title"/>
+                </label>
+            </each>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,68 @@
+//
+//  Tooltip for grid
+//  _____________________________________________
+
+.aw-helpdesk2-tooltip {
+    &.data-grid-cell-content {
+        overflow: inherit;
+        position: relative;
+        max-width: inherit;
+        margin-top: 0;
+
+        .admin__field-tooltip-content {
+            padding: 10px;
+            border-radius: 5px;
+            width: 350px;
+
+            .inner {
+                .lib-vendor-prefix-display(flex);
+                .lib-css(justify-content, space-between, 1);
+            }
+
+            .author {
+                border-bottom: solid thin #E2E2E2;
+                margin-bottom: 10px;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+            .date {
+                font-size: 14px;
+                font-weight: 600;
+                text-align: right;
+            }
+
+            .content {
+                text-align: justify;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+
+            &.admin-message {
+                .lib-css(background-color, #DBF0D1);
+                .lib-css(border, thin solid @color-black);
+
+                &:after {
+                    .lib-css(border-top-color, #DBF0D1);
+                }
+
+                &:before {
+                    .lib-css(border-top-color, @color-black);
+                }
+            }
+
+            &.customer-message {
+                .lib-css(background-color, #D3F1FF);
+                .lib-css(border, thin solid @color-black);
+
+                &:after {
+                    .lib-css(border-top-color, #D3F1FF);
+                }
+
+                &:before {
+                    .lib-css(border-top-color, @color-black);
+                }
+            }
+        }
+    }
+}

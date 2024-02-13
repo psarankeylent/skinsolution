@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+    <virtualType name="Ssmd\CustomerPhotos\Model\ResourceModel\CustomerPhotos\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">customer_photos</argument>
+            <argument name="resourceModel" xsi:type="string">Ssmd\CustomerPhotos\Model\ResourceModel\CustomerPhotos\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="backend_photos_listing_data_source" xsi:type="string">Ssmd\CustomerPhotos\Model\ResourceModel\CustomerPhotos\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

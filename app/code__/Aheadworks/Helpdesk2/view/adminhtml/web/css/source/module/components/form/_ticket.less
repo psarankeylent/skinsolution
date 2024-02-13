@@ -1,0 +1,924 @@
+//
+//  Variables
+//  _____________________________________________
+@aw-hd2-icon__default__color: #565754;
+@aw-hd2-icon__hover__color: #0a0a0a;
+@aw-hd2-ticket__border-color: #E3E3E3;
+@aw-hd2-ticket-inputs__border-color: #ADADAD;
+@aw-hd2-ticket__border: 1px solid @aw-hd2-ticket__border-color;
+@aw-hd2-ticket-inputs__border: 1px solid @aw-hd2-ticket-inputs__border-color;
+@aw-hd2-ticket__background-color: #F7F7F7;
+@aw-hd2-ticket__color: #303030;
+
+@aw-hd2-ticket-panel-preview-status__color: #ffffff;
+@aw-hd2-ticket-panel-preview-priority__color: #ffffff;
+
+@aw-hd2-ticket-priority-if-time__background-color: #ECECEC;
+@aw-hd2-ticket-priority-todo__background-color: #ECECEC;
+@aw-hd2-ticket-priority-asap__background-color: #EB5202;
+@aw-hd2-ticket-priority-urgent__background-color: #D10505;
+
+@aw-hd2-ticket-priority-if-time__color: #585858;
+@aw-hd2-ticket-priority-todo__color: #585858;
+@aw-hd2-ticket-priority-asap__color: @aw-hd2-ticket-panel-preview-priority__color;
+@aw-hd2-ticket-priority-urgent__color: @aw-hd2-ticket-panel-preview-priority__color;
+
+@aw-hd2-ticket-priority__border: 1px solid #9B9B9B;
+
+@aw-hd2-ticket-status-new__background-color: #5BD100;
+@aw-hd2-ticket-status-open__background-color: #ECECEC;
+@aw-hd2-ticket-status-wfc__background-color: #ECECEC;
+@aw-hd2-ticket-status-closed__background-color: #6F6F6F;
+
+@aw-hd2-ticket-status-new__color: @aw-hd2-ticket-panel-preview-status__color;
+@aw-hd2-ticket-status-open__color: #585858;
+@aw-hd2-ticket-status-wfc__color: #585858;
+@aw-hd2-ticket-status-closed__color: @aw-hd2-ticket-panel-preview-status__color;
+
+@aw-hd2-ticket-status__border: 1px solid #9B9B9B;
+
+@aw-hd2-ticket__active__color: #eb5202;
+@aw-hd2-ticket-message-date__color: #524D49;
+@aw-hd2-ticket-tab-title__active__background-color: #ffffff;
+@aw-hd2-ticket-tab-content__background-color: #ffffff;
+@aw-hd2-ticket-tab-admin-message__color: #DBF0D1;
+@aw-hd2-ticket-tab-customer-message__color: #D3F1FF;
+@aw-hd2-ticket-tab-admin-internal__color: #E6DDFF;
+@aw-hd2-ticket-tab-system-message__color: #FFF3B2;
+//
+//  Ticket main area
+//  _____________________________________________
+.create-ticket-attach-files {
+    margin-top: 3rem !important;
+}
+
+.aw-helpdesk2-view-ticket-wrapper {
+    > .admin__field-complex-elements {
+        .lib-vendor-prefix-display(flex);
+        .lib-css(justify-content, space-between, 1);
+    }
+
+    .action-edit {
+        .lib-button-reset();
+        .lib-button-icon(
+            @_icon-font-content: @icon-edit__content,
+            @_icon-font: @icons-admin__font-name,
+            @_icon-font-size: 12px,
+            @_icon-font-text-hide: true,
+            @_icon-font-color: @aw-hd2-icon__default__color,
+            @_icon-font-color-hover: @aw-hd2-icon__hover__color,
+            @_icon-font-vertical-align: top,
+            @_icon-font-line-height: 1
+        );
+    }
+
+    input[type="text"], textarea {
+        .lib-css(border, @aw-hd2-ticket-inputs__border);
+    }
+
+    .lib-css(color, @aw-hd2-ticket__color);
+}
+
+.aw-helpdesk2-view-main {
+    width: 100%;
+}
+
+.aw-helpdesk2-view-ticket-panel {
+    > .admin__field-complex-elements {
+        .lib-vendor-prefix-display(flex);
+        .lib-css(justify-content, space-between, 1);
+        .lib-vendor-box-align(center);
+    }
+
+    .lib-css(border, @aw-hd2-ticket__border);
+    .lib-css(background-color, @aw-hd2-ticket__background-color);
+    padding: 10px 20px;
+    margin-bottom: 1.5rem;
+
+    .admin__field-complex-elements {
+        .admin__field {
+            margin-top: 0;
+
+            .admin__field-label {
+                .lib-css(color, @aw-hd2-ticket__color);
+                font-weight: normal;
+                margin-bottom: 5px;
+                display: block;
+                line-height: 1;
+                text-align: left;
+            }
+        }
+    }
+
+    .ticket-priority {
+        .preview {
+            padding: 5px 15px;
+            font-weight: normal;
+            display: inline-block;
+
+            &[data-color="1"] {
+                .lib-css(background-color, @aw-hd2-ticket-priority-if-time__background-color);
+                .lib-css(color, @aw-hd2-ticket-priority-if-time__color);
+                .lib-css(border, @aw-hd2-ticket-priority__border);
+            }
+            &[data-color="2"] {
+                .lib-css(background-color, @aw-hd2-ticket-priority-todo__background-color);
+                .lib-css(color, @aw-hd2-ticket-priority-todo__color);
+                .lib-css(border, @aw-hd2-ticket-priority__border);
+            }
+            &[data-color="3"] {
+                .lib-css(background-color, @aw-hd2-ticket-priority-asap__background-color);
+                .lib-css(color, @aw-hd2-ticket-priority-asap__color);
+            }
+            &[data-color="4"] {
+                .lib-css(background-color, @aw-hd2-ticket-priority-urgent__background-color);
+                .lib-css(color, @aw-hd2-ticket-priority-urgent__color);
+            }
+        }
+    }
+
+    .ticket-status {
+        .preview {
+            padding: 5px 15px;
+            font-weight: normal;
+            display: inline-block;
+
+            &[data-color="1"] {
+                .lib-css(background-color, @aw-hd2-ticket-status-new__background-color);
+                .lib-css(color, @aw-hd2-ticket-status-new__color);
+            }
+            &[data-color="2"] {
+                .lib-css(background-color, @aw-hd2-ticket-status-open__background-color);
+                .lib-css(color, @aw-hd2-ticket-status-open__color);
+                .lib-css(border, @aw-hd2-ticket-status__border);
+            }
+            &[data-color="3"] {
+                .lib-css(background-color, @aw-hd2-ticket-status-wfc__background-color);
+                .lib-css(color, @aw-hd2-ticket-status-wfc__color);
+                .lib-css(border, @aw-hd2-ticket-status__border);
+            }
+            &[data-color="4"] {
+                .lib-css(background-color, @aw-hd2-ticket-status-closed__background-color);
+                .lib-css(color, @aw-hd2-ticket-status-closed__color);
+            }
+        }
+    }
+
+    .preview {
+        .lib-css(border-radius, 2px, 1);
+        line-height: 1;
+        font-size: 14px;
+        padding: 5px 0;
+        display: inline-block;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    .control {
+        line-height: 1;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+
+    .aw-helpdesk2__external-link {
+        button.copy {
+            .lib-button-reset();
+            line-height: 1;
+            vertical-align: middle;
+            margin-left: 5px;
+
+            span {
+                display: none;
+            }
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 11px;
+                height: 12px;
+                line-height: 1;
+                vertical-align: top;
+                background-size: 100% 100%;
+                .lib-css(background-repeat, no-repeat);
+                .lib-css(background-size, 100% 100%, 1);
+                .lib-css(background-image, url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMC44NDgiIGhlaWdodD0iMTEuODM0IiB2aWV3Qm94PSIwIDAgMTAuODQ4IDExLjgzNCI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6IzU2NTc1NDt9PC9zdHlsZT48L2RlZnM+PHBhdGggY2xhc3M9ImEiIGQ9Ik00LjMxNSwxMTMuODE4YTIuMSwyLjEsMCwwLDEtMi4xLTIuMXYtNS4wNTRIMS4zNTZBMS4zNTcsMS4zNTcsMCwwLDAsMCwxMDguMDI0djYuNjU3YTEuMzU3LDEuMzU3LDAsMCwwLDEuMzU2LDEuMzU2SDcuNTE5YTEuMzU3LDEuMzU3LDAsMCwwLDEuMzU2LTEuMzU2di0uODYzWm0wLDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTEwNC4yMDMpIi8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0xMzUuODg5LDEuMzU2QTEuMzU2LDEuMzU2LDAsMCwwLDEzNC41MzMsMGgtNS4xNzdBMS4zNTYsMS4zNTYsMCwwLDAsMTI4LDEuMzU2VjcuNTE5YTEuMzU2LDEuMzU2LDAsMCwwLDEuMzU2LDEuMzU2aDUuMTc3YTEuMzU2LDEuMzU2LDAsMCwwLDEuMzU2LTEuMzU2Wm0wLDAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjUuMDQyKSIvPjwvc3ZnPg=="));
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-view-message-area {
+    .lib-css(border, @aw-hd2-ticket__border);
+    .lib-css(background-color, @aw-hd2-ticket__background-color);
+    margin-bottom: 15px;
+
+    .aw-helpdesk2-view-message-content {
+        margin: 0;
+    }
+}
+
+.aw-helpdesk2-view-message-subject {
+    padding: 15px;
+    .lib-css(border-bottom, @aw-hd2-ticket__border);
+}
+
+.aw-helpdesk2-view-message-content {
+    padding: 15px;
+
+    &.admin__field {
+        margin: 0;
+    }
+}
+
+.aw-helpdesk2-view-message-control-area {
+    > .admin__field-complex-elements {
+        .lib-vendor-prefix-display(flex);
+        .lib-css(justify-content, space-between, 1);
+        .lib-vendor-box-align(flex-start);
+    }
+
+    padding: 0 15px 15px 15px;
+}
+
+.aw-helpdesk2-view-message-buttons {
+    > .admin__field-complex-elements {
+        .lib-vendor-prefix-display(flex);
+        .lib-vendor-box-align(center);
+        .lib-css(justify-content, flex-end, 1);
+    }
+
+    .admin__field-group-additional {
+        margin: 0 0 0 10px;
+    }
+}
+
+.aw-helpdesk2-view-message-attachments {
+    > .admin__field-complex-elements {
+        .lib-vendor-prefix-display(flex);
+        .lib-vendor-box-align(flex-start);
+        .lib-css(justify-content, flex-start, 1);
+    }
+
+    .admin__field {
+        margin: 0 10px 0 0;
+    }
+
+    .file-uploader {
+        .file-uploader-area {
+            .file-uploader-button {
+                .lib-button-reset();
+                padding-left: 30px;
+                color: #317BD4;
+                font-size: 13px;
+                font-size: 0;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 19px;
+                    height: 17px;
+                    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MCA0MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDAgNDA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojNDc4OEM3O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTTMwLDExTDE2LjIxMSwyNy42NDIgIEMxNS41NzgsMjguNDY3LDE0LjU4MiwyOSwxMy40NjIsMjlDMTEuNTUsMjksMTAsMjcuNDUsMTAsMjUuNTM4YzAtMC44MTEsMC4yNzktMS41NTcsMC43NDYtMi4xNDdMMjcuMDQ0LDQuMTcgIEMyOC4xODYsMi44NDEsMjkuODgsMiwzMS43NjksMkMzNS4yMSwyLDM4LDQuNzksMzgsOC4yMzFjMCwxLjQwMy0wLjQ2MywyLjY5Ny0xLjI0NiwzLjczOGwtMTkuMjYsMjMuMjYyICBDMTUuODU2LDM2LjkzOCwxMy41NTIsMzgsMTEsMzhjLTQuOTcxLDAtOS00LjAyOS05LTljMC0xLjc4NCwwLjUxOS0zLjQ0OCwxLjQxNS00Ljg0N0wyMCw1Ii8+PC9zdmc+");
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    left: 4px;
+                    top: 2px;
+                    .lib-rotate(180deg);
+                }
+
+                &::after {
+                    content: 'Attach files';
+                    color: #317BD4;
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .file-uploader-summary {
+            display: block;
+            padding: 0 30px 0 0;
+            position: relative;
+            margin-top: 10px;
+
+            .file-uploader-placeholder {
+                display: none;
+            }
+        }
+    }
+
+    .quick-response {
+        max-width: 26rem;
+    }
+}
+
+.aw-helpdesk2-tabs {
+    overflow: hidden;
+     padding-top: 15px;
+    .lib-css(border, @aw-hd2-ticket__border);
+
+    .tab-title  {
+        float: left;
+        width: auto;
+        min-width: 80px;
+        padding: 1px 15px 0 15px;
+        line-height: 52px;
+        margin: 0 0 0 5px;
+        text-align: center;
+        .lib-css(box-sizing, border-box, 1);
+        position: relative;
+        z-index: 2;
+        .lib-css(border, @aw-hd2-ticket__border);
+        .lib-css(background-color, @aw-hd2-ticket__background-color);
+        font-size: 14px;
+        cursor: pointer;
+
+        &.active {
+            padding-top: 0;
+            .lib-css(border-top, 2px solid @aw-hd2-ticket__active__color);
+            .lib-css(border-bottom-color, @aw-hd2-ticket-tab-title__active__background-color);
+            .lib-css(background-color, @aw-hd2-ticket-tab-title__active__background-color);
+        }
+
+        &:first-child {
+           margin-left: 15px;
+        }
+    }
+
+    .aw-helpdesk2-tab {
+        .lib-css(background-color, @aw-hd2-ticket-tab-content__background-color);
+        margin-top: 54px;
+        padding: 15px;
+        border: 0;
+        .lib-css(border-top, @aw-hd2-ticket__border);
+        .lib-css(box-sizing, border-box, 1);
+        float: right;
+        margin-left: -100%;
+        width: 100%;
+        position: relative;
+
+        .list-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .list-item {
+                margin-bottom: 10px;
+
+                .item-info {
+                    padding: 15px;
+                    position: relative;
+                    .lib-css(border, @aw-hd2-ticket__border);
+
+                    &.admin-message {
+                        .lib-css(background-color, #DBF0D1);
+                        .lib-css(border-left, 2px solid #96C378);
+                    }
+
+                    &.customer-message {
+                        .lib-css(background-color, #D3F1FF);
+                        .lib-css(border-left, 2px solid #80C8E8);
+                    }
+
+                    &.admin-internal {
+                        .lib-css(background-color,#E6DDFF);
+                        .lib-css(border-left, 2px solid #BCA3FF);
+                    }
+
+                    &.system-message {
+                        .lib-css(background-color, #FFF3B2);
+                        .lib-css(border-left, 2px solid #DEC957);
+
+                        /*.lib-vendor-prefix-display(flex);
+                        .lib-vendor-box-align(center);
+
+                        .aw-helpdesk2-ticket-message-content {
+                            margin: 0 5px auto 15px;
+                            width: auto;
+                            overflow: inherit;
+                            display: block;
+                            .lib-vendor-prefix-order(2);
+                        }
+
+                        .aw-helpdesk2-ticket-message-author-name {
+                            font-size: 14px;
+                            width: auto;
+                            overflow: inherit;
+                            display: block;
+                            .lib-vendor-prefix-order(1);
+                        }
+
+                        .aw-helpdesk2-ticket-message-date {
+                            margin-left: auto;
+                            font-size: 14px;
+                            width: auto;
+                            overflow: inherit;
+                            display: block;
+                            .lib-vendor-prefix-order(3);
+                        }*/
+                    }
+
+                    &.escalation-message {
+                        .lib-css(background-color, #F7DCDC);
+                        .lib-css(border-left, 2px solid #e3a4ab);
+                    }
+
+                    &.ticket-lock-message {
+                        .lib-css(background-color, #D3D3D3);
+                        .lib-css(border-left, 2px solid #A9A9A9);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-ticket-message-author-name {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.aw-helpdesk2-ticket-message-date {
+    .lib-css(color, @aw-hd2-ticket-message-date__color);
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.aw-helpdesk2-ticket-message-quote-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.aw-helpdesk2-ticket-message-content {
+    margin-top: 20px;
+    font-size: 14px;
+    border: none;
+    box-sizing: initial;
+}
+
+//
+//  Ticket sidebar
+//  _____________________________________________
+
+.aw-helpdesk2-view-ticket-left-side {
+    min-width: 300px;
+    width: 30%;
+    max-width: 340px;
+    padding-right: 40px;
+    .lib-css(box-sizing, content-box, 1);
+
+    .admin__control-select {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .admin__collapsible-block-wrapper.fieldset-wrapper {
+        .lib-css(border, none);
+        margin-bottom: 15px;
+
+        &.aw-helpdesk2-view-ticket-customer-orders {
+            .admin__fieldset-wrapper-content {
+                .admin__fieldset {
+                    padding: 15px 0;
+                }
+            }
+        }
+
+        .fieldset-wrapper-title {
+            .lib-css(border, @aw-hd2-ticket__border);
+
+            .admin__collapsible-title {
+                padding: 20px 30px 20px 15px;
+            }
+        }
+
+        .admin__fieldset-wrapper-content {
+            &.admin__collapsible-content {
+                .lib-css(border, @aw-hd2-ticket__border);
+                .lib-css(border-top-width, 0);
+                .lib-css(background-color, @aw-hd2-ticket__background-color);
+            }
+
+            .admin__fieldset {
+                margin: 0;
+                padding: 15px;
+
+                .admin__fieldset {
+                    padding: 0;
+                }
+
+                .admin__control-text {
+                    &._has-datepicker {
+                        max-width: 100px;
+
+                        + .ui-datepicker-trigger {
+                            position: static;
+                        }
+                    }
+                }
+
+                .file-uploader-preview {
+                    margin-right: 0;
+                }
+
+                .admin__field {
+                    margin: 0;
+
+                    /*&.cc-recipients {
+                        display: block;
+
+                        .admin__field-complex-element-preview {
+                            .preview {
+                                float: left;
+                                margin-right: 5px;
+                                width: calc(~'(100%) - 2rem');
+                                line-height: 2rem;
+                            }
+
+                            .control {
+                                float: right;
+                            }
+                        }
+                    }*/
+                }
+            }
+        }
+    }
+}
+
+
+.aw-helpdesk2-view-ticket-notes {
+    .admin__fieldset-wrapper-content {
+        .admin__fieldset {
+            text-align: right;
+
+            .admin__field {
+                .admin__field-control {
+                    float: none;
+                    width: 100%;
+                    margin: 0 0 20px 0;
+                    padding: 0;
+                    text-align: left;
+                    .lib-css(box-sizing, border-box, 1);
+                }
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-view-ticket-customer-summary {
+    .admin__field {
+        &.cc-recipients {
+            display: block;
+
+            .admin__field-label {
+                margin-bottom: 10px;
+            }
+
+            .admin__field-control {
+                .lib-css(justify-content, flex-start, 1);
+                .lib-css(box-sizing, border-box, 1);
+                text-align: left;
+
+                .admin__field-complex-element-preview {
+                    word-break: break-word;
+                }
+            }
+
+            .admin__field-error {
+                position: absolute;
+                top: 75px;
+                z-index: 10;
+            }
+        }
+
+        .admin__field-control {
+            .customer-rating {
+                .lib-rating-summary();
+                padding-right: 10px;
+
+                .rating-result {
+                    width: 100%;
+
+                    &::before,
+                    & > span::before {
+                        letter-spacing: -6px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-view-ticket-customer-summary,
+.aw-helpdesk2-view-ticket-customer-attributes {
+    .admin__field {
+        .lib-vendor-prefix-display(flex);
+        .lib-css(justify-content, space-between, 1);
+        .lib-vendor-box-align(center);
+        .lib-css(border-bottom, @aw-hd2-ticket__border);
+        padding: 15px 0;
+
+        &._required._error {
+            .admin__field-control {
+                .lib-vendor-prefix-flex-wrap(wrap);
+            }
+        }
+
+        &:last-child {
+            .lib-css(border-bottom, none);
+            padding-bottom: 0;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        .admin__field-label {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            float: none;
+            line-height: 1;
+            text-align: left;
+        }
+
+        .admin__field-control {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            float: none;
+            line-height: 1;
+            text-align: right;
+            .lib-vendor-prefix-display(flex);
+            .lib-css(justify-content, flex-end, 1);
+
+            .admin__field-value {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-view-ticket-customer-tickets {
+    .admin__data-grid-outer-wrap {
+        min-height: 2rem;
+    }
+
+    .list-items {
+        list-style: none;
+        padding: 0;
+        margin: 0 -15px;
+
+        .list-item {
+            padding: 15px;
+            .lib-css(border-bottom, @aw-hd2-ticket__border);
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            .item-info {
+                .lib-vendor-box-align(flex-start);
+                .lib-vendor-prefix-display(flex);
+                .lib-css(justify-content, space-between, 1);
+                .lib-vendor-prefix-flex-wrap(wrap);
+            }
+
+            .data-grid-cell-content {
+                &.subject {
+                    width: 100%;
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                }
+
+                &.ticket-id {
+                    width: 50%;
+                    text-align: left;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+
+                &.status {
+                    width: 50%;
+                    text-align: right;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+
+                &.date-created {
+                    width: 100%;
+                    text-align: left;
+                    font-size: 12px;
+                    margin-bottom: 10px;
+                }
+
+                &.agent-id {
+                    width: 50%;
+                    text-align: left;
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                }
+
+                &.department_id {
+                    width: 50%;
+                    text-align: right;
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        .list-no-data {
+            text-align: center;
+        }
+    }
+}
+
+.aw-helpdesk2-view-ticket-customer-attributes {
+    .file-uploader-area, .actions {
+        display: none;
+    }
+}
+
+.aw-helpdesk2-view-ticket-customer-orders {
+    .list-items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .list-no-data {
+            text-align: center;
+        }
+
+        .list-item {
+            padding: 15px;
+            .lib-css(border-bottom, @aw-hd2-ticket__border);
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            &:last-child {
+                .lib-css(border-bottom, none);
+                padding-bottom: 0;
+            }
+        }
+
+        .item-info {
+            .lib-vendor-prefix-display(flex);
+            .lib-css(justify-content, space-between, 1);
+            .lib-vendor-box-align(center);
+            .lib-vendor-prefix-flex-wrap(wrap);
+
+            .data-grid-cell-content {
+                width: 50%;
+                padding: 3px 0;
+            }
+
+            .order-id {
+                .lib-vendor-prefix-order(1);
+            }
+
+            .status {
+                .lib-vendor-prefix-order(2);
+                text-align: right;
+            }
+
+            .date-created {
+                .lib-vendor-prefix-order(3);
+            }
+
+            .grand-total {
+                .lib-vendor-prefix-order(4);
+                text-align: right;
+            }
+        }
+    }
+
+    .aw-order-status {
+        &[data-color="closed"] {
+            color: #6f6f6f;
+        }
+
+        &[data-color="processing"] {
+            color: #EB5202;
+        }
+
+        &[data-color="pending"] {
+            color: #585858;
+        }
+
+        &[data-color="complete"] {
+            color: #5BD100;
+        }
+    }
+
+    .admin__field-group-additional {
+        padding: 0 15px;
+    }
+}
+
+.aw-helpdesk2-view-ticket-customer-tickets,
+.aw-helpdesk2-view-ticket-customer-orders {
+    .admin__field {
+        .admin__field-control {
+            margin: 0;
+            padding-top: 15px;
+            float: none;
+            width: 100%;
+            text-align: right;
+
+            .action-additional {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-view-ticket-coupon-code-generation {
+    .admin__fieldset {
+        .admin__field {
+            .admin__field-label {
+                float: none;
+                margin: 0 0 10px 0;
+                width: 100%;
+                text-align: left;
+            }
+
+            .admin__field-control {
+                float: none;
+                margin: 0 0 10px 0;
+                width: 100%;
+            }
+        }
+
+        .send_separate_email {
+            .lib-vendor-prefix-display(flex);
+            .lib-vendor-box-align(center);
+
+            .admin__field-control {
+                text-align: right;
+                width: auto;
+                line-height: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .admin__field-option {
+        padding: 0;
+    }
+}
+
+.aw-helpdesk2-view-ticket-tags {
+    .admin__fieldset {
+        text-align: right;
+
+        .admin__field {
+            .admin__field-label {
+                display: none;
+            }
+
+            .admin__field-control {
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0 0 25px 0;
+                float: none;
+            }
+        }
+    }
+}
+
+.aw-helpdesk2-view-ticket-options {
+    .admin__fieldset {
+        .admin__field {
+            .lib-css(border-bottom, @aw-hd2-ticket__border);
+            padding: 15px 0;
+            margin-bottom: 10px;
+
+            &:last-child {
+                .lib-css(border-bottom, none);
+                padding-bottom: 0;
+            }
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            .admin__field-label {
+                float: none;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                text-align: left;
+            }
+
+            .admin__field-control {
+                float: none;
+                margin: 0;
+                width: 100%;
+            }
+        }
+    }
+}

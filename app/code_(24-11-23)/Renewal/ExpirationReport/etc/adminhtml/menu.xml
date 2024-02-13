@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <add id="Magento_Reports::AdminGrid_Top" title="Custom Reports" translate="title" module="Magento_Reports" sortOrder="40" parent="Magento_Reports::report" resource="Magento_Reports::AdminGrid_Top"/>
+
+        <add id="Renewal_ExpirationReport::renewal_expirationreport" title="Prescription Expiration Report" translate="title" module="Renewal_ExpirationReport" sortOrder="10" parent="Magento_Reports::AdminGrid_Top" action="reports/expirationreport/index" resource="Renewal_ExpirationReport::renewal_expirationreport"/>
+    </menu>
+</config>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_helpdesk2_rejecting_pattern_form.aw_helpdesk2_rejecting_pattern_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Rejecting Patterns</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>aw_helpdesk2_rejecting_pattern_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Back"/>
+            <button name="delete" class="Aheadworks\Helpdesk2\Block\Adminhtml\Rejecting\Pattern\Form\Button\Delete"/>
+            <button name="save" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\Save"/>
+            <button name="save_and_continue" class="Aheadworks\Helpdesk2\Block\Adminhtml\Button\SaveAndContinue"/>
+        </buttons>
+        <deps>
+            <dep>aw_helpdesk2_rejecting_pattern_form.aw_helpdesk2_rejecting_pattern_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aw_helpdesk2_rejecting_pattern_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aw_helpdesk2/rejecting_pattern/save"/>
+        </settings>
+        <aclResource>Aheadworks_Helpdesk2::rejecting_patterns</aclResource>
+        <dataProvider class="Aheadworks\Helpdesk2\Ui\DataProvider\Rejecting\Pattern\FormDataProvider" name="aw_helpdesk2_rejecting_pattern_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label></label>
+        </settings>
+        <field name="title" formElement="input" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Title</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="is_active" formElement="select" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="scope_types" formElement="multiselect" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Scope</label>
+                <dataScope>scope_types</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Aheadworks\Helpdesk2\Model\Source\RejectingPattern\Scope"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="pattern" formElement="input" sortOrder="40">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Pattern</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

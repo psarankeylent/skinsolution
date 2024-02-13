@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="schedule" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<group id="alle_points_cronschedule" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>Alle Points Cron</label>
+				<field id="alle_points_addition_cron" type="text" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Alle Points Addition Cron</label>
+					<backend_model>Ssmd\AlleCustom\Model\Config\Backend\Cron\AlleCustomCronConfig</backend_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

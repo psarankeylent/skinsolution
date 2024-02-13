@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Aheadworks_Helpdesk2:etc/storefront_required_options.xsd">
+    <option name="text" label="Text">
+        <inputType name="field" label="Field"/>
+    </option>
+    <option name="select" label="Select">
+        <inputType name="dropdown" label="Dropdown"/>
+    </option>
+</config>

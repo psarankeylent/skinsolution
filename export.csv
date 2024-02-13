@@ -1,0 +1,7 @@
+"Order Date","Order Number","Order Status","Order Total","Sales Tax",Discounts,Shipping,"# of Items","Shipping State","Customer Name","Customer Email","Invoice #","Invoice Date","Total (Invoiced)Paid","Ship Date","Shipment Cost",Warehouse,"Order Type"
+"2023-12-15 14:06:59",QA100359458,pending,684.0000,0.0000,0.0000,30.0000,6.0000,Florida,"Newton one",devtest420@test.com,,,,"2023-12-17 21:14:01",55.88,AAA,Subscription
+"2023-12-15 14:06:55",QA100359457,complete,75.4100,5.4200,,0.0000,1.0000,California,"Hitesh1 babariya",hitesh@skinsolutions.md,1100342793,"2023-12-18 07:23:57",75.4100,"2023-12-18 07:24:01",10.3,CCC,Subscription
+"2023-12-12 12:06:30",QA100359455,pending,69.9900,0.0000,,0.0000,1.0000,Florida,"Newton one",devtest420@test.com,,,,"2023-11-13 10:16:47",100,DDD,Subscription
+"2023-12-21 05:01:01",QA100359459,pending,798.0000,0.0000,0.0000,35.0000,7.0000,Florida,"Newton one",devtest420@test.com,,,,,,,Subscription
+"2023-12-21 05:01:11",QA100359460,pending,301.6600,21.7000,,0.0000,4.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,,,,,,,Subscription
+"2024-01-07 17:46:12",QA100359461,pending,107.7500,7.7500,0.0000,0.0000,1.0000,California,"Hitesh babariya",hitesh@skinsolutions.md,,,,,,,Onetime

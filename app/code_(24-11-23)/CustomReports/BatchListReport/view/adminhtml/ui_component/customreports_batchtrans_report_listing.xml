@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customreports_batchtrans_report_listing.customreports_batchtrans_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>customreports_batchtrans_report_listing_columns</spinner>
+        <deps>
+            <dep>customreports_batchtrans_report_listing.customreports_batchtrans_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customreports_batchtrans_report_listing_data_source">
+        <!-- <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">CustomReports\BatchListReport\Ui\DataProvider\BatchTransDataProvider</argument>
+            <argument name="name" xsi:type="string">customreports_batchtrans_report_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">batch_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="batch_id" xsi:type="string">*</item>
+                    </item>
+                </item>
+            </argument>
+        </argument> -->
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">CustomReports\BatchListReport\Ui\DataProvider\BatchTransDataProvider</argument>
+            <argument name="name" xsi:type="string">customreports_batchtrans_report_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">batch_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="batch_id" xsi:type="string">*</item>
+                    </item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+       <!--  <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument> -->
+
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <!-- <bookmark name="bookmarks"/> -->
+        <columnsControls name="columns_controls"/>
+        <!-- <filters name="listing_filters"/> -->
+        <paging name="listing_paging"/>
+        <!-- <exportButton name="export_button" /> -->
+        <!-- Filtered records by url_id only need to exported from grid only. -->
+        <exportButton name="export_button" class="CustomReports\BatchListReport\Ui\Component\ExportTransButton">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">customreports_batchtrans_report_listing.customreports_batchtrans_report_listing.customreports_batchtrans_report_listing_columns.ids</item>
+                </item>
+            </argument>
+        </exportButton>
+    </listingToolbar>
+    <columns name="customreports_batchtrans_report_listing_columns">
+        <selectionsColumn name="ids">
+            <!-- <settings>
+                <indexField>batch_id</indexField>
+            </settings> -->
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">65</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="trans_id">
+            <settings>
+                <label translate="true">Trans ID</label>
+            </settings>
+        </column>
+        <column name="batch_id">
+            <settings>
+                <label translate="true">Batch ID</label>
+            </settings>
+        </column>
+        <column name="submit_time_local">
+            <settings>
+                <label translate="true">Submit Time Local</label>
+            </settings>
+        </column>
+        <column name="transaction_status" class="CustomReports\BatchListReport\Ui\Component\Listing\Columns\SettlementState">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Transaction State</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="sorting" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="invoice_number">
+            <settings>
+                <label translate="true">Invoice #</label>
+            </settings>
+        </column>
+        <column name="first_name">
+            <settings>
+                <label translate="true">First Name</label>
+            </settings>
+        </column>
+        <column name="last_name">
+            <settings>
+                <label translate="true">Last Name</label>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="account_type">
+            <settings>
+                <label translate="true">Account Type</label>
+            </settings>
+        </column>
+        <column name="account_number">
+            <settings>
+                <label translate="true">Account Number</label>
+            </settings>
+        </column>
+        <!-- <column name="settle_amount">
+            <settings>
+                <label translate="true">Order Total</label>
+            </settings>
+        </column> -->
+        <column name="settle_amount" class="CustomReports\BatchListReport\Ui\Component\Listing\Columns\OrderTotal">
+            <settings>
+                <label translate="true">Order Total</label>
+            </settings>
+        </column>
+        <column name="subscription_id">
+            <settings>
+                <label translate="true">Subscription ID</label>
+            </settings>
+        </column>
+        <column name="subscription_pay_num">
+            <settings>
+                <label translate="true">Sub Run Count</label>
+            </settings>
+        </column>
+        <column name="order_status">
+            <settings>
+                <label translate="true">Order Status</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

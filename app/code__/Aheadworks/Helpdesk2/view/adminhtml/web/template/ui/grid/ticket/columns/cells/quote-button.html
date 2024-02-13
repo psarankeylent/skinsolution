@@ -1,0 +1,6 @@
+<button type="button"
+        if="isButtonDisplayed($row())"
+        data-bind="attr: {'data-index': index}, click: function(){ insertQuote($row()) }, css: additionalClasses"
+        data-index="quote_action">
+    <span data-bind="text: title"></span>
+</button>

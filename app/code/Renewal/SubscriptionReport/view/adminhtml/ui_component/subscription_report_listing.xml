@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">subscription_report_listing.subscription_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>subscription_report_listing_columns</spinner>
+        <deps>
+            <dep>subscription_report_listing.subscription_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="subscription_report_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider name="subscription_report_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <filterSelect name="sku" provider="${ $.parentName }" component="Magento_Ui/js/form/element/ui-select" template="ui/grid/filters/elements/ui-select">
+                <settings>
+                    <options class="Renewal\SubscriptionReport\Model\PrivateGroup\GroupList"/>
+                    <caption translate="true">Select...</caption>
+                    <label translate="true">Sku</label>
+                    <dataScope>sku</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button" />
+    </listingToolbar>
+    <columns name="subscription_report_listing_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="profile_id">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Profile ID</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="amount">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Amount</label>
+            </settings>
+        </column>
+        <column name="discount_amount">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Discount Amount</label>
+            </settings>
+        </column>
+        <column name="title">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+        <column name="period_length">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Period Length</label>
+            </settings>
+        </column>
+        <column name="period_unit">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Period Unit</label>
+            </settings>
+        </column>
+        <column name="regular_price">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Regular Price</label>
+            </settings>
+        </column>
+        <column name="trial_price">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Trial Price</label>
+            </settings>
+        </column>
+        <column name="sku" sortOrder="100">
+            <settings>
+                <dataType>select</dataType>
+                <sortable>false</sortable>
+                <label translate="true">Sku</label>
+            </settings>
+        </column>
+        <column name="create_date" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Subscription Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                </item>
+            </argument>
+        </column>
+        <column name="last_update_date" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <!-- <item name="filter" xsi:type="string">dateRange</item> -->
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Last Updated Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                </item>
+            </argument>
+        </column>
+        <column name="source_system">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Source System</label>
+            </settings>
+        </column>
+        <column name="tax_amount">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Tax Amount</label>
+            </settings>
+        </column>
+        <column name="tax_rate">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Tax Rate</label>
+            </settings>
+        </column>
+        <column name="shipping_state">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Shipping State</label>
+            </settings>
+        </column>
+        <!-- Join table fields from here -->
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Name</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

@@ -1,0 +1,15 @@
+<?php
+/* @var $block \Aheadworks\Helpdesk2\Block\Adminhtml\Customer\TabActivator */
+?>
+<?php if ($block->isActive()) : ?>
+    <script>
+        require([
+            "Magento_Ui/js/lib/view/utils/async",
+            "domReady!"
+        ], function($) {
+            $.async('#' + '<?= $block->escapeJs($block->getTabId()) ?>', function () {
+                $('#' + '<?= $block->escapeJs($block->getTabId()) ?>').click();
+            });
+        });
+    </script>
+<?php endif; ?>

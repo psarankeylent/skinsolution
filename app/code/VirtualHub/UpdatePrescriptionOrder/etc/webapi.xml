@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/virtualhub/updateorderstatus" method="POST">
+		<service class="VirtualHub\UpdatePrescriptionOrder\Api\UpdatePrescriptionOrderItemManagementInterface" method="updatePrescriptionOrderItem"/>
+		<resources>
+			<resource ref="VirtualHub_UpdatePrescriptionOrder::API"/>
+		</resources>
+	</route>
+</routes>

@@ -1,0 +1,63 @@
+<?php
+/*
+*  $block = \TrackingActivityLog\TrackAdminUser\Block\Adminhtml\Index
+*
+*/
+
+?>
+<?php
+        $data=[];
+        $newData=[];
+        $userLog = $block->getViewLogs($this->getRequest()->getParam('id'));
+        //$userName = $userLog['username'];
+        //echo "<pre>";
+        $userLog = (array)json_decode($userLog);
+        $userLog = (array)$userLog['edited']; 
+        //print_r($userLog);
+        //exit;
+
+?>
+
+
+<div id="activity_logs_difference">    
+    <h2><strong>Data Difference</strong></h2>
+    <hr>
+    <div class="activity_logs_difference">
+        <table class="table">
+            <tr class="activity_logs_head">
+                <th>Attribute</th>
+                <th>Original Data</th>
+                <th>Updated Data(By <?php //echo $userName ?>)</th>
+            </tr>
+            
+            <?php foreach ($userLog as $key => $log): ?>               
+               
+                    <tr class="activity_logs_data"> 
+              
+                        <td><?php echo $key; ?></td>
+                        <td><?php echo $log->newvalue;?></td>
+                        <td><?php echo $log->oldvalue;?></td>
+                        
+                  </tr>
+           
+            <?php endforeach; ?>
+        </table>
+
+    </div>
+</div>
+
+<style>
+    .activity_logs_difference .table{
+        width: 85%;
+    }
+
+    .activity_logs_difference .activity_logs_head{
+        text-align: left;
+        height: 45px;
+    }
+
+    .activity_logs_difference .activity_logs_data{
+        
+    }
+
+</style>

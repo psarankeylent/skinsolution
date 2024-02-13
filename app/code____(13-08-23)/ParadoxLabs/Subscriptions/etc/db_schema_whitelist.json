@@ -1,0 +1,80 @@
+{
+    "paradoxlabs_subscription": {
+        "column": {
+            "entity_id": true,
+            "increment_id": true,
+            "created_at": true,
+            "updated_at": true,
+            "last_run": true,
+            "next_run": true,
+            "last_notified": true,
+            "status": true,
+            "store_id": true,
+            "customer_id": true,
+            "quote_id": true,
+            "frequency_count": true,
+            "frequency_unit": true,
+            "length": true,
+            "description": true,
+            "subtotal": true,
+            "run_count": true,
+            "additional_information": true,
+            "keyword_fulltext": true
+        },
+        "index": {
+            "PARADOXLABS_SUBSCRIPTION_STATUS_NEXT_RUN": true,
+            "IDX_005E8C20F81F59BFAB536A3FCD50F60A": true,
+            "FTI_005E8C20F81F59BFAB536A3FCD50F60A": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PARADOXLABS_SUBSCRIPTION_QUOTE_ID_QUOTE_ENTITY_ID": true
+        }
+    },
+    "paradoxlabs_subscription_log": {
+        "column": {
+            "log_id": true,
+            "subscription_id": true,
+            "created_at": true,
+            "status": true,
+            "order_id": true,
+            "order_increment_id": true,
+            "agent_id": true,
+            "description": true,
+            "additional_information": true
+        },
+        "index": {
+            "PARADOXLABS_SUBSCRIPTION_LOG_SUBSCRIPTION_ID": true,
+            "IDX_D5AAD73DC09EDDA56134F3717E455A40": true,
+            "FTI_D5AAD73DC09EDDA56134F3717E455A40": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_A2AD9A5296058C68FC09AC4F08AE3748": true,
+            "PARADOXLABS_SUBSCRIPTION_LOG_ORDER_ID_SALES_ORDER_ENTITY_ID": true
+        }
+    },
+    "paradoxlabs_subscription_product_interval": {
+        "column": {
+            "interval_id": true,
+            "product_id": true,
+            "option_id": true,
+            "value_id": true,
+            "store_id": true,
+            "created_at": true,
+            "frequency_count": true,
+            "frequency_unit": true,
+            "length": true,
+            "installment_price": true,
+            "adjustment_price": true,
+            "additional_information": true
+        },
+        "index": {
+            "PARADOXLABS_SUBSCRIPTION_PRODUCT_INTERVAL_PRODUCT_ID": true,
+            "PARADOXLABS_SUBSCRIPTION_PRODUCT_INTERVAL_OPTION_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

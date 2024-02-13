@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<configuration>
+			<authorization>
+				<auth_url/>
+				<auth_username/>
+				<auth_password/>
+			</authorization>
+			<api_list>
+				<order_sync_api/>
+				<order_status_api/>
+				<consultation_reports_api/>
+				<order_address_update_api/>
+			</api_list>
+			<chatwoot_api_list>
+                <ticket_api_access_key/>
+                <contact_search_api/>
+                <contact_conversations_api/>
+                <conversations_view_api/>
+            </chatwoot_api_list>
+		</configuration>
+	</default>
+</config>

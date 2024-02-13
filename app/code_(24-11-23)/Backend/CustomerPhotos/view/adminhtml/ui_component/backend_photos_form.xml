@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">backend_photos_form.photos_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Backend\CustomerPhotos\Block\Adminhtml\Photos\Edit\BackButton"/>
+            <!-- <button name="delete" class="Backend\CustomerPhotos\Block\Adminhtml\Photos\Edit\DeleteButton"/>
+            <button name="save_and_continue" class="Backend\CustomerPhotos\Block\Adminhtml\Photos\Edit\SaveAndContinueButton"/>-->
+            <button name="save" class="Backend\CustomerPhotos\Block\Adminhtml\Photos\Edit\SaveButton"/>
+
+        </buttons>
+        <namespace>backend_photos_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>backend_photos_form.photos_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="photos_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="photos_form_data_source" class="Backend\CustomerPhotos\Model\Photos\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>photo_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label></label>
+        </settings>
+
+        <field name="photo" formElement="file" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Photos</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Upload Photo</label>
+                <dataScope>photo</dataScope>
+            </settings>
+        </field>
+
+    </fieldset>
+</form>

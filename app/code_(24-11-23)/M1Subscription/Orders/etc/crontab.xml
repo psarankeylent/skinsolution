@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+
+    <!-- cron setup to run within 5 minute. -->
+    <group id="default"> 
+        <job instance="M1Subscription\Orders\Cron\GenerateOrders" method="execute" name="create_custom_orders">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>

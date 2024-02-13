@@ -1,3 +1,0 @@
-type TokenBaseCard {
-    is_in_use: Boolean
-}

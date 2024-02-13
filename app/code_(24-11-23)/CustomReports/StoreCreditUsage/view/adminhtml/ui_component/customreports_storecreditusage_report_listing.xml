@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customreports_storecreditusage_report_listing.customreports_storecreditusage_report_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>customreports_storecreditusage_report_listing_columns</spinner>
+        <deps>
+            <dep>customreports_storecreditusage_report_listing.customreports_storecreditusage_report_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="customreports_storecreditusage_report_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider name="customreports_storecreditusage_report_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button" />
+    </listingToolbar>
+    <columns name="customreports_storecreditusage_report_listing_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+       <!-- <column name="entity_id">
+            <settings>
+                <sorting>desc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>-->
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Order Date</item>
+                    <item name="dateFormat" xsi:type="string">MM/dd/yyyy</item>
+                    <item name="sorting" xsi:type="string">desc</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name">
+            <settings>
+                <label translate="true">Customer Name</label>
+            </settings>
+        </column>
+        <column name="customer_email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Email</label>
+            </settings>
+        </column>
+        <column name="subtotal">
+            <settings>
+                <label translate="true">Subtotal</label>
+            </settings>
+        </column>
+        <column name="tax_amount">
+            <settings>
+                <label translate="true">Sales Tax</label>
+            </settings>
+        </column>
+        <column name="grand_total">
+            <settings>
+                <label translate="true">Order Total</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="subtotal_incl_tax">
+            <settings>
+                <label translate="true">Total Before Store Credit</label>
+            </settings>
+        </column>
+        <column name="applied_storecredit">
+            <settings>
+                <label translate="true">Store Credit Used</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

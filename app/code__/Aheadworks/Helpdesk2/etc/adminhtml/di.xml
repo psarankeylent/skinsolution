@@ -1,0 +1,356 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Gateway\CheckConnection">
+        <arguments>
+            <argument name="checkConnectionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Gateway\CheckConnection</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Gateway\Save">
+        <arguments>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Gateway\Save</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Gateway\Google\Verify">
+        <arguments>
+            <argument name="verifyGoogleAccountCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Gateway\VerifyGoogleAccount</argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Department\Save">
+        <arguments>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Department\Save</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Department\MassChangeStatus">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Department\ChangeStatus</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Department\MassDelete">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Department\Delete</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Gateway\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Gateway\General</item>
+                <item name="secretData" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Gateway\SecretData</item>
+                <item name="googleVerification" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Gateway\GoogleVerification</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Gateway\FormDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Gateway\Processor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Department\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Department\Agent</item>
+                <item name="gateway" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Department\Gateway</item>
+                <item name="option" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Department\Option</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Department\FormDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Department\Processor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Automation\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="conditions" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Automation\Conditions</item>
+                <item name="actions" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Automation\Actions</item>
+                <item name="serialization" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Automation\Serialization</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Automation\FormDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Automation\Processor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\General</item>
+                <item name="customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Customer</item>
+                <item name="external_link" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\ExternalLink</item>
+                <item name="ticket_permission" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\TicketPermission</item>
+                <item name="ticket_locking" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\TicketLocking</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Order</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\FormDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Processor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\AwCustomerAttributes\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="attributeList" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\ThirdParty\Aheadworks\CustomerAttributes\AttributeList</item>
+                <item name="ticket_permission" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\TicketPermission</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\ThirdParty\Aheadworks\CustomerAttributes\AttributeDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\AwCustomerAttributes\Processor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\AwCouponCodeGenerator\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="ticket_permission" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\TicketPermission</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\ThirdParty\Aheadworks\CouponCodeGenerator\CouponGenerateDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\AwCouponCodeGenerator\Processor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\DepartmentOptions" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array"/>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\OptionsDataProvider">
+        <arguments>
+            <argument name="formDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\DepartmentOptions</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\Provider" type="Aheadworks\Helpdesk2\Model\Data\Provider\Form\Ticket\Thread\ProviderComposite">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="messages" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Provider\Form\Ticket\Thread\Messages</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Form\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="wysiwyg_directives" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\WysiwygDirectives</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Ui\DataProvider\Ticket\Thread\AllProvider">
+        <arguments>
+            <argument name="dataProvider" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\Provider</argument>
+            <argument name="dataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Form\Ticket\Thread\Processor</argument>
+        </arguments>
+    </type>
+
+    <!--  Gateway controller data processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Gateway\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="secretData" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Gateway\SecretData</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Gateway\Save">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Gateway\Processor</argument>
+        </arguments>
+    </type>
+
+    <!--  Department controller post data processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Department\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="gateway" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Department\Gateway</item>
+                <item name="agent" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Department\Agent</item>
+                <item name="store" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Department\Store</item>
+                <item name="option" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Department\Option</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Department\Save">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Department\Processor</argument>
+        </arguments>
+    </type>
+
+    <!--  Ticket controller post data processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="adminMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\AdminTypeMessage</item>
+                <item name="customer" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Customer</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+                <item name="order" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Order</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Ticket\Save">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Processor</argument>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Create</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Ticket\InlineEdit">
+        <arguments>
+            <argument name="updateCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Update</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Ticket\Update">
+        <arguments>
+            <argument name="updateCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Update</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Reply\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="status" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Status</item>
+                <item name="adminMessage" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\AdminTypeMessage</item>
+                <item name="attachments" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Attachments</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Ticket\Reply">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Ticket\Reply\Processor</argument>
+            <argument name="replyCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Reply</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Ticket\Attachment\Download">
+        <arguments>
+            <argument name="downloadCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Message\DownloadAttachment</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\ThirdParty\Aheadworks\CustomerAttributes\Save">
+        <arguments>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\SaveCustomerAttribute</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Ticket\MassDelete">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Delete</argument>
+        </arguments>
+    </type>
+
+    <!--  Automation controller post data processor  -->
+    <virtualType name="Aheadworks\Helpdesk2\Model\Data\Processor\Post\Automation\Processor" type="Aheadworks\Helpdesk2\Model\Data\Processor\Post\ProcessorComposite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="general" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Automation\General</item>
+                <item name="storeConfig" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Automation\StoreConfig</item>
+                <item name="serialization" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Automation\Serialization</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Automation\Save">
+        <arguments>
+            <argument name="postDataProcessor" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Processor\Post\Automation\Processor</argument>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Automation\Save</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Automation\MassChangeStatus">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Automation\ChangeStatus</argument>
+        </arguments>
+    </type>
+
+    <!--  Email rejecting controller data processor  -->
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Rejecting\Pattern\Save">
+        <arguments>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Rejection\Pattern\Save</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Rejecting\Pattern\MassChangeStatus">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Rejection\Pattern\ChangeStatus</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Rejecting\Pattern\MassDelete">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Rejection\Pattern\Delete</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Rejecting\Message\MassDelete">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Rejection\Message\Delete</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Rejecting\Message\MassMarkAsUnprocessed">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Rejection\Message\MarkAsUnprocessed</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\Rejecting\Message\MassProcess">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Rejection\Message\Process</argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\Helpdesk2\Model\Rejection\Processor\Provider">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="email" xsi:type="object">\Aheadworks\Helpdesk2\Model\Rejection\Processor\Type\Email</item>
+                <item name="contact_us_form" xsi:type="object">Aheadworks\Helpdesk2\Model\Rejection\Processor\Type\ContactUsForm</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Model\Rejection\Processor\Type\ContactUsForm">
+        <arguments>
+            <argument name="createCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\Ticket\Create</argument>
+        </arguments>
+    </type>
+
+    <!--  Quick response controller data processor  -->
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\QuickResponse\Save">
+        <arguments>
+            <argument name="saveCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\QuickResponse\Save</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\QuickResponse\Delete">
+        <arguments>
+            <argument name="deleteCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\QuickResponse\Delete</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\QuickResponse\MassChangeStatus">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\QuickResponse\ChangeStatus</argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Helpdesk2\Controller\Adminhtml\QuickResponse\MassDelete">
+        <arguments>
+            <argument name="massActionCommand" xsi:type="object">Aheadworks\Helpdesk2\Model\Data\Command\QuickResponse\Delete</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Ui\Model\Export\MetadataProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="aw_helpdesk2_ticket_listing" xsi:type="array">
+                    <item name="created_at" xsi:type="string">created_at</item>
+                    <item name="last_message_date" xsi:type="string">last_message_date</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Aheadworks\CustomerAttributes\Model\Source\Attribute\UsedInForms">
+        <plugin name="aw-helpdesk2-customer-attr-plugin" type="Aheadworks\Helpdesk2\Plugin\ThirdParty\AwCustomerAttributes\UsedInFormsPlugin"/>
+    </type>
+
+    <type name="Magento\Cms\Model\Wysiwyg\DefaultConfigProvider">
+        <plugin name="aw-helpdesk2-tinyMce-config-provider-plugin" type="Aheadworks\Helpdesk2\Plugin\Wysiwyg\Model\DefaultConfigProviderPlugin"/>
+    </type>
+
+    <type name="Magento\Customer\Block\Adminhtml\Edit\Tab\View\PersonalInfo">
+        <plugin name="aw_helpdesk2_extended_personal_info_tab" type="Aheadworks\Helpdesk2\Plugin\Customer\Block\Adminhtml\PersonalInfoTabPlugin"/>
+    </type>
+
+</config>
